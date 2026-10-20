@@ -1,0 +1,30 @@
+% Clear overview: deliberately separated panels; no boxes overlap.
+\begin{tikzpicture}[
+ font=\scriptsize,
+ traj/.style={draw=blue,fill=lightblue,rounded corners=2pt,align=center,minimum height=9mm,text width=27mm},
+ ctx/.style={draw=teal,fill=lightteal,rounded corners=2pt,align=center,minimum height=9mm,text width=28mm},
+ sharing/.style={draw=teal,fill=teal!18,rounded corners=2pt,align=center,minimum height=10mm,text width=37mm},
+ gate/.style={draw=orange,fill=orange!13,rounded corners=2pt,align=center,minimum height=9mm,text width=29mm},
+ arrow/.style={-Latex,thick,draw=blue},ctxarrow/.style={-Latex,thick,draw=teal},sharearrow/.style={-Latex,dashed,thick,draw=teal}]
+\node[font=\bfseries,text=navy] (tt) {Trajectory branch};
+\node[traj,below=5mm of tt] (obs) {Observed pedestrian trajectory\\$[B,15,4]$};
+\node[traj,right=7mm of obs] (embed) {Source embedding +\\positional encoding\\$[B,15,32]$};
+\node[traj,right=7mm of embed] (enc) {MTN Encoder $\times3$\\three sequential layers};
+\node[traj,right=7mm of enc] (mem) {Trajectory memory\\$[B,15,32]$};
+\draw[arrow] (obs)--(embed); \draw[arrow] (embed)--(enc); \draw[arrow] (enc)--(mem);
+\node[sharing,below=8mm of enc] (c4) {\textbf{C4: Cross-layer Encoder Self-Attention Weight Sharing}\\same Q / K / V / O in Encoder layers 0--2};
+\draw[sharearrow] (c4.north)--(enc.south);
+\node[font=\bfseries,text=teal,below=27mm of obs] (ct) {Native IDD-PeD context branch};
+\node[ctx,below=5mm of ct,text width=38mm] (inputs) {Six inputs: intersection; signalized; road; location;\\motion direction; observed occlusion};
+\node[ctx,right=6mm of inputs] (embs) {Six independent\\16-D embeddings};
+\node[ctx,right=6mm of embs,text width=22mm] (concat) {Concatenate\\$[B,96]$};
+\node[ctx,right=6mm of concat] (proj) {Context projection\\$[B,32]$};
+\node[gate,right=6mm of proj] (admit) {Context-admission gate\\gated token\\$[B,1,32]$};
+\draw[ctxarrow] (inputs)--(embs);\draw[ctxarrow] (embs)--(concat);\draw[ctxarrow] (concat)--(proj);\draw[ctxarrow] (proj)--(admit);
+\node[font=\bfseries,text=navy,below=27mm of mem] (dt) {Decoder and prediction};
+\node[traj,below=5mm of dt,text width=32mm] (append) {Append context token\\augmented decoder memory\\$[B,16,32]$};
+\node[traj,right=8mm of append,text width=31mm] (dec) {MTN Decoder $\times3$\\existing flow paths unchanged};
+\node[traj,right=8mm of dec,text width=31mm] (head) {Output head + residual\\Future trajectory $[B,45,4]$};
+\draw[arrow] (append)--(dec);\draw[arrow] (dec)--(head);\draw[arrow] (mem.south)-|(append.north);\draw[ctxarrow] (admit.south)-|(append.south);
+\node[draw=gray,fill=white,rounded corners=2pt,align=left,text width=112mm,below=12mm of inputs,anchor=west] {\textbf{C4 scope.} Only encoder \texttt{self\_attn} Q/K/V/O is shared. Encoder \texttt{src\_attn}, \texttt{cross\_attn}, FFNs, normalisation, decoder, context branch and output head are independent. Solid arrows: data flow; dashed teal arrows: shared parameters only. C4 reduces parameters, not FLOPs, because all encoder attention operations still execute.};
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+% Figure C: memory augmentation and prediction detail.
+\begin{tikzpicture}[font=\small,
+ box/.style={draw=blue,fill=lightblue,rounded corners=2pt,align=center,minimum height=13mm,text width=42mm},
+ token/.style={draw=teal,fill=lightteal,rounded corners=2pt,align=center,minimum height=13mm,text width=42mm},
+ output/.style={draw=blue,fill=white,rounded corners=2pt,align=center,minimum height=13mm,text width=43mm},
+ arrow/.style={-Latex,very thick,draw=blue},ctxarrow/.style={-Latex,very thick,draw=teal}]
+\node[box] (memory) {Trajectory memory from MTN encoder\\$[B,15,32]$};
+\node[token,below=22mm of memory] (token) {Gated context token\\$[B,1,32]$};
+\node[box,right=25mm of memory,yshift=-11mm] (append) {Append context token\\$[B,15,32] + [B,1,32]$\\augmented decoder memory $[B,16,32]$};
+\node[box,right=25mm of append] (decoder) {MTN Decoder $\times3$\\independent source-attention,\\flow-attention, FFN and normalisation};
+\node[output,right=25mm of decoder] (head) {Output head +\\final observed-box residual\\future trajectory $[B,45,4]$};
+\draw[arrow] (memory)--(append); \draw[ctxarrow] (token.east)-|(append.south); \draw[arrow] (append)--(decoder); \draw[arrow] (decoder)--(head);
+\node[draw=gray,fill=white,rounded corners=2pt,align=left,text width=151mm,below=25mm of append] {\textbf{Decoder condition.} The 15 trajectory-memory tokens are retained unchanged; the admitted context is appended as the sixteenth token. The decoder is not shared by C4 and its existing optical-flow paths are unchanged.};
+\end{tikzpicture}

@@ -1,0 +1,34 @@
+% Detailed clear figure: three separate panels, deliberately without overlapping modules.
+\begin{tikzpicture}[
+ font=\scriptsize,
+ traj/.style={draw=blue,fill=lightblue,rounded corners=2pt,align=center,minimum height=8mm,text width=26mm},
+ ctx/.style={draw=teal,fill=lightteal,rounded corners=2pt,align=center,minimum height=8mm,text width=26mm},
+ inner/.style={draw=blue,fill=white,rounded corners=1pt,align=center,minimum height=6mm,text width=24mm},
+ shared/.style={draw=teal,fill=teal!18,rounded corners=2pt,align=center,minimum height=9mm,text width=33mm},
+ gate/.style={draw=orange,fill=orange!13,rounded corners=2pt,align=center,minimum height=8mm,text width=31mm},
+ arrow/.style={-Latex,thick,draw=blue},ctxarrow/.style={-Latex,thick,draw=teal},sharearrow/.style={-Latex,dashed,thick,draw=teal}]
+\node[font=\bfseries,text=navy] (a) {A. MTN trajectory encoder};
+\node[traj,below=5mm of a] (obs) {Observed boxes\\$[B,15,4]$};
+\node[traj,right=7mm of obs] (embed) {Source embedding +\\positional encoding\\$[B,15,32]$};
+\node[inner,right=9mm of embed,yshift=11mm] (e0) {Encoder layer 0\\self-attention};
+\node[inner,below=3mm of e0] (e1) {Encoder layer 1\\self-attention};
+\node[inner,below=3mm of e1] (e2) {Encoder layer 2\\self-attention};
+\node[draw=blue,rounded corners=2pt,inner sep=4mm,fit=(e0)(e2),label={[font=\bfseries]above:MTN Encoder $\times3$}] (eg) {};
+\node[traj,right=9mm of eg] (mem) {Trajectory memory\\$[B,15,32]$};
+\draw[arrow] (obs)--(embed);\draw[arrow] (embed.east)--(e0.west);\draw[arrow] (e0)--(e1);\draw[arrow] (e1)--(e2);\draw[arrow] (e2.east)-|(mem.west);
+\node[shared,below=8mm of eg,xshift=-30mm] (c4) {\textbf{C4 shared projections}\\one Q / K / V / O set across layers 0--2};
+\draw[sharearrow] (c4.north)-|(e0.south east);\draw[sharearrow] (c4.north)-|(e1.east);\draw[sharearrow] (c4.north)-|(e2.north east);
+\node[font=\bfseries,text=teal,below=31mm of obs] (b) {B. Native IDD-PeD context branch};
+\node[ctx,below=5mm of b,text width=37mm] (inputs) {intersection; signalized; road; location;\\motion direction; observed occlusion};
+\node[ctx,right=6mm of inputs] (embs) {Five lookup embeddings +\\mean-pooled occlusion\\six 16-D vectors};
+\node[ctx,right=6mm of embs,text width=22mm] (concat) {Concatenate\\$[B,96]$};
+\node[ctx,right=6mm of concat,text width=31mm] (proj) {LayerNorm $\rightarrow$ Linear $96\!\rightarrow\!32$\\GELU, Dropout, Linear\\global context $[B,32]$};
+\node[gate,right=6mm of proj] (gate) {Admission gate\\context + final box\\$36\!\rightarrow\!16\!\rightarrow\!2$\\token $[B,1,32]$};
+\draw[ctxarrow] (inputs)--(embs);\draw[ctxarrow] (embs)--(concat);\draw[ctxarrow] (concat)--(proj);\draw[ctxarrow] (proj)--(gate);
+\node[font=\bfseries,text=navy,below=30mm of inputs] (d) {C. Decoder and future prediction};
+\node[traj,below=5mm of d,text width=32mm] (append) {Append token to memory\\$[B,15,32]+[B,1,32]$\\augmented memory $[B,16,32]$};
+\node[traj,right=8mm of append,text width=33mm] (dec) {MTN Decoder $\times3$\\independent source-attention, flow-attention, FFN and normalisation};
+\node[traj,right=8mm of dec,text width=29mm] (head) {Output head + final-box residual\\future trajectory $[B,45,4]$};
+\draw[arrow] (append)--(dec);\draw[arrow] (dec)--(head);\draw[arrow] (mem.south)-|(append.north);\draw[ctxarrow] (gate.south)-|(append.south);
+\node[draw=gray,fill=white,rounded corners=2pt,align=left,text width=117mm,below=13mm of append,anchor=west] {\textbf{Legend and scope.} Solid arrows show data flow. Dashed teal arrows show shared parameters only. C4 shares only encoder \texttt{self\_attn} Q/K/V/O; all other encoder modules, the context branch, the decoder and output head are independent. Current POC: $-6.07\%$ parameters, $+3.93\%$ CPU latency versus context-aware MTN; FLOPs are not reduced.};
+\end{tikzpicture}

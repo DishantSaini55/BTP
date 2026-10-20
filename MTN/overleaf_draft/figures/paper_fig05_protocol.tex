@@ -1,0 +1,13 @@
+% POC protocol figure; only uses completed experiment facts.
+\begin{tikzpicture}[font=\small,
+ d/.style={draw=blue!80!black,fill=blue!15,rounded corners=3pt,minimum height=17mm,text width=40mm,align=center},
+ m/.style={draw=teal!80!black,fill=teal!18,rounded corners=3pt,minimum height=17mm,text width=43mm,align=center},
+ r/.style={draw=orange!80!black,fill=orange!18,rounded corners=3pt,minimum height=17mm,text width=43mm,align=center},
+ a/.style={-Latex,very thick,draw=blue}]
+\node[d](split){Fixed IDD-PeD split\\32 train / 8 validation /\\24 held-out test trajectories};
+\node[m,right=20mm of split](flow){CPU Farneback flow\\same cached flow inputs\\for every model};
+\node[m,right=20mm of flow](models){Four matched candidates\\Context-aware MTN; C4;\\DynMM; DynMM+C4};
+\node[r,right=20mm of models](eval){Three seeds\\one epoch\\MSE, C-MSE, CF-MSE\\parameters and CPU latency};
+\draw[a](split)--(flow);\draw[a](flow)--(models);\draw[a](models)--(eval);
+\node[font=\small,text=orange!80!black,below=18mm of flow] {CPU Farneback proof-of-concept only — not an official RAFT-based benchmark.};
+\end{tikzpicture}

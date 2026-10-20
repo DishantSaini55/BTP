@@ -1,0 +1,272 @@
+<mxfile host="app.diagrams.net" pages="6">
+  <diagram name="Fig 1 - Overview" id="0">
+    <mxGraphModel page="1" pageWidth="1600" pageHeight="900">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Figure 1. C4 Context-Aware MTN — Overview" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontColor=#102A43;" vertex="1" parent="1">
+          <mxGeometry x="260" y="30" width="1080" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="x" value="Observed boxes&lt;br&gt;[B,15,4]" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="160" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="e" value="Trajectory embedding&lt;br&gt;[B,15,32]" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="270" y="130" width="180" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="en" value="MTN Encoder ×3" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="510" y="130" width="170" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="m" value="Trajectory memory&lt;br&gt;[B,15,32]" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="740" y="130" width="190" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="app" value="Append token&lt;br&gt;[B,16,32]" style="rounded=1;html=1;fillColor=#EADCF8;strokeColor=#8E44AD;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="990" y="130" width="180" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="dec" value="MTN Decoder ×3" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="130" width="170" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out" value="Future boxes&lt;br&gt;[B,45,4]" style="rounded=1;html=1;fillColor=#FFFFFF;strokeColor=#2F80ED;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="130" width="140" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx" value="Six native context&lt;br&gt;inputs" style="rounded=1;html=1;fillColor=#D9F3EF;strokeColor=#00A6A6;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="220" y="390" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="proj" value="Embeddings + projection&lt;br&gt;[B,32]" style="rounded=1;html=1;fillColor=#D9F3EF;strokeColor=#00A6A6;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="500" y="390" width="205" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gate" value="Admission gate" style="rounded=1;html=1;fillColor=#FFE8CC;strokeColor=#F2994A;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="795" y="390" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tok" value="Gated context token&lt;br&gt;[B,1,32]" style="rounded=1;html=1;fillColor=#EADCF8;strokeColor=#8E44AD;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="1055" y="390" width="190" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="share" value="C4 shared Q / K / V / O" style="rounded=1;html=1;fillColor=#C7EDE5;strokeColor=#00A6A6;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="260" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="x" target="e" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="e" target="en" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="en" target="m" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="m" target="app" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="app" target="dec" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" edge="1" parent="1" source="dec" target="out" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" edge="1" parent="1" source="ctx" target="proj" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#00A6A6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" edge="1" parent="1" source="proj" target="gate" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#00A6A6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" edge="1" parent="1" source="gate" target="tok" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#F2994A;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" edge="1" parent="1" source="tok" target="app" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#8E44AD;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" edge="1" parent="1" source="share" target="en" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;dashed=1;strokeWidth=2;strokeColor=#00A6A6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Fig 2 - Context Gate" id="1">
+    <mxGraphModel dx="1704" dy="895" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontColor=#102A43;" value="Figure 2. Context-Token Generation and Admission Gate" vertex="1">
+          <mxGeometry height="35" width="1080" x="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="a" parent="1" style="rounded=1;html=1;fillColor=#D9F3EF;strokeColor=#00A6A6;fontSize=18;" value="Six native context inputs" vertex="1">
+          <mxGeometry height="80" width="250" x="90" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="b" parent="1" style="rounded=1;html=1;fillColor=#D9F3EF;strokeColor=#00A6A6;fontSize=18;" value="Six 16-D embeddings" vertex="1">
+          <mxGeometry height="80" width="230" x="430" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="c" parent="1" style="rounded=1;html=1;fillColor=#BFE9E2;strokeColor=#00A6A6;fontSize=18;" value="Concatenate&lt;br&gt;[B,96]" vertex="1">
+          <mxGeometry height="80" width="200" x="750" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="d" parent="1" style="rounded=1;html=1;fillColor=#BFE9E2;strokeColor=#00A6A6;fontSize=18;" value="Projection&lt;br&gt;[B,32]" vertex="1">
+          <mxGeometry height="80" width="200" x="1040" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="e" parent="1" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=18;" value="Final observed box&lt;br&gt;[B,4]" vertex="1">
+          <mxGeometry height="80" width="200" x="1040" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="f" parent="1" style="rounded=1;html=1;fillColor=#FFE8CC;strokeColor=#F2994A;fontSize=18;fontStyle=1;" value="Admission gate&lt;br&gt;36 → 16 → 2" vertex="1">
+          <mxGeometry height="95" width="200" x="1330" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="g" parent="1" style="rounded=1;html=1;fillColor=#EADCF8;strokeColor=#8E44AD;fontSize=18;" value="Gated context token&lt;br&gt;[B,1,32]" vertex="1">
+          <mxGeometry height="80" width="200" x="1330" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="a" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#00A6A6;" target="b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="b" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#00A6A6;" target="c">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#00A6A6;" target="d">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="d" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#00A6A6;" target="f">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="e" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;" target="f">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="f" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#8E44AD;" target="g">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Fig 3 - C4 Sharing" id="2">
+    <mxGraphModel dx="2175" dy="1143" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontColor=#102A43;" value="Figure 3. C4 Cross-Layer Encoder Self-Attention Sharing" vertex="1">
+          <mxGeometry height="35" width="1080" x="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="l0" parent="1" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=18;" value="Layer 0&lt;br&gt;self-attention" vertex="1">
+          <mxGeometry height="80" width="240" x="260" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" parent="1" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=18;" value="Layer 1&lt;br&gt;self-attention" vertex="1">
+          <mxGeometry height="80" width="240" x="410" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" parent="1" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=18;" value="Layer 2&lt;br&gt;self-attention" vertex="1">
+          <mxGeometry height="80" width="240" x="260" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="bank" parent="1" style="rounded=1;html=1;fillColor=#C7EDE5;strokeColor=#00A6A6;fontSize=20;fontStyle=1;" value="One shared parameter bank&lt;br&gt;Q • K • V • O" vertex="1">
+          <mxGeometry height="115" width="330" x="940" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="n" parent="1" style="rounded=1;html=1;fillColor=#FFE8CC;strokeColor=#F2994A;fontSize=18;" value="Other encoder modules remain independent.&lt;br&gt;Decoder, context branch and output head are not shared." vertex="1">
+          <mxGeometry height="90" width="530" x="550" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" edge="1" parent="1" source="bank" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;dashed=1;strokeWidth=2;strokeColor=#00A6A6;" target="l0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" edge="1" parent="1" source="bank" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;dashed=1;strokeWidth=2;strokeColor=#00A6A6;" target="l1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" edge="1" parent="1" source="bank" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;dashed=1;strokeWidth=2;strokeColor=#00A6A6;" target="l2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Fig 4 - Decoder Memory" id="3">
+    <mxGraphModel page="1" pageWidth="1600" pageHeight="900">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="Figure 4. Decoder-Memory Augmentation" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontColor=#102A43;" vertex="1" parent="1">
+          <mxGeometry x="280" y="30" width="1040" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="m" value="15 trajectory-memory tokens&lt;br&gt;[B,15,32]" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="100" y="225" width="270" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="c" value="1 gated context token&lt;br&gt;[B,1,32]" style="rounded=1;html=1;fillColor=#D9F3EF;strokeColor=#00A6A6;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="100" y="460" width="270" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a" value="Append&lt;br&gt;[B,16,32]" style="rounded=1;html=1;fillColor=#EADCF8;strokeColor=#8E44AD;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="300" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="d" value="MTN Decoder ×3&lt;br&gt;flow paths unchanged" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="980" y="310" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="o" value="Output head + residual&lt;br&gt;Future [B,45,4]" style="rounded=1;html=1;fillColor=#FFE8CC;strokeColor=#F2994A;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="310" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" edge="1" parent="1" source="m" target="a" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" edge="1" parent="1" source="c" target="a" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#00A6A6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" edge="1" parent="1" source="a" target="d" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" edge="1" parent="1" source="d" target="o" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Fig 5 - Protocol" id="4">
+    <mxGraphModel page="1" pageWidth="1600" pageHeight="900">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" value="Figure 5. Matched CPU Proof-of-Concept Protocol" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontColor=#102A43;" vertex="1" parent="1">
+          <mxGeometry x="260" y="30" width="1080" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="a" value="Fixed split&lt;br&gt;32 train • 8 validation&lt;br&gt;24 held-out test" style="rounded=1;html=1;fillColor=#DCEBFA;strokeColor=#2F80ED;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="90" y="300" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="b" value="CPU Farneback flow&lt;br&gt;same cached inputs" style="rounded=1;html=1;fillColor=#D9F3EF;strokeColor=#00A6A6;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="485" y="300" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="c" value="Four matched candidates" style="rounded=1;html=1;fillColor=#D9F3EF;strokeColor=#00A6A6;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="870" y="300" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="d" value="Three seeds • one epoch&lt;br&gt;metrics + latency" style="rounded=1;html=1;fillColor=#FFE8CC;strokeColor=#F2994A;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1255" y="300" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" edge="1" parent="1" source="a" target="b" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" edge="1" parent="1" source="b" target="c" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" edge="1" parent="1" source="c" target="d" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#2F80ED;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Fig 6 - Ablation Design" id="5">
+    <mxGraphModel dx="1704" dy="895" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t" parent="1" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontColor=#102A43;" value="Figure 6. Ablation Design" vertex="1">
+          <mxGeometry height="35" width="1000" x="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="base" parent="1" style="rounded=1;html=1;fillColor=#D9F3EF;strokeColor=#00A6A6;fontSize=18;" value="Context-Aware MTN&lt;br&gt;context only" vertex="1">
+          <mxGeometry height="95" width="270" x="120" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;html=1;fillColor=#C7EDE5;strokeColor=#00A6A6;fontSize=18;fontStyle=1;" value="C4&lt;br&gt;context + C4 sharing" vertex="1">
+          <mxGeometry height="95" width="270" x="490" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="f" parent="1" style="rounded=1;html=1;fillColor=#FFE8CC;strokeColor=#F2994A;fontSize=18;" value="Dynamic Fusion&lt;br&gt;context + fusion" vertex="1">
+          <mxGeometry height="95" width="270" x="120" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fc4" parent="1" style="rounded=1;html=1;fillColor=#EADCF8;strokeColor=#8E44AD;fontSize=18;" value="Fusion + C4&lt;br&gt;combined trade-off" vertex="1">
+          <mxGeometry height="95" width="270" x="1230" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="q1" edge="1" parent="1" source="base" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#00A6A6;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q2" edge="1" parent="1" source="base" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#F2994A;" target="f">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q3" edge="1" parent="1" source="c4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#8E44AD;" target="fc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q4" edge="1" parent="1" source="f" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;strokeWidth=2;strokeColor=#8E44AD;" target="fc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

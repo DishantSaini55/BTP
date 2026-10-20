@@ -1,0 +1,235 @@
+MTN ARCHITECTURE MAPPING AND WEIGHT-SHARING EXPLANATION
+=======================================================
+Source of truth audited: MTN/individual_TF.py, MTN/context_TF.py,
+MTN/transformer/{encoder_decoder,encoder,encoder_layer,decoder,decoder_layer,
+multihead_attention,pointerwise_feedforward,sublayer_connection}.py.
+Configuration used in the recorded CPU POC: N=3, d_model=32, h=4, d_ff=128,
+15 observed boxes and 45 predicted boxes. B denotes batch size.
+
+EXECUTIVE ANSWER FOR THE SUPERVISOR
+-----------------------------------
+MTN has an explicit encoder. It is class Encoder in MTN/transformer/encoder.py,
+stored as model.base.model.encoder in Version B and constructed by IndividualTF
+in MTN/individual_TF.py. For the POC it contains three EncoderLayer objects:
+encoder.layers[0], encoder.layers[1], encoder.layers[2].
+
+C4 shares ONLY EncoderLayer.self_attn across those three actual encoder layers.
+The four Linear projections within that MultiHeadAttention module—Q, K, V and
+O—are one module/object owned initially by layer 0 and referenced by layers 1
+and 2. Encoder layers still execute three times. No decoder attention, encoder
+src_attn, encoder cross_attn, FFN, context module, or output head is shared.
+
+1. ACTUAL VERSION B FORWARD PATH
+--------------------------------
+ContextIndividualTF.forward_batch (MTN/context_TF.py)
+  Inputs from one POC batch:
+  - boxes / enc_input:                 [B, 15, 4]
+  - observed speed source:             [B, 60, 1], sliced to [B, 15, 1]
+  - ego optical flow source:           [B, 60, 64, 2], sliced/rearranged to [B, 28, 64]
+  - pedestrian optical flow source:    [B, 60, 9, 2], sliced/rearranged to [B, 28, 9]
+  - scene_context:                     [B, 5]
+  - observed_occlusion:                [B, 15]
+  - target supplied to decoder: zeros  [B, 45, 4]
+  - residual: final observed box repeated [B, 45, 4]
+
+A. Context branch (Version B addition; context_TF.py)
+  SceneContextEncoder.forward(scene_context, observed_occlusion)
+    scene_embeddings[0..4]: five separate Embedding modules
+      intersection_type, signalized_type, road_type, location_type,
+      motion_direction -> five [B,16] embeddings.
+    occlusion_embedding: Embedding -> [B,15,16], mean(dim=1) -> [B,16].
+    concat -> [B,96].
+    projection: LayerNorm(96) -> Linear(96,32) -> GELU -> Dropout ->
+                Linear(32,32) -> context token [B,32].
+  ContextIndividualTF._context_gate
+    concat(context token [B,32], final observed box [B,4]) -> [B,36].
+    gate: Linear(36,16) -> GELU -> Linear(16,2) -> binary admission value [B].
+    Training uses hard Gumbel-softmax; evaluation uses argmax. Token is multiplied
+    by the admission value before being passed to EncoderDecoder.
+
+B. Explicit MTN encoder (original MTN; individual_TF.py and transformer/)
+  IndividualTF.base.model is EncoderDecoder (encoder_decoder.py).
+  EncoderDecoder.encode(src, embed_spd, src_mask, obd_enc_mask):
+    src_embed: Sequential(LinearEmbedding(4,32), PositionalEncoding)
+      boxes [B,15,4] -> x [B,15,32].
+    enc_extra_embed_I: LinearEmbedding_sp(inp_l=15,32)
+      sliced speed is permuted [B,1,15] -> m [B,1,32].
+    encoder: Encoder (encoder.py), N=3, returns norm(x) [B,15,32] and
+      norm(m) [B,1,32].
+
+  Encoder.layers[0], Encoder.layers[1], Encoder.layers[2]
+    each is EncoderLayer (encoder_layer.py), with the following actual order:
+    1. self_attn: MultiHeadAttention (multihead_attention.py)
+       Q=x [B,15,32], K=x [B,15,32], V=x [B,15,32] -> x [B,15,32].
+    2. src_attn: MultiHeadAttention
+       Q=x [B,15,32], K=m [B,1,32], V=m [B,1,32] -> x [B,15,32].
+    3. cross_attn: MultiHeadAttention
+       Q=m [B,1,32], K=pre_x [B,15,32], V=pre_x [B,15,32] -> m [B,1,32].
+    4. feed_forward: PointerwiseFeedforward(32,128) is applied separately to
+       x and m, retaining [B,15,32] and [B,1,32].
+    SublayerConnection supplies pre-norm, dropout and residual paths.
+
+C. Context-memory fusion (Version B addition; encoder_decoder.py)
+  This happens AFTER EncoderDecoder.encode, not inside EncoderLayer.
+  encode [B,15,32] + gated context.unsqueeze(1) [B,1,32] are concatenated
+  along the token dimension -> [B,16,32]. context_mask is appended to src_mask.
+  The speed representation mix [B,1,32] is later added by broadcast to every
+  memory token in EncoderDecoder.decode: memory = embed + memory -> [B,16,32].
+
+D. Explicit MTN decoder (original MTN; decoder.py and decoder_layer.py)
+  tgt_embed: Sequential(LinearEmbedding(4,32), PositionalEncoding)
+    zero target [B,45,4] -> decoder state [B,45,32].
+  enc_extra_embed_II: LinearEmbedding_sp(28,32)
+    ego flow [B,28,64], permuted [B,64,28] -> [B,64,32].
+  enc_extra_embed_III: LinearEmbedding_sp(28,32)
+    pedestrian flow [B,28,9], permuted [B,9,28] -> [B,9,32].
+  decoder: Decoder (decoder.py), N=3, applies DecoderLayer at depths 0,1,2.
+  Each DecoderLayer (decoder_layer.py) has NO active self_attn call: the old
+  self-attention lines are commented out. It performs, inside sublayer[3]:
+    - spd_attn: Q=decoder state [B,45,32], K/V=ego flow [B,64,32]
+    - src_attn: Q=decoder state [B,45,32], K/V=memory [B,16,32]
+    - ped_attn: Q=decoder state [B,45,32], K/V=pedestrian flow [B,9,32]
+    The three outputs are summed with the residual by SublayerConnection.src_attn.
+    - feed_forward: PointerwiseFeedforward(32,128) -> [B,45,32].
+  Decoder applies final LayerNorm -> [B,45,32].
+
+E. Prediction head (original MTN; individual_TF.py)
+  Generator.proj: Linear(32,4), [B,45,32] -> [B,45,4].
+  IndividualTF / ContextIndividualTF adds residual final observed box [B,45,4]
+  -> predicted future bounding boxes [B,45,4].
+
+2. PAPER/DIAGRAM TERM -> ACTUAL CODE TERM
+------------------------------------------
+Input embedding       -> LinearEmbedding/LinearEmbedding_sp modules in individual_TF.py.
+Encoder               -> Encoder class, encoder.py; EncoderLayer class, encoder_layer.py.
+Encoder memory        -> `encode` returned by EncoderDecoder.encode; after Version B fusion,
+                         concatenated context memory then speed-added `memory` in decode().
+Decoder               -> Decoder class, decoder.py; DecoderLayer class, decoder_layer.py.
+Prediction head       -> Generator.proj in individual_TF.py.
+Context branch        -> SceneContextEncoder + gate in context_TF.py (not original MTN).
+Context token         -> 32-D SceneContextEncoder output, gated then appended after encoding.
+
+3. DIAGRAM-TO-CODE MAPPING
+--------------------------
+Diagram block                     | Actual code                              | Depth | Function
+Observed boxes/input embedding    | LinearEmbedding + PositionalEncoding     | once  | [B,15,4] -> [B,15,32]
+Observed speed embedding          | enc_extra_embed_I / LinearEmbedding_sp   | once  | [B,1,15] -> [B,1,32]
+Encoder x3                        | Encoder.layers / EncoderLayer             | 0..2  | Explicit MTN encoder stack
+Encoder self-attention            | EncoderLayer.self_attn                   | 0..2  | x queries x
+Encoder source-speed attention    | EncoderLayer.src_attn                    | 0..2  | x queries speed representation m
+Encoder reverse cross-attention   | EncoderLayer.cross_attn                  | 0..2  | m queries pre_x
+Encoder FFN                       | EncoderLayer.feed_forward                | 0..2  | 32 -> 128 -> 32 for x and m
+Context embeddings/projection     | SceneContextEncoder                       | once  | 5 static + pooled occlusion -> [B,32]
+Dynamic gate                      | ContextIndividualTF.gate                 | once  | [B,36] -> [B,16] -> [B,2]
+Fusion / augmented memory         | EncoderDecoder.forward                    | once  | append token: 15 -> 16 memory tokens
+Ego/ped flow embeddings           | enc_extra_embed_II / III                 | once  | [B,64/9,28] -> [B,64/9,32]
+Decoder x3                        | Decoder.layers / DecoderLayer             | 0..2  | Explicit MTN decoder stack
+Decoder source cross-attention    | DecoderLayer.src_attn                     | 0..2  | decoder query attends memory
+Decoder ego-flow attention        | DecoderLayer.spd_attn                     | 0..2  | decoder query attends ego flow
+Decoder pedestrian-flow attention | DecoderLayer.ped_attn                     | 0..2  | decoder query attends ped flow
+Decoder FFN                       | DecoderLayer.feed_forward                 | 0..2  | 32 -> 128 -> 32
+Output                            | Generator.proj + residual                | once  | [B,45,32] -> [B,45,4]
+
+4. C4 PARAMETER TRACE AND VALIDITY OF ITS NAME
+------------------------------------------------
+MultiHeadAttention stores projections in `linears` (multihead_attention.py):
+  linears[0] = Q, linears[1] = K, linears[2] = V, linears[3] = O.
+Each is Linear(32,32): weight [32,32] and bias [32] = 1,056 parameters.
+
+Original Version B independent owners:
+  base.model.encoder.layers.0.self_attn.linears.0/1/2/3.{weight,bias}
+  base.model.encoder.layers.1.self_attn.linears.0/1/2/3.{weight,bias}
+  base.model.encoder.layers.2.self_attn.linears.0/1/2/3.{weight,bias}
+
+C4 implementation: c4_encoder_shared.make_c4_encoder_self_attention_shared
+  shared = model.base.model.encoder.layers[0].self_attn
+  model.base.model.encoder.layers[1].self_attn = shared
+  model.base.model.encoder.layers[2].self_attn = shared
+
+Projection | original owners                       | C4 object reference / shared owner | shape
+Q          | layers 0,1,2 self_attn.linears[0]     | layer 0 referenced by 1 and 2      | W[32,32], b[32]
+K          | layers 0,1,2 self_attn.linears[1]     | layer 0 referenced by 1 and 2      | W[32,32], b[32]
+V          | layers 0,1,2 self_attn.linears[2]     | layer 0 referenced by 1 and 2      | W[32,32], b[32]
+O          | layers 0,1,2 self_attn.linears[3]     | layer 0 referenced by 1 and 2      | W[32,32], b[32]
+
+PyTorch named_parameters deduplicates the aliased module, so the parameters are
+registered once. Programmatic verification returned true for module identity,
+weight/bias object identity and weight/bias data_ptr equality for Q/K/V/O; 240
+named parameter entries were also 240 unique Python parameter objects.
+
+Conclusion: the previous label “Encoder self-attention Q/K/V/O sharing” is
+technically correct. The clearest full name is:
+  “C4: cross-depth sharing of EncoderLayer.self_attn Q/K/V/O in MTN Encoder.layers[0..2].”
+It is NOT whole-encoder sharing: src_attn, cross_attn, FFN, sublayer norms, and
+the final Encoder.norm remain independent by layer.
+
+5. WHAT C4 DOES, VISUALLY
+-------------------------
+Original Version B encoder:
+  EncoderLayer 0 -> Self-Attention A -> remaining layer-0 operations
+  EncoderLayer 1 -> Self-Attention B -> remaining layer-1 operations
+  EncoderLayer 2 -> Self-Attention C -> remaining layer-2 operations
+
+C4 encoder:
+  EncoderLayer 0 -> Self-Attention A (Q/K/V/O)
+  EncoderLayer 1 -> Self-Attention A (same Q/K/V/O object) -> own src_attn/cross_attn/FFN
+  EncoderLayer 2 -> Self-Attention A (same Q/K/V/O object) -> own src_attn/cross_attn/FFN
+
+6. DECODER CROSS-ATTENTION ABLATIONS: C1 / C2a / C2b
+-------------------------------------------------------
+`src_attn` is an actual MultiHeadAttention field of DecoderLayer (decoder_layer.py).
+There are three independent copies in Version B: decoder.layers[0..2].src_attn.
+It is cross-attention by data flow, although MultiHeadAttention has no separate
+CrossAttention class: its query is the decoder state [B,45,32], while key and
+value are the encoder-derived memory [B,16,32] in Version B. The `cross_attention`
+argument in MultiHeadAttention.forward exists but is not used; the Q-vs-memory
+source is what makes this cross-attention.
+
+C1: decoder.layers[1].src_attn and [2].src_attn are aliases of layer 0's whole
+    module: Q/K/V/O all shared across decoder depth.
+C2a: Q/K/V `linears[0..2]` are aliases of layer 0; O `linears[3]` remains
+     independent at each decoder depth.
+C2b: K/V `linears[1..2]` are aliases of layer 0; Q/O remain independent.
+No decoder self-attention ablation exists because DecoderLayer's self-attention
+call is commented out. `spd_attn` and `ped_attn` are separate cross-source
+attentions to ego-flow and pedestrian-flow embeddings; they were not shared.
+
+7. CLEAN ARCHITECTURE MAP
+-------------------------
+ORIGINAL MTN
+boxes -> src_embed -> Encoder (3 x EncoderLayer) -> encoder memory
+speed -> speed embedding ------^                    + speed broadcast in decode
+target zeros -> tgt_embed -> Decoder (3 x DecoderLayer) -> Generator -> + residual -> boxes
+ego flow -> ego embedding -------------------------> Decoder spd_attn
+ped flow -> ped embedding -------------------------> Decoder ped_attn
+
+VERSION B
+Original MTN encoder output [B,15,32]
+  + native labels/occlusion -> SceneContextEncoder [B,32] -> dynamic gate
+  -> append gated context token -> augmented memory [B,16,32]
+  -> unchanged MTN Decoder -> unchanged Generator/residual -> [B,45,4]
+
+C4
+Version B unchanged, except:
+  Encoder.layers[0].self_attn.Q/K/V/O
+                 ^ same parameter object used by Encoder.layers[1].self_attn
+                 ^ same parameter object used by Encoder.layers[2].self_attn
+
+8. TERMINOLOGY CLARIFICATIONS
+-----------------------------
+Current phrase                   | Clear phrase                                      | Why
+“Encoder sharing”                | cross-depth sharing of EncoderLayer.self_attn     | Only one submodule is tied.
+“Decoder self-attention”         | not active in this MTN DecoderLayer               | Code is commented out.
+“src_attn”                       | decoder-to-memory cross-attention                 | Q is decoder state; K/V are memory.
+“speed attention”                | encoder src_attn / decoder spd_attn               | These are different modules/sources.
+“pedestrian attention”           | decoder ped_attn                                  | It attends pedestrian-flow embedding, not boxes.
+“memory”                         | encoder output (+ context token), then speed-added| Two sequential code operations create it.
+“context token in encoder”       | token appended after encode, before decode         | It is not processed by EncoderLayer stack.
+
+9. REPORTED RESULT, WITHOUT CHANGING IT
+----------------------------------------
+The previous CPU POC result remains: B 139,142 parameters / MSE 972.513;
+C4 130,694 parameters / MSE 819.989. Reduction = 8,448 (6.07%); MSE change
+= -15.68%. The interpretation is correct only at the level of this small,
+one-epoch, Farneback-flow proof-of-concept. It does not establish final model
+selection or published-benchmark performance.

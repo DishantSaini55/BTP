@@ -1,0 +1,13 @@
+% Ablation design, distinguished from results and future work.
+\begin{tikzpicture}[font=\small,
+ h/.style={draw=navy,fill=navy!14,rounded corners=2pt,minimum height=11mm,text width=35mm,align=center,font=\bfseries},
+ yes/.style={draw=teal!80!black,fill=teal!20,rounded corners=2pt,minimum height=11mm,text width=35mm,align=center},
+ no/.style={draw=gray!80,fill=gray!10,rounded corners=2pt,minimum height=11mm,text width=35mm,align=center},
+ note/.style={draw=orange!80!black,fill=orange!15,rounded corners=2pt,minimum height=13mm,text width=47mm,align=center}]
+\node[h](c0){Candidate};\node[h,right=4mm of c0](c1){Context branch};\node[h,right=4mm of c1](c2){C4 sharing};\node[h,right=4mm of c2](c3){Dynamic fusion};\node[h,right=4mm of c3](c4){What is tested?};
+\node[no,below=4mm of c0](r1){Base MTN};\node[no,right=4mm of r1](r11){No};\node[no,right=4mm of r11](r12){No};\node[no,right=4mm of r12](r13){No};\node[note,right=4mm of r13](r14){Context contribution};
+\node[yes,below=4mm of r1](r2){Context-aware MTN};\node[yes,right=4mm of r2](r21){Yes};\node[no,right=4mm of r21](r22){No};\node[no,right=4mm of r22](r23){No};\node[note,right=4mm of r23](r24){Context effect};
+\node[yes,below=4mm of r2](r3){C4};\node[yes,right=4mm of r3](r31){Yes};\node[yes,right=4mm of r31](r32){Yes};\node[no,right=4mm of r32](r33){No};\node[note,right=4mm of r33](r34){C4 sharing effect};
+\node[yes,below=4mm of r3](r4){Dynamic fusion};\node[yes,right=4mm of r4](r41){Yes};\node[no,right=4mm of r41](r42){No};\node[yes,right=4mm of r42](r43){Yes};\node[note,right=4mm of r43](r44){Fusion effect};
+\node[yes,below=4mm of r4](r5){Fusion + C4};\node[yes,right=4mm of r5](r51){Yes};\node[yes,right=4mm of r51](r52){Yes};\node[yes,right=4mm of r52](r53){Yes};\node[note,right=4mm of r53](r54){Combined trade-off};
+\end{tikzpicture}

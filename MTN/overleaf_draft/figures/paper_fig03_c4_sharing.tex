@@ -1,0 +1,14 @@
+% C4 mechanism: concise and visually close to a method-paper subfigure.
+\begin{tikzpicture}[font=\small,
+ attn/.style={draw=blue!80!black,fill=blue!15,rounded corners=3pt,minimum height=13mm,text width=39mm,align=center},
+ other/.style={draw=gray!80,fill=gray!12,rounded corners=3pt,minimum height=13mm,text width=39mm,align=center},
+ bank/.style={draw=teal!80!black,fill=teal!20,rounded corners=3pt,minimum height=15mm,text width=58mm,align=center},
+ a/.style={-Latex,very thick,draw=blue},d/.style={-Latex,dashed,very thick,draw=teal}]
+\node[attn] (s0) {Layer 0\\self-attention};\node[other,right=8mm of s0](r0){Layer 0\\other modules};
+\node[attn,below=16mm of s0](s1){Layer 1\\self-attention};\node[other,right=8mm of s1](r1){Layer 1\\other modules};
+\node[attn,below=16mm of s1](s2){Layer 2\\self-attention};\node[other,right=8mm of s2](r2){Layer 2\\other modules};
+\draw[a](s0)--(r0);\draw[a](s1)--(r1);\draw[a](s2)--(r2);
+\node[bank,right=28mm of r1] (bank) {\textbf{One shared attention bank}\\Q, K, V and O projections};
+\draw[d](bank.west)-|(s0.east);\draw[d](bank.west)--(s1.east);\draw[d](bank.west)-|(s2.east);
+\node[draw=orange!80!black,fill=orange!14,rounded corners=2pt,align=center,text width=80mm,below=17mm of r1] {\textbf{Not shared:} \texttt{src\_attn}, \texttt{cross\_attn}, FFNs, normalisation, context branch, decoder and output head.};
+\end{tikzpicture}

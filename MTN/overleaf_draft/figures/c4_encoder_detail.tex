@@ -1,0 +1,18 @@
+% Figure A: encoder/C4 sharing detail. Designed to be large and readable.
+\begin{tikzpicture}[font=\small,
+ box/.style={draw=blue,fill=lightblue,rounded corners=2pt,align=center,minimum height=12mm,text width=35mm},
+ layer/.style={draw=blue,fill=white,rounded corners=2pt,align=center,minimum height=10mm,text width=43mm},
+ share/.style={draw=teal,fill=teal!18,rounded corners=2pt,align=center,minimum height=13mm,text width=62mm},
+ arrow/.style={-Latex,very thick,draw=blue}, sharedarrow/.style={-Latex,dashed,very thick,draw=teal}]
+\node[box] (input) {Observed pedestrian trajectory\\$\mathbf X_{obs}\in\mathbb R^{B\times15\times4}$};
+\node[box,right=14mm of input] (embed) {Source embedding +\\positional encoding\\$[B,15,32]$};
+\node[layer,right=16mm of embed,yshift=18mm] (l0) {Encoder layer 0\\self-attention + independent remaining modules};
+\node[layer,below=7mm of l0] (l1) {Encoder layer 1\\self-attention + independent remaining modules};
+\node[layer,below=7mm of l1] (l2) {Encoder layer 2\\self-attention + independent remaining modules};
+\node[draw=blue,rounded corners=3pt,inner sep=6mm,fit=(l0)(l2),label={[font=\bfseries]above:MTN Encoder $\times3$}] (enc) {};
+\node[box,right=16mm of enc] (memory) {Trajectory memory\\$\mathbf M\in\mathbb R^{B\times15\times32}$};
+\draw[arrow] (input)--(embed); \draw[arrow] (embed.east)--(l0.west); \draw[arrow] (l0)--(l1); \draw[arrow] (l1)--(l2); \draw[arrow] (l2.east)-|(memory.west);
+\node[share,below=14mm of enc] (shared) {\textbf{C4: Cross-layer Encoder Self-Attention Weight Sharing}\\The same Q / K / V / O projections are used in layers 0, 1 and 2.};
+\draw[sharedarrow] (shared.north)-|(l0.south east); \draw[sharedarrow] (shared.north)-|(l1.east); \draw[sharedarrow] (shared.north)-|(l2.north east);
+\node[draw=gray,fill=white,rounded corners=2pt,align=left,text width=130mm,below=15mm of shared] {\textbf{Sharing boundary.} Only \texttt{EncoderLayer.self\_attn} Q/K/V/O is shared. \texttt{src\_attn}, \texttt{cross\_attn}, FFNs, normalisation, decoder modules, the context branch and the output head remain independent. Dashed teal arrows denote shared parameters; all three attention executions still run.};
+\end{tikzpicture}

@@ -1,0 +1,53 @@
+% Detailed companion figure for the verified C4 Context-Aware MTN architecture.
+% Solid blue/teal arrows: data flow.  Dashed teal arrows: shared parameters only.
+\begin{tikzpicture}[
+  font=\scriptsize,
+  traj/.style={draw=blue, fill=lightblue, rounded corners=2pt, align=center, minimum height=8mm, text width=27mm},
+  ctx/.style={draw=teal, fill=lightteal, rounded corners=2pt, align=center, minimum height=8mm, text width=27mm},
+  shared/.style={draw=teal, fill=teal!18, rounded corners=2pt, align=center, minimum height=9mm, text width=32mm},
+  smallbox/.style={draw=blue, fill=white, rounded corners=1pt, align=center, minimum height=6mm, text width=22mm},
+  orangebox/.style={draw=orange, fill=orange!13, rounded corners=2pt, align=center, minimum height=8mm, text width=29mm},
+  arrow/.style={-Latex, thick, draw=blue},
+  ctxarrow/.style={-Latex, thick, draw=teal},
+  sharearrow/.style={-Latex, dashed, thick, draw=teal}
+]
+% Main trajectory pathway.
+\node[traj] (obs) {Observed pedestrian boxes\\$\mathbf X_{obs}\in\mathbb R^{B\times15\times4}$};
+\node[traj, right=7mm of obs] (embed) {Source embedding +\\positional encoding\\$[B,15,32]$};
+\node[smallbox, right=8mm of embed, yshift=12mm] (e1) {Encoder layer 0\\self-attention};
+\node[smallbox, below=3mm of e1] (e2) {Encoder layer 1\\self-attention};
+\node[smallbox, below=3mm of e2] (e3) {Encoder layer 2\\self-attention};
+\node[draw=blue, rounded corners=2pt, inner sep=4mm, fit=(e1)(e3), label={[font=\bfseries]above:MTN Encoder $\times3$}] (encgroup) {};
+\node[traj, right=10mm of encgroup] (memory) {Trajectory memory\\$\mathbf M\in\mathbb R^{B\times15\times32}$};
+\draw[arrow] (obs)--(embed);
+\draw[arrow] (embed.east)--(e1.west);
+\draw[arrow] (e1.south)--(e2.north); \draw[arrow] (e2.south)--(e3.north);
+\draw[arrow] (e3.east)-|(memory.west);
+
+% C4 sharing is expanded rather than hidden inside one box.
+\node[shared, below=10mm of encgroup, xshift=-34mm] (c4) {\textbf{C4: Cross-layer Encoder Self-Attention Weight Sharing}\\one common Q / K / V / O projection set};
+\draw[sharearrow] (c4.north)-| (e1.south east);
+\draw[sharearrow] (c4.north)-| (e2.east);
+\draw[sharearrow] (c4.north)-| (e3.north east);
+
+% Six-context source pipeline.
+\node[ctx, below=28mm of obs, text width=39mm] (inputs) {Six native IDD-PeD inputs\\\footnotesize intersection type; signalized type; road type;\\location type; motion direction; observed occlusion};
+\node[ctx, right=7mm of inputs] (embs) {Independent 16-D embeddings\\$6\times16$-D representations};
+\node[ctx, right=7mm of embs] (concat) {Concatenate\\$[B,96]$};
+\node[ctx, right=7mm of concat] (proj) {Context projection\\LayerNorm $\rightarrow$ Linear $96\!\rightarrow\!32$\\GELU, Dropout, Linear\\$[B,32]$};
+\node[orangebox, below=9mm of proj] (gate) {Original context-admission gate\\context $[B,32]$ + final box $[B,4]$\\$36\!\rightarrow\!16\!\rightarrow\!2$\\gated token $[B,1,32]$};
+\draw[ctxarrow] (inputs)--(embs); \draw[ctxarrow] (embs)--(concat); \draw[ctxarrow] (concat)--(proj); \draw[ctxarrow] (proj)--(gate);
+
+% Decoder and prediction.
+\node[traj, right=7mm of memory, yshift=-22mm] (append) {Append gated context token\\Augmented decoder memory\\$[B,16,32]$};
+\draw[arrow] (memory.south east)-| (append.north west);
+\draw[ctxarrow] (gate.east)-| (append.south);
+\node[traj, below=9mm of append] (decoder) {MTN Decoder $\times3$\\independent source-attention, flow-attention, FFN and normalisation};
+\node[traj, below=8mm of decoder] (head) {Output head + final observed-box residual\\Future pedestrian trajectory $[B,45,4]$};
+\draw[arrow] (append)--(decoder); \draw[arrow] (decoder)--(head);
+
+% Visual legend and scope.
+\node[draw=gray, fill=white, rounded corners=2pt, align=left, text width=70mm, below=10mm of head, anchor=north east] (scope) {\textbf{C4 scope.} Only encoder \texttt{self\_attn} Q/K/V/O is shared across layers 0--2. Encoder \texttt{src\_attn}, \texttt{cross\_attn}, FFNs, normalisation, all decoder modules, the context branch, and the output head are independent.\\[1mm]
+\textbf{POC evidence.} Parameters: $-6.07\%$ vs context-aware MTN; CPU latency: $+3.93\%$; FLOPs are not reduced because all encoder attention operations execute.};
+\node[font=\scriptsize, text=blue, above=1mm of scope] {\textcolor{blue}{\rule{5mm}{0.6pt}} solid = data flow \qquad \textcolor{teal}{- - - - -} dashed = shared parameters only};
+\end{tikzpicture}

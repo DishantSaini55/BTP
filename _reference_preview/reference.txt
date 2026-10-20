@@ -1,0 +1,790 @@
+                                                                                 Dynamic Multimodal Fusion
+
+                                                                                    Zihui Xue Radu Marculescu
+                                                                                   The University of Texas at Austin
+
+
+                                                                Abstract                                            Text
+                                                                                                                            I just got finished watching
+                                                                                                                            an excellent movie called
+arXiv:2204.00102v2 [cs.CV] 6 Apr 2023
+
+
+
+
+                                                                                                                            Mars needs moms
+
+                                            Deep multimodal learning has achieved great progress                                                                  Multimodal
+                                                                                                                   Vision
+                                        in recent years. However, current fusion approaches are                                                                     Fusion
+                                                                                                                                                                   Network
+                                        static in nature, i.e., they process and fuse multimodal in-
+                                                                                                                    Audio
+                                        puts with identical computation, without accounting for
+                                        diverse computational demands of different multimodal                                                          (a)
+                                        data. In this work, we propose dynamic multimodal fu-
+                                                                                                                            Um I wish we wished that it
+                                        sion (DynMM), a new approach that adaptively fuses mul-                     Text    would have been the guy.
+                                        timodal data and generates data-dependent forward paths
+                                        during inference. To this end, we propose a gating function                Vision
+                                                                                                                                                                 Multimodal
+                                                                                                                                                                   Fusion
+                                        to provide modality-level or fusion-level decisions on-the-                                                               Network
+
+                                        fly based on multimodal features and a resource-aware loss
+                                                                                                                    Audio
+                                        function that encourages computational efficiency. Results
+                                        on various multimodal tasks demonstrate the efficiency and                                                         (b)
+                                        wide applicability of our approach. For instance, DynMM
+                                        can reduce the computation costs by 46.5% with only a               Figure 1. Two examples in CMU-MOSEI [51] for emotion recog-
+                                        negligible accuracy loss (CMU-MOSEI sentiment analysis)             nition. Figure (a) shows an “easy” multimodal instance as using
+                                                                                                            textual information is sufficient to predict emotions correctly (this
+                                        and improve segmentation performance with over 21% sav-
+                                                                                                            is a positive emotion). Figure (b) shows a “hard” example where
+                                        ings in computation (NYU Depth V2 semantic segmenta-
+                                                                                                            all three modalities are required to make correct predictions (this
+                                        tion) when compared with static fusion approaches. We               is a negative emotion). While static multimodal fusion networks
+                                        believe our approach opens a new direction towards dy-              process “hard” and “easy” inputs identically, we propose dynamic
+                                        namic multimodal network design, with applications to a             instance-wise inference that can achieve computational savings for
+                                        wide range of multimodal tasks. 1                                   “easy” examples and preserve representation power for “hard” in-
+                                                                                                            stances. For (a), DynMM only activates the text path and skips
+                                                                                                            paths corresponding to the other two modalities, thus leading to
+                                        1. Introduction                                                     computational efficiency.
+
+                                           Humans perceive the world in a multimodal way,
+                                        through vision, hearing, touch, taste, etc. Recent years have       and modality-specific and require manual design. Building
+                                        witnessed great progress of deep learning approaches that           on the success of Neural Architecture Search (NAS), a few
+                                        leverage data of multiple modalities. Consequently, multi-          recent works [33,39,49] have adopted NAS to find effective
+                                        modal fusion has boosted the performance of many classi-            fusion architectures automatically.
+                                        cal problems, such as sentiment analysis [21, 38, 50], action          However, both manually-designed and NAS-based ap-
+                                        recognition [6, 36], or semantic segmentation [35, 45].             proaches process all the instances in a single fusion archi-
+                                           Despite these advances, how to best combine informa-             tecture and lack adaptability to diverse multimodal data.
+                                        tion characterized by multiple modalities remains a funda-          Namely, once the fusion network is trained, it performs
+                                        mental challenge in multimodal learning [2]. Various re-            static inference on each piece of data, without accounting
+                                        search efforts [14, 20, 25, 26, 29, 42, 43, 50] have been put       for the inherent differences in characteristics of different
+                                        into designing new fusion paradigms that can effectively            multimodal inputs. Thus, the computational efficiency, as
+                                        fuse multimodal data. These approaches are generally task-          well as the representation power of a well-designed fusion
+                                          1 Our code is available at https://github.com/zihuixue/           architecture may be limited by its static nature. As a mo-
+                                        DynMM.                                                              tivating example, consider the two multimodal instances in
+
+
+                                                                                                        1
+Figure 1. As shown, it is relatively easy to classify emo-          encoder when compared against [35]. Moreover, we find
+tions for the upper example: the text modality alone pro-           that DynMM yields better predictions than static fusion net-
+vides strong evidence for a positive emotion. On the other          works when the input modality is perturbed by noise; this
+hand, it is unlikely to correctly predict emotions for the          suggests possible use of DynMM to improve the multi-
+lower example based solely on the textual information since         modal robustness.
+this sentence is confusing. Audio and visual modalities can
+provide important cues to a multimodal network to make              2. Related Work
+correct decisions. From this example, we can see that mul-
+timodal data enable a model to learn from the rich repre-           2.1. Dynamic Neural Networks
+sentations of “hard” inputs; it can also bring redundancy in            Dynamic neural networks have demonstrated a great po-
+computations for the “easy” inputs.                                 tential in classical computer vision problems, such as im-
+    Inspired by this observation, we propose dynamic mul-           age classification [5, 28, 44, 46], object detection [7, 52],
+timodal fusion (DynMM), a new approach that adaptively              or semantic segmentation [23, 41]. While popular deep
+fuses input data from multiple modalities. Compared with            learning approaches perform inference in a static manner,
+a static multimodal architecture, DynMM enjoys the bene-            dynamic networks allow the network structure to adapt to
+fits of reduced computation, improved representation power          the input characteristics during inference. This flexibility
+and robustness. More precisely, dynamic fusion leads to             yields many benefits, including high efficiency, representa-
+computational savings for “easy” inputs that can be cor-            tion power and results interpretability [10,34,47]. Dynamic
+rectly predicted using only a subset of modalities or simple        network designs can be categorized into: (a) dynamic depth;
+fusion operations. For “hard” multimodal inputs, DynMM              (b) dynamic width; (c) dynamic routing [11].
+can match the representation power of a static network by               The idea of dynamic depth is to adjust the network depth
+relying on all modalities and complex fusion operations for         based on each sample. By providing early exits [4, 40] in
+prediction. In addition, real-world multimodal data may             shallow layers, one can save computations by not activat-
+be noisy and contradictory [22]. In such cases, skipping            ing deep layers for “easy” samples. For dynamic width, the
+paths that involve noisy modalities for certain instances in        idea is to adapt the network width in a sample-wise manner.
+DynMM can reduce noise and boost performance.                       To build a dynamic width network and achieve inference
+    Dynamic neural networks [11] have gained increasing at-         efficiency, previous works have proposed to skip neurons
+tention over the past few years and enjoys a broad range of         in fully-connected layers [3], skip branches in Mixture-of-
+applications, such as image recognition [5, 28, 44, 46], se-        Experts (MoE) [28, 37], or skip channels in Convolutional
+mantic segmentation [23, 41] and machine translation [37].          Neural Networks (CNNs) [17]. To enable more flexibility,
+Motivated by the great success of dynamic inference for             recent works [5, 23] build SuperNets with multiple infer-
+unimodal networks, this paper aims at proposing multi-              ence paths. Dynamic routing is thus performed inside the
+modal fusion as a new application domain. To this end,              SuperNet to generate data-dependent forward paths during
+we draw inspiration from the natural redundancy of multi-           inference. Our proposed modality-level DynMM belongs to
+modal data, which provides a different angle from existing          the category of dynamic width approaches; the fusion-level
+work. To be specific, we propose progressive fusion, both           DynMM can be seen as a dynamic routing approach.
+at modality level and at fusion level. At modality level, we
+train a gating network to select a subset of input modalities       2.2. Multimodal Learning
+(or all modalities) for predictions based on each input. At            Multimodal fusion networks have a clear advantage over
+fusion level, the gating network provides sample-wise deci-         their unimodal counterparts in various applications, such as
+sions on which fusion operation to adopt and when to stop           sentiment analysis [21,38,50], action recognition [6,36], or
+fusion. On one hand, by allowing exits at the early fusion          semantic segmentation [8, 35, 45]. However, how to effec-
+stages for “easy” inputs, DynMM saves the computations              tively combine multimodal features to better exploit infor-
+of executing the later fusion modules. On the other hand,           mation remains a big challenge. Existing works either pro-
+in terms of “hard” multimodal inputs, DynMM can turn all            pose hand-crafted fusion designs based on domain knowl-
+fusion modules on for accurate predictions.                         edge [20, 25, 26, 29, 43, 50], or apply NAS to find good ar-
+    To verify the efficacy and generalizability of our ap-          chitectures automatically [33, 39, 49]. However, the scope
+proach, we conduct experiments on various popular mul-              of these works is limited to static networks only.
+timodal tasks. DynMM strikes a good balance between                    There have been some early attempts in adopting dy-
+computational efficiency and learning performance. For in-          namic neural networks for multimodal applications, such
+stance, for RGB-D semantic segmentation tasks, DynMM                as semantic segmentation [45], video recognition [9,
+achieves a +0.7% mIoU improvement with over 21% re-                 32], visual-inertial odometry [48] and medical classifica-
+ductions in multiply-add operations (MAdds) for the depth           tion [12]. Among them, CEN [45] dynamically exchanges
+
+                                                                2
+channels between sub-networks of the RGB and depth                                                              Expert Network
+modality for performance improvement. Han et al. [12] pro-
+poses to dynamically evaluate feature-level and modality-                                       Gating
+                                                                                                                Expert Network
+level informativeness of different samples for more trust-                                     Network
+worthy medical classification, yet the angle of computa-
+tional efficiency brought by the dynamic neural networks is                                                      Expert Network
+overlooked. The work of Gao et al. [9] and AdaMML [32]
+are most relevant to our approach as they also adaptively
+utilize modalities for efficient video recognition. However,                   Figure 2. An illustration of modality-level DynMM, where input
+their methods are tailored for video data and action recog-                    data has two modalities, denoted by x1 and x2 , and the output is
+nition. In this work, we aim to make the first step towards a                  denoted by y. We design a set of expert networks {Ei } that spe-
+systematic and general formulation of dynamic multimodal                       cialize in different subsets of modalities and adopt a gating net-
+fusion that can suit various multimodal tasks.                                 work G(x) to generate data-dependent decisions on which expert
+                                                                               network to select.
+3. Method
+    In this section, we present the key design contribu-                       required for other expert networks can be saved. Note that
+tions of our proposed dynamic multimodal fusion net-                           since our expert network already covers a broad range of
+work (DynMM). First, we introduce new decision making                          modality combinations, we only select one branch (as op-
+schemes that enable DynMM to generate data-dependent                           posed to say selecting top K branches) during each forward
+forward paths during inference. Two levels of granular-                        pass for maximum computational savings. Figure 2 pro-
+ity are considered, i.e., modality-level (coarse level) and                    vides an illustration of the proposed design with 2 modali-
+fusion-level (fine level) decision making. Next, we propose                    ties and 3 expert networks (i.e., M = 2 and B = 3).
+new training strategies for DynMM, which consist of (1) a                          The design of the gating network G(x) follows two gen-
+training objective that accounts for resource budgets, and                     eral requirements: (1) it should be computationally cheap
+(2) optimization of a non-differentiable gating network.                       to have a small overhead (2) it needs to be sufficiently ex-
+                                                                               pressive to make informative decisions on which expert to
+3.1. Modality-level Decision                                                   select. Various gating networks have been proposed pre-
+    Assume that input data has M modalities, denoted by                        viously; they are usually tailored for specific tasks and
+x = (x1 , x2 , · · · , xM ). Following the classical Mixture-of-               network architectures [11]. In the experiments, we con-
+Experts (MoE) [27] framework, we design a set of expert                        sider different gating networks (i.e., a multi-layer percep-
+networks as follows. Each expert specializes in a subset of                    tron (MLP) gate, a transformer gate and a convolutional
+all M modalities. If M = 3, for example, we can have up                        gate) for three multimodal tasks and provide the detailed
+to 7 expert networks, denoted by E1 (x1 ), E2 (x2 ), E3 (x3 ),                 description of our gating network architecture in Sec. 4.
+E4 (x1 , x2 ), E5 (x2 , x3 ), E6 (x1 , x2 ), E7 (x1 , x2 , x3 ). In real           One remaining problem is the training of gating network
+applications, the candidate expert networks can be narrowed                    G(x). Due to the non-differentiability of the discrete deci-
+down with domain expertise. For instance, depth images                         sions given by G(x), the network can not be directly trained
+can provide useful cues when combined with RGB images,                         with back-propagation. Thus, we propose reparameteriza-
+but often perform poorly by themselves in semantic seg-                        tion techniques and discuss them later in Sec. 3.4.
+mentation. In such a case, we do not consider adopting an                          Finally, this gating network G(x) is not restricted to tak-
+expert network that only takes depth as input.                                 ing input-level features; it can also take intermediate fea-
+    Let B represent the number of expert networks that get                     tures per modality as inputs. Thus, modality-level DynMM
+selected. We propose a gating network, denoted by G(x),                        can be plugged into any part of a multimodal network and
+to decide which expert network should be activated. This                       achieve savings in computations after this gating network.
+gating network takes multimodal inputs x to form a global
+                                                                               3.2. Fusion-level Decision
+view and then produces a B-dimensional sparse vector g
+as output. The final output y takes the form of: y =                              While the modality-level decisions directly impact the
+P  B
+   i=1 gi Ei (xi ), where xi denotes the subset of modalities                  computational efficiency, completely skipping computa-
+that the i-th expert takes as input.                                           tions of one modality will likely lead to a downgraded per-
+    Different from conventional MoEs [27] where the out-                       formance for some challenging tasks, e.g., semantic seg-
+put is a weighted summation of expert networks and every                       mentation. Thus, we provide a finer-grain formulation of
+branch is executed, in our formulation, the output of the gat-                 DynMM with fusion-level decisions next.
+ing network g is a one-hot encoding, i.e., only one branch                        We first present the design of a fusion cell. Assume in-
+is selected for each instance. Therefore, the computations                     put data has M modalities, i.e., x = (x1 , x2 , · · · , xM ).
+
+
+                                                                           3
+                                                                                 Fusion                  Fusion                Fusion                Fusion
+                                                                  block 1                   block 2                  block 3            block 4
+                                                                                 Cell 1                  Cell 2                Cell 3                Cell 4
+                                                                  block 1                   block 2                  block 3            block 4
+ Fusion Cell             Any Fusion Operation
+                                                                                          Global Gating Network
+                Gating                                                                                         (b)
+               Network
+                                                        Fusion Cell 1 & 2: use      ; Fusion Cell 3 & 4: use
+
+                                                                  block 1    Addition       block 2     Addition     block 3            block 4
+
+                         (a)                                      block 1                   block 2                  block 3            block 4
+
+                                                                                                               (c)              Saved Computations
+
+
+Figure 3. (a) An illustration of fusion-level DynMM, where input data has two modalities, denoted by x1 and x2 . We design a fusion cell
+with a set of candidate operations {Oi } and a gating network G(x). h represents output of the cell. (b) A dynamic multimodal architecture
+with stacked fusion cells, where we interlace static feature extraction blocks (colored with green and yellow) with dynamic fusion cells.
+Gating network G(x) in four fusion cells are integrated as one global gating network Ĝ(x) that outputs decisions for four cells at once.
+(c) An example architecture when the gating network chooses O2 for the first 2 fusion cells and O1 for the last 2 cells. Consequently,
+computations of fusion cell 3 & 4 and feature extraction cell 3 & 4 for x2 are saved.
+
+
+Denote a set of fusion operations as {Oi }. Oi can be                       3-4 marked in gray). This strategy resembles early exit-
+implemented as any function to fuse multimodal features,                    ing in unimodal dynamic networks, yet with different mo-
+such as simple identity mapping (i.e., Oi = x1 ), addi-                     tivations. In essence, fusion-level DynMM saves future fu-
+tion (i.e., Oi = x1 + x2 + · · · + xM ), concatenation (i.e.,               sion and modality-wise operations for some multimodal in-
+Oi = [x1 , x2 , · · · , xM ]) and self-attention. Figure 3 (a)              puts when combining low-level features from each modal-
+presents an example design of the fusion cell with two in-                  ity (i.e., fusing at early stages) is sufficient for good predic-
+put modalities (i.e., x = (x1 , x2 )) and three operations (i.e.,           tions. On the other hand, for “hard” instances, DynMM pro-
+O1 = x1 , O2 = x1 + x2 , O3 = w1 x1 + w2 x2 ), where w1                     vides the option of combining multimodal features in each
+and w2 are learnable parameters. Note that here we sim-                     cell with complex fusion operations for maximum represen-
+plify the operation set for illustration; in practice, we can               tation power. Note that we replace the four individual gating
+always adopt more complex fusion operations in each cell                    networks G(x) in each fusion cell with a global gating net-
+to enlarge the representation power. Let B represent the                    work Ĝ(x) for better integration; Ĝ(x) takes multimodal
+total number of operations. A gating network G(x) takes                     features (x1 , x2 ) as input and makes decisions on which fu-
+multimodal inputs and produces a B-dimensional vector g                     sion operation to adopt for the four fusion cells.
+that decides which operation P   to execute. The output of cell                 This paradigm is especially helpful in tasks where the
+                                    B
+h can be represented as: h = i=1 gi Oi (x). Following the                   final prediction is mainly based on a dominant modality,
+previous discussion, we adopt hard gates (i.e., g is one-hot)               while the other auxiliary modalities provide useful cues to
+for computational efficiency.                                               improve the prediction. Fusion-level DynMM provides a
+                                                                            flexible way to control how and when the auxiliary modality
+    Fusion-level DynMM allows decisions at a finer granu-
+                                                                            comes in to assist the main prediction process. Progressive
+larity and in a more flexible way by stacking fusion cells
+                                                                            fusion is achieved by our carefully designed fusion cell and
+to build a dynamic network. We provide an example archi-
+                                                                            dynamic architecture, leading to great computational sav-
+tecture in Figure 3 (b) that we use in our experiments for
+                                                                            ings, strong representation power and improved robustness.
+semantic segmentation (x1 and x2 denote RGB and depth
+                                                                                Note that modality-level DynMM and fusion-level
+images, respectively). The network consists of four fusion
+                                                                            DynMM are two approaches targeting different granularity
+blocks and a global gating network, which allows us to flex-
+                                                                            levels. In our experiments, we use modality-level DynMM
+ibly control the degree of fusion in a sample-wise manner.
+                                                                            to solve two classification tasks, while the fusion-level
+For instance, we show the resulting architecture in Figure
+                                                                            DynMM is used for the more challenging semantic segmen-
+3 (c), when the gating network selects O2 for fusion cell
+                                                                            tation task (i.e., a dense prediction problem).
+1 & 2, and O1 for fusion cell 3 & 4. This not only skips
+complex fusion operations that are not selected within the
+                                                                            3.3. Training Objective
+fusion cell, but also saves unnecessary computations in the
+feature extraction layer. Since we only adopt features from                    We notice that for both modality-level and fusion-level
+modality 1 after fusion cell 2, there is no need to further                 DynMM designs, the computation for each expert network
+process features from modality 2. Thus, we can skip com-                    Ei (operation Oi ) is different. Normally, an expert network
+putations in the feature extraction layers for x2 (i.e., blocks             (an operation) that is computationally heavy has strong rep-
+
+
+                                                                       4
+resentation power. If we directly train the network by min-                                                                                                                                                                                                                         soft g̃ in Equations (1)-(2) to enable back-propagation. Dur-
+imizing a task-specific loss, the gating network is likely                                                                                                                                                                                                                          ing training, we anneal τ so that g̃ gradually converges to
+to learn a trivial solution that always chooses the branch                                                                                                                                                                                                                          a desired one-hot vector. (b) Following the straight-through
+with the heavy computation. To achieve efficient infer-                                                                                                                                                                                                                             technique [18], we adopt hard g in the forward pass and soft
+ence, we introduce a resource-aware loss function into the                                                                                                                                                                                                                          g̃ in the backward propagation with the gradient approxima-
+training objective. Let C(Ei ) denote the computation cost                                                                                                                                                                                                                          tion ∇g ≈ ∇g̃. In this way, the gating network still outputs
+(e.g., MAdds) of executing an expert network Ei . Simi-                                                                                                                                                                                                                             a discrete decision during training. Note that we always use
+larly, C(Oi,j ) represents the computation cost of the i-th                                                                                                                                                                                                                         hard g during inference for computational benefits. Next,
+fusion operation in the j-th cell. Note that the computation                                                                                                                                                                                                                        we propose a two-stage training of DynMM that jointly op-
+cost can be pre-determined before training and is a constant                                                                                                                                                                                                                        timizes the multimodal network and gating modules.
+term. The training objectives are shown below:                                                                                                                                                                                                                                          Stage I: Pre-training. We find that following sparse de-
+                                                                                                                                                                                                                                                                                    cisions of the gating network in the early stage of train-
+                                                                                                                                                                                                                                                                                    ing can result in a biased optimization. Branches that are
+            \mathcal L = \mathcal L_{task} + \lambda \sum _{i=1}^B g_i C(E_i) \quad \text {(modality-level)}\label {eq.loss1}\\ \mathcal L = \mathcal L_{task} + \lambda \sum _{j=1}^F \sum _{i=1}^B g_i^{(j)} C(O_{i,j}) \quad \text {(fusion-level)}\label {eq.loss2}             rarely selected have fewer and smaller weight updates; poor
+                                                                                                                                                                                                                                                                                    performance may result in them getting selected less often
+                                                                                                                                                                                                                                                                                    (thus never improving). The goal of a pre-training stage is
+                                                                                                                                                                                                                                                                          (2)
+                                                                                                                                                                                                                                                                                    to ensure that every branch of DynMM is fully optimized
+                                                                                                                                                                                                                                                                                    before the gating modules get involved. For modality-level
+where Ltask denotes the task loss, e.g., cross entropy be-                                                                                                                                                                                                                          DynMM, we sufficiently train each expert network at this
+tween the network prediction and true label for classifica-                                                                                                                                                                                                                         stage. For fusion-level DynMM, we adopt random deci-
+tion. g(j) represents the decision vector given by the j-th                                                                                                                                                                                                                         sions (i.e., randomly an operation from the set of candidate
+fusion cell. B is the total number of experts (operations)                                                                                                                                                                                                                          operations) for each fusion cell so that each path of the dy-
+and F is the number of fusion cells. λ is a hyperparamter                                                                                                                                                                                                                           namic network is optimized uniformly.
+controlling the relative importance of the two loss terms.                                                                                                                                                                                                                              Stage II: Fine-tuning. We incorporate gating networks
+    The new objectives (1) and (2) account for the compu-                                                                                                                                                                                                                           into our optimization process at this stage. With the
+tation cost of executing each path and enables DynMM to                                                                                                                                                                                                                             reparamterization technique introduced above, we jointly
+achieve a desired tradeoff between accuracy and efficiency.                                                                                                                                                                                                                         optimize the dynamic network along with gating networks
+We can adjust the value of λ based on the deployment con-                                                                                                                                                                                                                           in an end-to-end fashion.
+straints. For large λ, DynMM will prioritize lightweight
+computations for high computational efficiency. For small                                                                                                                                                                                                                           4. Experiments
+λ, DynMM will explore these computationally heavy paths
+                                                                                                                                                                                                                                                                                    4.1. Experimental Setup
+more often, thus yielding higher accuracy.
+                                                                                                                                                                                                                                                                                        We conduct experiments on three multimodal tasks: (a)
+3.4. Optimization                                                                                                                                                                                                                                                                   movie genre classification on MM-IMDB [1]; (b) sentiment
+   We aim to train DynMM in an end-to-end manner. Since                                                                                                                                                                                                                             analysis on CMU-MOSEI [51]; (c) semantic segmentation
+the current gating network provides discrete decisions, the                                                                                                                                                                                                                         on NYU Depth V2 [30]. To demonstrate the wide applica-
+branch selection is not directly differentiable with respect to                                                                                                                                                                                                                     bility of our proposed DynMM, we select the above three
+the gating network. Gumbel-softmax and reparameteriza-                                                                                                                                                                                                                              tasks that include different modalities (i.e., image and text
+tion techniques [18] are introduced in the training process.                                                                                                                                                                                                                        in task (a), video, audio and text in task (b), RGB and depth
+Recall that g denotes the desired one-hot B-dimensional                                                                                                                                                                                                                             images in task (c)). We adopt modality-level DynMM for
+decision vector produced by a gating network G(x), i.e.,                                                                                                                                                                                                                            the first two tasks and fusion-level DynMM for the more
+g = one-hot(arg maxi G(x)i ). We adopt a real-valued soft                                                                                                                                                                                                                           challenging semantic segmentation task. Due to space lim-
+vector g̃ with the following form:                                                                                                                                                                                                                                                  itations, we present: (1) implementation details; (2) visu-
+                                                                                                                                                                                                                                                                                    alization of the gating network decision; (3) an analysis of
+                                                                                                                                                                                                                                                                                    varying regularization strength λ; and (4) an ablation study
+   \tilde g_i = \frac {\exp ((log G(\mathbf x)_i + b_i)/\tau )}{\sum _{j=1}^B \exp ((log G(\mathbf x)_j + b_j)/\tau ) }\quad i=1,2,\dots ,B 
+                                                                                                                                                                                                                                                                                    on training strategies of DynMM in the Appendix.
+                                                            (3)
+                                                                                                                                                                                                                                                                                    4.2. Movie Genre Classification
+   where b1 , b2 , . . . , bB are samples independently drawn
+from Gumbel(0, 1) [18] and τ denotes the softmax temper-                                                                                                                                                                                                                                MM-IMDB is the largest publicly available multimodal
+ature. The distribution of g̃ is more uniform with large τ and                                                                                                                                                                                                                      dataset for genre prediction on movies. It comprises 25,959
+resembles a categorical distribution with small τ . g̃ serves                                                                                                                                                                                                                       movie titles, metadata and movie posters. We select two
+as a continuous, differentiable approximation of g. We con-                                                                                                                                                                                                                         movie genres (i.e., drama and comedy) for multi-label clas-
+sider two training techniques: (a) Hard g is replaced with                                                                                                                                                                                                                          sification from posters (image modality) and text descrip-
+
+
+                                                                                                                                                                                                                                                                                5
+                                      Micro    Macro    MAdds
+  Method                   Modality
+                                      F1 (%)   F1 (%)    (M)
+  Image Network               I       39.99    25.26      5.0
+  Text Network (E1 )          T       59.16    47.21      0.7
+  Late Fusion [24] (E2 )              59.55    50.94     10.3
+  LRTF [26]                           59.18    49.26     10.3
+  MI-Matrix [19]                      58.45    48.36     10.3                       MAdds (M)                        Regularization ( )
+                                                                                       (a)                                 (b)
+  DynMM-a                             59.57    48.84     1.6
+  DynMM-b                             59.59    50.42     7.8
+                             I+T                                        Figure 4. Analysis of DynMM with varying resource regular-
+  DynMM-c                             59.72    51.20     9.8
+                                                                        ization strength (λ) on MM-IMDB. (a): Comparison of DynMM
+  DynMM-d                             60.35    51.60     12.1
+                                                                        with static unimodal (UM) and multimodal (MM) baselines. (b):
+                                                                        Branch selection ratio in DynMM with respect to λ. DynMM of-
+Table 1. Results on the MM-IMDB Movie Genre Classification.
+                                                                        fers a wide range of choices that balance computation and learning
+Modalities I and T denote image and text, respectively. The com-
+                                                                        behavior well.
+putation cost is measured by multiply-add operations (MAdds)
+with one image-text pair as the input. M denotes million. Each
+DynMM variant is obtained using a different value of the regular-
+                                                                        compared against a multimodal baseline that is computa-
+ization hyperparameter λ during training.
+                                                                        tionally heavy, DynMM maintains good performance with
+                                                                        much fewer MAdds. On the other hand, DynMM has better
+                                                                        representation power than a unimodal network and thus im-
+tions (text modality). We follow the original data split in [1],        proves the F1 score. Figure 4 (b) shows the selection ratio
+and use 15,552 data for training, 2,608 for validation and              of each expert network in DynMM with respect to λ. We
+7,799 for testing. For preprocessing, we adopt the same                 observe that as λ increases, DynMM focuses more on re-
+method as [1, 24] to extract text and image features.                   ducing computation and thus is more likely to select expert
+    We adopt two expert networks for this task, namely, a               network 1 (E1 ) with a small computation cost. Note that
+unimodal network E1 that takes textual features as input and            for the λ = 0 case, we adopt soft gates, i.e., every expert
+another multimodal network E2 that adopts late fusion [24]              network is activated and the output is a weighted combina-
+to combine image and text features. We do not consider the              tion of predictions given by the two expert networks. Thus,
+use of an image-only network here due to its poor perfor-               DynMM achieves the best performance at the cost of in-
+mance on this task. The gating network is a 2-layer MLP                 creased computation. This also demonstrates the flexibility
+with hidden dimension of 128, which takes concatenated                  of DynMM, as we can easily adjust λ to target high perfor-
+image and text features as input and outputs a 2-dimensional            mance or high inference efficiency.
+vector for expert network selection. We set the temperature
+of Gumbel-softmax as 1 and adopt straight-through training              4.3. Sentiment Analysis
+(i.e., the gating network outputs a one-hot decision vector                 CMU Multimodal Opinion Sentiment and Emotion In-
+in the forward propagation).                                            tensity (CMU-MOSEI) is the largest dataset of sentiment
+    Table 1 provides the comparison of our proposed                     analysis and emotion recognition. It contains 3,228 real-
+modality-level DynMM with static unimodal networks and                  world online videos from more than 1000 speakers and 250
+multimodal networks. We provide results of DynMM un-                    topics. Each video is split into short segments of 10-20 sec-
+der different resource requirements (i.e., use different λ in           onds. Each segment is annotated for a sentiment from -3
+the loss). From Table 1, we can see that DynMM achieves                 (strongly negative) to 3 (strongly positive). The task is to
+a good balance between computational efficiency and per-                predict the sentiment scores from video, audio and text. Fol-
+formance. Compared to the static E2 network, DynMM-c                    lowing [24], we use 16,265 data for training, 1,869 data for
+improves both MAdds and macro F1 score. DynMM-d pro-                    validation and 4,643 data for testing. The feature extraction
+vides maximum representation power by using soft gates                  steps are the same as [24].
+(which leads to more computation) and achieves best micro                   As text is the best performing modality in this task, we
+and macro F1 scores. On the other hand, DynMM-a in-                     adopt a unimodal network that takes textual features as in-
+volves much less computation, while still maintaining good              put to be the expert network E1 . The second expert net-
+performance (outperforms E1 by 1.6% in macro F1). This                  work (E2 ) of our DynMM is selected as a late fusion net-
+demonstrates the great flexibility and efficacy of DynMM.               work [24] that receives inputs from three modalities. The
+    In addition, we vary λ in Equation (1) to control the               gating network is designed as a lightweight transformer
+importance of resource loss during training. The resulting              network with hidden dimension equal to 512 and 2 atten-
+DynMM models have varying computation costs and per-                    tion heads, followed by a linear layer. The gating network
+formance, as shown in Figure 4 (a). On one hand, when                   receives concatenated features from three modalities and
+
+
+                                                                    6
+ Method                    Modality     Acc2 (%)     MAE      MAdds (M)          sion on which modality to select, we provide visualization
+ Video Network                 V          69.02       0.80       123.1           results of several test instances in Figure 5. For simplic-
+ Audio Network                 A          67.68       0.82       123.3           ity only the text modality is shown here, and the other two
+ Text Network (E1 )            T          78.35       0.62       124.7           modalities (i.e., video and audio) are omitted. The gat-
+ Early Fusion [24]                        78.45       0.65       313.5
+ Late Fusion [24] (E2 )
+                            V+A+T
+                                          79.54       0.60       309.6
+                                                                                 ing network chooses E1 for sentences marked with red and
+                                                                                 E2 for sentences marked with dark blue. We find that the
+ DynMM-a                                  79.07       0.62       165.5
+ DynMM-b                    V+A+T         79.73       0.61       254.5           sentences marked with red often possess strong evidence
+ DynMM-c                                  79.75       0.60       295.8           indicating the sentiments of this sample, e.g., ‘horrible’,
+                                                                                 ‘amazingly good’. Therefore, they belong to the “easy”
+Table 2. Results on CMU-MOSEI Sentiment Analysis. Modalities                     samples category that can be correctly predicted using the
+V, A, T represent video, audio and text, respectively. Acc2 denotes              text modality alone. On the contrary, the sentences marked
+binary accuracy (i.e., positive/negative sentiments) and MAE rep-                with dark blue are vague and require additional modalities
+resents mean absolute error. MAdds are measured with a video-                    to help with the prediction. These results indicate that the
+audio-text tuple. Each DynMM variant is obtained using a differ-                 gating function is well trained and can provide reasonable
+ent value of the regularization hyperparameter λ during training.
+                                                                                 decisions based on input characteristics.
+
+ - Hi, I'm here to review In the Name of the King
+                                                                                 4.4. Semantic Segmentation
+ - It's a film currently in theaters
+                                                                                    NYU Depth V2 is an indoor dataset for semantic seg-
+ - (uhh) It's based on the xxx series of video games
+ - This one was horrible
+                                                                                 mentation. It contains 1,449 RGB-D images with 40-class
+ ...                                                                             labels; 795 images are used for training and 654 images are
+ - (uhh) It tries to be Lord of the Rings                                        for testing. The two modalities are RGB and depth images.
+ - It has a many of orge like creatures, a wizard, a medieval time setting
+ - Basically stole everything out of Lord of the Rings but made a million
+ times worse
+                                                                                                           mIoU     Depth Enc       MAdds
+                                                                                  Method
+ - (umhh) It's just everyone stay away from this film                                                       (%)     MAdds (G)    Reduction (%)
+ - It was a horrible movie                                                        ESANet [35] (baseline)    50.5       24.7            -
+ - (umm) So yea that's In the Name of the King in a nutshell                      DynMM (Stage I)           48.5       11.7          52.6%
+                                                                                  DynMM-a (Stage II)        49.9       11.1          55.1%
+            Text       Video + Audio + Text                                       DynMM-b (Stage II)        51.0       19.5          21.1%
+
+Figure 5. We visualize a few test instances on CMU-MOSEI for a                   Table 3. Results on RGB-D semantic segmentation. mIoU de-
+negative sentiment. DynMM identifies sentences marked with red                   notes mean Intersection-over-Union. MAdds are calculated for in-
+as “easy” instances and only uses textual information for predic-                put size of 3 × 480 × 640. G stands for Giga.
+tion. For sentences marked with blue, DynMM takes multimodal
+inputs (i.e., video+audio+text) for more accurate predictions.                      We adopt fusion-level DynMM for this task and base our
+                                                                                 dynamic architecture design on a (static) efficient architec-
+                                                                                 ture, ESANet [35]. As illustrated in Figure 3, we incorpo-
+generates sample-wise decisions on which expert network                          rate four fusion cells in the encoder design, where each fu-
+to activate during inference time. We set temperature of                         sion cell contains two operations. Operation 1 is an identity
+Gumbel-softmax as 1 and adopt straight-through training.                         mapping of RGB features, i.e., O1 = x1 . For the second
+    Results are summarized in Table 2. We provide three                          operation, we use channel attention fusion, where features
+DynMM networks trained with different λ. Compared                                from both modalities are first reweighted with a Squeeze
+with the best performing static network (i.e., Late Fu-                          and Excitation module [15] and then added element-wisely.
+sion), DynMM-a can reduce computations by 46.5% with                             Two ResNet-50 [13] are used as feature extraction models
+a slightly decreased accuracy (i.e., -0.47%). By allowing                        for RGB and depth modality. The decoder design is iden-
+more computation, DynMM-b improves both inference ef-                            tical to [35]. The gating network comprises a pipeline of
+ficiency (i.e., reduce MAdds by 17.8%) and prediction ac-                        2 convolution blocks with kernel size 5×5 and stride size
+curacy. Finally, DynMM-c further improves the accuracy                           2, a global average pooling and a linear layer. RGB and
+by trading off some computation; it achieves best accuracy                       depth features after the first convolutional layer are con-
+and smallest mean absolute error with reduced computation                        cantenated together and passed to the convolutional gate.
+cost. These results demonstrate the great advantages of dy-                      The gating network outputs a 4-dimensional vector per sam-
+namic multimodal fusion. Since multimodal data naturally                         ple that determines which operation to select for each fu-
+brings redundancy, we observe that many computations can                         sion cell. We experiment with two training strategies: (1)
+be reduced without loss in accuracy.                                             DynMM-a in Table 3 is trained with straight-through tech-
+    To have an intuitive sense of our gating network deci-                       nique with Gumbel-softmax temperature τ = 1; (2) We
+
+
+                                                                             7
+                                                                                           noisy modality: RGB                     noisy modality: depth           noisy modality: RGB / depth
+ Method              Modality   Backbone     mIoU (%)   MAdds (G)                 52                                      52                                    52
+                                                                                                                          50                        DynMM       50
+ LW-RefineNet [31]              ResNet-50      41.7       38.5                                                                                      ESANet
+
+
+
+
+                                                                        mIoU(%)
+                      RGB                                                                                                 48                                    48
+ LW-RefineNet [31]              ResNet-101     43.6        61.2                   50                                      46                                    46
+ ACNet [16]                     ResNet-50      48.3       126.2                               DynMM                       44                                    44        DynMM
+ SA-Gate [8]                    ResNet-50      50.4       147.6                               ESANet                      42                                    42        ESANet
+                     RGB+D                                                        48 0.0
+ CEN [45]                       ResNet-101     51.1       618.3                              2.5    5.0      7.5     10.0 40 0.0     2.5    5.0     7.5    10.0 40 0.0   2.5    5.0    7.5   10.0
+                                                                                              noise level (%)                         noise level (%)                     noise level (%)
+ ESANet [35]                    ResNet-50      50.5        56.9
+ DynMM-a                        ResNet-50      49.9       43.4          Figure 6. DynMM vs. ESANet on NYU Depth V2 with different
+                     RGB+D
+ DynMM-b                        ResNet-50      51.0       52.2
+                                                                        degrees of Gaussian noise injected into RGB / depth images.
+
+Table 4. Comparison of our approach with SOTA methods for
+                                                                                       RGB                        depth              ground truth             ESANet             DynMM (ours)
+RGB-D semantic segmentation on NYU Depth V2 test data.                                                    clean
+
+
+
+
+obtain DynMM-b in Table 3 by exponentially decaying τ
+                                                                                                          w/ noise
+from 1 to 0.0001 during 500 epochs.
+    Table 3 provides the detailed results of fusion-level
+DynMM. We report performance of DynMM after first-                           clean
+
+stage training in the second row; its great performance val-
+idates the design of our random gating function in the pre-
+training stage. This also lends support to our claim that                    w/ noise
+
+there exists a lot of redundancy in multimodal networks.
+Utilizing the finding that depth modality plays an auxiliary
+role in this task, fusion-level DynMM effectively reduces
+computations of the depth encoder. DynMM-a reduces                      Figure 7. Qualitative segmentation results on NYU Depth V2.
+MAdds by 55.1% with only -0.4% mIoU drop. Further-                      DynMM is more robust to noisy multimodal data compared with
+more, DynMM-b achieves a mIoU improvement of 0.7%                       the static ESANet.
+and 21.1% reduction in MAdds at the same time, thus
+demonstrating the superiority of DynMM over static fusion.
+    Table 4 presents a comparison of the resulting DynMM-               prediction for both scenarios. These results suggest the po-
+a and DynMM-b with SOTA semantic segmentation meth-                     tential of a dynamic neural network architecture for improv-
+ods. For baseline methods, we list mIoU reported in their               ing robustness of multimodal fusion.
+original papers and report MAdds. These results clearly
+show that our proposed method achieves the best balance                 5. Conclusion
+between performance and efficiency. The computation cost
+of DynMM is similar to a unimodal lightweight RefineNet,                    Multimodal data enable models to learn from an en-
+yet its performance can match methods that use ResNet-101               riched representation space, but it also bring significant re-
+as the backbone and involve significantly larger MAdds.                 dundancy. Motivated by this observation, we have pro-
+    Finally, we conduct experiments to demonstrate the im-              posed dynamic multimodal fusion (DynMM), a new ap-
+proved robustness of DynMM compared to ESANet. We                       proach that adaptively fuses inputs during inference. Ex-
+consider three settings by injecting random Gaussian noise              perimental results on three very different multimodal tasks
+with probability 1/3 to (1) RGB modality; (2) depth modal-              demonstrate the efficacy of DynMM. More importantly, our
+ity and (3) both modalities. We experiment with differ-                 work demonstrates the potential of dynamic multimodal fu-
+ent degrees of random Gaussian noise and plot the perfor-               sion and opens up a new research direction. Considering
+mance degradation of two approaches in Figure 6. From                   the benefits of a dynamic architecture (i.e., reduced compu-
+the figure, we observe that the performance gap between                 tation, improved performance and robustness) , we believe
+DynMM and ESANet becomes larger when the noise level                    that developing dynamic networks tailored for multimodal
+of depth images increases; This demonstrates another ad-                fusion is a topic worthy of further investigations.
+vantage of DynMM in reducing data noise and improving                       DynMM has limitations that we plan to address through
+robustness. Figure 7 shows some qualitative segmentation                three areas of improvement in our future work. These in-
+results. While ESANet generates reasonable predictions in               clude designing better dynamic architectures that can ac-
+the normal setting (i.e., first and third row), its performance         count for multimodal redundancy, extending DynMM to se-
+becomes significantly worse when multimodal data is per-                quential decision-making tasks, such as long video predic-
+turbed by noise (i.e., the second and fourth row). On the               tion and exploring the performance of DynMM on different
+contrary, our DynMM is robust to noise and provides a good              multimodal tasks and modalities.
+
+
+                                                                    8
+References                                                              [15] Jie Hu, Li Shen, and Gang Sun. Squeeze-and-excitation
+                                                                             networks. In Conference on Computer Vision and Pattern
+ [1] John Arevalo, Thamar Solorio, Manuel Montes-y Gómez,                   Recognition, pages 7132–7141, 2018. 7
+     and Fabio A González. Gated multimodal units for infor-
+                                                                        [16] Xinxin Hu, Kailun Yang, Lei Fei, and Kaiwei Wang. Acnet:
+     mation fusion. arXiv preprint arXiv:1702.01992, 2017. 5,
+                                                                             Attention based network to exploit complementary features
+     6
+                                                                             for rgbd semantic segmentation. In International Conference
+ [2] Tadas Baltrušaitis, Chaitanya Ahuja, and Louis-Philippe                on Image Processing, pages 1440–1444. IEEE, 2019. 8
+     Morency. Multimodal machine learning: A survey and tax-
+                                                                        [17] Gao Huang, Shichen Liu, Laurens Van der Maaten, and Kil-
+     onomy. IEEE Transactions on Pattern Analysis and Machine
+                                                                             ian Q Weinberger. Condensenet: An efficient densenet using
+     Intelligence, 41(2):423–443, 2018. 1
+                                                                             learned group convolutions. In Conference on Computer Vi-
+ [3] Emmanuel Bengio, Pierre-Luc Bacon, Joelle Pineau, and
+                                                                             sion and Pattern Recognition, pages 2752–2761, 2018. 2
+     Doina Precup. Conditional computation in neural networks
+                                                                        [18] Eric Jang, Shixiang Gu, and Ben Poole. Categorical
+     for faster models. arXiv preprint arXiv:1511.06297, 2015. 2
+                                                                             reparameterization with gumbel-softmax. arXiv preprint
+ [4] Tolga Bolukbasi, Joseph Wang, Ofer Dekel, and Venkatesh
+                                                                             arXiv:1611.01144, 2016. 5
+     Saligrama. Adaptive neural networks for efficient infer-
+                                                                        [19] Siddhant M Jayakumar, Wojciech M Czarnecki, Jacob
+     ence. In International Conference on Machine Learning,
+                                                                             Menick, Jonathan Schwarz, Jack Rae, Simon Osindero,
+     volume 70, pages 527–536. PMLR, 2017. 2
+                                                                             Yee Whye Teh, Tim Harley, and Razvan Pascanu. Multi-
+ [5] Shaofeng Cai, Yao Shu, and Wei Wang. Dynamic routing
+                                                                             plicative interactions and where to find them. 2020. 6
+     networks. In Winter Conference on Applications of Com-
+     puter Vision, pages 3588–3597, 2021. 2                             [20] Hamid Reza Vaezi Joze, Amirreza Shaban, Michael L Iuz-
+                                                                             zolino, and Kazuhito Koishida. Mmtm: Multimodal transfer
+ [6] Chen Chen, Roozbeh Jafari, and Nasser Kehtarnavaz. Utd-
+                                                                             module for cnn fusion. In Conference on Computer Vision
+     mhad: A multimodal dataset for human action recognition
+                                                                             and Pattern Recognition, pages 13289–13299, 2020. 1, 2
+     utilizing a depth camera and a wearable inertial sensor. In
+     International Conference on Image Processing, pages 168–           [21] Ramandeep Kaur and Sandeep Kautish. Multimodal sen-
+     172. IEEE, 2015. 1, 2                                                   timent analysis: A survey and comparison. International
+ [7] Chunlin Chen and Qiang Ling. Adaptive convolution                       Journal of Service Science, Management, Engineering, and
+     for object detection. IEEE Transactions on Multimedia,                  Technology, 10(2):38–58, 2019. 1, 2
+     21(12):3205–3217, 2019. 2                                          [22] Michelle A Lee, Matthew Tan, Yuke Zhu, and Jeannette
+ [8] Xiaokang Chen, Kwan-Yee Lin, Jingbo Wang, Wayne Wu,                     Bohg. Detect, reject, correct: Crossmodal compensation of
+     Chen Qian, Hongsheng Li, and Gang Zeng. Bi-directional                  corrupted sensors. In International Conference on Robotics
+     cross-modality feature propagation with separation-and-                 and Automation, pages 909–916. IEEE, 2021. 2
+     aggregation gate for rgb-d semantic segmentation. In Eu-           [23] Yanwei Li, Lin Song, Yukang Chen, Zeming Li, Xiangyu
+     ropean Conference on Computer Vision, pages 561–577.                    Zhang, Xingang Wang, and Jian Sun. Learning dynamic
+     Springer, 2020. 2, 8                                                    routing for semantic segmentation. In Conference on Com-
+ [9] Ruohan Gao, Tae-Hyun Oh, Kristen Grauman, and Lorenzo                   puter Vision and Pattern Recognition, pages 8553–8562,
+     Torresani. Listen to look: Action recognition by preview-               2020. 2
+     ing audio. In Conference on Computer Vision and Pattern            [24] Paul Pu Liang, Yiwei Lyu, Xiang Fan, Zetian Wu, Yun
+     Recognition, pages 10457–10467, 2020. 2, 3                              Cheng, Jason Wu, Leslie Chen, Peter Wu, Michelle A
+[10] Alex Graves. Adaptive computation time for recurrent neural             Lee, Yuke Zhu, et al. Multibench: Multiscale bench-
+     networks. arXiv preprint arXiv:1603.08983, 2016. 2                      marks for multimodal representation learning. arXiv preprint
+[11] Yizeng Han, Gao Huang, Shiji Song, Le Yang, Honghui                     arXiv:2107.07502, 2021. 6, 7
+     Wang, and Yulin Wang. Dynamic neural networks: A sur-              [25] Kuan Liu, Yanen Li, Ning Xu, and Prem Natarajan. Learn
+     vey. IEEE Transactions on Pattern Analysis and Machine                  to combine modalities in multimodal deep learning. arXiv
+     Intelligence, 2021. 2, 3                                                preprint arXiv:1805.11730, 2018. 1, 2
+[12] Zongbo Han, Fan Yang, Junzhou Huang, Changqing Zhang,              [26] Zhun Liu, Ying Shen, Varun Bharadhwaj Lakshmi-
+     and Jianhua Yao. Multimodal dynamics: Dynamical fusion                  narasimhan, Paul Pu Liang, Amir Zadeh, and Louis-Philippe
+     for trustworthy multimodal classification. In Proceedings of            Morency.       Efficient low-rank multimodal fusion with
+     the IEEE/CVF Conference on Computer Vision and Pattern                  modality-specific factors. arXiv preprint arXiv:1806.00064,
+     Recognition, pages 20707–20717, 2022. 2, 3                              2018. 1, 2, 6
+[13] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.             [27] Saeed Masoudnia and Reza Ebrahimpour. Mixture of ex-
+     Deep residual learning for image recognition. In Conference             perts: a literature survey. Artificial Intelligence Review,
+     on Computer Vision and Pattern Recognition, pages 770–                  42(2):275–293, 2014. 3
+     778, 2016. 7                                                       [28] Ravi Teja Mullapudi, William R Mark, Noam Shazeer, and
+[14] Chiori Hori, Takaaki Hori, Teng-Yok Lee, Ziming Zhang,                  Kayvon Fatahalian. Hydranets: Specialized dynamic archi-
+     Bret Harsham, John R Hershey, Tim K Marks, and Kazuhiko                 tectures for efficient inference. In Conference on Computer
+     Sumi. Attention-based multimodal fusion for video descrip-              Vision and Pattern Recognition, pages 8080–8089, 2018. 2
+     tion. In International Conference on Computer Vision, pages        [29] Arsha Nagrani, Shan Yang, Anurag Arnab, Aren Jansen,
+     4193–4202, 2017. 1                                                      Cordelia Schmid, and Chen Sun. Attention bottlenecks for
+
+
+                                                                    9
+     multimodal fusion. Advances in Neural Information Pro-                [43] Valentin Vielzeuf, Stéphane Pateux, and Frédéric Jurie. Tem-
+     cessing Systems, 34, 2021. 1, 2                                            poral multimodal fusion for video emotion classification in
+[30] Pushmeet Kohli Nathan Silberman, Derek Hoiem and Rob                       the wild. In International Conference on Multimodal Inter-
+     Fergus. Indoor segmentation and support inference from                     action, pages 569–576, 2017. 1, 2
+     rgbd images. In European Conference on Computer Vision,               [44] Xin Wang, Fisher Yu, Zi-Yi Dou, Trevor Darrell, and
+     2012. 5                                                                    Joseph E Gonzalez. Skipnet: Learning dynamic routing in
+[31] Vladimir Nekrasov, Chunhua Shen, and Ian Reid. Light-                      convolutional networks. In European Conference on Com-
+     weight refinenet for real-time semantic segmentation. arXiv                puter Vision, pages 409–424, 2018. 2
+     preprint arXiv:1810.03272, 2018. 8                                    [45] Yikai Wang, Wenbing Huang, Fuchun Sun, Tingyang Xu, Yu
+[32] Rameswar Panda, Chun-Fu Richard Chen, Quanfu Fan, Xi-                      Rong, and Junzhou Huang. Deep multimodal fusion by chan-
+     meng Sun, Kate Saenko, Aude Oliva, and Rogerio Feris.                      nel exchanging. Advances in Neural Information Processing
+     Adamml: Adaptive multi-modal learning for efficient video                  Systems, 33:4835–4845, 2020. 1, 2, 8
+     recognition. In Proceedings of the IEEE/CVF International             [46] Yulin Wang, Kangchen Lv, Rui Huang, Shiji Song, Le Yang,
+     Conference on Computer Vision, pages 7576–7585, 2021. 2,                   and Gao Huang. Glance and focus: a dynamic approach
+     3                                                                          to reducing spatial redundancy in image classification. Ad-
+[33] Juan-Manuel Pérez-Rúa, Valentin Vielzeuf, Stéphane Pa-                  vances in Neural Information Processing Systems, 33:2432–
+     teux, Moez Baccouche, and Frédéric Jurie. Mfas: Multi-                   2444, 2020. 2
+     modal fusion architecture search. In Conference on Com-               [47] Brandon Yang, Gabriel Bender, Quoc V Le, and Jiquan
+     puter Vision and Pattern Recognition, pages 6966–6975,                     Ngiam. Condconv: Conditionally parameterized convolu-
+     2019. 1, 2                                                                 tions for efficient inference. Advances in Neural Information
+[34] Sara Sabour, Nicholas Frosst, and Geoffrey E Hinton. Dy-                   Processing Systems, 32, 2019. 2
+     namic routing between capsules. Advances in Neural Infor-             [48] Mingyu Yang, Yu Chen, and Hun-Seok Kim. Efficient deep
+     mation Processing Systems, 30, 2017. 2                                     visual and inertial odometry with adaptive visual modality
+[35] Daniel Seichter, Mona Köhler, Benjamin Lewandowski, Tim                   selection. arXiv preprint arXiv:2205.06187, 2022. 2
+     Wengefeld, and Horst-Michael Gross. Efficient rgb-d se-               [49] Zhou Yu, Yuhao Cui, Jun Yu, Meng Wang, Dacheng Tao,
+     mantic segmentation for indoor scene analysis. In Inter-                   and Qi Tian. Deep multimodal neural architecture search. In
+     national Conference on Robotics and Automation, pages                      International Conference on Multimedia, pages 3743–3752,
+     13525–13531. IEEE, 2021. 1, 2, 7, 8, 11                                    2020. 1, 2
+[36] Amir Shahroudy, Tian-Tsong Ng, Yihong Gong, and Gang
+                                                                           [50] Amir Zadeh, Minghai Chen, Soujanya Poria, Erik Cam-
+     Wang. Deep multimodal feature analysis for action recogni-
+                                                                                bria, and Louis-Philippe Morency. Tensor fusion net-
+     tion in rgb+ d videos. IEEE Transactions on Pattern Analysis
+                                                                                work for multimodal sentiment analysis. arXiv preprint
+     and Machine Intelligence, 40(5):1045–1058, 2017. 1, 2
+                                                                                arXiv:1707.07250, 2017. 1, 2
+[37] Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy
+                                                                           [51] Amir Zadeh and Paul Pu. Multimodal language analysis in
+     Davis, Quoc Le, Geoffrey Hinton, and Jeff Dean. Outra-
+                                                                                the wild: Cmu-mosei dataset and interpretable dynamic fu-
+     geously large neural networks: The sparsely-gated mixture-
+                                                                                sion graph. In Annual Meeting of the Association for Com-
+     of-experts layer. arXiv preprint arXiv:1701.06538, 2017. 2
+                                                                                putational Linguistics, 2018. 1, 5
+[38] Mohammad Soleymani, David Garcia, Brendan Jou, Björn
+                                                                           [52] Hong-Yu Zhou, Bin-Bin Gao, and Jianxin Wu. Adaptive
+     Schuller, Shih-Fu Chang, and Maja Pantic. A survey of mul-
+                                                                                feeding: Achieving fast and accurate detections by adap-
+     timodal sentiment analysis. Image and Vision Computing,
+                                                                                tively combining object detectors. In International Confer-
+     65:3–14, 2017. 1, 2
+                                                                                ence on Computer Vision, pages 3505–3513, 2017. 2
+[39] Peng Sun, Wenhu Zhang, Huanyu Wang, Songyuan Li, and
+     Xi Li. Deep rgb-d saliency detection with depth-sensitive
+     attention and automatic multi-modal fusion. In Conference
+     on Computer Vision and Pattern Recognition, pages 1407–
+     1417, 2021. 1, 2
+[40] Surat Teerapittayanon, Bradley McDanel, and Hsiang-Tsung
+     Kung. Branchynet: Fast inference via early exiting from
+     deep neural networks. In International Conference on Pat-
+     tern Recognition, pages 2464–2469. IEEE, 2016. 2
+[41] Hiroki Tokunaga, Yuki Teramoto, Akihiko Yoshizawa, and
+     Ryoma Bise. Adaptive weighting multi-field-of-view cnn for
+     semantic segmentation in pathology. In Conference on Com-
+     puter Vision and Pattern Recognition, pages 12597–12606,
+     2019. 2
+[42] Valentin Vielzeuf, Alexis Lechervy, Stéphane Pateux, and
+     Frédéric Jurie. Centralnet: a multilayer approach for multi-
+     modal fusion. In European Conference on Computer Vision
+     Workshops, pages 0–0, 2018. 1
+
+
+                                                                      10
+    In this appendix, we present: (1) implementation details;          features are combined with the RGB features to different
+(2) visualization results of decisions given by the gating net-        degrees, determined by the gating network in DynMM. This
+work (on NYU Depth V2); (3) an analysis of varying regu-               provides a flexible way to control multimodal fusion in a
+larization strength λ (on CMU-MOSEI); and (4) an ablation              sample-wise manner. For the RGB-D images in the up-
+study on proposed training strategies (on NYU Depth V2).               per figure, DynMM performs one-time fusion for multi-
+                                                                       modal features after the first block and saves computations
+A. Implementation Details                                              of depth blocks 2-4. For the more challenging test samples
+                                                                       in the lower figure, DynMM decides to fuse features in ev-
+    MM-IMDB. E1 is a unimodal text network with 2-layer                ery layer to better incorporate multimodal information. Due
+MLPs (hidden dimension=512) as the text encoder and the                to the dynamic architecture, DynMM achieves a good bal-
+decoder. E2 is a multimodal late fusion network, where we              ance between efficiency and performance.
+use the text and image encoders to extract features, concate-
+nate the unimodal features and then pass the concantenated             C. Analysis of Regularization Strength
+features to a MLP decoder (hidden dimension=1024). The
+text encoder is the same as in E1 and the image encoder is                 Recall that we propose a resource-aware loss function
+a 2-layer MLP (hidden dimension=1024). We use AdamW                    in Equation (1) and (2) in the main paper, where λ is a
+optimizer with lr=1e-4 and weight decay=1e-2.                          hyperparameter controlling the relative importance of task
+    CMU-MOSEI. E1 is a text network consisting of a 5-                 loss and computation cost loss. Similar to Figure 4 in the
+layer transformer encoder (hidden dimension=120; 5 at-                 main paper (i.e., an analysis of λ on MM-IMDB), we vary
+tention heads) and a 2-layer MLP decoder (hidden dimen-                λ when training DynMM on CMU-MOSEI sentiment anal-
+sion=64). E2 is a multimodal late fusion network with                  ysis and report its computation cost and performance cor-
+video, audio, and text encoders being 5-layer transformers             responding to each λ value. The results are provided in
+and a 2-layer MLP decoder (hidden dimension=128). We                   Figure 9 in this Appendix. From Figure 9 (a), we can see
+use AdamW optimizer with lr=1e-4 and weight decay=1e-                  that DynMM achieves a good balance between inference
+4.                                                                     efficiency and accuracy. Moreover, DynMM offers a wide
+    NYU Depth V2. The image and depth encoder is a                     range of choices that can be controlled by λ, thus showing
+ResNet-50 and the decoder is the same as in ESANet [35].               great flexibility. Figure 9 (b) shows the branch selection ra-
+We use SGD optimizer with weight decay=1e-4 and mo-                    tio of DynMM for different λ. When λ is small, DynMM
+mentum=0.9, also OneCycleLR with max lr=1e-2.                          focuses more on performance and chooses expert network
+    The gating networks are designed to match the E1 and               2 most of the time. As λ increases, more test samples are
+E2 model architectures. Therefore, we use a MLP gate                   routed to the expert network 1 that requires fewer computa-
+for MM-IMDB, a transformer gate for CMU-MOSEI and                      tions.
+a convolution gate for NYU Depth V2.
+    C(Ei ) in Equations (1)-(2) is set as the MACs required            D. Ablation Study
+to do one forward pass with Ei . Take MM-IMDB for ex-                      To verify the efficacy of our proposed training strategies,
+ample: the MACs for executing E1 and E2 are 1.25M and                  we present an ablation study of RGB-D semantic segmen-
+10.87M, respectively. The resource loss of one data sample             tation on the NYU Depth V2 data. We train DynMM under
+is λ if the gating network selects E1 and λ × 10.87
+                                                  1.25 if E2           three settings: (1) We omit the pre-training stage and train
+is selected. The DynMM variants reported in Table 1-2 are              DynMM in one stage. (2) In the second stage of training, we
+obtained using different values of the regularization param-           freeze the weights of the multimodal architecture and only
+eter λ.                                                                fine-tune the gating network. (3) We adopt our proposed
+                                                                       two-stage training with joint optimization of the multimodal
+B. Visualization Results
+    In our proposed DynMM, the gating network is crucial                                 Two-stage       Joint
+                                                                              Method                                 mIoU (%)
+as it provides data-dependent decisions on which expert net-                              Training   Optimization
+work to adopt. For modality-level DynMM, we have pro-                        Baseline                                   50.3
+vided visualization of the gating network decisions for some                                               ✓            49.2
+test instances on CMU-MOSEI in Figure 5 in the main pa-                      DynMM           ✓                          50.2
+per. Similarly, for fusion-level DynMM, we visualize sev-                                    ✓             ✓            51.0
+eral test instances on NYU Depth V2 and the resulting ar-
+chitecture in Figure 8 in the Appendix.                                Table 5. Ablation study on RGB-D semantic segmentation. Base-
+    From Figure 8, we can see that DynMM adaptively ex-                line refers to a static model (ESANet).
+ecutes the forward path for multimodal inputs. The depth
+
+
+                                                                  11
+                                                                          joint optimization achieves the overall best performance.
+
+
+
+
+Figure 8. We visualize a few test instances on the NYU Depth
+V2 data. x1 and x2 denote RGB and depth images, respectively.
+The corresponding network architecture based on the gating net-
+work decision is shown. The upper figure shows examples when
+the gating network chooses an early fusion architecture. DynMM
+skips computations of the depth extraction layers, thus achieving
+inference savings. The lower figure shows examples when the gat-
+ing network decides to fuse representations at every middle layer.
+
+
+
+
+              MAdds (M)                     Regularization ( )
+
+                 (a)                             (b)
+
+Figure 9. Analysis of DynMM with varying resource regulariza-
+tion strength (λ) on CMU-MOSEI. (a): comparison of DynMM
+with static unimodal (UM) and multimodal (MM) baselines. (b):
+branch selection ratio in DynMM with respect to λ.
+
+
+
+network and gating network. The other training parameters
+(e.g., learning rate, resource regularization strength λ) are
+identical. The results are shown in Table 5 below.
+    Table 5 demonstrates the advantages of our proposed
+training strategies. We observe that DynMM with one-stage
+training does not have a dynamic architecture, i.e., all test
+samples are routed to one particular forward path. Without
+a pre-training stage, every forward path is not equally opti-
+mized. Biased optimization further leads to suboptimal per-
+formance (i.e., an mIoU of 49.2%). Apart from two-stage
+training, joint optimization also plays an important role. We
+observe a +0.8% mIoU improvement with end-to-end train-
+ing. The possible reason is that (static) feature extraction
+layers also improve in the joint optimization process; they
+provide more informative features as input to the gating net-
+work to a better gating network decision. Therefore, the
+
+
+                                                                     12
+

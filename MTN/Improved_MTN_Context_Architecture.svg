@@ -1,0 +1,61 @@
+<!-- Editable SVG source for the current Version B context-aware MTN. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .title{font:700 30px 'DejaVu Sans',Arial,sans-serif;fill:#102A43}.subtitle{font:400 15px 'DejaVu Sans',Arial,sans-serif;fill:#52606D}.section{font:700 18px 'DejaVu Sans',Arial,sans-serif;fill:#102A43}.label{font:700 15px 'DejaVu Sans',Arial,sans-serif;fill:#102A43}.small{font:400 13px 'DejaVu Sans',Arial,sans-serif;fill:#334E68}.tiny{font:400 11px 'DejaVu Sans',Arial,sans-serif;fill:#52606D}.new{font:700 13px 'DejaVu Sans',Arial,sans-serif;fill:#007C7C}.dim{font:700 12px 'DejaVu Sans',Arial,sans-serif;fill:#007C7C}.box{fill:#FFFFFF;stroke:#5B7083;stroke-width:2}.mtn{fill:#F4F8FC;stroke:#2F80ED;stroke-width:2.5}.ctx{fill:#F0FCFB;stroke:#00A6A6;stroke-width:2.5}.fusion{fill:#FFF8EE;stroke:#F2994A;stroke-width:2.5}.out{fill:#F2F7FF;stroke:#3B82F6;stroke-width:2.5}.group{fill:none;stroke:#B8C7D9;stroke-width:2;stroke-dasharray:8 7}.newgroup{fill:#F8FFFE;stroke:#00A6A6;stroke-width:2.5;stroke-dasharray:9 7}.arrow{fill:none;stroke:#52606D;stroke-width:2.4;marker-end:url(#arrow)}.tealarrow{fill:none;stroke:#00A6A6;stroke-width:2.6;marker-end:url(#tealArrow)}.orangearrow{fill:none;stroke:#F2994A;stroke-width:2.6;marker-end:url(#orangeArrow)}.residual{fill:none;stroke:#2F80ED;stroke-width:2.2;stroke-dasharray:6 5;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#52606D"/></marker>
+    <marker id="tealArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#00A6A6"/></marker>
+    <marker id="orangeArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#F2994A"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="#FFFFFF"/>
+  <text x="60" y="58" class="title">Context-Aware MTN for Pedestrian Trajectory Prediction</text>
+  <text x="60" y="86" class="subtitle">Improved Version B: original MTN backbone + native IDD-PeD context token with dynamic memory fusion</text>
+  <line x1="60" y1="108" x2="1860" y2="108" stroke="#D9E2EC" stroke-width="2"/>
+  <rect x="50" y="145" width="1040" height="390" rx="20" class="group"/>
+  <text x="78" y="178" class="section">Original MTN trajectory-processing backbone (unchanged)</text>
+  <rect x="80" y="236" width="185" height="92" rx="14" class="box"/>
+  <text x="172" y="269" text-anchor="middle" class="label">Observed pedestrian</text><text x="172" y="292" text-anchor="middle" class="label">bounding-box sequence</text><text x="172" y="314" text-anchor="middle" class="tiny">15 × 4-D</text>
+  <rect x="325" y="236" width="158" height="92" rx="14" class="mtn"/><text x="404" y="273" text-anchor="middle" class="label">Input FC</text><text x="404" y="296" text-anchor="middle" class="dim">4 → 32-D</text>
+  <rect x="540" y="236" width="155" height="92" rx="14" class="mtn"/><text x="617" y="273" text-anchor="middle" class="label">Positional</text><text x="617" y="296" text-anchor="middle" class="label">encoding</text>
+  <rect x="755" y="205" width="275" height="155" rx="16" class="mtn"/>
+  <text x="892" y="244" text-anchor="middle" class="label">MTN Encoder ×3</text><text x="892" y="273" text-anchor="middle" class="small">self-attention + speed cross-attention</text><text x="892" y="295" text-anchor="middle" class="small">+ FFN (d_model 32, 4 heads, d_ff 128)</text><text x="892" y="326" text-anchor="middle" class="dim">Encoder memory: 15 × 32-D</text>
+  <path d="M265 282 H325" class="arrow"/><path d="M483 282 H540" class="arrow"/><path d="M695 282 H755" class="arrow"/>
+  <rect x="540" y="404" width="210" height="78" rx="13" class="box"/><text x="645" y="435" text-anchor="middle" class="label">Observed OBD speed</text><text x="645" y="458" text-anchor="middle" class="tiny">existing MTN auxiliary input</text><path d="M645 404 V365 H820" class="arrow"/>
+  <text x="84" y="505" class="tiny">The existing MTN encoder retains its original trajectory and speed-processing path.</text>
+  <rect x="50" y="585" width="1105" height="405" rx="20" class="newgroup"/>
+  <text x="78" y="620" class="new">PROPOSED CONTEXT BRANCH — native IDD-PeD scene and observed-state inputs</text>
+  <text x="80" y="655" class="label">Static categorical context (each own 16-D embedding)</text>
+  <rect x="80" y="678" width="142" height="47" rx="11" class="ctx"/><text x="151" y="707" text-anchor="middle" class="small">intersection_type</text>
+  <rect x="234" y="678" width="142" height="47" rx="11" class="ctx"/><text x="305" y="707" text-anchor="middle" class="small">signalized_type</text>
+  <rect x="388" y="678" width="118" height="47" rx="11" class="ctx"/><text x="447" y="707" text-anchor="middle" class="small">road_type</text>
+  <rect x="518" y="678" width="130" height="47" rx="11" class="ctx"/><text x="583" y="707" text-anchor="middle" class="small">location_type</text>
+  <rect x="660" y="678" width="145" height="47" rx="11" class="ctx"/><text x="733" y="707" text-anchor="middle" class="small">motion_direction</text>
+  <path d="M151 725 V752 M305 725 V752 M447 725 V752 M583 725 V752 M733 725 V752" class="tealarrow"/>
+  <rect x="210" y="770" width="290" height="66" rx="13" class="ctx"/><text x="355" y="800" text-anchor="middle" class="label">Five embedding lookups</text><text x="355" y="822" text-anchor="middle" class="dim">5 × 16-D</text>
+  <rect x="80" y="862" width="220" height="75" rx="13" class="ctx"/><text x="190" y="892" text-anchor="middle" class="label">Observed occlusion history</text><text x="190" y="915" text-anchor="middle" class="tiny">embedding + mean aggregation → 16-D</text>
+  <path d="M300 899 H540" class="tealarrow"/><path d="M500 803 H540" class="tealarrow"/>
+  <rect x="540" y="780" width="165" height="85" rx="13" class="ctx"/><text x="622" y="811" text-anchor="middle" class="label">Concatenate</text><text x="622" y="835" text-anchor="middle" class="dim">96-D context feature</text>
+  <rect x="760" y="762" width="195" height="120" rx="14" class="ctx"/><text x="858" y="795" text-anchor="middle" class="label">Context projection</text><text x="858" y="819" text-anchor="middle" class="small">LayerNorm → Linear → GELU</text><text x="858" y="842" text-anchor="middle" class="small">Dropout → Linear</text><text x="858" y="864" text-anchor="middle" class="dim">96 → 32 → 32</text>
+  <rect x="995" y="780" width="128" height="85" rx="13" class="ctx"/><text x="1059" y="813" text-anchor="middle" class="label">Context Token</text><text x="1059" y="840" text-anchor="middle" class="dim">32-D</text>
+  <path d="M705 822 H760" class="tealarrow"/><path d="M955 822 H995" class="tealarrow"/>
+  <rect x="1210" y="145" width="650" height="845" rx="20" class="newgroup"/><text x="1240" y="178" class="new">DYNAMIC CONTEXT FUSION — added to decoder memory</text>
+  <rect x="1250" y="246" width="165" height="78" rx="13" class="ctx"/><text x="1332" y="278" text-anchor="middle" class="label">Context Token</text><text x="1332" y="302" text-anchor="middle" class="dim">32-D</text>
+  <rect x="1250" y="366" width="165" height="78" rx="13" class="box"/><text x="1332" y="397" text-anchor="middle" class="label">Final observed box</text><text x="1332" y="421" text-anchor="middle" class="dim">4-D</text>
+  <rect x="1470" y="285" width="250" height="125" rx="15" class="fusion"/><text x="1595" y="318" text-anchor="middle" class="label">Dynamic Context Gate</text><text x="1595" y="343" text-anchor="middle" class="small">concat(context token, final box)</text><text x="1595" y="367" text-anchor="middle" class="dim">36 → 16 → 2</text><text x="1595" y="390" text-anchor="middle" class="tiny">hard Gumbel gate in training; argmax at evaluation</text>
+  <path d="M1415 285 H1470" class="orangearrow"/><path d="M1415 405 H1440 V383 H1470" class="orangearrow"/>
+  <rect x="1510" y="468" width="170" height="75" rx="13" class="fusion"/><text x="1595" y="498" text-anchor="middle" class="label">Gated Context Token</text><text x="1595" y="522" text-anchor="middle" class="dim">32-D × gate</text><path d="M1595 410 V468" class="orangearrow"/>
+  <rect x="1245" y="594" width="180" height="85" rx="13" class="mtn"/><text x="1335" y="625" text-anchor="middle" class="label">MTN Encoder Memory</text><text x="1335" y="650" text-anchor="middle" class="dim">15 × 32-D</text>
+  <rect x="1495" y="594" width="200" height="85" rx="13" class="fusion"/><text x="1595" y="625" text-anchor="middle" class="label">Append gated token</text><text x="1595" y="650" text-anchor="middle" class="small">memory + context token</text>
+  <rect x="1735" y="594" width="95" height="85" rx="13" class="fusion"/><text x="1782" y="625" text-anchor="middle" class="label">Augmented</text><text x="1782" y="648" text-anchor="middle" class="label">Memory</text><text x="1782" y="668" text-anchor="middle" class="dim">16 × 32-D</text>
+  <path d="M1425 636 H1495" class="orangearrow"/><path d="M1595 543 V594" class="orangearrow"/><path d="M1695 636 H1735" class="orangearrow"/>
+  <rect x="1370" y="742" width="250" height="142" rx="16" class="mtn"/><text x="1495" y="776" text-anchor="middle" class="label">MTN Decoder ×3</text><text x="1495" y="802" text-anchor="middle" class="small">cross-attends augmented memory</text><text x="1495" y="826" text-anchor="middle" class="small">+ existing ego-flow &amp; pedestrian-flow attention</text><text x="1495" y="855" text-anchor="middle" class="dim">decoder representation: 45 × 32-D</text>
+  <path d="M1782 679 V712 H1495 V742" class="arrow"/>
+  <rect x="1245" y="760" width="90" height="48" rx="10" class="box"/><text x="1290" y="781" text-anchor="middle" class="tiny">ego flow</text><text x="1290" y="797" text-anchor="middle" class="tiny">(existing)</text>
+  <rect x="1245" y="828" width="90" height="48" rx="10" class="box"/><text x="1290" y="849" text-anchor="middle" class="tiny">ped. flow</text><text x="1290" y="865" text-anchor="middle" class="tiny">(existing)</text><path d="M1335 784 H1370 M1335 852 H1370" class="arrow"/>
+  <rect x="1665" y="774" width="150" height="68" rx="13" class="out"/><text x="1740" y="803" text-anchor="middle" class="label">Prediction FC</text><text x="1740" y="826" text-anchor="middle" class="dim">32 → 4-D</text><path d="M1620 813 H1665" class="arrow"/>
+  <circle cx="1740" cy="905" r="20" fill="#FFFFFF" stroke="#2F80ED" stroke-width="2.5"/><text x="1740" y="912" text-anchor="middle" class="label">+</text><rect x="1665" y="954" width="150" height="62" rx="13" class="out"/><text x="1740" y="980" text-anchor="middle" class="label">Future bounding boxes</text><text x="1740" y="1002" text-anchor="middle" class="dim">45 × 4-D</text><path d="M1740 842 V885" class="arrow"/><path d="M1740 925 V954" class="arrow"/>
+  <path d="M265 305 V555 H1840 V905 H1760" class="residual"/><text x="1120" y="548" class="tiny">Residual: repeat final observed box and add FC output</text>
+  <path d="M1030 282 H1170 V636 H1245" class="arrow"/><text x="1060" y="261" class="tiny">encoder memory</text><path d="M1059 780 V570 H1332 V324" class="tealarrow"/>
+  <text x="60" y="1045" class="tiny">Version B only: static IDD-PeD fields are intersection_type, signalized_type, road_type, location_type, and motion_direction. Day/night and illumination are intentionally not included.</text>
+</svg>

@@ -1,0 +1,18 @@
+% Context branch as a compact, colourful conceptual mechanism.
+\begin{tikzpicture}[font=\small,
+ s/.style={draw=teal!70!black,fill=teal!15,rounded corners=2pt,minimum height=9mm,text width=25mm,align=center},
+ p/.style={draw=blue!70!black,fill=blue!15,rounded corners=3pt,minimum height=15mm,text width=37mm,align=center},
+ g/.style={draw=orange!80!black,fill=orange!20,rounded corners=3pt,minimum height=15mm,text width=40mm,align=center},
+ tok/.style={draw=purple!80!black,fill=purple!15,rounded corners=3pt,minimum height=15mm,text width=34mm,align=center},
+ a/.style={-Latex,very thick,draw=teal}]
+\node[s] (a1) {intersection};\node[s,below=5mm of a1](a2){signalized};\node[s,below=5mm of a2](a3){road};
+\node[s,right=6mm of a1](a4){location};\node[s,below=5mm of a4](a5){motion direction};\node[s,below=5mm of a5](a6){occlusion history};
+\node[draw=teal,rounded corners=3pt,inner sep=5mm,fit=(a1)(a6),label={[font=\bfseries,text=teal]above:Native context}] (src) {};
+\node[p,right=18mm of src] (emb) {Six 16-D\\embeddings};
+\node[p,right=14mm of emb] (cat) {Concatenate\\$[B,96]$};
+\node[p,right=14mm of cat] (proj) {Context\\projection\\$[B,32]$};
+\node[g,right=14mm of proj] (gate) {Gate input\\context + final\\observed box\\$36\rightarrow16\rightarrow2$};
+\node[tok,right=14mm of gate] (tok) {Gated context\\token\\$[B,1,32]$};
+\draw[a](src)--(emb);\draw[a](emb)--(cat);\draw[a](cat)--(proj);\draw[a](proj)--(gate);\draw[a](gate)--(tok);
+\node[font=\small,text=orange!80!black,below=17mm of gate] {The gate decides whether the context token is admitted to decoder memory.};
+\end{tikzpicture}

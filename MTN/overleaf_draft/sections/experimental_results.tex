@@ -1,0 +1,59 @@
+\section{Experimental Results}
+\label{sec:results}
+
+\subsection{Protocol and reporting boundary}
+The completed unified experiment used a fixed 32/8/24 train/validation/test trajectory split from locally available IDD-PeD data, CPU Farneback optical flow, Adam with learning rate 0.001, batch size 8, MSE loss, one training epoch, and three random seeds (20260928, 20260929, and 20260930). The test set comprises 24 trajectories from one held-out video. Reported values are mean $\pm$ sample standard deviation across the three seeds. This is a CPU-based proof-of-concept, not an official RAFT-based IDD-PeD benchmark reproduction.
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{\input{figures/paper_fig05_protocol}}
+\caption{Matched CPU proof-of-concept protocol used for the completed unified experiment.}
+\label{fig:protocol}
+\end{figure*}
+
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{Unified matched \poc\ results. Lower MSE, C-MSE, CF-MSE, parameter count, and latency are better.}
+\label{tab:unified}
+\begin{tabular}{lrrrrr}
+\toprule
+Model & MSE & C-MSE & CF-MSE & Parameters & CPU latency (ms)\\
+\midrule
+B & $1137.11\pm20.16$ & $1107.40\pm19.63$ & $2971.36\pm103.13$ & 139,142 & $45.58\pm3.23$\\
+C4 & $\mathbf{1080.16\pm93.33}$ & $\mathbf{1053.83\pm95.13}$ & $\mathbf{2887.51\pm237.14}$ & \textbf{130,694} & $47.38\pm2.48$\\
+F & $1154.78\pm9.95$ & $1124.20\pm10.08$ & $3098.16\pm137.74$ & 154,007 & $50.68\pm2.48$\\
+F+C4 & $1126.67\pm30.84$ & $1098.43\pm27.25$ & $3111.62\pm85.57$ & 145,559 & $52.07\pm4.74$\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Discussion of matched results}
+C4 achieved the lowest mean MSE, C-MSE, and CF-MSE in this matched \poc. Relative to B, C4 changed MSE by $-5.01\%$, C-MSE by $-4.84\%$, and CF-MSE by $-2.82\%$, while reducing unique parameters by $6.07\%$. Its mean CPU latency was $3.93\%$ higher than B. The effect is not uniformly dominant per seed: C4 attained lower MSE than B in two of three seeds, while its MSE standard deviation was substantially larger ($93.33$ versus $20.16$). Thus, the evidence supports C4 as the current proposed \poc\ architecture, not a final universal selection.
+
+F did not improve the measured prediction metrics over B: its relative changes were $+1.55\%$ MSE, $+1.52\%$ C-MSE, and $+4.27\%$ CF-MSE, accompanied by $+10.68\%$ parameters and $+11.18\%$ CPU latency. F+C4 reduced mean MSE by $0.92\%$ relative to B but increased CF-MSE by $4.72\%$, parameters by $4.61\%$, and latency by $14.23\%$. These results do not justify including F or F+C4 in the current proposed C4 architecture.
+
+\subsection{Comparison with prior work on IDD-PeD}
+Table~\ref{tab:prior} reports the published 1.5-second IDD-PeD trajectory-baseline results from the official paper \cite{iddped2025}. The published MTN, BiTraP, and SGNet results use the authors' approximately 70/30 train/test split, RAFT optical flow for MTN, GPU hardware, and the full test set. In contrast, our completed comparison uses CPU Farneback flow, one held-out video, 24 trajectories, one epoch, and three seeds. Therefore, the table is a \emph{dataset-context comparison}, not a direct numerical ranking of our method against the published baselines.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\caption{Published IDD-PeD baselines at 1.5 seconds and the current CPU POC. Lower is better. The final row is not directly comparable with the published rows because the protocol differs.}
+\label{tab:prior}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.27\textwidth}p{0.24\textwidth}rrr}
+\toprule
+Source / protocol & Method & MSE & C-MSE & CF-MSE\\
+\midrule
+Official IDD-PeD paper; full test split; RAFT/GPU & PIETraj & 2181 & 1979 & 8960\\
+Official IDD-PeD paper; full test split; RAFT/GPU & MTN & 1652 & 1489 & 6668\\
+Official IDD-PeD paper; full test split; published setup & BiTraP & 338 & 200 & 638\\
+Official IDD-PeD paper; full test split; published setup & SGNet & 310 & 190 & 531\\
+\midrule
+Current work; CPU Farneback POC, 24 trajectories, one epoch & Context-Aware MTN with Encoder Self-Attention Sharing & $1080.16\pm93.33$ & $1053.83\pm95.13$ & $2887.51\pm237.14$\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The current POC has lower numerical error than the published deterministic MTN baseline, but this must not be interpreted as a benchmark improvement because flow representation, train/test scale, training budget, and hardware differ. The appropriate current conclusion is limited: within the matched local POC, encoder self-attention sharing improved mean error metrics relative to the local Context-Aware MTN reference. A direct comparison against published work requires reproducing the official split and RAFT pipeline.

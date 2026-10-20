@@ -1,0 +1,28 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype,booktabs,tabularx,multirow,array,xcolor,amsmath,amssymb,graphicx,caption,float,enumitem,tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,backgrounds}
+\definecolor{navy}{HTML}{102A43}
+\definecolor{blue}{HTML}{2F80ED}
+\definecolor{teal}{HTML}{00A6A6}
+\definecolor{orange}{HTML}{F2994A}
+\definecolor{lightblue}{HTML}{EEF5FF}
+\definecolor{lightteal}{HTML}{E8F8F5}
+\newcommand{\poc}{\textsc{POC}}
+\title{Context-Aware MTN for Pedestrian Trajectory Prediction\\\large A CPU-based Proof-of-Concept on IDD-PeD}
+\author{Author names to be added}
+\date{Draft -- \today}
+\begin{document}
+\maketitle
+\begin{abstract}
+This draft documents a context-aware extension of MTN for pedestrian trajectory prediction on IDD-PeD. The proposed proof-of-concept architecture, C4 Context-Aware MTN, augments observed pedestrian trajectories with six native context sources and shares only encoder self-attention projections across depth. The draft reports a matched CPU Farneback evaluation and explicitly distinguishes it from the authors' RAFT-based benchmark. Dynamic Multimodal Fusion is included as a separate evaluated candidate rather than part of the proposed C4 architecture.
+\end{abstract}
+\input{sections/proposed_methodology}
+\input{sections/experimental_results}
+\input{sections/ablation_study}
+\input{sections/limitations_and_next_steps}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

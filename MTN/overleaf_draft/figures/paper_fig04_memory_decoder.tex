@@ -1,0 +1,14 @@
+% Token append / decoder detail with a simple token visual.
+\begin{tikzpicture}[font=\small,
+ mem/.style={draw=blue!80!black,fill=blue!15,rounded corners=3pt,minimum height=17mm,text width=42mm,align=center},
+ tok/.style={draw=teal!80!black,fill=teal!20,rounded corners=3pt,minimum height=17mm,text width=38mm,align=center},
+ aug/.style={draw=purple!80!black,fill=purple!15,rounded corners=3pt,minimum height=17mm,text width=45mm,align=center},
+ outputbox/.style={draw=orange!80!black,fill=orange!20,rounded corners=3pt,minimum height=17mm,text width=42mm,align=center},
+ a/.style={-Latex,very thick,draw=blue},ca/.style={-Latex,very thick,draw=teal}]
+\node[mem](memory){15 trajectory tokens\\$[B,15,32]$};
+\node[tok,below=21mm of memory](token){1 gated context token\\$[B,1,32]$};
+\node[aug,right=28mm of memory,yshift=-11mm](append){Append\\16 decoder-memory tokens\\$[B,16,32]$};
+\node[mem,right=25mm of append](decoder){MTN Decoder $\times3$\\flow paths unchanged};
+\node[outputbox,right=25mm of decoder](output){Output head + residual\\future boxes\\$[B,45,4]$};
+\draw[a](memory)--(append);\draw[ca](token.east)-|(append.south);\draw[a](append)--(decoder);\draw[a](decoder)--(output);
+\end{tikzpicture}

@@ -1,0 +1,27 @@
+\begin{tikzpicture}[
+  font=\scriptsize,
+  box/.style={draw=blue, fill=lightblue, rounded corners=2pt, align=center, minimum height=8mm, text width=25mm},
+  ctx/.style={draw=teal, fill=lightteal, rounded corners=2pt, align=center, minimum height=8mm, text width=29mm},
+  share/.style={draw=teal, fill=lightteal, rounded corners=2pt, align=center, minimum height=8mm, text width=28mm},
+  arrow/.style={-Latex, thick, draw=blue}, sharearrow/.style={-Latex, dashed, thick, draw=teal}]
+\node[box] (obs) {Observed pedestrian trajectory\\$[B,15,4]$};
+\node[box, right=7mm of obs] (embed) {Source embedding + positional encoding\\$[B,15,32]$};
+\node[box, right=7mm of embed] (enc) {MTN Encoder $\times 3$\\trajectory representation};
+\node[box, right=7mm of enc] (mem) {Trajectory memory\\$[B,15,32]$};
+\draw[arrow] (obs)--(embed); \draw[arrow] (embed)--(enc); \draw[arrow] (enc)--(mem);
+\node[share, below=8mm of enc] (c4) {C4 cross-layer encoder self-attention sharing\\Same Q/K/V/O in Encoder layers 0--2};
+\draw[sharearrow] (c4.north)--($(enc.south)+(0.3,0)$);
+\node[ctx, below=22mm of obs, text width=40mm] (inputs) {Six native context inputs\\intersection, signalized, road, location, motion direction, observed occlusion};
+\node[ctx, right=7mm of inputs] (emb16) {Six 16-D embeddings};
+\node[ctx, right=7mm of emb16] (concat) {Concatenate\\$[B,96]$};
+\node[ctx, right=7mm of concat] (project) {Context projection\\$[B,32]$};
+\node[ctx, right=7mm of project] (gate) {Context admission gate\\gated context token\\$[B,1,32]$};
+\draw[arrow, draw=teal] (inputs)--(emb16); \draw[arrow, draw=teal] (emb16)--(concat); \draw[arrow, draw=teal] (concat)--(project); \draw[arrow, draw=teal] (project)--(gate);
+\node[box, below=21mm of mem] (append) {Append token to memory\\$[B,16,32]$};
+\draw[arrow] (mem)--(append); \draw[arrow, draw=teal] (gate)--(append);
+\node[box, below=12mm of append] (dec) {MTN Decoder $\times 3$\\existing flow paths unchanged};
+\node[box, left=7mm of dec] (head) {Output head + final observed-box residual};
+\node[box, left=7mm of head] (future) {Future trajectory\\$[B,45,4]$};
+\draw[arrow] (append)--(dec); \draw[arrow] (dec)--(head); \draw[arrow] (head)--(future);
+\node[draw=orange, fill=orange!12, rounded corners=2pt, align=left, text width=118mm, below=8mm of future.south east, anchor=north east] {\textbf{C4 scope.} Only EncoderLayer self-attention Q/K/V/O projections are shared. Encoder FFNs, normalisation, encoder src/cross attention, decoder modules, context branch, and output head remain independent. All encoder attention operations still execute; C4 reduces unique parameters, not FLOPs.};
+\end{tikzpicture}

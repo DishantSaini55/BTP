@@ -1,0 +1,55 @@
+\section{Proposed Methodology}
+\label{sec:method}
+
+\subsection{Problem formulation and MTN backbone}
+Given an observed pedestrian bounding-box trajectory $\mathbf{X}_{obs}\in\mathbb{R}^{B\times15\times4}$, the objective is to predict future bounding boxes $\widehat{\mathbf{X}}_{fut}\in\mathbb{R}^{B\times45\times4}$. The MTN backbone embeds the observed trajectory and adds positional encoding, producing a sequence of width $32$, i.e., $[B,15,32]$. Three MTN encoder layers generate trajectory memory $\mathbf{M}\in\mathbb{R}^{B\times15\times32}$. The original flow-related decoder paths are retained; the decoder output is mapped to four bounding-box coordinates and combined with the final observed-box residual. The dataset protocol and baseline implementation materials follow the official IDD-PeD release \cite{iddped2025,iddped_repo}.
+
+\subsection{Native IDD-PeD context branch}
+\label{sec:context}
+The first contribution is a context branch built only from six verified native IDD-PeD sources: \emph{intersection\_type}, \emph{signalized\_type}, \emph{road\_type}, \emph{location\_type}, \emph{motion\_direction}, and observed \emph{occlusion}. Day/night and illumination are not included because they were not verified as inputs of the implemented final context branch.
+
+Each source is represented by a 16-dimensional embedding. The five static labels use independent embedding lookups; the observed occlusion history is embedded and mean-pooled over observed steps. The six vectors are concatenated to a 96-dimensional context feature, then projected to the MTN width of 32. The original context-admission gate receives the context representation together with the final observed bounding box, and yields a gated context token $\mathbf{c}\in\mathbb{R}^{B\times1\times32}$. The token is appended \emph{after} the trajectory encoder, yielding augmented decoder memory $[B,16,32]$. This preserves the baseline trajectory memory while allowing the decoder's existing source-attention path to condition on scene context.
+
+\subsection{C4: cross-layer encoder self-attention weight sharing}
+\label{sec:c4}
+The second contribution is selective cross-layer sharing in the trajectory encoder. C4 aliases only the Q/K/V/O projections of \texttt{EncoderLayer.self\_attn} across encoder layers 0--2. The encoder's \texttt{src\_attn}, \texttt{cross\_attn}, feed-forward networks, normalisation layers, decoder modules, context branch, and output head remain independent. Therefore, C4 is not full layer sharing.
+
+This choice reduces the number of unique parameters while preserving the three sequential encoder-layer executions. It must consequently be interpreted as a parameter-footprint technique, not as a FLOP-reduction claim. The measured CPU latency is reported separately in Section~\ref{sec:results}.
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{\input{figures/paper_fig01_overview}}
+\caption{Colour-coded overview of the proposed C4 Context-Aware MTN. Blue: trajectory pathway; teal: native context pathway; orange: admission decision; purple: memory augmentation. Dashed teal denotes shared weights only.}
+\label{fig:c4-overview}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{\input{figures/paper_fig02_context_gate}}
+\caption{Context-token generation and admission gate. Each native context source is embedded before projection to the MTN width; the gate receives global context and the final observed box.}
+\label{fig:c4-context-gate}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{\input{figures/paper_fig03_c4_sharing}}
+\caption{C4 selective cross-layer sharing. Only encoder self-attention Q/K/V/O projections are tied across depth; remaining modules are independent.}
+\label{fig:c4-sharing}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{\input{figures/paper_fig04_memory_decoder}}
+\caption{Decoder-memory augmentation. The gated context becomes the sixteenth decoder-memory token without replacing the original 15 trajectory tokens.}
+\label{fig:c4-memory}
+\end{figure*}
+
+\subsection{Novel contributions}
+\begin{enumerate}[leftmargin=*,label=\textbf{C\arabic*.}]
+\item \textbf{Context-token augmentation of MTN.} The method introduces six verified IDD-PeD context sources as a gated 32-dimensional decoder-memory token without replacing the trajectory pathway.
+\item \textbf{Selective, technically scoped encoder sharing.} C4 ties only encoder self-attention Q/K/V/O across depth. This avoids incorrectly claiming that all encoder/decoder components are shared or that FLOPs decrease.
+\item \textbf{Matched evidence-driven architecture selection.} B, C4, F, and F+C4 were evaluated under a common small CPU protocol, enabling a factual comparison of accuracy, variation across seeds, parameter count, and latency.
+\end{enumerate}
+
+\subsection{Separate Dynamic Multimodal Fusion candidate}
+Dynamic Multimodal Fusion (F) was implemented and evaluated separately. It uses six 32-dimensional context tokens for cross-attention and a separate global context vector. The trajectory memory acts as query, while the six context tokens are keys and values. Identity, additive, and cross-attention candidates are computed, then a $64\rightarrow32\rightarrow3$ gate selects one operation per sample using hard Gumbel-Softmax in training and argmax/one-hot selection in evaluation. All three candidates are currently computed before selection; therefore F has no branch-skipping or resource-aware computational-saving claim. F is not included in the C4 proposed architecture in Figure~\ref{fig:c4-overview}.

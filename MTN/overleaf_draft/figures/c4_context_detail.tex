@@ -1,0 +1,17 @@
+% Figure B: context branch detail. Input groups are intentionally separated.
+\begin{tikzpicture}[font=\small,
+ input/.style={draw=teal,fill=white,rounded corners=2pt,align=center,minimum height=10mm,text width=30mm},
+ box/.style={draw=teal,fill=lightteal,rounded corners=2pt,align=center,minimum height=12mm,text width=38mm},
+ gate/.style={draw=orange,fill=orange!13,rounded corners=2pt,align=center,minimum height=13mm,text width=42mm},
+ arrow/.style={-Latex,very thick,draw=teal}]
+\node[input] (i1) {intersection\_type}; \node[input,below=6mm of i1] (i2) {signalized\_type};
+\node[input,below=6mm of i2] (i3) {road\_type}; \node[input,right=8mm of i1] (i4) {location\_type};
+\node[input,below=6mm of i4] (i5) {motion\_direction}; \node[input,below=6mm of i5] (i6) {observed occlusion\\history $[B,15]$};
+\node[draw=teal,rounded corners=3pt,inner sep=5mm,fit=(i1)(i6),label={[font=\bfseries,text=teal]above:Six native IDD-PeD context inputs}] (sources) {};
+\node[box,right=20mm of sources] (emb) {Five independent lookup embeddings\\+ mean-pooled occlusion embedding\\six 16-D representations};
+\node[box,right=15mm of emb] (concat) {Concatenation\\$[B,96]$};
+\node[box,right=15mm of concat] (project) {Context projection\\LayerNorm $\rightarrow$ Linear $96\!\rightarrow\!32$\\GELU, Dropout, Linear\\global context $[B,32]$};
+\node[gate,right=15mm of project] (gate) {Original context-admission gate\\global context $[B,32]$ + final box $[B,4]$\\$36\!\rightarrow\!16\!\rightarrow\!2$\\gated context token $[B,1,32]$};
+\draw[arrow] (sources)--(emb); \draw[arrow] (emb)--(concat); \draw[arrow] (concat)--(project); \draw[arrow] (project)--(gate);
+\node[draw=gray,fill=white,rounded corners=2pt,align=left,text width=156mm,below=18mm of concat] {\textbf{Purpose.} The branch transforms native scene/context labels into one gated token. It does not replace the trajectory representation; it supplies one additional decoder-memory token. Day/night and illumination are not used in the verified final C4 branch.};
+\end{tikzpicture}

@@ -1,0 +1,41 @@
+\section{Ablation Study}
+\label{sec:ablation}
+
+The ablation study is organised around completed experiments already documented in the project tracker. Results from different POC protocols are not merged into a single ranking; the unified 12-run ablation is the primary matched comparison.
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{\input{figures/paper_fig06_ablation}}
+\caption{Ablation design: each candidate isolates the contribution of native context, C4 sharing, dynamic fusion, or their combination.}
+\label{fig:ablation-design}
+\end{figure*}
+
+\subsection{Context contribution: original MTN versus B}
+An early paired \poc\ compared original MTN (A) with context-aware MTN (B) on 10 held-out trajectories from GP6 video 3, using one seed, 12 epochs, and CPU Farneback flow. A obtained MSE 1242.98, C-MSE 1225.17, CF-MSE 4093.85, and latency 69.24 ms. B obtained MSE 1113.21, C-MSE 1094.57, CF-MSE 3646.51, and latency 61.41 ms. This preliminary result motivated retaining the context branch. It is not directly comparable with the later unified one-epoch, three-seed experiment.
+
+\subsection{Full sharing versus targeted sharing}
+Full encoder-and-decoder sharing reduced parameters from 139,142 to 53,894 ($61.3\%$) but increased MSE from 1113.21 to 1339.31 and increased latency from 47.20 to 50.13 ms in its recorded POC. It was therefore rejected. This supports testing selective sharing rather than tying entire layers.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\caption{Targeted weight-sharing POC. C3 was not run because the current decoder has no active decoder self-attention. C5 was not run because genuine head sharing requires a new projection parameterisation.}
+\label{tab:targeted}
+\begin{tabular}{llrrrr}
+\toprule
+Variant & Sharing scope & Parameters & MSE & C-MSE & CF-MSE / latency (ms)\\
+\midrule
+B & None & 139,142 & 972.51 & 949.45 & 2802.67 / 47.79\\
+C1 & Decoder src\_attn Q/K/V/O & 130,694 & 1081.44 & 1049.76 & 3369.58 / 53.68\\
+C2a & Decoder src\_attn Q/K/V & 132,806 & 1188.92 & 1169.76 & 3940.10 / 56.30\\
+C2b & Decoder src\_attn K/V & 134,918 & 1152.49 & 1133.15 & 3807.02 / 47.99\\
+C4 & Encoder self\_attn Q/K/V/O & 130,694 & 819.99 & 798.82 & 2441.16 / 49.56\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Unified architecture ablation}
+The primary ablation is Table~\ref{tab:unified}, which compares B, C4, F, and F+C4 under the same split, seed set, optimiser, loss, epoch budget, and CPU flow cache. It separately tests: (i) C4 encoder self-attention sharing, (ii) F dynamic multimodal fusion, and (iii) their combination. This design demonstrates component contributions without changing the evaluation protocol between compared variants.
+
+\subsection{Interpretation and remaining ablations}
+The evidence indicates that selective C4 sharing is more promising than full sharing, decoder-targeted sharing, or the currently implemented F fusion. However, the observed C4 variance and latency increase require broader validation. The next ablation, if approved, should retain the same architecture and evaluate across additional held-out videos and a reproduced RAFT/GPU setting. It should measure the same MSE, C-MSE, CF-MSE, parameter count, latency, and seed-level variation. No additional result is claimed in this draft.

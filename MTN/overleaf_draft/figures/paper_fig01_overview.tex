@@ -1,0 +1,24 @@
+% Colourful paper-style overview. Text is intentionally short; detail belongs in the caption.
+\begin{tikzpicture}[font=\small,
+ t/.style={draw=blue,fill=blue!18,rounded corners=3pt,minimum height=12mm,text width=27mm,align=center},
+ c/.style={draw=teal,fill=teal!17,rounded corners=3pt,minimum height=12mm,text width=27mm,align=center},
+ g/.style={draw=orange,fill=orange!20,rounded corners=3pt,minimum height=12mm,text width=27mm,align=center},
+ o/.style={draw=purple,fill=purple!14,rounded corners=3pt,minimum height=12mm,text width=27mm,align=center},
+ a/.style={-Latex,very thick,draw=blue},ca/.style={-Latex,very thick,draw=teal},da/.style={-Latex,dashed,very thick,draw=teal}]
+\node[t] (x) {Observed boxes\\$[B,15,4]$};
+\node[t,right=10mm of x] (e) {Trajectory\\embedding\\$[B,15,32]$};
+\node[t,right=10mm of e] (enc) {MTN Encoder\\$\times 3$};
+\node[t,right=10mm of enc] (m) {Trajectory memory\\$[B,15,32]$};
+\node[o,right=12mm of m] (aug) {Append context\\token\\$[B,16,32]$};
+\node[t,right=10mm of aug] (dec) {MTN Decoder\\$\times3$};
+\node[t,right=10mm of dec] (y) {Future boxes\\$[B,45,4]$};
+\draw[a] (x)--(e);\draw[a](e)--(enc);\draw[a](enc)--(m);\draw[a](m)--(aug);\draw[a](aug)--(dec);\draw[a](dec)--(y);
+\node[c,below=17mm of enc] (share) {C4 shared\\Q / K / V / O};
+\draw[da](share)--(enc);
+\node[c,below=17mm of x] (scene) {Six IDD-PeD\\context sources};
+\node[c,right=10mm of scene] (ctx) {Embeddings +\\projection\\$[B,32]$};
+\node[g,right=10mm of ctx] (gate) {Admission\\gate};
+\node[o,right=10mm of gate] (token) {Context token\\$[B,1,32]$};
+\draw[ca](scene)--(ctx);\draw[ca](ctx)--(gate);\draw[ca](gate)--(token);\draw[ca](token.east)-| (aug.south);
+\node[font=\scriptsize,text=blue,below=7mm of ctx] {\textcolor{blue}{Solid: data flow} \qquad \textcolor{teal}{Dashed: shared weights only}};
+\end{tikzpicture}
