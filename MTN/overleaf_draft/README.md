@@ -2,7 +2,7 @@
 
 Upload this folder to Overleaf and set `main.tex` as the main document. The editable C4 figure is drawn with TikZ and needs no binary asset.
 
-This draft uses only completed CPU Farneback proof-of-concept (POC) results. It does not claim reproduction of the published RAFT-based IDD-PeD benchmark. Numerical prior-work values are intentionally omitted until they can be verified under a comparable protocol.
+This draft uses only completed CPU Farneback proof-of-concept (POC) results. It does not claim reproduction of the published RAFT-based IDD-PeD benchmark. Published prior-work values are included only as a clearly labelled dataset-context comparison; they must not be ranked numerically against the current CPU POC until the protocols are made comparable.
 
 ## Contents
 
