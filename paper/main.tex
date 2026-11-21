@@ -1,0 +1,54 @@
+% Two-column, IEEE-Transactions-style layout. For the final submission replace the
+% class/preamble by \documentclass[journal]{IEEEtran}; the sections are compatible.
+\documentclass[10pt,twocolumn,a4paper]{article}
+\usepackage[margin=0.75in,columnsep=0.25in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[expansion=false]{microtype}
+\usepackage{booktabs,array,xcolor,amsmath,amssymb,graphicx,caption,float,enumitem,multirow,titlesec,stfloats}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\captionsetup{font=footnotesize,labelfont=bf,labelsep=period,skip=3pt}
+\setlength{\bibsep}{0pt}\setlength{\itemsep}{0pt}\renewcommand{\bibfont}{\scriptsize}
+% IEEE-like headings
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+\titleformat{\section}{\centering\normalfont\small\scshape}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalfont\small\itshape}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{10pt}{5pt}\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+\setlength{\parskip}{0pt}\setlength{\parindent}{1em}
+% ---- macros --------------------------------------------------------------
+% ---- model names (always written out in full) ------------------------------
+\usepackage{xspace}
+\usepackage{algorithm}\usepackage{algpseudocode}
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}\algrenewcommand\algorithmicensure{\textbf{Output:}}
+\newcommand{\MTN}{MTN\xspace}
+\newcommand{\CAMTN}{PACE-Net without SATIE\xspace}
+\newcommand{\CAMTNS}{PACE-Net\xspace}
+\newcommand{\DFMTN}{PACE-Net with ROUTE\xspace}
+\newcommand{\DFMTNS}{PACE-Net with ROUTE and SATIE\xspace}
+\newcommand{\ESAS}{encoder self-attention sharing\xspace}
+% ---- verification markers: set \drafttrue to show unresolved items in red ----
+\newif\ifdraft \draftfalse
+\newcommand{\verify}[1]{\ifdraft\textcolor{red}{\textbf{[verify: #1]}}\fi}
+\DeclareMathOperator{\LN}{LN}\DeclareMathOperator{\MHA}{MHA}\DeclareMathOperator{\FFN}{FFN}
+\DeclareMathOperator{\Drop}{Drop}\DeclareMathOperator{\Emb}{Emb}
+\newcommand{\R}{\mathbb{R}}
+\title{\vspace{-0.6em}\Large\bfseries PACE-Net: Admission-Gated Context Enrichment for Pedestrian Trajectory Prediction in Unstructured Traffic}
+\author{\small Author names to be added\\[-2pt]\footnotesize Affiliation to be added}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent\textit{Abstract}---Predicting where a pedestrian will go in unstructured traffic is difficult because roads lack lane discipline and pedestrians are frequently occluded, yet most trajectory predictors reason only from motion cues such as bounding boxes, ego-vehicle speed and optical flow. This paper proposes PACE-Net (Pedestrian trajectory prediction with Admission-gated Context Enrichment), a new architecture for pedestrian trajectory prediction in unstructured traffic. The architecture has two pathways: a motion pathway that encodes boxes, speed and optical flow, and a context pathway in which a native scene-context encoder converts five static IDD-PeD scene attributes and the observed occlusion history into a single context token. Four components are proposed and evaluated: (i)~ROUTE (Routed Operator Unification of Trajectory and Environment), an adaptive context-memory fusion module that selects per sample how the context is merged with the trajectory memory; (ii)~SAGE (Sample-wise Admission Gate for Evidence), which decides per sample whether the context is used at all; (iii)~MASC (Memory Augmentation with Source-masked Context), in which the gated token is appended to the decoder memory and masked out of attention when rejected; and (iv)~SATIE (Self-Attention Tying in the Encoder), a selective weight-parameter sharing scheme that ties only the encoder self-attention projections across the three encoder layers and removes $6.07\%$ of the parameters. In a matched proof-of-concept study on IDD-PeD (fixed 32/8/24 split, three random seeds), PACE-Net obtained the lowest mean squared error (1080.2, compared with 1137.1 for the same architecture without sharing, a $5.0\%$ reduction), whereas ROUTE and full encoder--decoder weight sharing did not help (the final configuration therefore uses SAGE and MASC together with SATIE). The improvement is not statistically significant with three seeds (paired $p=0.45$), and the protocol differs from the published benchmark, so the results are presented as evidence motivating full-scale validation rather than as a benchmark claim.
+\par\smallskip\noindent\textit{Index Terms}---Pedestrian trajectory prediction, unstructured traffic, scene context, admission gating, adaptive fusion, transformer, weight sharing, IDD-PeD.
+\end{abstract}
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/proposed_methodology}
+\input{sections/experimental_results}
+\input{sections/ablation_study}
+\input{sections/limitations_and_next_steps}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

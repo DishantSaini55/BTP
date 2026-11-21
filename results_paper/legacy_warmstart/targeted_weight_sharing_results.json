@@ -1,0 +1,459 @@
+{
+  "protocol": "same cached Farneback flows; same 32/8/10 split; seed 20260928; Adam lr 1e-3; batch 8; MSE; one epoch; CPU thread cap 4. Baseline and every targeted variant were independently initialized from the same official checkpoint and trained identically.",
+  "B": {
+    "strategy": "No sharing",
+    "parameters": 139142,
+    "attention_parameters": 76032,
+    "metrics": {
+      "mse": 972.5131363301183,
+      "cmse": 949.4479246362607,
+      "cfmse": 2802.666084000914,
+      "seconds": 0.049756020001950674
+    },
+    "per_sample": [
+      {
+        "mse": 693.6734598036876,
+        "cmse": 645.8573586755471,
+        "cfmse": 1749.668429982004,
+        "seconds": 0.051712400003452785
+      },
+      {
+        "mse": 5656.073544259379,
+        "cmse": 5622.2922398123765,
+        "cfmse": 16721.1766263069,
+        "seconds": 0.05551619999459945
+      },
+      {
+        "mse": 82.27789374623683,
+        "cmse": 76.28343055846456,
+        "cfmse": 261.2741768151719,
+        "seconds": 0.04747330000100192
+      },
+      {
+        "mse": 135.95414316431678,
+        "cmse": 127.79871869938196,
+        "cfmse": 241.14217621904965,
+        "seconds": 0.042799200004083104
+      },
+      {
+        "mse": 598.5298467113,
+        "cmse": 588.841416880751,
+        "cfmse": 2013.089031376327,
+        "seconds": 0.045836599994800054
+      },
+      {
+        "mse": 545.885561110538,
+        "cmse": 520.0695710147027,
+        "cfmse": 1232.9914765504418,
+        "seconds": 0.04617260000668466
+      },
+      {
+        "mse": 957.7938238967391,
+        "cmse": 930.6798084758634,
+        "cfmse": 3415.4648601220124,
+        "seconds": 0.04485700000077486
+      },
+      {
+        "mse": 482.1931593327074,
+        "cmse": 465.7254689708665,
+        "cfmse": 1038.416218135953,
+        "seconds": 0.05773500000941567
+      },
+      {
+        "mse": 49.5987747779536,
+        "cmse": 14.985311661333496,
+        "cfmse": 37.86487987711459,
+        "seconds": 0.05661470000632107
+      },
+      {
+        "mse": 523.1511564983265,
+        "cmse": 501.9459216133203,
+        "cfmse": 1315.5729646241625,
+        "seconds": 0.048843199998373166
+      }
+    ],
+    "latency": {
+      "mean_seconds": 0.04778995800021221,
+      "std_seconds": 0.0050009928241506385,
+      "runs": 200,
+      "warmup_passes": 5
+    },
+    "checkpoint_bytes": 1940195,
+    "training": {
+      "validation_mse": 12.744172096252441,
+      "context_gradient_l1_first_batch": 0.028126699849963188,
+      "validation_history": [
+        12.744172096252441
+      ],
+      "official_tensors_loaded": 242
+    }
+  },
+  "variants": {
+    "decoder_src_attn": {
+      "shared_at": "Decoder source cross-attention: complete Q/K/V/O module",
+      "parameters": 130694,
+      "attention_parameters": 67584,
+      "metrics": {
+        "mse": 1081.4411975485343,
+        "cmse": 1049.7603549111009,
+        "cfmse": 3369.576366003471,
+        "seconds": 0.05423153999872739
+      },
+      "per_sample": [
+        {
+          "mse": 1136.9041154029567,
+          "cmse": 1125.0260013702375,
+          "cfmse": 3945.583482310397,
+          "seconds": 0.054437099999631755
+        },
+        {
+          "mse": 6973.474194737806,
+          "cmse": 6951.743631812823,
+          "cfmse": 22290.563325139537,
+          "seconds": 0.05441609999979846
+        },
+        {
+          "mse": 25.522098696085372,
+          "cmse": 4.944686227038312,
+          "cfmse": 15.415469460279533,
+          "seconds": 0.053849799995077774
+        },
+        {
+          "mse": 44.95261837949539,
+          "cmse": 19.333034585303736,
+          "cfmse": 12.12484513320307,
+          "seconds": 0.05619509999814909
+        },
+        {
+          "mse": 1522.5690926962293,
+          "cmse": 1502.9917296503606,
+          "cfmse": 4834.028653763562,
+          "seconds": 0.049144700009492226
+        },
+        {
+          "mse": 217.70415271693088,
+          "cmse": 175.70059332110878,
+          "cfmse": 406.1413863099758,
+          "seconds": 0.05641049999394454
+        },
+        {
+          "mse": 411.6246888054384,
+          "cmse": 369.56094802354016,
+          "cfmse": 1297.01564926493,
+          "seconds": 0.049927100000786595
+        },
+        {
+          "mse": 164.82714224089207,
+          "cmse": 124.69903076846927,
+          "cfmse": 187.40226048800287,
+          "seconds": 0.049000899991369806
+        },
+        {
+          "mse": 156.95872873475872,
+          "cmse": 102.20332091124476,
+          "cfmse": 466.04225475894236,
+          "seconds": 0.058313200002885424
+        },
+        {
+          "mse": 159.87514307474981,
+          "cmse": 121.40057244088275,
+          "cfmse": 241.44633340588342,
+          "seconds": 0.06062089999613818
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.053683729999538625,
+        "std_seconds": 0.03264818980464369,
+        "runs": 200,
+        "warmup_passes": 5
+      },
+      "checkpoint_bytes": 1904147,
+      "training": {
+        "validation_mse": 10.676522254943848,
+        "context_gradient_l1_first_batch": 0.1282547414302826,
+        "validation_history": [
+          10.676522254943848
+        ],
+        "official_tensors_loaded": 242
+      }
+    },
+    "decoder_src_qkv": {
+      "shared_at": "Decoder source cross-attention: Q/K/V projections only",
+      "parameters": 132806,
+      "attention_parameters": 69696,
+      "metrics": {
+        "mse": 1188.9212292635855,
+        "cmse": 1169.7553603771314,
+        "cfmse": 3940.0976728740234,
+        "seconds": 0.09943323000188684
+      },
+      "per_sample": [
+        {
+          "mse": 1420.0601511658328,
+          "cmse": 1407.6337151492976,
+          "cfmse": 5770.671334747012,
+          "seconds": 0.05003849999047816
+        },
+        {
+          "mse": 7739.664076118564,
+          "cmse": 7719.602786055248,
+          "cfmse": 26718.369899428515,
+          "seconds": 0.04353760000958573
+        },
+        {
+          "mse": 83.38177316000228,
+          "cmse": 73.3228932033718,
+          "cfmse": 77.6865415551534,
+          "seconds": 0.04071240000484977
+        },
+        {
+          "mse": 53.11845113571155,
+          "cmse": 38.83846301591076,
+          "cfmse": 36.98555333133748,
+          "seconds": 0.04523760000301991
+        },
+        {
+          "mse": 1695.7081836224204,
+          "cmse": 1686.5902363595171,
+          "cfmse": 4480.030768999311,
+          "seconds": 0.04670209999312647
+        },
+        {
+          "mse": 92.59171330865306,
+          "cmse": 69.14479412559122,
+          "cfmse": 184.2046509849065,
+          "seconds": 0.048901100002694875
+        },
+        {
+          "mse": 309.351237831239,
+          "cmse": 285.0836516107291,
+          "cfmse": 1071.1021068676982,
+          "seconds": 0.06106950000685174
+        },
+        {
+          "mse": 51.32706219851362,
+          "cmse": 29.705188376343422,
+          "cfmse": 54.9128302549913,
+          "seconds": 0.4746715000073891
+        },
+        {
+          "mse": 342.53599688562537,
+          "cmse": 308.83742605285056,
+          "cfmse": 833.9078517167513,
+          "seconds": 0.13559440000972245
+        },
+        {
+          "mse": 101.47364720929302,
+          "cmse": 78.7944498224527,
+          "cfmse": 173.10519085455803,
+          "seconds": 0.0478675999911502
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.056295942500873934,
+        "std_seconds": 0.027605986218589416,
+        "runs": 200,
+        "warmup_passes": 5
+      },
+      "checkpoint_bytes": 1913203,
+      "training": {
+        "validation_mse": 10.552115440368652,
+        "context_gradient_l1_first_batch": 0.24203012883663177,
+        "validation_history": [
+          10.552115440368652
+        ],
+        "official_tensors_loaded": 242
+      }
+    },
+    "decoder_src_kv": {
+      "shared_at": "Decoder source cross-attention: K/V projections only",
+      "parameters": 134918,
+      "attention_parameters": 71808,
+      "metrics": {
+        "mse": 1152.4858406698672,
+        "cmse": 1133.146344835982,
+        "cfmse": 3807.0237965099504,
+        "seconds": 0.04650397000223165
+      },
+      "per_sample": [
+        {
+          "mse": 1210.7419163845686,
+          "cmse": 1196.8380337083024,
+          "cfmse": 5104.938242860695,
+          "seconds": 0.05279619999055285
+        },
+        {
+          "mse": 7193.485581866379,
+          "cmse": 7175.009150475283,
+          "cfmse": 25193.380360540395,
+          "seconds": 0.05194760000449605
+        },
+        {
+          "mse": 140.2727001638993,
+          "cmse": 129.59756610809802,
+          "cfmse": 175.65825293014575,
+          "seconds": 0.04842960000678431
+        },
+        {
+          "mse": 54.44449797018252,
+          "cmse": 39.50043059506482,
+          "cfmse": 0.7198737717976739,
+          "seconds": 0.04607470000337344
+        },
+        {
+          "mse": 2018.054445959315,
+          "cmse": 2008.7210849310154,
+          "cfmse": 5446.0503935118095,
+          "seconds": 0.04685139999492094
+        },
+        {
+          "mse": 63.466105766276975,
+          "cmse": 39.794103767529734,
+          "cfmse": 51.975776408527665,
+          "seconds": 0.045552700001280755
+        },
+        {
+          "mse": 223.03529698266365,
+          "cmse": 199.47416099604936,
+          "cfmse": 700.742883453938,
+          "seconds": 0.04589540000597481
+        },
+        {
+          "mse": 41.348824392445636,
+          "cmse": 19.0170552382224,
+          "cfmse": 2.4273581658949386,
+          "seconds": 0.042245000004186295
+        },
+        {
+          "mse": 500.4301149241169,
+          "cmse": 465.42816754331363,
+          "cfmse": 1291.5404941194017,
+          "seconds": 0.0419153999973787
+        },
+        {
+          "mse": 79.57892228882586,
+          "cmse": 58.083694996940594,
+          "cfmse": 102.80432933690629,
+          "seconds": 0.04333170001336839
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.047990237500489454,
+        "std_seconds": 0.005884778437609537,
+        "runs": 200,
+        "warmup_passes": 5
+      },
+      "checkpoint_bytes": 1922187,
+      "training": {
+        "validation_mse": 10.520359992980957,
+        "context_gradient_l1_first_batch": 0.0567203089594841,
+        "validation_history": [
+          10.520359992980957
+        ],
+        "official_tensors_loaded": 242
+      }
+    },
+    "encoder_self_attn": {
+      "shared_at": "Encoder self-attention: complete Q/K/V/O module",
+      "parameters": 130694,
+      "attention_parameters": 67584,
+      "metrics": {
+        "mse": 819.9888688018452,
+        "cmse": 798.8248320743924,
+        "cfmse": 2441.160073596665,
+        "seconds": 0.0473554200027138
+      },
+      "per_sample": [
+        {
+          "mse": 630.1716773410882,
+          "cmse": 580.3113086014267,
+          "cfmse": 1792.7957823965946,
+          "seconds": 0.05230189999565482
+        },
+        {
+          "mse": 5442.589834708295,
+          "cmse": 5406.887625599397,
+          "cfmse": 16766.59775952392,
+          "seconds": 0.052834600006463006
+        },
+        {
+          "mse": 23.74869072607082,
+          "cmse": 17.446766884478187,
+          "cfmse": 12.04858263446531,
+          "seconds": 0.047204600006807595
+        },
+        {
+          "mse": 24.560723497264878,
+          "cmse": 17.721056211512522,
+          "cfmse": 11.698455922158027,
+          "seconds": 0.040538900007959455
+        },
+        {
+          "mse": 943.1030909155214,
+          "cmse": 935.527754567014,
+          "cfmse": 2999.361193036896,
+          "seconds": 0.041403499999432825
+        },
+        {
+          "mse": 252.64873181982293,
+          "cmse": 232.14507740330868,
+          "cfmse": 554.8063215424784,
+          "seconds": 0.04246929999499116
+        },
+        {
+          "mse": 460.3698770727359,
+          "cmse": 433.57743725467105,
+          "cfmse": 1429.2546783941732,
+          "seconds": 0.052958600004785694
+        },
+        {
+          "mse": 187.30706415512157,
+          "cmse": 177.18896651329607,
+          "cfmse": 267.88375511823585,
+          "seconds": 0.04841170000145212
+        },
+        {
+          "mse": 84.82414618451675,
+          "cmse": 59.34001791985773,
+          "cfmse": 346.3654627275541,
+          "seconds": 0.049842000007629395
+        },
+        {
+          "mse": 150.56485159801605,
+          "cmse": 128.1023097889614,
+          "cfmse": 230.78874467017096,
+          "seconds": 0.045589100001961924
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.04956400100018073,
+        "std_seconds": 0.00857792097827175,
+        "runs": 200,
+        "warmup_passes": 5
+      },
+      "checkpoint_bytes": 1904331,
+      "training": {
+        "validation_mse": 12.822417259216309,
+        "context_gradient_l1_first_batch": 0.02712167799472809,
+        "validation_history": [
+          12.822417259216309
+        ],
+        "official_tensors_loaded": 242
+      }
+    }
+  },
+  "not_run": {
+    "C3_decoder_self_attention": "Not applicable: current DecoderLayer has no self_attn module. It uses src_attn, spd_attn, and ped_attn cross-attention paths.",
+    "C5_head_sharing": "Not implemented: each MultiHeadAttention uses four full d_model\u00d7d_model projections, then reshapes into heads; there are no independent per-head Q/K/V parameter tensors to alias safely without redesigning the projection parameterization."
+  },
+  "architecture_facts": {
+    "encoder_layers": 3,
+    "decoder_layers": 3,
+    "attention_modules": 18,
+    "attention_calls_per_forward": 18,
+    "d_model": 32,
+    "heads": 4,
+    "d_ff": 128,
+    "cpu_threads": 4
+  }
+}

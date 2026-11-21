@@ -1,0 +1,75 @@
+\section{Ablation Study}\label{sec:ablation}
+The proposed model has three separable ingredients: the scene information itself, the SAGE admission gate, and SATIE encoder self-attention sharing; ROUTE (adaptive context-memory fusion) is the alternative way of using the scene information. This section reports the ablations that have been executed and specifies the further ablations needed to attribute the gains to each component. Results from different protocols are never merged into one ranking; the matched four-model experiment is the primary comparison.
+
+\subsection{Component Inventory}
+\begin{table*}[t]
+\centering
+\caption{Components of the proposed model, the question each ablation answers, the comparison used, and its status.}
+\label{tab:inventory}
+\footnotesize
+\begin{tabular}{p{3.6cm}p{5.6cm}p{5.6cm}p{2.4cm}}
+\toprule
+Component & Question & Comparison & Status\\
+\midrule
+Gated scene-context token & Does native scene and occlusion information help? & MTN vs.\ \CAMTN & done (single seed)\\
+Context fields & Which of the six cues matter? & \CAMTN vs.\ \CAMTN without one field & proposed\\
+SAGE admission gate & Is per-sample admission better than always adding the token? & Learned gate vs.\ always open vs.\ always closed & proposed\\
+Gate relaxation & Does the discrete decision matter? & Hard Gumbel-softmax vs.\ sigmoid gate & proposed\\
+Sharing scope & Which sub-modules can be tied safely? & None / decoder / encoder / encoder and decoder & done\\
+SATIE (encoder self-attention sharing) & Does tying encoder self-attention help? & \CAMTN vs.\ \CAMTNS & done (three seeds)\\
+ROUTE (adaptive context-memory fusion) & Is richer fusion better than a single token? & \CAMTN vs.\ \DFMTN & done (three seeds)\\
+Interaction & Do sharing and fusion combine? & $2{\times}2$ factorial design & done\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Executed Ablations}
+\paragraph{(1) Contribution of the scene-context branch.}
+In the early paired study (one seed, 12 epochs, 10 held-out trajectories), MSE fell from 1242.98 (MTN) to 1113.21 (\CAMTN) and CF-MSE from 4093.85 to 3646.51 when the gated context token was added, at a cost of 5,442 parameters. This isolates the effect of the context token from sharing and fusion, but it rests on a single seed and a small test set.
+
+\paragraph{(2) Scope of weight sharing.}
+Sharing the complete encoder and decoder reduced the parameters of \CAMTN from 139,142 to 53,894 ($-61.3\%$) but raised MSE from 1113.21 to 1339.31 ($+20.3\%$) in its recorded study, so it was rejected: layers that play different roles should not be tied wholesale. Targeted sharing was then tested in a separate study (Table~\ref{tab:targeted}). Sharing decoder source-attention projections (in three variants) made MSE worse, whereas sharing the encoder self-attention was the only scope that improved on the unshared model of that study. Sharing decoder self-attention is impossible because the decoder has no self-attention, and head sharing requires a new projection parameterisation, so neither was run. The ordering suggests that sharing is harmless where the shared operation applies the same function repeatedly (encoder self-attention) and harmful where layers condition on different sources (decoder cross-attention).
+
+\begin{table}[t]
+\centering
+\caption{Targeted-sharing study (separate protocol with its own unshared reference model; test MSE and final-step centre error CF-MSE, squared pixels).\verify{values transcribed from the earlier draft; not present in the evaluation workbook, confirm against run logs}}
+\label{tab:targeted}
+\scriptsize\resizebox{\columnwidth}{!}{%
+\begin{tabular}{p{4.3cm}rrr}
+\toprule
+Shared parameters & Parameters & MSE & CF-MSE\\
+\midrule
+None (\CAMTN) & 139,142 & 972.51 & 2802.67\\
+Decoder source-attention $Q,K,V,O$ & 130,694 & 1081.44 & 3369.58\\
+Decoder source-attention $Q,K,V$ & 132,806 & 1188.92 & 3940.10\\
+Decoder source-attention $K,V$ & 134,918 & 1152.49 & 3807.02\\
+Encoder self-attention $Q,K,V,O$ (proposed) & 130,694 & 819.99 & 2441.16\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\paragraph{(3) SATIE under the matched protocol.}
+\CAMTNS lowers the mean MSE of \CAMTN by 56.9 ($-5.0\%$) and is better on two of three seeds, but the gap is not significant ($p=0.45$, $n=3$; Table~\ref{tab:seed}). The direction is consistent with the targeted-sharing study, which supports the claim that sharing does not hurt, whereas a confident claim of improvement needs more seeds.
+
+\paragraph{(4) ROUTE and the factorial design.}
+Table~\ref{tab:factorial} crosses the two design choices. Encoder self-attention sharing lowers the error in both rows ($-56.9$ for the gated context token and $-28.1$ with adaptive fusion), whereas adaptive fusion raises it in both columns ($+17.7$ without and $+46.5$ with sharing). The interaction is $+28.8$ MSE: sharing is less effective once fusion is added. The main effects are $-42.5$ (sharing) and $+32.1$ (fusion). The failure of adaptive fusion is therefore not caused by sharing. A plausible reason is that six extra tokens and a three-way gate introduce too many new parameters to be learned from very little training data in one epoch, and that the cross-attention candidate duplicates what the decoder's memory attention already does with a single token; this is a hypothesis that has not been tested.
+
+\begin{table}[t]
+\centering
+\caption{$2{\times}2$ factorial ablation (mean test MSE over three seeds): use of context (gated token or adaptive fusion) $\times$ encoder self-attention sharing.}
+\label{tab:factorial}
+\scriptsize\resizebox{\columnwidth}{!}{\input{sections/tab_factorial}}
+\end{table}
+
+\subsection{Ablations Still Required}
+The executed ablations show that encoder self-attention sharing is not harmful and that adaptive fusion is not beneficial, but they do not yet isolate every part of the scene-context branch. The following experiments, all under the matched protocol, would complete the study.
+\begin{enumerate}[leftmargin=1.6em,itemsep=1pt,topsep=2pt]
+\item \textbf{Baseline in the matched protocol.} Train MTN (133,700 parameters) with three seeds to place MTN, \CAMTN and \CAMTNS on a common footing and to test the context effect statistically.
+\item \textbf{Leave-one-out context fields.} Remove each of the six cues in turn (and all static labels together) to rank their contribution, e.g.\ whether occlusion alone explains most of the gain.
+\item \textbf{Gate ablation.} Compare the learned gate with an always-open gate and an always-closed gate, and report the fraction of test samples admitted and the error on admitted versus rejected samples.
+\item \textbf{Gate relaxation.} Compare the hard straight-through Gumbel-softmax gate with a soft sigmoid gate.
+\item \textbf{Sharing granularity.} Share the projections in subsets (e.g.\ only $Q,K$), share only two of the three layers, and add two controls: independent weights with a shared initialisation, and a narrower unshared model with 130,694 parameters, to separate the regularising effect of tying from simple parameter reduction.
+\item \textbf{More seeds and a larger test set.} At least ten seeds with a paired test and confidence interval, and evaluation on the full 30\% IDD-PeD test split.
+\item \textbf{Stratified error analysis.} Report errors by occlusion state, day versus night, signalised versus unsignalised scenes and ego speed, as in the benchmark analysis of~\citep{iddped2025}.
+\item \textbf{Training protocol.} Repeat the main comparison (MTN, \CAMTN, \CAMTNS) with RAFT optical flow and training to convergence, so that the results become comparable with the published numbers in Table~\ref{tab:prior}.
+\end{enumerate}

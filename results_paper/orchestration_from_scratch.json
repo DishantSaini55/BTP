@@ -1,0 +1,5 @@
+{
+  "status": "blocked",
+  "reason": "B1 did not complete cleanly",
+  "b1_metric_files": 4
+}

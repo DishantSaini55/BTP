@@ -1,0 +1,48 @@
+# PACE-Net paper work log
+
+## 2026-11-21 — orientation only
+
+- Extracted the author-supplied `overleaf_project (2).zip` to `paper/`; no TeX source was edited.
+- Audited the local code, the existing artifacts under `D:\IDD-PeD-Evaluation`, the supplied manuscript source, and the official IDD-PeD MTN evaluation source.
+- Instantiated all five prescribed models. Parameter counts are exactly 133,700; 139,142; 130,694; 154,007; and 145,559 in the requested model order. SATIE passed module identity, tensor `data_ptr()`, and unique-optimizer-parameter checks.
+- Wrote `ORIENTATION.md`. Per the task boundary, no smoke test, training, evaluation, result migration, qualitative analysis, baseline download, or manuscript update was started.
+
+Current repository commit observed before this documentation change: `2572a86567f9d7ef6b6d690ca83f06579288c0b9`.
+
+## 2026-11-21 — leakage audit (blocking)
+
+- Read the official default IDD-PeD split implementation and inspected the local official annotation cache.
+- Found that the official MTN training split includes `gp_set_0006`, whose videos are `gp_set_0006_vid_0001`, `_0002`, and `_0003`.
+- The local 32/8/24 protocol assigns those same videos to validation, local train, and local test respectively. Therefore the official MTN warm-start checkpoint contaminates the local test video.
+- Wrote `ORIENTATION_ADDENDUM.md` and stopped before runner implementation, smoke tests, E1, B1, E2/E3 changes, or baseline work, awaiting the author's decision.
+- E8 remains skipped because the SAGE x_T input is normalised; the requested E2/E3 changes have not yet been implemented because the leakage stop condition took precedence.
+
+## 2026-11-21 — leakage-free test-asset inventory (blocking)
+
+- Following the author's Option 1 decision, checked every official default-test set (`gp_set_0003`, `_0005`, `_0008`, `_0009`) for local pedestrian annotations, extracted images and source videos before selecting windows or computing flow.
+- Only GP8 has local annotation XMLs (videos 0001, 0004 and 0005); none of those videos has local images or a source video. GP3, GP5 and GP9 have no local test annotations or video assets.
+- There are zero locally flow-usable, leakage-free official-test videos. This is below the pre-registered minimum of three from at least two sets.
+- Updated `ORIENTATION_ADDENDUM.md` and stopped. `results_paper/config/SPLIT.md` was intentionally not created because no valid test set can yet be frozen. No flow, legacy migration, runner work, smoke test, B1 or E1 was started.
+
+## 2026-11-21 — from-scratch Option 1b protocol frozen
+
+- The author selected a leakage-free from-scratch study within GP6 rather than the unavailable official-test-video option.
+- Wrote `config/SPLIT.md` before computing flow or running any model. It forbids all official-checkpoint use, fixes video-level train/validation/test roles, a 60-frame stride-30 window rule, train-only normalization, 50 maximum epochs, validation-only early stopping with patience 10, ten seeds, and a two-window moving-block bootstrap caveat.
+- Pending before launch: count/materialise eligible windows, verify the local Farneback environment, estimate CPU time for flow and training, and report that estimate to the author. No flow, model execution, smoke test, baseline, legacy migration, or E1 run has begun.
+
+## 2026-11-21 — pre-launch workload estimate
+
+- Read-only materialisation found 212 train windows from GP6 video 2, 43 validation windows from video 1 before frame 4000, and 217 test windows from video 3, all 60 consecutive source frames with stride 30.
+- Recorded the exact counts and the missing OpenCV dependency in `config/SPLIT.md`.
+- Wrote `config/CPU_TIME_ESTIMATE.md`: estimated 1-3 CPU hours for cache-aware Farneback flow (3-8 without caching), 10-18 worst-case CPU hours for E1, and 4-7 hours if early stopping averages 20 epochs; B1 adds an estimated 1-3 hours.
+- Confirmed that the active Python environment lacks `cv2`; no flow, runner, smoke test, baseline, legacy migration, or E1 run has been launched. Awaiting pre-launch approval and dependency-install direction.
+
+## 2026-11-21 — from-scratch flow cache and runner smoke tests
+
+- Installed CPU OpenCV (`opencv-python-headless` 5.1.0) after the fixed split and workload estimate were written. A single cache-aware sequential Farneback job wrote `splits/gp6_from_scratch_v1/flow_splits.pkl` and `flow_metadata.json`; it did not overwrite any artifact.
+- The cache contains 212 train, 43 validation and 217 test windows. Every `ego_op_flow` array is `[60,64,2]`, every `ped_op_flow` array is `[60,9,2]`, all values are finite, and the intentionally unused final flow slot is zero. The frozen test-ID SHA-256 is `6e19d53af0552d271ec1ec7dfd63c0a9aaa803d52250b018fdcbdbf655a71dbe`.
+- OpenCV/FFmpeg emitted recoverable H.264 decode warnings while reading source videos. The job completed normally and feature validation passed; the warning log is retained beside the cache as `flow_stderr.log`.
+- Archived copies of the earlier official-checkpoint GP6 result records under `legacy_warmstart/` with a README marking them contaminated/adaptation artifacts. They will not enter any result summary or test.
+- Implemented the fresh E1 runner. Each run records exact `state_dict` initialization-key names/shapes/SHA-256 digests, `loaded_keys: []`, the source revision and local source hashes, full validation history, checkpoint, per-window predictions, gate decisions/logits where applicable, and decoder source-attention weights for every layer/head. It never loads an official checkpoint.
+- Five-model smoke test passed: parameter counts are 133,700; 139,142; 130,694; 154,007; and 145,559; all outputs are finite; SATIE object/parameter/data-pointer sharing and unique optimizer registration passed. The forced SAGE g=0 path now bypasses the appended context token and exactly equals the motion-only output. The initial implementation appended a masked token and differed by at most `7.15e-7` due to attention reduction order; it was corrected before any training run.
+- Implemented and smoke-tested B1. Constant-position and three-observed-frame constant-velocity predictors are deterministic; fresh 32-hidden-unit autoregressive LSTM baselines use boxes+ego speed, with a separately specified static-scene-label variant. Both LSTM outputs are `[batch,45,4]` and finite; their counts are 9,988 and 10,760. No B1 or E1 metric run has yet begun.

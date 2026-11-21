@@ -1,0 +1,137 @@
+{
+  "checks": {
+    "MTN (baseline)": {
+      "parameters": 133700,
+      "expected_parameters": 133700,
+      "shape": [
+        2,
+        45,
+        4
+      ],
+      "finite": true
+    },
+    "PACE-Net without SATIE (SAGE + MASC)": {
+      "parameters": 139142,
+      "expected_parameters": 139142,
+      "shape": [
+        2,
+        45,
+        4
+      ],
+      "finite": true,
+      "g0_equals_motion_only": true,
+      "g0_context_token_absent": true
+    },
+    "PACE-Net (SAGE + MASC + SATIE)": {
+      "parameters": 130694,
+      "expected_parameters": 130694,
+      "shape": [
+        2,
+        45,
+        4
+      ],
+      "finite": true,
+      "g0_equals_motion_only": true,
+      "g0_context_token_absent": true,
+      "satie": {
+        "encoder_layers": 3,
+        "projections": {
+          "Q": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "K": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "V": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "O": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          }
+        },
+        "optimizer_registration": {
+          "named_parameter_entries": 240,
+          "unique_parameter_objects": 240,
+          "has_duplicate_parameter_objects": false
+        },
+        "verified": true
+      }
+    },
+    "PACE-Net with ROUTE": {
+      "parameters": 154007,
+      "expected_parameters": 154007,
+      "shape": [
+        2,
+        45,
+        4
+      ],
+      "finite": true
+    },
+    "PACE-Net with ROUTE and SATIE": {
+      "parameters": 145559,
+      "expected_parameters": 145559,
+      "shape": [
+        2,
+        45,
+        4
+      ],
+      "finite": true,
+      "satie": {
+        "encoder_layers": 3,
+        "projections": {
+          "Q": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "K": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "V": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "O": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          }
+        },
+        "optimizer_registration": {
+          "named_parameter_entries": 260,
+          "unique_parameter_objects": 260,
+          "has_duplicate_parameter_objects": false
+        },
+        "verified": true
+      }
+    }
+  },
+  "test_sample_id_sha256": "6e19d53af0552d271ec1ec7dfd63c0a9aaa803d52250b018fdcbdbf655a71dbe"
+}

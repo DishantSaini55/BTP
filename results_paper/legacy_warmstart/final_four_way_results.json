@@ -1,0 +1,517 @@
+{
+  "protocol": "Unified fixed 32/8/24 CPU Farneback POC; Adam 1e-3; batch 8; MSE; one epoch; three seeds.",
+  "models": {
+    "B": {
+      "20260928": {
+        "parameters": 139142,
+        "trainable_parameters": 139142,
+        "checkpoint_bytes": 1939667,
+        "training": {
+          "training_seconds": 1.6093179000017699,
+          "validation_mse": 12.744172096252441,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1140.1031335407877,
+          "cmse": 1110.0646876444437,
+          "cfmse": 2948.229887651121,
+          "seconds": 0.048077904167560824
+        },
+        "latency": {
+          "mean_seconds": 0.04593468750050912,
+          "std_seconds": 0.011759287011432225,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": null
+      },
+      "20260929": {
+        "parameters": 139142,
+        "trainable_parameters": 139142,
+        "checkpoint_bytes": 1939667,
+        "training": {
+          "training_seconds": 1.2620884000061778,
+          "validation_mse": 12.846709251403809,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1155.6013031814684,
+          "cmse": 1125.5634067140306,
+          "cfmse": 3084.090223799525,
+          "seconds": 0.0397693999978704
+        },
+        "latency": {
+          "mean_seconds": 0.048626930833294564,
+          "std_seconds": 0.012976593869747899,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": null
+      },
+      "20260930": {
+        "parameters": 139142,
+        "trainable_parameters": 139142,
+        "checkpoint_bytes": 1939667,
+        "training": {
+          "training_seconds": 1.2930808999954024,
+          "validation_mse": 12.832653999328613,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1115.620337449123,
+          "cmse": 1086.5689158496104,
+          "cfmse": 2881.7522424985978,
+          "seconds": 0.03942291666923362
+        },
+        "latency": {
+          "mean_seconds": 0.04219323083331498,
+          "std_seconds": 0.0068826481195363946,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": null
+      }
+    },
+    "C4": {
+      "20260928": {
+        "parameters": 130694,
+        "trainable_parameters": 130694,
+        "checkpoint_bytes": 1902595,
+        "training": {
+          "training_seconds": 1.3425063000031514,
+          "validation_mse": 12.822417259216309,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 980.5665617055529,
+          "cmse": 952.0231849721413,
+          "cfmse": 2620.687681287612,
+          "seconds": 0.04152724166488042
+        },
+        "latency": {
+          "mean_seconds": 0.04514214833349494,
+          "std_seconds": 0.006398150776016037,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": {
+          "encoder_layers": 3,
+          "projections": {
+            "Q": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "K": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "V": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "O": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            }
+          },
+          "optimizer_registration": {
+            "named_parameter_entries": 240,
+            "unique_parameter_objects": 240,
+            "has_duplicate_parameter_objects": false
+          },
+          "verified": true
+        }
+      },
+      "20260929": {
+        "parameters": 130694,
+        "trainable_parameters": 130694,
+        "checkpoint_bytes": 1902595,
+        "training": {
+          "training_seconds": 2.026322899997467,
+          "validation_mse": 12.561311721801758,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1094.2989421880786,
+          "cmse": 1068.9964431255264,
+          "cfmse": 2967.6158571734727,
+          "seconds": 0.04648317916750481
+        },
+        "latency": {
+          "mean_seconds": 0.046941355000186986,
+          "std_seconds": 0.004214687906382961,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": {
+          "encoder_layers": 3,
+          "projections": {
+            "Q": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "K": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "V": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "O": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            }
+          },
+          "optimizer_registration": {
+            "named_parameter_entries": 240,
+            "unique_parameter_objects": 240,
+            "has_duplicate_parameter_objects": false
+          },
+          "verified": true
+        }
+      },
+      "20260930": {
+        "parameters": 130694,
+        "trainable_parameters": 130694,
+        "checkpoint_bytes": 1902595,
+        "training": {
+          "training_seconds": 1.585620600002585,
+          "validation_mse": 12.788427352905273,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1165.6163295496956,
+          "cmse": 1140.456986312816,
+          "cfmse": 3074.22417547509,
+          "seconds": 0.062357600000420156
+        },
+        "latency": {
+          "mean_seconds": 0.050048767500872296,
+          "std_seconds": 0.007672922504267185,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": {
+          "encoder_layers": 3,
+          "projections": {
+            "Q": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "K": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "V": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "O": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            }
+          },
+          "optimizer_registration": {
+            "named_parameter_entries": 240,
+            "unique_parameter_objects": 240,
+            "has_duplicate_parameter_objects": false
+          },
+          "verified": true
+        }
+      }
+    },
+    "F": {
+      "20260928": {
+        "parameters": 154007,
+        "trainable_parameters": 154007,
+        "checkpoint_bytes": 2006119,
+        "training": {
+          "training_seconds": 1.7063724999898113,
+          "validation_mse": 12.467259407043457,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1145.0291043850996,
+          "cmse": 1114.7737206799447,
+          "cfmse": 2943.3972282878312,
+          "seconds": 0.05094519166596001
+        },
+        "latency": {
+          "mean_seconds": 0.053453000833057256,
+          "std_seconds": 0.0073578261733209405,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": null
+      },
+      "20260929": {
+        "parameters": 154007,
+        "trainable_parameters": 154007,
+        "checkpoint_bytes": 2006119,
+        "training": {
+          "training_seconds": 2.2994209000025876,
+          "validation_mse": 12.803353309631348,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1164.918634885257,
+          "cmse": 1134.8312587750297,
+          "cfmse": 3143.7800650338836,
+          "seconds": 0.07007019999885718
+        },
+        "latency": {
+          "mean_seconds": 0.04993426666745412,
+          "std_seconds": 0.004482980531767971,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": null
+      },
+      "20260930": {
+        "parameters": 154007,
+        "trainable_parameters": 154007,
+        "checkpoint_bytes": 2006119,
+        "training": {
+          "training_seconds": 1.7654650999902515,
+          "validation_mse": 12.652349472045898,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1154.3871963263234,
+          "cmse": 1122.9821843736665,
+          "cfmse": 3207.3108412780944,
+          "seconds": 0.04851576249954329
+        },
+        "latency": {
+          "mean_seconds": 0.04866134416576339,
+          "std_seconds": 0.0035892986445778276,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": null
+      }
+    },
+    "F_C4": {
+      "20260928": {
+        "parameters": 145559,
+        "trainable_parameters": 145559,
+        "checkpoint_bytes": 1969111,
+        "training": {
+          "training_seconds": 1.6451112999930046,
+          "validation_mse": 12.5729341506958,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1094.262584999358,
+          "cmse": 1068.8029482138081,
+          "cfmse": 3057.149376290951,
+          "seconds": 0.049133937499088155
+        },
+        "latency": {
+          "mean_seconds": 0.04950669333350864,
+          "std_seconds": 0.00345744430097813,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": {
+          "encoder_layers": 3,
+          "projections": {
+            "Q": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "K": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "V": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "O": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            }
+          },
+          "optimizer_registration": {
+            "named_parameter_entries": 260,
+            "unique_parameter_objects": 260,
+            "has_duplicate_parameter_objects": false
+          },
+          "verified": true
+        }
+      },
+      "20260929": {
+        "parameters": 145559,
+        "trainable_parameters": 145559,
+        "checkpoint_bytes": 1969111,
+        "training": {
+          "training_seconds": 1.7577692000049865,
+          "validation_mse": 12.717817306518555,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1130.0924859510785,
+          "cmse": 1104.0571342171795,
+          "cfmse": 3067.456557443486,
+          "seconds": 0.04981923333313413
+        },
+        "latency": {
+          "mean_seconds": 0.04916743999929167,
+          "std_seconds": 0.0036188650300465605,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": {
+          "encoder_layers": 3,
+          "projections": {
+            "Q": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "K": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "V": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "O": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            }
+          },
+          "optimizer_registration": {
+            "named_parameter_entries": 260,
+            "unique_parameter_objects": 260,
+            "has_duplicate_parameter_objects": false
+          },
+          "verified": true
+        }
+      },
+      "20260930": {
+        "parameters": 145559,
+        "trainable_parameters": 145559,
+        "checkpoint_bytes": 1969111,
+        "training": {
+          "training_seconds": 1.6040000000066357,
+          "validation_mse": 12.853072166442871,
+          "official_tensors_loaded": 242
+        },
+        "metrics": {
+          "mse": 1155.6528558416512,
+          "cmse": 1122.426644317388,
+          "cfmse": 3210.2426894467353,
+          "seconds": 0.04941304583371675
+        },
+        "latency": {
+          "mean_seconds": 0.05754649666620632,
+          "std_seconds": 0.03677065676694679,
+          "runs": 120,
+          "warmup_passes": 2
+        },
+        "sharing_verification": {
+          "encoder_layers": 3,
+          "projections": {
+            "Q": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "K": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "V": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            },
+            "O": {
+              "same_module_object": true,
+              "same_weight_parameter_object": true,
+              "same_weight_data_ptr": true,
+              "same_bias_parameter_object": true,
+              "same_bias_data_ptr": true
+            }
+          },
+          "optimizer_registration": {
+            "named_parameter_entries": 260,
+            "unique_parameter_objects": 260,
+            "has_duplicate_parameter_objects": false
+          },
+          "verified": true
+        }
+      }
+    }
+  }
+}

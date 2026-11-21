@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "LSTM (boxes + ego speed)": {
+      "parameters": 9988,
+      "shape": [
+        2,
+        45,
+        4
+      ],
+      "finite": true
+    },
+    "LSTM (boxes + ego speed + scene labels)": {
+      "parameters": 10760,
+      "shape": [
+        2,
+        45,
+        4
+      ],
+      "finite": true
+    },
+    "Constant position": {
+      "parameters": 0,
+      "validation_windows": 43,
+      "finite": true
+    },
+    "Constant velocity (last 3 frames)": {
+      "parameters": 0,
+      "validation_windows": 43,
+      "finite": true
+    }
+  },
+  "test_sample_id_sha256": "6e19d53af0552d271ec1ec7dfd63c0a9aaa803d52250b018fdcbdbf655a71dbe"
+}

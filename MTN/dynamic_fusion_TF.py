@@ -37,7 +37,7 @@ class DynamicMultimodalFusion(nn.Module):
   self.cross_attn=MultiHeadAttention(h,d_model,dropout)
   self.cross_norm=nn.LayerNorm(d_model);self.cross_ff=PointerwiseFeedforward(d_model,d_ff,dropout);self.cross_ff_norm=nn.LayerNorm(d_model)
   self.gate=nn.Sequential(nn.Linear(2*d_model,d_model),nn.GELU(),nn.Linear(d_model,3))
-  self.dropout=nn.Dropout(dropout);self.last_gate=None;self.last_shapes={}
+  self.dropout=nn.Dropout(dropout);self.last_gate=None;self.last_gate_logits=None;self.last_shapes={}
  def forward(self,trajectory,context,global_context):
   # trajectory [B,T,D], context [B,6,D]; gate is per sample, not per token.
   if trajectory.ndim!=3 or context.ndim!=3 or trajectory.shape[0]!=context.shape[0] or trajectory.shape[2]!=context.shape[2] or context.shape[1]!=6: raise ValueError('Expected trajectory [B,T,D] and six context tokens [B,6,D].')
@@ -50,7 +50,7 @@ class DynamicMultimodalFusion(nn.Module):
   elif self.training: weights=F.gumbel_softmax(logits,tau=1.,hard=True,dim=-1)
   else: weights=F.one_hot(logits.argmax(-1),3).to(trajectory.dtype)
   out=sum(weights[:,i,None,None]*op for i,op in enumerate((identity,additive,cross)))
-  self.last_gate=weights.detach();self.last_shapes={'trajectory':tuple(trajectory.shape),'context':tuple(context.shape),'identity':tuple(identity.shape),'additive':tuple(additive.shape),'cross_attention':tuple(cross.shape),'output':tuple(out.shape),'gate_logits':tuple(logits.shape)}
+  self.last_gate=weights.detach();self.last_gate_logits=logits.detach();self.last_shapes={'trajectory':tuple(trajectory.shape),'context':tuple(context.shape),'identity':tuple(identity.shape),'additive':tuple(additive.shape),'cross_attention':tuple(cross.shape),'output':tuple(out.shape),'gate_logits':tuple(logits.shape)}
   return out
 
 class FusionContextIndividualTF(nn.Module):

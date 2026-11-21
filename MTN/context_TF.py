@@ -81,6 +81,7 @@ class ContextIndividualTF(nn.Module):
         )
         self.gate_mode = gate_mode
         self.last_context_gate = None
+        self.last_context_gate_logits = None
         self._context_gate_for_loss = None
 
     def _context_gate(self, context_token, observed_boxes):
@@ -92,6 +93,7 @@ class ContextIndividualTF(nn.Module):
         else:
             use_context = logits.argmax(dim=-1).eq(1).to(context_token.dtype)
         self.last_context_gate = use_context.detach()
+        self.last_context_gate_logits = logits.detach()
         self._context_gate_for_loss = use_context
         return use_context
 
@@ -106,6 +108,15 @@ class ContextIndividualTF(nn.Module):
                 observed_occlusion):
         context_token = self.context_encoder(scene_context, observed_occlusion)
         gate = self._context_gate(context_token, inp)
+        # An all-closed batch is the E2 motion-only control.  Do not append a
+        # masked zero token in that case: it is mathematically equivalent but
+        # changes floating-point attention reduction order by ~1e-7.  This
+        # direct path makes the documented g=0 == motion-only invariant exact.
+        if not bool(gate.any()):
+            return self.base(
+                residual, inp, obd_spd, ego_flow, ped_flow, tgt, src_mask,
+                obd_enc_mask, spd_mask, ped_mask,
+            )
         output = self.base.model(
             inp, obd_spd, ego_flow, ped_flow, tgt, src_mask, obd_enc_mask,
             spd_mask, ped_mask, context=context_token * gate.unsqueeze(-1),

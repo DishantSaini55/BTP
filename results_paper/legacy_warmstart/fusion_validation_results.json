@@ -1,0 +1,1730 @@
+{
+  "20260928": {
+    "F": {
+      "parameters": 154007,
+      "trainable_parameters": 154007,
+      "checkpoint_bytes": 2010507,
+      "training": {
+        "validation_mse": 12.467259407043457,
+        "validation_history": [
+          12.467259407043457
+        ],
+        "training_seconds": 1.8866100999875925,
+        "official_tensors_loaded": 242
+      },
+      "metrics": {
+        "mse": 1145.0291043850996,
+        "cmse": 1114.7737206799447,
+        "cfmse": 2943.3972282878312,
+        "seconds": 0.09749037083323249
+      },
+      "per_sample": [
+        {
+          "mse": 18.723946771943513,
+          "cmse": 9.798706478817431,
+          "cfmse": 43.15612401099996,
+          "seconds": 0.12021660000027623,
+          "test_index": 0,
+          "source_index": 124,
+          "pid": "['gp_6933']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 504.2653627497803,
+          "cmse": 475.3832431378095,
+          "cfmse": 1139.0219546037008,
+          "seconds": 0.09423509999760427,
+          "test_index": 1,
+          "source_index": 125,
+          "pid": "['gp_6934']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 542.226774573719,
+          "cmse": 528.5986437878661,
+          "cfmse": 1297.3719963260635,
+          "seconds": 0.07577850000234321,
+          "test_index": 2,
+          "source_index": 126,
+          "pid": "['gp_6935']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 1032.6895507409806,
+          "cmse": 999.9036442219478,
+          "cfmse": 3905.476731534376,
+          "seconds": 0.06757319999451283,
+          "test_index": 3,
+          "source_index": 127,
+          "pid": "['gp_6948']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01810.png"
+        },
+        {
+          "mse": 403.5301867486592,
+          "cmse": 379.79691680966323,
+          "cfmse": 683.7838962435978,
+          "seconds": 0.07051989999308717,
+          "test_index": 4,
+          "source_index": 128,
+          "pid": "['gp_6949']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02070.png"
+        },
+        {
+          "mse": 53.763555288795395,
+          "cmse": 12.645600411044425,
+          "cfmse": 105.25895069063701,
+          "seconds": 0.06811330000346061,
+          "test_index": 5,
+          "source_index": 129,
+          "pid": "['gp_6950']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02065.png"
+        },
+        {
+          "mse": 548.3057948958917,
+          "cmse": 523.4730066135954,
+          "cfmse": 1479.3057987365266,
+          "seconds": 0.059757499999250285,
+          "test_index": 6,
+          "source_index": 130,
+          "pid": "['gp_6951']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02050.png"
+        },
+        {
+          "mse": 53.05998317523574,
+          "cmse": 38.15594992021318,
+          "cfmse": 66.1433457547404,
+          "seconds": 0.06051080000179354,
+          "test_index": 7,
+          "source_index": 131,
+          "pid": "['gp_6952']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02095.png"
+        },
+        {
+          "mse": 69.08424300312923,
+          "cmse": 30.29837810736113,
+          "cfmse": 83.44880646731696,
+          "seconds": 0.06547879999561701,
+          "test_index": 8,
+          "source_index": 132,
+          "pid": "['gp_6953']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02100.png"
+        },
+        {
+          "mse": 250.46901554828312,
+          "cmse": 214.4111549619807,
+          "cfmse": 366.353617868021,
+          "seconds": 0.06635860000096727,
+          "test_index": 9,
+          "source_index": 133,
+          "pid": "['gp_6954']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02110.png"
+        },
+        {
+          "mse": 237.6870378374857,
+          "cmse": 214.38018487880888,
+          "cfmse": 553.3494034856544,
+          "seconds": 0.06750749998900574,
+          "test_index": 10,
+          "source_index": 134,
+          "pid": "['gp_6955']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02170.png"
+        },
+        {
+          "mse": 2818.047357442908,
+          "cmse": 2786.42700702703,
+          "cfmse": 7883.030967960312,
+          "seconds": 0.06681190000381321,
+          "test_index": 11,
+          "source_index": 135,
+          "pid": "['gp_6956']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02425.png"
+        },
+        {
+          "mse": 4934.097271557184,
+          "cmse": 4850.999434283604,
+          "cfmse": 15150.869838485289,
+          "seconds": 0.4528461000008974,
+          "test_index": 12,
+          "source_index": 136,
+          "pid": "['gp_6957']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 486.1348228288338,
+          "cmse": 385.81352935184924,
+          "cfmse": 1301.9146864485015,
+          "seconds": 0.07135319999360945,
+          "test_index": 13,
+          "source_index": 137,
+          "pid": "['gp_6958']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02445.png"
+        },
+        {
+          "mse": 121.58331322270706,
+          "cmse": 58.628090116477686,
+          "cfmse": 162.0826259852044,
+          "seconds": 0.06657999999879394,
+          "test_index": 14,
+          "source_index": 138,
+          "pid": "['gp_6959']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02450.png"
+        },
+        {
+          "mse": 961.8592417156059,
+          "cmse": 919.7658010438578,
+          "cfmse": 2333.07894012966,
+          "seconds": 0.07895539999299217,
+          "test_index": 15,
+          "source_index": 139,
+          "pid": "['gp_6960']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02570.png"
+        },
+        {
+          "mse": 5605.452657459003,
+          "cmse": 5577.392564068269,
+          "cfmse": 16332.163647310503,
+          "seconds": 0.06444790000387002,
+          "test_index": 16,
+          "source_index": 140,
+          "pid": "['gp_6961']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02820.png"
+        },
+        {
+          "mse": 64.9084638609826,
+          "cmse": 28.96826361377286,
+          "cfmse": 59.03847254065935,
+          "seconds": 0.18996010000410024,
+          "test_index": 17,
+          "source_index": 141,
+          "pid": "['gp_6962']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02490.png"
+        },
+        {
+          "mse": 579.5362130523215,
+          "cmse": 572.9932566489961,
+          "cfmse": 837.8193615903518,
+          "seconds": 0.12420700000075158,
+          "test_index": 18,
+          "source_index": 142,
+          "pid": "['gp_6963']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 1074.502127015411,
+          "cmse": 1067.688001333869,
+          "cfmse": 1709.7597080245848,
+          "seconds": 0.08459710000897758,
+          "test_index": 19,
+          "source_index": 143,
+          "pid": "['gp_6964']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 2878.9155811124265,
+          "cmse": 2869.417439621325,
+          "cfmse": 5536.9811222727785,
+          "seconds": 0.06591410000692122,
+          "test_index": 20,
+          "source_index": 144,
+          "pid": "['gp_6965']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 2474.7262513032306,
+          "cmse": 2460.1198777296095,
+          "cfmse": 4657.394483125123,
+          "seconds": 0.07757439999841154,
+          "test_index": 21,
+          "source_index": 145,
+          "pid": "['gp_6966']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 1157.9464678108016,
+          "cmse": 1151.5949784510103,
+          "cfmse": 2943.5558183490393,
+          "seconds": 0.0942122999986168,
+          "test_index": 22,
+          "source_index": 146,
+          "pid": "['gp_6967']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02485.png"
+        },
+        {
+          "mse": 609.183285527073,
+          "cmse": 597.9156236998965,
+          "cfmse": 2011.1731809643056,
+          "seconds": 0.08625960000790656,
+          "test_index": 23,
+          "source_index": 147,
+          "pid": "['gp_6968']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02715.png"
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.04743944083323489,
+        "std_seconds": 0.006923918646848506,
+        "runs": 120,
+        "warmup_passes": 2
+      },
+      "sharing_verification": null
+    },
+    "F_C4": {
+      "parameters": 145559,
+      "trainable_parameters": 145559,
+      "checkpoint_bytes": 1973999,
+      "training": {
+        "validation_mse": 12.5729341506958,
+        "validation_history": [
+          12.5729341506958
+        ],
+        "training_seconds": 1.997939499997301,
+        "official_tensors_loaded": 242
+      },
+      "metrics": {
+        "mse": 1094.262584999358,
+        "cmse": 1068.8029482138081,
+        "cfmse": 3057.149376290951,
+        "seconds": 0.04590098333392234
+      },
+      "per_sample": [
+        {
+          "mse": 68.1802089405404,
+          "cmse": 59.3359065467,
+          "cfmse": 122.27961070376946,
+          "seconds": 0.05377790000056848,
+          "test_index": 0,
+          "source_index": 124,
+          "pid": "['gp_6933']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 206.89943639685023,
+          "cmse": 188.01086352339993,
+          "cfmse": 407.5420088310848,
+          "seconds": 0.05187090000254102,
+          "test_index": 1,
+          "source_index": 125,
+          "pid": "['gp_6934']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 210.7038770858019,
+          "cmse": 203.89670190791136,
+          "cfmse": 462.7087180450267,
+          "seconds": 0.05712810000113677,
+          "test_index": 2,
+          "source_index": 126,
+          "pid": "['gp_6935']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 477.1511301582495,
+          "cmse": 452.3296870574886,
+          "cfmse": 1442.5523428918127,
+          "seconds": 0.044258299996727146,
+          "test_index": 3,
+          "source_index": 127,
+          "pid": "['gp_6948']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01810.png"
+        },
+        {
+          "mse": 161.11225976839495,
+          "cmse": 147.56200683940833,
+          "cfmse": 253.48613956377906,
+          "seconds": 0.048202499994658865,
+          "test_index": 4,
+          "source_index": 128,
+          "pid": "['gp_6949']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02070.png"
+        },
+        {
+          "mse": 110.29892186148312,
+          "cmse": 82.86341839218696,
+          "cfmse": 473.13211260657584,
+          "seconds": 0.0481763999996474,
+          "test_index": 5,
+          "source_index": 129,
+          "pid": "['gp_6950']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02065.png"
+        },
+        {
+          "mse": 146.7720995966914,
+          "cmse": 125.807366873296,
+          "cfmse": 274.2451836418737,
+          "seconds": 0.04948230000445619,
+          "test_index": 6,
+          "source_index": 130,
+          "pid": "['gp_6951']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02050.png"
+        },
+        {
+          "mse": 51.93744279108507,
+          "cmse": 42.84399950870614,
+          "cfmse": 380.99038195542875,
+          "seconds": 0.04981470000348054,
+          "test_index": 7,
+          "source_index": 131,
+          "pid": "['gp_6952']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02095.png"
+        },
+        {
+          "mse": 104.93909127170097,
+          "cmse": 80.67522320157865,
+          "cfmse": 404.23389054582384,
+          "seconds": 0.04549670001142658,
+          "test_index": 8,
+          "source_index": 132,
+          "pid": "['gp_6953']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02100.png"
+        },
+        {
+          "mse": 78.3923407044879,
+          "cmse": 56.56015317072431,
+          "cfmse": 34.682086810419975,
+          "seconds": 0.038824000002932735,
+          "test_index": 9,
+          "source_index": 133,
+          "pid": "['gp_6954']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02110.png"
+        },
+        {
+          "mse": 611.8408791037874,
+          "cmse": 592.4664421747552,
+          "cfmse": 2028.028921332803,
+          "seconds": 0.03694720000203233,
+          "test_index": 10,
+          "source_index": 134,
+          "pid": "['gp_6955']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02170.png"
+        },
+        {
+          "mse": 2212.1972568730353,
+          "cmse": 2178.7887969293,
+          "cfmse": 6831.592769286724,
+          "seconds": 0.04508939999504946,
+          "test_index": 11,
+          "source_index": 135,
+          "pid": "['gp_6956']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02425.png"
+        },
+        {
+          "mse": 5213.53643758724,
+          "cmse": 5138.997404250847,
+          "cfmse": 15820.822210743092,
+          "seconds": 0.05056640000839252,
+          "test_index": 12,
+          "source_index": 136,
+          "pid": "['gp_6957']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 405.44405559573454,
+          "cmse": 310.7470565818826,
+          "cfmse": 1227.7926976695626,
+          "seconds": 0.04620040000008885,
+          "test_index": 13,
+          "source_index": 137,
+          "pid": "['gp_6958']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02445.png"
+        },
+        {
+          "mse": 129.42524390395084,
+          "cmse": 64.55555011721033,
+          "cfmse": 278.84177876471813,
+          "seconds": 0.03719989999081008,
+          "test_index": 14,
+          "source_index": 138,
+          "pid": "['gp_6959']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02450.png"
+        },
+        {
+          "mse": 1057.039811079452,
+          "cmse": 1015.818708811901,
+          "cfmse": 3124.7860363418945,
+          "seconds": 0.043099699993035756,
+          "test_index": 15,
+          "source_index": 139,
+          "pid": "['gp_6960']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02570.png"
+        },
+        {
+          "mse": 6051.362851395771,
+          "cmse": 6024.851361746726,
+          "cfmse": 18739.404071968835,
+          "seconds": 0.03761450000456534,
+          "test_index": 16,
+          "source_index": 140,
+          "pid": "['gp_6961']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02820.png"
+        },
+        {
+          "mse": 50.29077557732147,
+          "cmse": 17.30842876444387,
+          "cfmse": 6.907709547722592,
+          "seconds": 0.05072189999918919,
+          "test_index": 17,
+          "source_index": 141,
+          "pid": "['gp_6962']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02490.png"
+        },
+        {
+          "mse": 640.5908840742267,
+          "cmse": 634.4578902251885,
+          "cfmse": 1344.7941799334408,
+          "seconds": 0.04235279999556951,
+          "test_index": 18,
+          "source_index": 142,
+          "pid": "['gp_6963']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 1068.117980346147,
+          "cmse": 1061.7226173474025,
+          "cfmse": 2133.0981487386343,
+          "seconds": 0.04427640000358224,
+          "test_index": 19,
+          "source_index": 143,
+          "pid": "['gp_6964']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 2806.108779298572,
+          "cmse": 2797.910298054474,
+          "cfmse": 6077.09516565973,
+          "seconds": 0.05357150000054389,
+          "test_index": 20,
+          "source_index": 144,
+          "pid": "['gp_6965']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 2176.5397730180425,
+          "cmse": 2162.7691976867645,
+          "cfmse": 4475.392322456405,
+          "seconds": 0.04408049999619834,
+          "test_index": 21,
+          "source_index": 145,
+          "pid": "['gp_6966']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 1129.0388477100953,
+          "cmse": 1123.6334110000887,
+          "cfmse": 3320.881195200838,
+          "seconds": 0.04370530000596773,
+          "test_index": 22,
+          "source_index": 146,
+          "pid": "['gp_6967']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02485.png"
+        },
+        {
+          "mse": 1094.3816558459298,
+          "cmse": 1087.3582664190133,
+          "cfmse": 3706.2953477428364,
+          "seconds": 0.03916590000153519,
+          "test_index": 23,
+          "source_index": 147,
+          "pid": "['gp_6968']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02715.png"
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.04447936666753473,
+        "std_seconds": 0.005766780185801263,
+        "runs": 120,
+        "warmup_passes": 2
+      },
+      "sharing_verification": {
+        "encoder_layers": 3,
+        "projections": {
+          "Q": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "K": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "V": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "O": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          }
+        },
+        "optimizer_registration": {
+          "named_parameter_entries": 260,
+          "unique_parameter_objects": 260,
+          "has_duplicate_parameter_objects": false
+        },
+        "verified": true
+      }
+    }
+  },
+  "20260929": {
+    "F": {
+      "parameters": 154007,
+      "trainable_parameters": 154007,
+      "checkpoint_bytes": 2010507,
+      "training": {
+        "validation_mse": 12.803353309631348,
+        "validation_history": [
+          12.803353309631348
+        ],
+        "training_seconds": 1.478004000004148,
+        "official_tensors_loaded": 242
+      },
+      "metrics": {
+        "mse": 1164.918634885257,
+        "cmse": 1134.8312587750297,
+        "cfmse": 3143.7800650338836,
+        "seconds": 0.045241679166186564
+      },
+      "per_sample": [
+        {
+          "mse": 22.025052166888106,
+          "cmse": 15.216000416894637,
+          "cfmse": 68.08487400018227,
+          "seconds": 0.04038350000337232,
+          "test_index": 0,
+          "source_index": 124,
+          "pid": "['gp_6933']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 492.557730711557,
+          "cmse": 469.3725105714948,
+          "cfmse": 1156.6822402494693,
+          "seconds": 0.03813309999532066,
+          "test_index": 1,
+          "source_index": 125,
+          "pid": "['gp_6934']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 528.0962720766366,
+          "cmse": 518.2804208403572,
+          "cfmse": 1294.67030294379,
+          "seconds": 0.047226100010448135,
+          "test_index": 2,
+          "source_index": 126,
+          "pid": "['gp_6935']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 944.5082301177515,
+          "cmse": 919.4614275379895,
+          "cfmse": 4108.520389654133,
+          "seconds": 0.03558080000220798,
+          "test_index": 3,
+          "source_index": 127,
+          "pid": "['gp_6948']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01810.png"
+        },
+        {
+          "mse": 508.76754538230136,
+          "cmse": 497.483364343092,
+          "cfmse": 1299.6426450327947,
+          "seconds": 0.042252600003848784,
+          "test_index": 4,
+          "source_index": 128,
+          "pid": "['gp_6949']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02070.png"
+        },
+        {
+          "mse": 54.336202058720986,
+          "cmse": 26.539791521722616,
+          "cfmse": 10.040404077764457,
+          "seconds": 0.05028069998661522,
+          "test_index": 5,
+          "source_index": 129,
+          "pid": "['gp_6950']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02065.png"
+        },
+        {
+          "mse": 425.6756550673436,
+          "cmse": 405.75263870904485,
+          "cfmse": 1337.013182963062,
+          "seconds": 0.0505808000016259,
+          "test_index": 6,
+          "source_index": 130,
+          "pid": "['gp_6951']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02050.png"
+        },
+        {
+          "mse": 45.76694977692544,
+          "cmse": 34.81013123346159,
+          "cfmse": 52.91228527489148,
+          "seconds": 0.04710339999292046,
+          "test_index": 7,
+          "source_index": 131,
+          "pid": "['gp_6952']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02095.png"
+        },
+        {
+          "mse": 72.02171090713988,
+          "cmse": 46.26892255230987,
+          "cfmse": 26.28954142910524,
+          "seconds": 0.04100519999337848,
+          "test_index": 8,
+          "source_index": 132,
+          "pid": "['gp_6953']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02100.png"
+        },
+        {
+          "mse": 344.96129826849227,
+          "cmse": 324.83173388216284,
+          "cfmse": 932.5474552543608,
+          "seconds": 0.04495520000637043,
+          "test_index": 9,
+          "source_index": 133,
+          "pid": "['gp_6954']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02110.png"
+        },
+        {
+          "mse": 180.7269162257486,
+          "cmse": 161.09738994484715,
+          "cfmse": 146.64371529902823,
+          "seconds": 0.05193899999721907,
+          "test_index": 10,
+          "source_index": 134,
+          "pid": "['gp_6955']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02170.png"
+        },
+        {
+          "mse": 2662.9284695731785,
+          "cmse": 2630.175165599963,
+          "cfmse": 7683.168750552258,
+          "seconds": 0.051400500000454485,
+          "test_index": 11,
+          "source_index": 135,
+          "pid": "['gp_6956']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02425.png"
+        },
+        {
+          "mse": 5322.807781692687,
+          "cmse": 5225.594924611803,
+          "cfmse": 16642.25132959807,
+          "seconds": 0.05822059999627527,
+          "test_index": 12,
+          "source_index": 136,
+          "pid": "['gp_6957']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 521.0694844019371,
+          "cmse": 395.0807181665646,
+          "cfmse": 1559.0007545691196,
+          "seconds": 0.055481099989265203,
+          "test_index": 13,
+          "source_index": 137,
+          "pid": "['gp_6958']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02445.png"
+        },
+        {
+          "mse": 134.42261586366703,
+          "cmse": 58.49776696886522,
+          "cfmse": 176.81502609754435,
+          "seconds": 0.04408970000804402,
+          "test_index": 14,
+          "source_index": 138,
+          "pid": "['gp_6959']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02450.png"
+        },
+        {
+          "mse": 1054.039167692845,
+          "cmse": 1000.41380628727,
+          "cfmse": 2850.1307266495455,
+          "seconds": 0.040810899998177774,
+          "test_index": 15,
+          "source_index": 139,
+          "pid": "['gp_6960']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02570.png"
+        },
+        {
+          "mse": 5814.792834257089,
+          "cmse": 5776.781382279364,
+          "cfmse": 17555.958644235296,
+          "seconds": 0.04314110000268556,
+          "test_index": 16,
+          "source_index": 140,
+          "pid": "['gp_6961']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02820.png"
+        },
+        {
+          "mse": 56.118424770915944,
+          "cmse": 25.131988355097977,
+          "cfmse": 64.32858514004135,
+          "seconds": 0.039238199999090284,
+          "test_index": 17,
+          "source_index": 141,
+          "pid": "['gp_6962']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02490.png"
+        },
+        {
+          "mse": 615.1503742962508,
+          "cmse": 605.6672971154213,
+          "cfmse": 1041.5187794615388,
+          "seconds": 0.03605390001030173,
+          "test_index": 18,
+          "source_index": 142,
+          "pid": "['gp_6963']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 1079.8928320091898,
+          "cmse": 1072.6122301463724,
+          "cfmse": 1736.6769221648533,
+          "seconds": 0.04076319999876432,
+          "test_index": 19,
+          "source_index": 143,
+          "pid": "['gp_6964']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 2957.0282147718463,
+          "cmse": 2941.82269803402,
+          "cfmse": 6150.692195352676,
+          "seconds": 0.03613559999212157,
+          "test_index": 20,
+          "source_index": 144,
+          "pid": "['gp_6965']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 2418.7801450363067,
+          "cmse": 2399.2938152129327,
+          "cfmse": 4962.791328418384,
+          "seconds": 0.05580509999708738,
+          "test_index": 21,
+          "source_index": 145,
+          "pid": "['gp_6966']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 1136.2543128815098,
+          "cmse": 1130.7872167729543,
+          "cfmse": 2853.147748637978,
+          "seconds": 0.05098770000040531,
+          "test_index": 22,
+          "source_index": 146,
+          "pid": "['gp_6967']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02485.png"
+        },
+        {
+          "mse": 565.3190172392369,
+          "cmse": 554.9768694967051,
+          "cfmse": 1741.1937337573181,
+          "seconds": 0.04423230000247713,
+          "test_index": 23,
+          "source_index": 147,
+          "pid": "['gp_6968']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02715.png"
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.046981319167389304,
+        "std_seconds": 0.009249678545921914,
+        "runs": 120,
+        "warmup_passes": 2
+      },
+      "sharing_verification": null
+    },
+    "F_C4": {
+      "parameters": 145559,
+      "trainable_parameters": 145559,
+      "checkpoint_bytes": 1973999,
+      "training": {
+        "validation_mse": 12.717817306518555,
+        "validation_history": [
+          12.717817306518555
+        ],
+        "training_seconds": 1.5689250999857904,
+        "official_tensors_loaded": 242
+      },
+      "metrics": {
+        "mse": 1130.0924859510785,
+        "cmse": 1104.0571342171795,
+        "cfmse": 3067.456557443486,
+        "seconds": 0.050738433333511544
+      },
+      "per_sample": [
+        {
+          "mse": 11.809721445633468,
+          "cmse": 5.2375529650953485,
+          "cfmse": 0.4076656826216638,
+          "seconds": 0.047109099992667325,
+          "test_index": 0,
+          "source_index": 124,
+          "pid": "['gp_6933']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 245.4443189578271,
+          "cmse": 230.2504319893419,
+          "cfmse": 526.7090135838038,
+          "seconds": 0.03609419999702368,
+          "test_index": 1,
+          "source_index": 125,
+          "pid": "['gp_6934']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 261.93371393822997,
+          "cmse": 257.2729397782092,
+          "cfmse": 609.7369437082774,
+          "seconds": 0.04093409999040887,
+          "test_index": 2,
+          "source_index": 126,
+          "pid": "['gp_6935']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 436.4690821576788,
+          "cmse": 417.1037719942462,
+          "cfmse": 1270.039162008714,
+          "seconds": 0.04495229999884032,
+          "test_index": 3,
+          "source_index": 127,
+          "pid": "['gp_6948']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01810.png"
+        },
+        {
+          "mse": 162.89303575266564,
+          "cmse": 154.87947488867147,
+          "cfmse": 234.51406452299761,
+          "seconds": 0.0484712000034051,
+          "test_index": 4,
+          "source_index": 128,
+          "pid": "['gp_6949']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02070.png"
+        },
+        {
+          "mse": 88.91118134971853,
+          "cmse": 67.4984592844064,
+          "cfmse": 398.5266023191602,
+          "seconds": 0.04660110000986606,
+          "test_index": 5,
+          "source_index": 129,
+          "pid": "['gp_6950']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02065.png"
+        },
+        {
+          "mse": 148.29245480201035,
+          "cmse": 132.97540276556612,
+          "cfmse": 265.55340701346984,
+          "seconds": 0.045252600000821985,
+          "test_index": 6,
+          "source_index": 130,
+          "pid": "['gp_6951']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02050.png"
+        },
+        {
+          "mse": 37.50194586407231,
+          "cmse": 30.45612087054206,
+          "cfmse": 274.88201474234097,
+          "seconds": 0.043806599991512485,
+          "test_index": 7,
+          "source_index": 131,
+          "pid": "['gp_6952']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02095.png"
+        },
+        {
+          "mse": 89.22456536900316,
+          "cmse": 70.65518401685377,
+          "cfmse": 354.393329488691,
+          "seconds": 0.038938199999392964,
+          "test_index": 8,
+          "source_index": 132,
+          "pid": "['gp_6953']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02100.png"
+        },
+        {
+          "mse": 86.40612184756426,
+          "cmse": 72.44342478947458,
+          "cfmse": 87.52373595402318,
+          "seconds": 0.0483890000032261,
+          "test_index": 9,
+          "source_index": 133,
+          "pid": "['gp_6954']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02110.png"
+        },
+        {
+          "mse": 544.6455477994003,
+          "cmse": 525.7473867085868,
+          "cfmse": 1632.437906178058,
+          "seconds": 0.05343509999511298,
+          "test_index": 10,
+          "source_index": 134,
+          "pid": "['gp_6955']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02170.png"
+        },
+        {
+          "mse": 2444.7131817486907,
+          "cmse": 2411.514853046671,
+          "cfmse": 7202.480133560369,
+          "seconds": 0.05359060000046156,
+          "test_index": 11,
+          "source_index": 135,
+          "pid": "['gp_6956']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02425.png"
+        },
+        {
+          "mse": 5495.99434800436,
+          "cmse": 5408.485037832295,
+          "cfmse": 16643.45276151663,
+          "seconds": 0.05699649998859968,
+          "test_index": 12,
+          "source_index": 136,
+          "pid": "['gp_6957']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 474.51207079234035,
+          "cmse": 360.15172030541856,
+          "cfmse": 1395.7374589365227,
+          "seconds": 0.0609938000125112,
+          "test_index": 13,
+          "source_index": 137,
+          "pid": "['gp_6958']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02445.png"
+        },
+        {
+          "mse": 138.197388605939,
+          "cmse": 64.64755337752749,
+          "cfmse": 275.6138098864319,
+          "seconds": 0.05999819999851752,
+          "test_index": 14,
+          "source_index": 138,
+          "pid": "['gp_6959']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02450.png"
+        },
+        {
+          "mse": 1122.9393159755175,
+          "cmse": 1073.7245345873748,
+          "cfmse": 3208.384828201877,
+          "seconds": 0.047212599994963966,
+          "test_index": 15,
+          "source_index": 139,
+          "pid": "['gp_6960']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02570.png"
+        },
+        {
+          "mse": 6140.734546435555,
+          "cmse": 6107.907207631406,
+          "cfmse": 18687.06591636837,
+          "seconds": 0.054588900005910546,
+          "test_index": 16,
+          "source_index": 140,
+          "pid": "['gp_6961']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02820.png"
+        },
+        {
+          "mse": 45.93498890373422,
+          "cmse": 15.954934584317602,
+          "cfmse": 9.55207335088592,
+          "seconds": 0.05856360000325367,
+          "test_index": 17,
+          "source_index": 141,
+          "pid": "['gp_6962']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02490.png"
+        },
+        {
+          "mse": 669.9204522618152,
+          "cmse": 661.8892722098831,
+          "cfmse": 1313.0467608589852,
+          "seconds": 0.04555619999882765,
+          "test_index": 18,
+          "source_index": 142,
+          "pid": "['gp_6963']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 1117.2679239531074,
+          "cmse": 1110.0824223663933,
+          "cfmse": 2083.637949701351,
+          "seconds": 0.059299800006556325,
+          "test_index": 19,
+          "source_index": 143,
+          "pid": "['gp_6964']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 2913.4803539205795,
+          "cmse": 2901.6337812370803,
+          "cfmse": 6017.516559973674,
+          "seconds": 0.0635199999960605,
+          "test_index": 20,
+          "source_index": 144,
+          "pid": "['gp_6965']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 2228.328082058847,
+          "cmse": 2211.262145741316,
+          "cfmse": 4371.350283361519,
+          "seconds": 0.05409659999713767,
+          "test_index": 21,
+          "source_index": 145,
+          "pid": "['gp_6966']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 1178.3049151656785,
+          "cmse": 1173.037538585105,
+          "cfmse": 3274.568912959855,
+          "seconds": 0.055036600009771064,
+          "test_index": 22,
+          "source_index": 146,
+          "pid": "['gp_6967']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02485.png"
+        },
+        {
+          "mse": 1038.3604057159187,
+          "cmse": 1032.560069656526,
+          "cfmse": 3481.8260847650413,
+          "seconds": 0.05428550000942778,
+          "test_index": 23,
+          "source_index": 147,
+          "pid": "['gp_6968']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02715.png"
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.05533166166690838,
+        "std_seconds": 0.01963800035386801,
+        "runs": 120,
+        "warmup_passes": 2
+      },
+      "sharing_verification": {
+        "encoder_layers": 3,
+        "projections": {
+          "Q": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "K": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "V": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "O": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          }
+        },
+        "optimizer_registration": {
+          "named_parameter_entries": 260,
+          "unique_parameter_objects": 260,
+          "has_duplicate_parameter_objects": false
+        },
+        "verified": true
+      }
+    }
+  },
+  "20260930": {
+    "F": {
+      "parameters": 154007,
+      "trainable_parameters": 154007,
+      "checkpoint_bytes": 2010507,
+      "training": {
+        "validation_mse": 12.652349472045898,
+        "validation_history": [
+          12.652349472045898
+        ],
+        "training_seconds": 2.2155387999955565,
+        "official_tensors_loaded": 242
+      },
+      "metrics": {
+        "mse": 1154.3871963263234,
+        "cmse": 1122.9821843736665,
+        "cfmse": 3207.3108412780944,
+        "seconds": 0.048509345830704355
+      },
+      "per_sample": [
+        {
+          "mse": 22.072794352741482,
+          "cmse": 13.400311829656514,
+          "cfmse": 4.376104414370669,
+          "seconds": 0.059324300003936514,
+          "test_index": 0,
+          "source_index": 124,
+          "pid": "['gp_6933']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 585.3661850317701,
+          "cmse": 560.979313394937,
+          "cfmse": 1551.41193654516,
+          "seconds": 0.05341129998851102,
+          "test_index": 1,
+          "source_index": 125,
+          "pid": "['gp_6934']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 483.30737699219566,
+          "cmse": 470.4444274596024,
+          "cfmse": 1234.5750631925969,
+          "seconds": 0.06300510000437498,
+          "test_index": 2,
+          "source_index": 126,
+          "pid": "['gp_6935']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 1400.924420097194,
+          "cmse": 1366.2770930416466,
+          "cfmse": 6392.998357130878,
+          "seconds": 0.06821289999061264,
+          "test_index": 3,
+          "source_index": 127,
+          "pid": "['gp_6948']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01810.png"
+        },
+        {
+          "mse": 744.3407894886518,
+          "cmse": 732.9744582295122,
+          "cfmse": 1919.9094759089635,
+          "seconds": 0.052252299996325746,
+          "test_index": 4,
+          "source_index": 128,
+          "pid": "['gp_6949']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02070.png"
+        },
+        {
+          "mse": 102.93686965764243,
+          "cmse": 74.35479199590687,
+          "cfmse": 70.01601185826662,
+          "seconds": 0.05284869999741204,
+          "test_index": 5,
+          "source_index": 129,
+          "pid": "['gp_6950']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02065.png"
+        },
+        {
+          "mse": 548.7093792761046,
+          "cmse": 519.4220416648584,
+          "cfmse": 2438.9980239314727,
+          "seconds": 0.036173299988149665,
+          "test_index": 6,
+          "source_index": 130,
+          "pid": "['gp_6951']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02050.png"
+        },
+        {
+          "mse": 53.13097033609586,
+          "cmse": 41.61276723270637,
+          "cfmse": 36.86225317197989,
+          "seconds": 0.042259900001226924,
+          "test_index": 7,
+          "source_index": 131,
+          "pid": "['gp_6952']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02095.png"
+        },
+        {
+          "mse": 129.85333965692047,
+          "cmse": 103.25535633976511,
+          "cfmse": 145.48713325823917,
+          "seconds": 0.04609079999499954,
+          "test_index": 8,
+          "source_index": 132,
+          "pid": "['gp_6953']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02100.png"
+        },
+        {
+          "mse": 581.2883212843527,
+          "cmse": 560.1150463862006,
+          "cfmse": 1669.4643608583096,
+          "seconds": 0.0463815999974031,
+          "test_index": 9,
+          "source_index": 133,
+          "pid": "['gp_6954']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02110.png"
+        },
+        {
+          "mse": 134.2334474538733,
+          "cmse": 115.098019050393,
+          "cfmse": 34.21153163658554,
+          "seconds": 0.048218700001598336,
+          "test_index": 10,
+          "source_index": 134,
+          "pid": "['gp_6955']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02170.png"
+        },
+        {
+          "mse": 2151.190395710918,
+          "cmse": 2117.9944021149954,
+          "cfmse": 5857.921700682979,
+          "seconds": 0.03779750000103377,
+          "test_index": 11,
+          "source_index": 135,
+          "pid": "['gp_6956']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02425.png"
+        },
+        {
+          "mse": 5082.887268776656,
+          "cmse": 4985.481292807041,
+          "cfmse": 15889.87099261428,
+          "seconds": 0.04236269999819342,
+          "test_index": 12,
+          "source_index": 136,
+          "pid": "['gp_6957']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 505.0212165594552,
+          "cmse": 378.3484599591628,
+          "cfmse": 1409.6666077766606,
+          "seconds": 0.04240159998880699,
+          "test_index": 13,
+          "source_index": 137,
+          "pid": "['gp_6958']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02445.png"
+        },
+        {
+          "mse": 136.15871593926258,
+          "cmse": 58.163417580966225,
+          "cfmse": 154.33173700248653,
+          "seconds": 0.051473200001055375,
+          "test_index": 14,
+          "source_index": 138,
+          "pid": "['gp_6959']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02450.png"
+        },
+        {
+          "mse": 916.6809984541012,
+          "cmse": 864.2185323329494,
+          "cfmse": 2484.597934649908,
+          "seconds": 0.037169000002904795,
+          "test_index": 15,
+          "source_index": 139,
+          "pid": "['gp_6960']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02570.png"
+        },
+        {
+          "mse": 5519.814035569695,
+          "cmse": 5482.474364326699,
+          "cfmse": 16976.68685692217,
+          "seconds": 0.043769700001575984,
+          "test_index": 16,
+          "source_index": 140,
+          "pid": "['gp_6961']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02820.png"
+        },
+        {
+          "mse": 63.47100231172846,
+          "cmse": 33.7095362230448,
+          "cfmse": 82.55830100247648,
+          "seconds": 0.044386599998688325,
+          "test_index": 17,
+          "source_index": 141,
+          "pid": "['gp_6962']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02490.png"
+        },
+        {
+          "mse": 571.2003508474407,
+          "cmse": 561.3527723778788,
+          "cfmse": 1036.0423243508799,
+          "seconds": 0.05370319999929052,
+          "test_index": 18,
+          "source_index": 142,
+          "pid": "['gp_6963']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 1006.7711635702302,
+          "cmse": 999.5524270923727,
+          "cfmse": 1770.7358529743838,
+          "seconds": 0.050268599996343255,
+          "test_index": 19,
+          "source_index": 143,
+          "pid": "['gp_6964']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 2884.1003856334714,
+          "cmse": 2867.446404743509,
+          "cfmse": 6007.946609052956,
+          "seconds": 0.061088899994501844,
+          "test_index": 20,
+          "source_index": 144,
+          "pid": "['gp_6965']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 2400.2634204291144,
+          "cmse": 2379.1386052086054,
+          "cfmse": 4964.338036859718,
+          "seconds": 0.04967409999517258,
+          "test_index": 21,
+          "source_index": 145,
+          "pid": "['gp_6966']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 1062.7778394367372,
+          "cmse": 1057.5636775281137,
+          "cfmse": 2836.226113252378,
+          "seconds": 0.04513659999065567,
+          "test_index": 22,
+          "source_index": 146,
+          "pid": "['gp_6967']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02485.png"
+        },
+        {
+          "mse": 618.7920249654121,
+          "cmse": 608.194906047471,
+          "cfmse": 2006.2268716261565,
+          "seconds": 0.03681370000413153,
+          "test_index": 23,
+          "source_index": 147,
+          "pid": "['gp_6968']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02715.png"
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.04303858583249773,
+        "std_seconds": 0.005672947916860505,
+        "runs": 120,
+        "warmup_passes": 2
+      },
+      "sharing_verification": null
+    },
+    "F_C4": {
+      "parameters": 145559,
+      "trainable_parameters": 145559,
+      "checkpoint_bytes": 1973999,
+      "training": {
+        "validation_mse": 12.853072166442871,
+        "validation_history": [
+          12.853072166442871
+        ],
+        "training_seconds": 1.5283993000048213,
+        "official_tensors_loaded": 242
+      },
+      "metrics": {
+        "mse": 1155.6528558416512,
+        "cmse": 1122.426644317388,
+        "cfmse": 3210.2426894467353,
+        "seconds": 0.04552172916616352
+      },
+      "per_sample": [
+        {
+          "mse": 39.455528387853974,
+          "cmse": 24.364270464403756,
+          "cfmse": 23.448455029829415,
+          "seconds": 0.04712730000028387,
+          "test_index": 0,
+          "source_index": 124,
+          "pid": "['gp_6933']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 580.021452776462,
+          "cmse": 549.1072754252515,
+          "cfmse": 1776.9882960535076,
+          "seconds": 0.04135590000078082,
+          "test_index": 1,
+          "source_index": 125,
+          "pid": "['gp_6934']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 475.8124173391815,
+          "cmse": 458.34419849923546,
+          "cfmse": 1345.1417728123783,
+          "seconds": 0.04212819998792838,
+          "test_index": 2,
+          "source_index": 126,
+          "pid": "['gp_6935']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png"
+        },
+        {
+          "mse": 1316.453796688228,
+          "cmse": 1278.0960466471188,
+          "cfmse": 6326.977939062564,
+          "seconds": 0.04404350000550039,
+          "test_index": 3,
+          "source_index": 127,
+          "pid": "['gp_6948']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01810.png"
+        },
+        {
+          "mse": 737.7818763763199,
+          "cmse": 723.7038647500378,
+          "cfmse": 2060.268726152714,
+          "seconds": 0.040464100005920045,
+          "test_index": 4,
+          "source_index": 128,
+          "pid": "['gp_6949']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02070.png"
+        },
+        {
+          "mse": 93.37362317448722,
+          "cmse": 61.03136705233134,
+          "cfmse": 48.49625181544613,
+          "seconds": 0.04338859999552369,
+          "test_index": 5,
+          "source_index": 129,
+          "pid": "['gp_6950']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02065.png"
+        },
+        {
+          "mse": 465.03612820420216,
+          "cmse": 430.962465168472,
+          "cfmse": 2125.114341149089,
+          "seconds": 0.040711499997996725,
+          "test_index": 6,
+          "source_index": 130,
+          "pid": "['gp_6951']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02050.png"
+        },
+        {
+          "mse": 55.27928207222517,
+          "cmse": 39.22329242032409,
+          "cfmse": 43.52578525652647,
+          "seconds": 0.03845799999544397,
+          "test_index": 7,
+          "source_index": 131,
+          "pid": "['gp_6952']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02095.png"
+        },
+        {
+          "mse": 117.91865110240722,
+          "cmse": 88.72714834331423,
+          "cfmse": 103.8875102090422,
+          "seconds": 0.05013219999091234,
+          "test_index": 8,
+          "source_index": 132,
+          "pid": "['gp_6953']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02100.png"
+        },
+        {
+          "mse": 518.6886438660467,
+          "cmse": 495.09331437752246,
+          "cfmse": 1558.8772487740403,
+          "seconds": 0.04459089999727439,
+          "test_index": 9,
+          "source_index": 133,
+          "pid": "['gp_6954']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02110.png"
+        },
+        {
+          "mse": 144.99112599355007,
+          "cmse": 127.68545334031829,
+          "cfmse": 42.002880582811216,
+          "seconds": 0.041059800001676194,
+          "test_index": 10,
+          "source_index": 134,
+          "pid": "['gp_6955']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02170.png"
+        },
+        {
+          "mse": 2377.7568816061307,
+          "cmse": 2340.116010918549,
+          "cfmse": 6391.072339136938,
+          "seconds": 0.04328420000092592,
+          "test_index": 11,
+          "source_index": 135,
+          "pid": "['gp_6956']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02425.png"
+        },
+        {
+          "mse": 5267.373831814006,
+          "cmse": 5174.281116986066,
+          "cfmse": 16451.414135167222,
+          "seconds": 0.050478899996960536,
+          "test_index": 12,
+          "source_index": 136,
+          "pid": "['gp_6957']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 499.5447576579536,
+          "cmse": 371.8516902449679,
+          "cfmse": 1403.2398812707459,
+          "seconds": 0.04087939999590162,
+          "test_index": 13,
+          "source_index": 137,
+          "pid": "['gp_6958']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02445.png"
+        },
+        {
+          "mse": 135.16222185767518,
+          "cmse": 57.0128210461422,
+          "cfmse": 135.83078870773903,
+          "seconds": 0.04100690000632312,
+          "test_index": 14,
+          "source_index": 138,
+          "pid": "['gp_6959']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02450.png"
+        },
+        {
+          "mse": 923.6252898532181,
+          "cmse": 876.8813256752305,
+          "cfmse": 2473.449435368635,
+          "seconds": 0.04946790001122281,
+          "test_index": 15,
+          "source_index": 139,
+          "pid": "['gp_6960']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02570.png"
+        },
+        {
+          "mse": 5499.262961410594,
+          "cmse": 5461.468378063062,
+          "cfmse": 16900.24703403455,
+          "seconds": 0.04483220000111032,
+          "test_index": 16,
+          "source_index": 140,
+          "pid": "['gp_6961']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02820.png"
+        },
+        {
+          "mse": 77.9051836479247,
+          "cmse": 42.065578393615915,
+          "cfmse": 127.4143004416162,
+          "seconds": 0.04343730000255164,
+          "test_index": 17,
+          "source_index": 141,
+          "pid": "['gp_6962']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02490.png"
+        },
+        {
+          "mse": 568.8868143344423,
+          "cmse": 559.7030070201274,
+          "cfmse": 986.1886896766905,
+          "seconds": 0.04828319999796804,
+          "test_index": 18,
+          "source_index": 142,
+          "pid": "['gp_6963']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 989.4979057578182,
+          "cmse": 982.2124998792201,
+          "cfmse": 1625.8484580814682,
+          "seconds": 0.04306830000132322,
+          "test_index": 19,
+          "source_index": 143,
+          "pid": "['gp_6964']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 2861.7297222588672,
+          "cmse": 2846.0019308144138,
+          "cfmse": 5903.021206418504,
+          "seconds": 0.04636870000103954,
+          "test_index": 20,
+          "source_index": 144,
+          "pid": "['gp_6965']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png"
+        },
+        {
+          "mse": 2341.535836571347,
+          "cmse": 2322.0382291065735,
+          "cfmse": 4677.848853343288,
+          "seconds": 0.05142109999724198,
+          "test_index": 21,
+          "source_index": 145,
+          "pid": "['gp_6966']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png"
+        },
+        {
+          "mse": 1030.3628929137205,
+          "cmse": 1024.1662715043935,
+          "cfmse": 2586.001184245953,
+          "seconds": 0.05409489999874495,
+          "test_index": 22,
+          "source_index": 146,
+          "pid": "['gp_6967']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02485.png"
+        },
+        {
+          "mse": 618.21171453497,
+          "cmse": 604.1019074766245,
+          "cfmse": 1929.5190339303606,
+          "seconds": 0.062438499997369945,
+          "test_index": 23,
+          "source_index": 147,
+          "pid": "['gp_6968']",
+          "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02715.png"
+        }
+      ],
+      "latency": {
+        "mean_seconds": 0.04759374416717037,
+        "std_seconds": 0.007994010039369372,
+        "runs": 120,
+        "warmup_passes": 2
+      },
+      "sharing_verification": {
+        "encoder_layers": 3,
+        "projections": {
+          "Q": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "K": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "V": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "O": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          }
+        },
+        "optimizer_registration": {
+          "named_parameter_entries": 260,
+          "unique_parameter_objects": 260,
+          "has_duplicate_parameter_objects": false
+        },
+        "verified": true
+      }
+    }
+  }
+}

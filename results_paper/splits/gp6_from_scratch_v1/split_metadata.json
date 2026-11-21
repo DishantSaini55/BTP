@@ -1,0 +1,28 @@
+{
+  "counts": {
+    "test": 217,
+    "train": 212,
+    "validation": 43
+  },
+  "farneback_config": {
+    "flags": 0,
+    "height": 180,
+    "iterations": 3,
+    "levels": 3,
+    "poly_n": 5,
+    "poly_sigma": 1.2,
+    "pyr_scale": 0.5,
+    "width": 320,
+    "winsize": 15
+  },
+  "selection_seed": 20260928,
+  "stride_frames": 30,
+  "test_sample_id_sha256": "6e19d53af0552d271ec1ec7dfd63c0a9aaa803d52250b018fdcbdbf655a71dbe",
+  "version": "gp6_from_scratch_v1",
+  "videos": {
+    "test": "gp_set_0006_vid_0003",
+    "train": "gp_set_0006_vid_0002",
+    "validation": "gp_set_0006_vid_0001"
+  },
+  "window_frames": 60
+}

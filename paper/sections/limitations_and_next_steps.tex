@@ -1,0 +1,13 @@
+\section{Limitations and Conclusion}\label{sec:limits}
+\subsection{Limitations}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item \textbf{Scale of the evaluation.} The matched experiment uses 24 test trajectories, three seeds and one training epoch with Farneb\"ack optical flow. The improvement of \CAMTNS over \CAMTN is within seed variance ($p=0.45$) and should be treated as a hypothesis for further testing.
+\item \textbf{Not comparable with published benchmarks.} Published numbers use the full test split, RAFT flow and fully trained GPU models; no claim is made to outperform MTN, BiTraP or SGNet.
+\item \textbf{Baseline not in the matched protocol.} The unmodified MTN was run only in the earlier single-seed study.
+\item \textbf{Annotated context at inference.} The five static labels are IDD-PeD annotations of each track. In deployment they would have to be produced by a scene-understanding module, and its errors would propagate to the prediction.
+\item \textbf{No reduction in computation.} Encoder self-attention sharing reduces parameters but not FLOPs, and the adaptive-fusion models evaluate all candidates before selecting one.
+\item \textbf{Deterministic output.} The stochastic baselines report the best of 20 samples; a single-output model cannot match them without a multimodal output head.
+\end{itemize}
+
+\subsection{Conclusion}
+This paper proposed PACE-Net (Pedestrian trajectory prediction with Admission-gated Context Enrichment), a dual-pathway architecture for pedestrian trajectory prediction in unstructured traffic, built on four components: ROUTE (adaptive context-memory fusion), SAGE (admission gating), MASC (memory augmentation with a gated native scene-context token) and SATIE (selective weight-parameter sharing). The gate can reject the context token per sample, in which case the decoder operates on the motion pathway alone, and SATIE removes $6.07\%$ of the parameters. In a matched three-seed proof-of-concept study on IDD-PeD, \CAMTNS had the lowest mean error, whereas ROUTE and wholesale weight sharing did not help. Because the evidence is limited in scale and the gain over \CAMTN is not statistically significant, the main value of the study lies in a reproducible design together with a set of controlled negative results. Confirming the effect on the full IDD-PeD split with RAFT optical flow and more seeds, together with the ablations of Sec.~\ref{sec:ablation}, is the immediate next step.

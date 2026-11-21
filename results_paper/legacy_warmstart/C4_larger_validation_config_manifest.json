@@ -1,0 +1,387 @@
+{
+  "configuration": {
+    "seeds": [
+      20260928,
+      20260929,
+      20260930
+    ],
+    "epochs": 1,
+    "batch_size": 8,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "loss": "MSE",
+    "cpu_threads": 4,
+    "train_trajectories": 32,
+    "validation_trajectories": 8,
+    "test_trajectories": 24,
+    "test_videos": [
+      "gp_set_0006_vid_0003"
+    ],
+    "test_selection_rule": "all 24 eligible video-3 trajectories in source order; no outcome-based selection",
+    "flow_train_validation": "D:\\IDD-PeD-Evaluation\\flow\\cpu_farneback_poc",
+    "flow_test": "D:\\IDD-PeD-Evaluation\\flow\\cpu_farneback_c4_larger",
+    "latency_protocol": "batch=1; 2 warm-up passes then 5 complete traversals of all test trajectories"
+  },
+  "manifest": [
+    {
+      "local_index": 0,
+      "source_index": 124,
+      "pid": "['gp_6933']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 1,
+      "source_index": 125,
+      "pid": "['gp_6934']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 2,
+      "source_index": 126,
+      "pid": "['gp_6935']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01175.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 0,
+      "track_frames": 60
+    },
+    {
+      "local_index": 3,
+      "source_index": 127,
+      "pid": "['gp_6948']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\01810.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 0,
+      "track_frames": 60
+    },
+    {
+      "local_index": 4,
+      "source_index": 128,
+      "pid": "['gp_6949']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02070.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 5,
+      "source_index": 129,
+      "pid": "['gp_6950']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02065.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 6,
+      "source_index": 130,
+      "pid": "['gp_6951']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02050.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 7,
+      "source_index": 131,
+      "pid": "['gp_6952']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02095.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 8,
+      "source_index": 132,
+      "pid": "['gp_6953']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02100.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 0,
+      "track_frames": 60
+    },
+    {
+      "local_index": 9,
+      "source_index": 133,
+      "pid": "['gp_6954']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02110.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 0,
+      "track_frames": 60
+    },
+    {
+      "local_index": 10,
+      "source_index": 134,
+      "pid": "['gp_6955']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02170.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 0,
+      "track_frames": 60
+    },
+    {
+      "local_index": 11,
+      "source_index": 135,
+      "pid": "['gp_6956']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02425.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 12,
+      "source_index": 136,
+      "pid": "['gp_6957']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 13,
+      "source_index": 137,
+      "pid": "['gp_6958']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02445.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 0,
+      "track_frames": 60
+    },
+    {
+      "local_index": 14,
+      "source_index": 138,
+      "pid": "['gp_6959']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02450.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 15,
+      "source_index": 139,
+      "pid": "['gp_6960']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02570.png",
+      "scene_context": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 1,
+      "track_frames": 60
+    },
+    {
+      "local_index": 16,
+      "source_index": 140,
+      "pid": "['gp_6961']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02820.png",
+      "scene_context": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 1,
+      "track_frames": 60
+    },
+    {
+      "local_index": 17,
+      "source_index": 141,
+      "pid": "['gp_6962']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02490.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 18,
+      "source_index": 142,
+      "pid": "['gp_6963']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 19,
+      "source_index": 143,
+      "pid": "['gp_6964']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    },
+    {
+      "local_index": 20,
+      "source_index": 144,
+      "pid": "['gp_6965']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02510.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 0,
+      "track_frames": 60
+    },
+    {
+      "local_index": 21,
+      "source_index": 145,
+      "pid": "['gp_6966']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02525.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 0,
+      "track_frames": 60
+    },
+    {
+      "local_index": 22,
+      "source_index": 146,
+      "pid": "['gp_6967']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02485.png",
+      "scene_context": [
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 0,
+      "track_frames": 60
+    },
+    {
+      "local_index": 23,
+      "source_index": 147,
+      "pid": "['gp_6968']",
+      "first_frame": "D:\\IDD-PeD-Evaluation\\annotations\\IDDPedestrian\\images\\gopro\\gp_set_0006\\gp_set_0006_vid_0003\\02715.png",
+      "scene_context": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "max_occlusion": 2,
+      "track_frames": 60
+    }
+  ]
+}
