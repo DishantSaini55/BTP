@@ -1,0 +1,115 @@
+{
+  "model": "LSTM (boxes + ego speed)",
+  "seed": 20260936,
+  "initialization": "from scratch; no official checkpoint loaded",
+  "loaded_keys": [],
+  "initial_state": [
+    {
+      "name": "encoder.weight_ih_l0",
+      "shape": [
+        128,
+        5
+      ],
+      "sha256": "cbad833b1e4f4fc2139b429e1d49dbcfbd4b42d6f3eee7866b8e8f14339287a2"
+    },
+    {
+      "name": "encoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "6bb7c82d3c8826535da83c81b15a47508ac7e7ed3840b52754ebcf3ad2ed36d9"
+    },
+    {
+      "name": "encoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "2b39b782c75943e4587edfce0baef2b4d04573836c69b3b94e38c0b6dcfef9a0"
+    },
+    {
+      "name": "encoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "a2eeed5ec04a39d66f6c28d63b9728a66d096d814b8deeb7bb2153cade6366c3"
+    },
+    {
+      "name": "decoder.weight_ih_l0",
+      "shape": [
+        128,
+        4
+      ],
+      "sha256": "1108645795762b6ef0a48ed66a93f73bb0c8df8e116d4696395264487c0e1fcb"
+    },
+    {
+      "name": "decoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "9436da8d8f95d703f77303743927139de1437a80b83905fb96e67038d118dfa4"
+    },
+    {
+      "name": "decoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "77da07e90351ad4d34cc62c6253c190e75673456bd60f94fefb02a75eaccde1b"
+    },
+    {
+      "name": "decoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "4b554398363493a42abc0d1cce83eb739fb3ff7057c01ea95ab50c510f8c1a38"
+    },
+    {
+      "name": "output.weight",
+      "shape": [
+        4,
+        32
+      ],
+      "sha256": "385066cf6afb95246a1ab13497930288017bb4d7236e875dbb8141123517d9b5"
+    },
+    {
+      "name": "output.bias",
+      "shape": [
+        4
+      ],
+      "sha256": "9f08c5222992783baf584d80dc9ced6fde22f25a92ac68a8eff6784f106daba1"
+    }
+  ],
+  "parameters": 9988,
+  "architecture": {
+    "encoder": "LSTM(5,32)",
+    "decoder": "autoregressive LSTM(4,32)",
+    "scene_variant": false,
+    "scene_embedding_dim": null
+  },
+  "protocol": {
+    "max_epochs": 50,
+    "patience": 10,
+    "min_delta": 0,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "batch_size": 8,
+    "loss": "MSE"
+  },
+  "provenance": {
+    "git_head": "46b8b8a1e3187d364044d5745241a3ca2e6beff2",
+    "git_dirty": true,
+    "git_status": [
+      " D MTN/summarize_e1.py",
+      "?? results_paper/config/B1_lstm_boxes_plus_ego_speed_20260934.json",
+      "?? results_paper/config/B1_lstm_boxes_plus_ego_speed_20260935.json"
+    ],
+    "source_sha256": {
+      "MTN\\individual_TF.py": "f9207ee91145ead243e2bea5b8bca7e1e06d57c6a87964b832b4652beb7d2dad",
+      "MTN\\context_TF.py": "9a75beef517c3191b7b36aca291971815aec8cb7ab675cb3f7a918acce4a5ff5",
+      "MTN\\dynamic_fusion_TF.py": "1ff6be645d05d58e81af6264183be68df4abb16efe21936178236a885649c257",
+      "MTN\\c4_encoder_shared.py": "73e9bfdea8aeac51d804f5add8dff4777b34cbbfa949f51266afe58b844bbb54",
+      "MTN\\run_from_scratch_e1.py": "8c192c6e3ca31a0870d7a3c73674a286192c8c5a8e06750b96b01599c3eb2da5"
+    }
+  }
+}
