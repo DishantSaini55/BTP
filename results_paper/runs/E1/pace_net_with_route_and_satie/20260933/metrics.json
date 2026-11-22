@@ -1,0 +1,15 @@
+{
+  "mse": 6790.88718874883,
+  "cmse": 6634.127465876566,
+  "cfmse": 13329.609921645459,
+  "parameters": 145559,
+  "checkpoint_bytes": 1969111,
+  "best_validation_mse": 0.7253745932911717,
+  "epochs_completed": 28,
+  "stopping_reason": "early stopping",
+  "training_seconds": 588.9484486999863,
+  "test_sample_id_sha256": "6e19d53af0552d271ec1ec7dfd63c0a9aaa803d52250b018fdcbdbf655a71dbe",
+  "route_identity_rate": 0.0,
+  "route_additive_rate": 0.12903225806451613,
+  "route_cross_attention_rate": 0.8709677419354839
+}

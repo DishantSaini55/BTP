@@ -1,0 +1,8 @@
+{
+  "mse": 4696.97691111301,
+  "cmse": 4597.2400270749895,
+  "cfmse": 13682.455598039149,
+  "parameters": 0,
+  "checkpoint_bytes": 0,
+  "test_sample_id_sha256": "6e19d53af0552d271ec1ec7dfd63c0a9aaa803d52250b018fdcbdbf655a71dbe"
+}

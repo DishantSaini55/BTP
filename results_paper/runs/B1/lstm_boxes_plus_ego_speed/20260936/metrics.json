@@ -1,0 +1,12 @@
+{
+  "mse": 152070.67342309907,
+  "cmse": 98502.8600860455,
+  "cfmse": 195289.16734771026,
+  "parameters": 9988,
+  "checkpoint_bytes": 44085,
+  "best_validation_mse": 1.3579866664354192,
+  "epochs_completed": 39,
+  "stopping_reason": "early stopping",
+  "training_seconds": 247.18577060000098,
+  "test_sample_id_sha256": "6e19d53af0552d271ec1ec7dfd63c0a9aaa803d52250b018fdcbdbf655a71dbe"
+}
