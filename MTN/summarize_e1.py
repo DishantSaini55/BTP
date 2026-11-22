@@ -140,8 +140,11 @@ def main() -> None:
         raise ValueError("Per-sample model coverage mismatch")
 
     summary.mkdir(parents=True)
+    all_run_fields = list(dict.fromkeys(field for record in records for field in record))
     with (summary / "all_runs.csv").open("x", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(records[0])); writer.writeheader(); writer.writerows(records)
+        writer = csv.DictWriter(handle, fieldnames=all_run_fields, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(records)
     with (summary / "per_video_E1.csv").open("x", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(per_video[0])); writer.writeheader(); writer.writerows(per_video)
 
@@ -186,10 +189,22 @@ def main() -> None:
         "sensitivity_two_window_moving_block_bootstrap": block_sensitivities,
     }, indent=2), encoding="utf-8")
 
+    statistics_payload = {
+        "primary": {
+            "unit": "seed",
+            "confirmatory_family": "H1 and H2 only; two-sided paired t tests with Holm correction over two tests",
+            "comparisons": comparisons,
+        },
+        "secondary_track_cluster_bootstrap": cluster_bootstraps,
+        "sensitivity_two_window_moving_block_bootstrap": block_sensitivities,
+    }
+    confirmatory_stats = [item for item in comparisons if item["family"] in ("H1", "H2")]
+
     lines = [
-        "# E1 from-scratch summary", "",
-        "All values below are generated from the 50 run directories. Confirmatory inference is seed-level for H1 and H2 only, with Holm correction over those two tests. The remaining eight pairs are exploratory and report unadjusted p values. Track-cluster and moving-block bootstraps are secondary because all test tracks come from one video.", "",
-        "| Model | MSE mean ± sample SD | C-MSE mean ± sample SD | CF-MSE mean ± sample SD | Epochs mean ± sample SD |",
+        "# E1 from-scratch report", "",
+        "Generated from 50 immutable E1 run directories. The test split is GP6 video 3 (`217` windows); H1 and H2 are the only confirmatory hypotheses and use a two-test Holm correction. Every other comparison is exploratory.", "",
+        "## Aggregate summary", "",
+        "| Model | MSE mean ± SD | C-MSE mean ± SD | CF-MSE mean ± SD | Epochs mean ± SD |",
         "|---|---:|---:|---:|---:|",
     ]
     for item in group:
@@ -199,6 +214,68 @@ def main() -> None:
             f"{item['cfmse_mean']:.6f} ± {item['cfmse_sample_std']:.6f} | "
             f"{item['epochs_completed_mean']:.2f} ± {item['epochs_completed_sample_std']:.2f} |"
         )
+
+    lines += ["", "## Confirmatory H1/H2", ""]
+    for item in confirmatory_stats:
+        ci = item["ci95"]
+        lines.append(
+            f"- **{item['family']}** ({item['left']} vs {item['right']}): mean paired difference "
+            f"{item['mean_difference_left_minus_right']:.6f}; 95% t CI [{ci[0]:.6f}, {ci[1]:.6f}]; "
+            f"d_z={item['cohen_dz']:.6f}; paired t p={item['paired_t_p']:.6g}; "
+            f"Holm-adjusted p={item['holm_adjusted_p']:.6g}; "
+            f"{item['left_lower_error_seeds']} of {item['n_seeds']} seeds had lower left-model error."
+        )
+
+    lines += ["", "## Secondary track-cluster bootstrap", ""]
+    for item in cluster_bootstraps:
+        ci = item["ci95"]
+        lines.append(
+            f"- {item['comparison']}: observed difference {item['observed_mean_difference']:.6f}; "
+            f"95% CI [{ci[0]:.6f}, {ci[1]:.6f}], {item['clusters']} pedestrian-track clusters, "
+            f"{item['resamples']} resamples. {item['caveat']}"
+        )
+    lines += ["", "## Per-seed E1 values", "",
+               "| Seed | Model | MSE | C-MSE | CF-MSE | Epochs completed |",
+               "|---:|---|---:|---:|---:|---:|"]
+    for record in sorted(records, key=lambda row: (SEEDS.index(row["seed"]), NAMES.index(row["model"]))):
+        lines.append(
+            f"| {record['seed']} | {record['model']} | {record['mse']:.6f} | "
+            f"{record['cmse']:.6f} | {record['cfmse']:.6f} | {record['epochs_completed']} |"
+        )
+
+    lines += ["", "## B1 matched-protocol baselines", ""]
+    b1_rows = []
+    b1_root = RESULTS / "runs" / "B1"
+    for b1_name in ("constant_position", "constant_velocity_last_3_frames",
+                    "lstm_boxes_plus_ego_speed", "lstm_boxes_plus_ego_speed_plus_scene_labels"):
+        metrics_paths = list((b1_root / b1_name).glob("**/metrics.json"))
+        if not metrics_paths:
+            continue
+        metrics = [json.loads(path.read_text()) for path in metrics_paths]
+        b1_rows.append({
+            "name": b1_name,
+            "runs": len(metrics),
+            "mse": float(np.mean([item["mse"] for item in metrics])),
+            "cmse": float(np.mean([item["cmse"] for item in metrics])),
+            "cfmse": float(np.mean([item["cfmse"] for item in metrics])),
+            "epochs": [item.get("epochs_completed") for item in metrics if item.get("epochs_completed") is not None],
+        })
+    lines += ["| B1 model | Runs | MSE mean | C-MSE mean | CF-MSE mean | Epochs |",
+              "|---|---:|---:|---:|---:|---|"]
+    for item in b1_rows:
+        epoch_text = "n/a" if not item["epochs"] else ", ".join(map(str, sorted(item["epochs"])))
+        lines.append(
+            f"| {item['name']} | {item['runs']} | {item['mse']:.6f} | "
+            f"{item['cmse']:.6f} | {item['cfmse']:.6f} | {epoch_text} |"
+        )
+
+    lines += ["", "## Anomalies and validity", "",
+              "- No non-finite MSE, C-MSE, or CF-MSE values were found.",
+              "- Eight E1 runs completed all 50 epochs: MTN seeds 20260932 and 20260935; PACE-Net SATIE seeds 20260935 and 20260937; PACE-Net without SATIE seeds 20260931 and 20260935; PACE-Net with ROUTE and SATIE seeds 20260935 and 20260936.",
+              "- Seed 20260936 has large-seed concern for MTN (6249.603594 MSE) and is therefore the largest visible source of seed variance, not a protocol violation.",
+              "- A one-seed or one-run anomaly must not be silently removed; it is retained and reported.",
+              "- Two-window moving-block bootstrap sensitivity was generated but is not confirmatory; all test tracks are from one video.",
+              "- B2/B3 published baselines remain excluded as full-IDD-PeD published results and are not comparable."]
     (summary / "E1_REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 

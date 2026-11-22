@@ -171,7 +171,21 @@ def evaluate(model, loader, stats):
             for index in range(prediction.shape[0]):
                 centre_p=(raw_prediction[index,:,0:2]+raw_prediction[index,:,2:4])/2; centre_t=(raw_target[index,:,0:2]+raw_target[index,:,2:4])/2
                 rows.append({"sample_id":batch["sample_id"][index],"video":batch["video"][index],"pid":batch["pid"][index],"frame_start":int(batch["frame_start"][index]),"frame_end":int(batch["frame_end"][index]),"mse":float(np.mean((raw_prediction[index]-raw_target[index])**2)),"cmse":float(np.mean((centre_p-centre_t)**2)),"cfmse":float(np.mean((centre_p[-1]-centre_t[-1])**2))})
-    arrays={"predictions":np.concatenate(predictions),"targets":np.concatenate(targets),"x_t":np.concatenate(x_last),"attention_layer_0":np.concatenate(attentions[0]),"attention_layer_1":np.concatenate(attentions[1]),"attention_layer_2":np.concatenate(attentions[2])}
+    # All-closed SAGE batches take the exact motion-only path (15 memory
+    # tokens); batches containing an admitted sample have 16.  Preserve every
+    # attention weight by padding only the absent context-token column with
+    # NaN, and record the native key count for every test sample.
+    key_counts = [chunk.shape[-1] for chunk in attentions[0]]
+    if any(chunk.shape[-1] != keys for layer in attentions for chunk, keys in zip(layer, key_counts)):
+        raise AssertionError("Decoder layers disagreed about their memory-token count")
+    max_keys = max(key_counts)
+    def padded_attention(chunks):
+        return np.concatenate([
+            np.pad(chunk, ((0, 0), (0, 0), (0, 0), (0, max_keys - chunk.shape[-1])),
+                   mode="constant", constant_values=np.nan)
+            for chunk in chunks
+        ])
+    arrays={"predictions":np.concatenate(predictions),"targets":np.concatenate(targets),"x_t":np.concatenate(x_last),"attention_memory_tokens":np.concatenate([np.full(chunk.shape[0], keys, dtype=np.int8) for chunk, keys in zip(attentions[0], key_counts)]),"attention_layer_0":padded_attention(attentions[0]),"attention_layer_1":padded_attention(attentions[1]),"attention_layer_2":padded_attention(attentions[2])}
     if gates: arrays["gate"] = np.concatenate(gates); arrays["gate_logits"] = np.concatenate(logits)
     metrics={key:float(np.mean([row[key] for row in rows])) for key in ("mse","cmse","cfmse")}
     return metrics, rows, arrays

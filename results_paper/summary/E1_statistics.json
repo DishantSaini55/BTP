@@ -1,0 +1,212 @@
+{
+  "primary": {
+    "unit": "seed",
+    "confirmatory_family": "H1 and H2 only; two-sided paired t tests with Holm correction over two tests",
+    "comparisons": [
+      {
+        "family": "H1",
+        "left": "PACE-Net without SATIE (SAGE + MASC)",
+        "right": "MTN (baseline)",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": 935.2509384313486,
+        "ci95": [
+          -736.378283667951,
+          2606.880160530648
+        ],
+        "paired_t_p": 0.23742227726238013,
+        "cohen_dz": 0.4002312287782364,
+        "left_lower_error_seeds": 2,
+        "wilcoxon_p": 0.193359375,
+        "holm_adjusted_p": 0.47484455452476027
+      },
+      {
+        "family": "H2",
+        "left": "PACE-Net (SAGE + MASC + SATIE)",
+        "right": "PACE-Net without SATIE (SAGE + MASC)",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": 20.932368681947356,
+        "ci95": [
+          -534.732552686673,
+          576.5972900505676
+        ],
+        "paired_t_p": 0.9339541746984172,
+        "cohen_dz": 0.02694810112913621,
+        "left_lower_error_seeds": 5,
+        "wilcoxon_p": 0.921875,
+        "holm_adjusted_p": 0.9339541746984172
+      },
+      {
+        "family": "exploratory",
+        "left": "MTN (baseline)",
+        "right": "PACE-Net (SAGE + MASC + SATIE)",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": -956.1833071132958,
+        "ci95": [
+          -2820.5798250453654,
+          908.2132108187739
+        ],
+        "paired_t_p": 0.27582538285423935,
+        "cohen_dz": -0.3668813610937496,
+        "left_lower_error_seeds": 7,
+        "wilcoxon_p": 0.322265625
+      },
+      {
+        "family": "exploratory",
+        "left": "MTN (baseline)",
+        "right": "PACE-Net with ROUTE",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": -1984.161817195558,
+        "ci95": [
+          -3961.7823818863067,
+          -6.541252504809108
+        ],
+        "paired_t_p": 0.049392165072989595,
+        "cohen_dz": -0.7177230475028472,
+        "left_lower_error_seeds": 8,
+        "wilcoxon_p": 0.037109375
+      },
+      {
+        "family": "exploratory",
+        "left": "MTN (baseline)",
+        "right": "PACE-Net with ROUTE and SATIE",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": -926.3114348662066,
+        "ci95": [
+          -3342.959647177027,
+          1490.3367774446137
+        ],
+        "paired_t_p": 0.4084131065425544,
+        "cohen_dz": -0.27419931400669645,
+        "left_lower_error_seeds": 5,
+        "wilcoxon_p": 0.921875
+      },
+      {
+        "family": "exploratory",
+        "left": "PACE-Net without SATIE (SAGE + MASC)",
+        "right": "PACE-Net with ROUTE",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": -1048.9108787642099,
+        "ci95": [
+          -2863.9746336892313,
+          766.1528761608115
+        ],
+        "paired_t_p": 0.22352631824039015,
+        "cohen_dz": -0.4133990549013702,
+        "left_lower_error_seeds": 7,
+        "wilcoxon_p": 0.322265625
+      },
+      {
+        "family": "exploratory",
+        "left": "PACE-Net without SATIE (SAGE + MASC)",
+        "right": "PACE-Net with ROUTE and SATIE",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": 8.939503565142013,
+        "ci95": [
+          -1246.4652978706956,
+          1264.3443050009798
+        ],
+        "paired_t_p": 0.9874993580472002,
+        "cohen_dz": 0.005093923174389383,
+        "left_lower_error_seeds": 2,
+        "wilcoxon_p": 0.431640625
+      },
+      {
+        "family": "exploratory",
+        "left": "PACE-Net (SAGE + MASC + SATIE)",
+        "right": "PACE-Net with ROUTE",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": -1027.9785100822623,
+        "ci95": [
+          -2670.995928964848,
+          615.0389088003235
+        ],
+        "paired_t_p": 0.19062325219769033,
+        "cohen_dz": -0.44757378584391777,
+        "left_lower_error_seeds": 9,
+        "wilcoxon_p": 0.037109375
+      },
+      {
+        "family": "exploratory",
+        "left": "PACE-Net (SAGE + MASC + SATIE)",
+        "right": "PACE-Net with ROUTE and SATIE",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": 29.871872247089367,
+        "ci95": [
+          -757.7028094481475,
+          817.4465539423263
+        ],
+        "paired_t_p": 0.933502907561289,
+        "cohen_dz": 0.027132728619757573,
+        "left_lower_error_seeds": 2,
+        "wilcoxon_p": 0.431640625
+      },
+      {
+        "family": "exploratory",
+        "left": "PACE-Net with ROUTE",
+        "right": "PACE-Net with ROUTE and SATIE",
+        "n_seeds": 10,
+        "mean_difference_left_minus_right": 1057.8503823293518,
+        "ci95": [
+          -776.2215468865606,
+          2891.922311545264
+        ],
+        "paired_t_p": 0.22434832493709675,
+        "cohen_dz": 0.41260136226310673,
+        "left_lower_error_seeds": 3,
+        "wilcoxon_p": 0.375
+      }
+    ]
+  },
+  "secondary_track_cluster_bootstrap": [
+    {
+      "comparison": "PACE-Net without SATIE (SAGE + MASC) minus MTN (baseline)",
+      "observed_mean_difference": 935.2509384313487,
+      "ci95": [
+        559.7631340669016,
+        1241.417100362972
+      ],
+      "resamples": 10000,
+      "resampling_unit": "whole pedestrian track (pid); all sampled-track windows retained",
+      "clusters": 24,
+      "caveat": "All test tracks are from one video; this is exploratory and is not cross-video inference."
+    },
+    {
+      "comparison": "PACE-Net (SAGE + MASC + SATIE) minus PACE-Net without SATIE (SAGE + MASC)",
+      "observed_mean_difference": 20.932368681947242,
+      "ci95": [
+        -57.517230133875074,
+        115.76849054015511
+      ],
+      "resamples": 10000,
+      "resampling_unit": "whole pedestrian track (pid); all sampled-track windows retained",
+      "clusters": 24,
+      "caveat": "All test tracks are from one video; this is exploratory and is not cross-video inference."
+    }
+  ],
+  "sensitivity_two_window_moving_block_bootstrap": [
+    {
+      "comparison": "PACE-Net without SATIE (SAGE + MASC) minus MTN (baseline)",
+      "observed_mean_difference": 935.2509384313487,
+      "ci95": [
+        655.3165508338855,
+        1123.9849889413651
+      ],
+      "resamples": 10000,
+      "block_length_selected_windows": 2,
+      "role": "sensitivity check only",
+      "caveat": "All windows are from one video; this is exploratory and is not cross-video inference."
+    },
+    {
+      "comparison": "PACE-Net (SAGE + MASC + SATIE) minus PACE-Net without SATIE (SAGE + MASC)",
+      "observed_mean_difference": 20.932368681947242,
+      "ci95": [
+        -64.05840325957317,
+        145.9989293697491
+      ],
+      "resamples": 10000,
+      "block_length_selected_windows": 2,
+      "role": "sensitivity check only",
+      "caveat": "All windows are from one video; this is exploratory and is not cross-video inference."
+    }
+  ]
+}

@@ -46,3 +46,18 @@ Current repository commit observed before this documentation change: `2572a86567
 - Implemented the fresh E1 runner. Each run records exact `state_dict` initialization-key names/shapes/SHA-256 digests, `loaded_keys: []`, the source revision and local source hashes, full validation history, checkpoint, per-window predictions, gate decisions/logits where applicable, and decoder source-attention weights for every layer/head. It never loads an official checkpoint.
 - Five-model smoke test passed: parameter counts are 133,700; 139,142; 130,694; 154,007; and 145,559; all outputs are finite; SATIE object/parameter/data-pointer sharing and unique optimizer registration passed. The forced SAGE g=0 path now bypasses the appended context token and exactly equals the motion-only output. The initial implementation appended a masked token and differed by at most `7.15e-7` due to attention reduction order; it was corrected before any training run.
 - Implemented and smoke-tested B1. Constant-position and three-observed-frame constant-velocity predictors are deterministic; fresh 32-hidden-unit autoregressive LSTM baselines use boxes+ego speed, with a separately specified static-scene-label variant. Both LSTM outputs are `[batch,45,4]` and finite; their counts are 9,988 and 10,760. No B1 or E1 metric run has yet begun.
+
+## 2026-11-22 — E1 attention serialization recovery
+
+- E1 completed the ten MTN seeds and eight PACE-Net-without-SATIE seeds before `PACE-Net without SATIE`, seed 20260936, failed after validation-selected checkpoint creation and before any test metric, per-sample CSV, or prediction file was written.
+- Cause: an exact all-closed SAGE batch takes the 15-memory-token motion-only path, while a batch with one or more admitted samples has 16 tokens. The evaluator attempted a direct concatenation of those variable-width attention arrays. This is an output-serialization defect, not a split, training, validation-selection, or test-data issue.
+- Preserved the failed checkpoint and its original run configuration under `failed_runs/E1_attention_serialization_20260936/`; nothing was overwritten or deleted. Repaired the evaluator to pad only the absent context-token attention column with `NaN` and save a per-sample `attention_memory_tokens` field.
+- The repair passed a read-only 217-test-window evaluation check. Restarted only the failed seed and the not-yet-started E1 model/seed combinations under the same fixed seed and protocol. Completed E1 metrics are not rerun. The E1 gate remains closed until 50 metrics and `summary/` exist.
+
+## 2026-11-22 — E1 gate opened and report generated
+
+- The from-scratch E1 pipeline completed all 50 model-seed run directories and 50 `metrics.json` files across MTN, PACE-Net without SATIE, PACE-Net with SATIE, PACE-Net with ROUTE, and PACE-Net with ROUTE and SATIE.
+- Rebuilt `results_paper/summary/` from the 50 immutable run directories after detecting that the earlier summary CSV contained only 10 MTN rows. The stale/partial summaries were preserved under `summary_stale_partial_20261122/`, `summary_failed_partial_20261122/`, and `summary_regeneration_20261122/`; no run directory or checkpoint was overwritten.
+- Repaired `MTN/summarize_e1.py` to union variable metric keys when writing `all_runs.csv`; SAGE gate models add `admission_rate`, while ROUTE models add route-share fields.
+- Wrote `results_paper/E1_REPORT.md` and summary artifacts with 50 per-run rows, aggregate MSE/C-MSE/CF-MSE and epoch summaries, H1/H2 Holm-adjusted results, track-cluster bootstraps, per-seed values, B1 baselines, and anomaly reporting.
+- No non-finite E1 metric was found. Eight runs reached 50 epochs; seed 20260936 is a visible high-MSE MTN outlier and was retained.
