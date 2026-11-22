@@ -1,0 +1,10 @@
+{
+  "mse": 3141.2872251167823,
+  "cmse": 2917.750585424186,
+  "cfmse": 6133.047363073595,
+  "model": "PACE-Net without SATIE (SAGE + MASC)",
+  "ablation": "always_open",
+  "seed": 20260931,
+  "reuse_e1_checkpoint": "D:\\DOWNLOADS\\BTP\\results_paper\\runs\\E1\\pace_net_without_satie_sage_plus_masc\\20260931\\checkpoint.pth",
+  "parameters": 139142
+}

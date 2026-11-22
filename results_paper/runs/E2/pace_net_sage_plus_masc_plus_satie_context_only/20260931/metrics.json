@@ -1,0 +1,15 @@
+{
+  "mse": 3557.024455268262,
+  "cmse": 3292.6811856256654,
+  "cfmse": 6875.5243418249665,
+  "admission_rate": 0.981566846370697,
+  "gate_mean": 0.981566846370697,
+  "gate_std": 0.13482272624969482,
+  "gate_logit_mean": -0.6548985242843628,
+  "gate_logit_std": 0.09289538860321045,
+  "model": "PACE-Net (SAGE + MASC + SATIE)",
+  "ablation": "context_only",
+  "seed": 20260931,
+  "reuse_e1_checkpoint": "D:\\DOWNLOADS\\BTP\\results_paper\\runs\\E1\\pace_net_sage_plus_masc_plus_satie\\20260931\\checkpoint.pth",
+  "parameters": 130694
+}

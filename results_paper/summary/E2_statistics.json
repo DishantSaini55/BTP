@@ -1,0 +1,27 @@
+{
+  "H3_learned_gate_vs_always_open": {
+    "PACE-Net (SAGE + MASC + SATIE)": {
+      "n_seeds": 10,
+      "mean_difference_left_minus_right": 158.25171775642076,
+      "ci95": [
+        -84.77016692712925,
+        401.2736024399708
+      ],
+      "paired_t_p": 0.17482082449299066,
+      "cohen_dz": 0.465828249691123,
+      "left_lower_error_seeds": 0
+    },
+    "PACE-Net without SATIE (SAGE + MASC)": {
+      "n_seeds": 10,
+      "mean_difference_left_minus_right": 68.90109935004588,
+      "ci95": [
+        -29.33467574794841,
+        167.13687444804017
+      ],
+      "paired_t_p": 0.1470553662361974,
+      "cohen_dz": 0.501740605190507,
+      "left_lower_error_seeds": 0
+    }
+  },
+  "note": "E2 variants are post-hoc checkpoint evaluations; H3 is confirmatory but is assessed in the combined H1/H2/H3 Holm family only."
+}

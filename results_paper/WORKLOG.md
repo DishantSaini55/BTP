@@ -61,3 +61,10 @@ Current repository commit observed before this documentation change: `2572a86567
 - Repaired `MTN/summarize_e1.py` to union variable metric keys when writing `all_runs.csv`; SAGE gate models add `admission_rate`, while ROUTE models add route-share fields.
 - Wrote `results_paper/E1_REPORT.md` and summary artifacts with 50 per-run rows, aggregate MSE/C-MSE/CF-MSE and epoch summaries, H1/H2 Holm-adjusted results, track-cluster bootstraps, per-seed values, B1 baselines, and anomaly reporting.
 - No non-finite E1 metric was found. Eight runs reached 50 epochs; seed 20260936 is a visible high-MSE MTN outlier and was retained.
+
+## 2026-11-22 — E2 SAGE gate ablations
+
+- Completed 80 post-hoc E2 checkpoint evaluations: four ablations (`always_open`, `always_closed`, `soft_sigmoid`, `context_only`) across PACE-Net with and without SATIE for seeds 20260928–20260937.
+- The learned-gate configurations were reused from matching E1 checkpoints; no E2 model was retrained.
+- Wrote `results_paper/summary/E2_all_runs.csv`, `E2_summary.csv`, `E2_summary.tex`, `E2_statistics.json`, and `E2_REPORT.md`.
+- E2 resume logic skips existing immutable run directories. One empty always-closed seed 20260935 directory was identified and removed specifically, then that variant was rerun; no completed E2 result was overwritten.

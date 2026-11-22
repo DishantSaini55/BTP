@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llrrrr}
+\hline
+Model & Ablation & Runs & MSE mean $\pm$ SD & C-MSE mean & CF-MSE mean \\
+\hline
+PACE-Net (SAGE + MASC + SATIE) & always_open & 10 & $4063.461038 \pm 2500.375722$ & $3819.136927$ & $7288.680537$ \\
+PACE-Net (SAGE + MASC + SATIE) & always_closed & 10 & $5597.617218 \pm 3117.639909$ & $5176.828464$ & $7725.045204$ \\
+PACE-Net (SAGE + MASC + SATIE) & soft_sigmoid & 10 & $4160.576696 \pm 2526.229767$ & $3920.171872$ & $7351.209369$ \\
+PACE-Net (SAGE + MASC + SATIE) & context_only & 10 & $4151.919357 \pm 2443.368153$ & $3891.631597$ & $7328.329222$ \\
+PACE-Net without SATIE (SAGE + MASC) & always_open & 10 & $4131.879288 \pm 2155.014497$ & $3911.696138$ & $7540.457202$ \\
+PACE-Net without SATIE (SAGE + MASC) & always_closed & 10 & $5008.712172 \pm 2319.472110$ & $4689.927887$ & $7892.420707$ \\
+PACE-Net without SATIE (SAGE + MASC) & soft_sigmoid & 10 & $4196.839402 \pm 2216.367997$ & $3974.132855$ & $7535.979882$ \\
+PACE-Net without SATIE (SAGE + MASC) & context_only & 10 & $4156.161686 \pm 2145.285592$ & $3932.730472$ & $7509.512988$ \\
+\hline
+\end{tabular}
+\caption{E2 SAGE gate-ablation seed summary.}
+\end{table}
