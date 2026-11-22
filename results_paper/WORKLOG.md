@@ -74,3 +74,10 @@ Current repository commit observed before this documentation change: `2572a86567
 - Ran post-hoc gate/route analysis over all matching E1 saved test outputs for seeds 20260928–20260937; no training or test-set tuning was used.
 - Wrote E3 CSV/JSON/Markdown/LaTeX summaries, including admitted/rejected MSE, gate logits, scene and occlusion slices, and normalized `x_T` ranges.
 - The normalized test `x_T` range reached `[-38.396156, 4.739763]`, exceeding the protocol's `±5` trigger in train, validation, and test. E8 will therefore be run.
+
+## 2026-11-22 — E8 launch stopped after stalled first run
+
+- E8 was launched because E3 triggered the `±5` normalized `x_T` condition.
+- The first E8 clipped-`x_T` seed 20260928 run remained active for more than one hour without writing a metric or training log and was stopped to avoid an uncontrolled parallel experiment.
+- The empty run directory was removed; no partial checkpoint or fabricated result is retained.
+- E8 remains explicitly incomplete and is not included in any summary or test-set conclusion.
