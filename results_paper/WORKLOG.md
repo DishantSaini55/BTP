@@ -68,3 +68,9 @@ Current repository commit observed before this documentation change: `2572a86567
 - The learned-gate configurations were reused from matching E1 checkpoints; no E2 model was retrained.
 - Wrote `results_paper/summary/E2_all_runs.csv`, `E2_summary.csv`, `E2_summary.tex`, `E2_statistics.json`, and `E2_REPORT.md`.
 - E2 resume logic skips existing immutable run directories. One empty always-closed seed 20260935 directory was identified and removed specifically, then that variant was rerun; no completed E2 result was overwritten.
+
+## 2026-11-22 — E3 gate behaviour and E8 trigger
+
+- Ran post-hoc gate/route analysis over all matching E1 saved test outputs for seeds 20260928–20260937; no training or test-set tuning was used.
+- Wrote E3 CSV/JSON/Markdown/LaTeX summaries, including admitted/rejected MSE, gate logits, scene and occlusion slices, and normalized `x_T` ranges.
+- The normalized test `x_T` range reached `[-38.396156, 4.739763]`, exceeding the protocol's `±5` trigger in train, validation, and test. E8 will therefore be run.
