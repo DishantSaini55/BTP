@@ -81,3 +81,10 @@ Current repository commit observed before this documentation change: `2572a86567
 - The first E8 clipped-`x_T` seed 20260928 run remained active for more than one hour without writing a metric or training log and was stopped to avoid an uncontrolled parallel experiment.
 - The empty run directory was removed; no partial checkpoint or fabricated result is retained.
 - E8 remains explicitly incomplete and is not included in any summary or test-set conclusion.
+
+## 2026-11-23 — B1 LSTM diagnosis and corrected rerun
+
+- Diagnosed the original B1 LSTM instability: no gradient clipping, unmasked 45-step autoregressive rollout, and incorrect scene vocabulary cardinalities. Input/target normalization and raw-denormalization were consistent; the reported million-scale values remain a training instability/result rather than a unit-conversion defect.
+- Patched the B1 runner and added `run_b1_fixed.py`, using teacher forcing during training, own predictions during test rollout, Adam 1e-3, batch 8, patience 10, and gradient clipping at norm 1.0.
+- Completed 20 corrected reruns in `results_paper/runs/B1_FIXED_CORRECTED/` plus 20 separate intermediate diagnostic runs in `B1_FIXED/`; neither directory overwrote an existing B1 run.
+- Wrote `results_paper/B1_FIXED_REPORT.md`. Both corrected variants remain far worse than constant velocity (1496.018040 test MSE), with mean MSE 446028.863458 for boxes+speed and 430463.202011 with scene labels.

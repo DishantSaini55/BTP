@@ -27,11 +27,13 @@ try:
         MAX_EPOCHS, NAMES, PATIENCE, RESULTS, SEEDS, SPLIT, WindowDataset,
         load_data, source_provenance,
     )
+    from .context_schema import SCENE_VOCAB_SIZES
 except ImportError:
     from run_from_scratch_e1 import (
         MAX_EPOCHS, NAMES, PATIENCE, RESULTS, SEEDS, SPLIT, WindowDataset,
         load_data, source_provenance,
     )
+    from context_schema import SCENE_VOCAB_SIZES
 
 VELOCITY_FRAMES = 3
 TRAINED = ("LSTM (boxes + ego speed)", "LSTM (boxes + ego speed + scene labels)")
@@ -60,10 +62,11 @@ class LSTMBaseline(nn.Module):
         self.output = nn.Linear(32, 4)
         if use_scene:
             # The known-cardinality scene codes match context_schema.py.
-            self.scene_embeddings = nn.ModuleList([nn.Embedding(size, 4) for size in (5, 4, 3, 4, 9)])
+            self.scene_embeddings = nn.ModuleList([nn.Embedding(size, 4) for size in SCENE_VOCAB_SIZES])
             self.scene_projection = nn.Linear(20, 32)
 
-    def forward(self, boxes: torch.Tensor, speed: torch.Tensor, scene_context: torch.Tensor) -> torch.Tensor:
+    def forward(self, boxes: torch.Tensor, speed: torch.Tensor, scene_context: torch.Tensor,
+                targets: torch.Tensor | None = None) -> torch.Tensor:
         encoded, (hidden, cell) = self.encoder(torch.cat((boxes, speed[:, :boxes.shape[1]]), dim=-1))
         if self.use_scene:
             pieces = [embedding(scene_context[:, index].long().clamp(0, embedding.num_embeddings - 1))
@@ -77,6 +80,8 @@ class LSTMBaseline(nn.Module):
             # Predict an offset from the previous predicted normalised box.
             previous = previous + self.output(decoded[:, 0])
             outputs.append(previous)
+            if targets is not None:
+                previous = targets[:, len(outputs) - 1]
         return torch.stack(outputs, dim=1)
 
 
@@ -124,7 +129,11 @@ def evaluate(model: nn.Module | None, loader: DataLoader, stats, kind: str):
 def mean_loss(model: nn.Module, loader: DataLoader, loss: nn.Module) -> float:
     total, count = 0.0, 0
     for batch in loader:
-        value = loss(model(batch["boxes"].float(), batch["speed"].float(), batch["scene_context"]), batch["pred_target"].float())
+        value = loss(
+            model(batch["boxes"].float(), batch["speed"].float(),
+                  batch["scene_context"], batch["pred_target"].float()),
+            batch["pred_target"].float(),
+        )
         total += value.item() * batch["boxes"].shape[0]
         count += batch["boxes"].shape[0]
     return total / count
@@ -185,8 +194,13 @@ def trained(name: str, seed: int, datasets, stats) -> None:
         model.train()
         for batch in train:
             optimizer.zero_grad()
-            value = loss(model(batch["boxes"].float(), batch["speed"].float(), batch["scene_context"]), batch["pred_target"].float())
+            value = loss(
+                model(batch["boxes"].float(), batch["speed"].float(),
+                      batch["scene_context"], batch["pred_target"].float()),
+                batch["pred_target"].float(),
+            )
             value.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
             optimizer.step()
         model.eval()
         with torch.no_grad():
