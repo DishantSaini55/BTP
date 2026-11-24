@@ -101,3 +101,10 @@ Current repository commit observed before this documentation change: `2572a86567
 - Benchmarked all five E1 model families at batch sizes 1 and 8 with 4 threads, 50 warm-ups, and 500 timed iterations.
 - CPU: Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz.
 - Used `thop` for MACs and recorded parameter counts and seed-20260928 checkpoint sizes.
+
+## 2026-11-24 — Protocol assessment
+
+- Wrote `results_paper/PROTOCOL_ASSESSMENT.md`.
+- Documented cross-video shift, small GP6 training volume, constant-position residual-head context, and constant-velocity superiority.
+- Inventoried local GP6/GP8 pedestrian XML, GP6/GP8 OBD XML, GP6 source videos, and local cache files.
+- Explicitly recorded that no training protocol change was made and that approval is required before any future change.
