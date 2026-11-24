@@ -95,3 +95,9 @@ Current repository commit observed before this documentation change: `2572a86567
 - Wrote `results_paper/summary/E1_DIAGNOSTICS_summary.csv`, `E1_DIAGNOSTICS_aggregate.csv`, and `E1_DIAGNOSTICS_REPORT.md`.
 - Aggregate absolute validation-versus-test-optimal epoch gaps were 7.10 for MTN, 10.50 for PACE-Net without SATIE, and 7.40 for PACE-Net with SATIE.
 - MTN seed 20260932 selected epoch 34 but its test-optimal diagnostic epoch was 22. It stopped at 44 epochs in the diagnostic rerun, versus 50 in the original run. This shows video-shift/selection concern but does not prove early stopping alone caused seed 20260932's failure.
+
+## 2026-11-24 — E7 timing and FLOPs
+
+- Benchmarked all five E1 model families at batch sizes 1 and 8 with 4 threads, 50 warm-ups, and 500 timed iterations.
+- CPU: Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz.
+- Used `thop` for MACs and recorded parameter counts and seed-20260928 checkpoint sizes.
