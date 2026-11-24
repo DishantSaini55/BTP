@@ -1,0 +1,149 @@
+[
+  {
+    "epoch": 1,
+    "train_mse": 0.537007803343377,
+    "validation_mse": 1.3960111529328103,
+    "test_normalized_mse": 1.0437121635757833,
+    "test_raw_mse": 15081.821239559331
+  },
+  {
+    "epoch": 2,
+    "train_mse": 0.25939242991636385,
+    "validation_mse": 1.4009372467218444,
+    "test_normalized_mse": 1.6166730311609083,
+    "test_raw_mse": 14228.923713367656
+  },
+  {
+    "epoch": 3,
+    "train_mse": 0.23492690499098795,
+    "validation_mse": 1.4120180274164953,
+    "test_normalized_mse": 1.2363143873654203,
+    "test_raw_mse": 10635.00910858295
+  },
+  {
+    "epoch": 4,
+    "train_mse": 0.2168858731692692,
+    "validation_mse": 1.2664056378741597,
+    "test_normalized_mse": 1.3365940962518965,
+    "test_raw_mse": 8669.625781925044
+  },
+  {
+    "epoch": 5,
+    "train_mse": 0.20297172567192115,
+    "validation_mse": 1.2373222195824911,
+    "test_normalized_mse": 1.096398340941574,
+    "test_raw_mse": 7067.793779926916
+  },
+  {
+    "epoch": 6,
+    "train_mse": 0.18982642748445835,
+    "validation_mse": 1.3473842809366625,
+    "test_normalized_mse": 0.9773552309258193,
+    "test_raw_mse": 5729.65849451865
+  },
+  {
+    "epoch": 7,
+    "train_mse": 0.17144222824640995,
+    "validation_mse": 1.4247982501983643,
+    "test_normalized_mse": 0.8421942551839187,
+    "test_raw_mse": 4663.543536911362
+  },
+  {
+    "epoch": 8,
+    "train_mse": 0.168165737165595,
+    "validation_mse": 1.2046690042628798,
+    "test_normalized_mse": 0.41668250133639656,
+    "test_raw_mse": 3185.8900208363334
+  },
+  {
+    "epoch": 9,
+    "train_mse": 0.16344827357328162,
+    "validation_mse": 1.4122045483700065,
+    "test_normalized_mse": 0.5643049194584794,
+    "test_raw_mse": 4206.3885453043995
+  },
+  {
+    "epoch": 10,
+    "train_mse": 0.14347395511730662,
+    "validation_mse": 1.2006773671438529,
+    "test_normalized_mse": 0.5159629124993553,
+    "test_raw_mse": 4137.637109149986
+  },
+  {
+    "epoch": 11,
+    "train_mse": 0.12803958665649845,
+    "validation_mse": 0.9165756702423096,
+    "test_normalized_mse": 0.2079099835613356,
+    "test_raw_mse": 2164.495840608799
+  },
+  {
+    "epoch": 12,
+    "train_mse": 0.13517388799842797,
+    "validation_mse": 1.0502204506896262,
+    "test_normalized_mse": 0.6787718382024546,
+    "test_raw_mse": 4498.594050956761
+  },
+  {
+    "epoch": 13,
+    "train_mse": 0.12501635458671823,
+    "validation_mse": 1.0968621553376663,
+    "test_normalized_mse": 0.41968331614740984,
+    "test_raw_mse": 3340.49994655908
+  },
+  {
+    "epoch": 14,
+    "train_mse": 0.11929196358289358,
+    "validation_mse": 1.2516473115876663,
+    "test_normalized_mse": 0.6773461930213436,
+    "test_raw_mse": 4665.231160669283
+  },
+  {
+    "epoch": 15,
+    "train_mse": 0.1211354060555404,
+    "validation_mse": 1.0981764848842177,
+    "test_normalized_mse": 0.33593552017129513,
+    "test_raw_mse": 2589.5143632317468
+  },
+  {
+    "epoch": 16,
+    "train_mse": 0.131097517556177,
+    "validation_mse": 0.9815133837766425,
+    "test_normalized_mse": 0.4738941153142309,
+    "test_raw_mse": 3619.5330901958973
+  },
+  {
+    "epoch": 17,
+    "train_mse": 0.12921573741818373,
+    "validation_mse": 1.1361123961071635,
+    "test_normalized_mse": 0.48424483464884865,
+    "test_raw_mse": 3198.889929986769
+  },
+  {
+    "epoch": 18,
+    "train_mse": 0.10025616510296767,
+    "validation_mse": 1.1087760343108066,
+    "test_normalized_mse": 0.5268805182199874,
+    "test_raw_mse": 3980.0854213732177
+  },
+  {
+    "epoch": 19,
+    "train_mse": 0.09599090785772171,
+    "validation_mse": 0.9534535712974016,
+    "test_normalized_mse": 0.34548210126051704,
+    "test_raw_mse": 3149.9631516417053
+  },
+  {
+    "epoch": 20,
+    "train_mse": 0.09874312607747204,
+    "validation_mse": 1.2461426036302434,
+    "test_normalized_mse": 0.45198592131588317,
+    "test_raw_mse": 3611.57466906007
+  },
+  {
+    "epoch": 21,
+    "train_mse": 0.09197915528180464,
+    "validation_mse": 0.9701916949693546,
+    "test_normalized_mse": 0.26722158366290655,
+    "test_raw_mse": 2639.6219587897376
+  }
+]

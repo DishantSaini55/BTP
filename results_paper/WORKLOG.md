@@ -88,3 +88,10 @@ Current repository commit observed before this documentation change: `2572a86567
 - Patched the B1 runner and added `run_b1_fixed.py`, using teacher forcing during training, own predictions during test rollout, Adam 1e-3, batch 8, patience 10, and gradient clipping at norm 1.0.
 - Completed 20 corrected reruns in `results_paper/runs/B1_FIXED_CORRECTED/` plus 20 separate intermediate diagnostic runs in `B1_FIXED/`; neither directory overwrote an existing B1 run.
 - Wrote `results_paper/B1_FIXED_REPORT.md`. Both corrected variants remain far worse than constant velocity (1496.018040 test MSE), with mean MSE 446028.863458 for boxes+speed and 430463.202011 with scene labels.
+
+## 2026-11-24 — E1 diagnostics
+
+- Added 30 independent epoch-level diagnostic reruns for MTN, PACE-Net without SATIE, and PACE-Net with SATIE. They save train MSE, validation MSE, normalized test MSE, and raw test MSE for every epoch. Test curves were never used for checkpoint selection.
+- Wrote `results_paper/summary/E1_DIAGNOSTICS_summary.csv`, `E1_DIAGNOSTICS_aggregate.csv`, and `E1_DIAGNOSTICS_REPORT.md`.
+- Aggregate absolute validation-versus-test-optimal epoch gaps were 7.10 for MTN, 10.50 for PACE-Net without SATIE, and 7.40 for PACE-Net with SATIE.
+- MTN seed 20260932 selected epoch 34 but its test-optimal diagnostic epoch was 22. It stopped at 44 epochs in the diagnostic rerun, versus 50 in the original run. This shows video-shift/selection concern but does not prove early stopping alone caused seed 20260932's failure.

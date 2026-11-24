@@ -1,0 +1,4 @@
+model,runs,mean_selected_epoch,mean_test_optimal_epoch,mean_abs_epoch_gap,max_abs_epoch_gap,far_gt_5_epochs
+MTN (baseline),10,35.5,30.0,7.1,12,7
+PACE-Net (SAGE + MASC + SATIE),10,23.0,21.8,7.4,18,5
+PACE-Net without SATIE (SAGE + MASC),10,31.3,26.6,10.5,36,7

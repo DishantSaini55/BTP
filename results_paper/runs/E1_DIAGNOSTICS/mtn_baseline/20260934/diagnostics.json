@@ -1,0 +1,15 @@
+{
+  "model": "MTN (baseline)",
+  "seed": 20260934,
+  "epochs_completed": 32,
+  "selected_epoch_validation_only": 22,
+  "test_optimal_epoch_not_used_for_selection": 24,
+  "selected_validation_mse": 0.7390400420787723,
+  "selected_test_normalized_mse": 0.7545239120584479,
+  "selected_test_raw_mse": 4435.171938004032,
+  "test_optimal_normalized_mse": 0.32954109549385063,
+  "test_optimal_raw_mse": 4742.516634189588,
+  "epoch_gap": 2,
+  "stopping_reason": "early stopping",
+  "training_seconds": 1670.6162025000085
+}

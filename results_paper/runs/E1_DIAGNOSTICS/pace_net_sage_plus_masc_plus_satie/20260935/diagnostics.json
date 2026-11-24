@@ -1,0 +1,15 @@
+{
+  "model": "PACE-Net (SAGE + MASC + SATIE)",
+  "seed": 20260935,
+  "epochs_completed": 46,
+  "selected_epoch_validation_only": 36,
+  "test_optimal_epoch_not_used_for_selection": 18,
+  "selected_validation_mse": 0.6313791690870773,
+  "selected_test_normalized_mse": 0.32136950576635,
+  "selected_test_raw_mse": 4581.17325546335,
+  "test_optimal_normalized_mse": 0.2164592838198084,
+  "test_optimal_raw_mse": 4304.3551469794065,
+  "epoch_gap": -18,
+  "stopping_reason": "early stopping",
+  "training_seconds": 1078.6408028999576
+}
