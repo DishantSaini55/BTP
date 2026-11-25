@@ -128,3 +128,9 @@ Current repository commit observed before this documentation change: `2572a86567
 - Before opening any image, froze and pushed `qualitative/SELECTION.md` for seed 20260928, including six RNG-selected distinct pedestrians, two largest PACE-Net improvements, two largest degradations, and available gate examples.
 - Both saved SAGE gates were closed on all 217 test windows, leaving no `g=1` window; no alternate seed or forced gate was substituted. The frozen selection includes 12 unique windows (6 random, 2 improvement, 2 degradation, 2 closed-gate) and records the unavailable open-gate case.
 - Rendered a 12-page vector-overlay PDF using the source GP6 video at each selected window's last observed frame; included observed boxes, ground truth, MTN, both PACE-Net variants, constant velocity, per-window MSE, gates, and scene labels. Wrote the page-to-window metrics CSV.
+
+## 2026-11-25 — Saved decoder attention and gate-mask analysis
+
+- Aggregated all three decoder layers, four heads, and 45 query positions from the saved seed-20260928 test outputs. Wrote per-head/per-token summaries for all selected windows and all 217 test windows.
+- Both learned SAGE gates were `g=0` for all 217 cases, so the E1 attention arrays contain 15 trajectory keys; there is no natural 16th context-token attention value or `g=1` counterfactual window. Scene-stratified gate counts and the not-estimable masking effect are recorded.
+- Loaded the saved PACE-Net checkpoint for a post-hoc mixed `[g=1,g=0]` mask-mechanics check only (no weights updated). In all 3 layers and 4 heads, the forced g=0 row's context key had exactly zero attention; forced g=1 values are marked diagnostic, not learned-gate results. Wrote the page-to-window metrics CSV.

@@ -1,0 +1,8 @@
+scene_field,label_code,n_windows,n_gate_0,n_gate_1,mean_mse_g1_observed,masked_prediction_effect
+intersection_type,0,217,217,0,,not estimable: no naturally admitted windows
+signalized_type,0,12,12,0,,not estimable: no naturally admitted windows
+signalized_type,1,14,14,0,,not estimable: no naturally admitted windows
+signalized_type,3,191,191,0,,not estimable: no naturally admitted windows
+road_type,0,217,217,0,,not estimable: no naturally admitted windows
+location_type,0,217,217,0,,not estimable: no naturally admitted windows
+motion_direction,0,217,217,0,,not estimable: no naturally admitted windows
