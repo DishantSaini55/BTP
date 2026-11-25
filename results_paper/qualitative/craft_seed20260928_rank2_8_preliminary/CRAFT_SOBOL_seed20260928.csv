@@ -1,0 +1,17 @@
+reference_sample_id,output,concept,first_order_sobol,total_order_sobol,base_samples,interpretation
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dx_pixels,encoder_ffn_1,1.6053045988082886,0.18026739358901978,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dx_pixels,encoder_ffn_2,11.133138656616211,0.3255428075790405,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dx_pixels,encoder_ffn_3,0.0,0.0,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dx_pixels,encoder_ffn_4,-0.10015657544136047,0.0002184899349231273,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dx_pixels,encoder_ffn_5,3.139482259750366,0.23047630488872528,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dx_pixels,encoder_ffn_6,0.0,0.0,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dx_pixels,encoder_ffn_7,0.0,0.0,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dx_pixels,encoder_ffn_8,-0.173531636595726,0.26243913173675537,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dy_pixels,encoder_ffn_1,0.21269726753234863,0.20487990975379944,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dy_pixels,encoder_ffn_2,0.01670975238084793,0.009931850247085094,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dy_pixels,encoder_ffn_3,0.0,0.0,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dy_pixels,encoder_ffn_4,0.001654431107454002,0.014216789044439793,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dy_pixels,encoder_ffn_5,0.40322521328926086,0.4196873605251312,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dy_pixels,encoder_ffn_6,0.0,0.0,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dy_pixels,encoder_ffn_7,0.0,0.0,256,single deterministic training reference window; empirical independent concept coefficients
+gp_set_0006/gp_set_0006_vid_0002/gp_4223/00362/00421,dy_pixels,encoder_ffn_8,0.38387352228164673,0.36468997597694397,256,single deterministic training reference window; empirical independent concept coefficients

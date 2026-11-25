@@ -134,3 +134,12 @@ Current repository commit observed before this documentation change: `2572a86567
 - Aggregated all three decoder layers, four heads, and 45 query positions from the saved seed-20260928 test outputs. Wrote per-head/per-token summaries for all selected windows and all 217 test windows.
 - Both learned SAGE gates were `g=0` for all 217 cases, so the E1 attention arrays contain 15 trajectory keys; there is no natural 16th context-token attention value or `g=1` counterfactual window. Scene-stratified gate counts and the not-estimable masking effect are recorded.
 - Loaded the saved PACE-Net checkpoint for a post-hoc mixed `[g=1,g=0]` mask-mechanics check only (no weights updated). In all 3 layers and 4 heads, the forced g=0 row's context key had exactly zero attention; forced g=1 values are marked diagnostic, not learned-gate results. Wrote the page-to-window metrics CSV.
+
+## 2026-11-25 — Exploratory CRAFT-inspired trajectory concepts
+
+- Read the CRAFT GitHub README/PyTorch API and Fel et al., CVPR 2023 / arXiv:2211.10154. Recorded why this is a CRAFT-inspired regression probe rather than an unchanged application of the classifier/image pipeline.
+- Audited encoder box/speed and decoder ReLU FFN activations, plus context post-GELU activations. All FFN activations were finite and non-negative. Context post-GELU negatives accounted for 13.81% of train and 13.58% of validation absolute activation mass before clamping.
+- Fit NMF bases on train activations and chose ranks by the frozen validation-only 1%-from-best rule over candidate ranks 2–16: final encoder box FFN rank 15 (validation relative reconstruction error 0.3397), clamped context rank 14 (0.1334). The preliminary 2–8 rank sweep is retained separately because it reached its upper bound.
+- Captured per-step factors for all 15 observed steps, top-activation training frame/window examples, and descriptive scene/gate associations. The learned gate admitted 49/212 train and 17/43 validation windows.
+- Ran a fixed-reference training-window functional probe: per-step ablation and 1,024-point Sobol indices for final predicted center displacement. Effects are local to the gate-closed reference sample and are explicitly not global importance estimates.
+- No model weights changed, no test dataset was iterated, and no files under `paper/` were edited. Wrote `qualitative/CRAFT_DECISION.md` with limitations; concepts were not clearly human-interpretable.
