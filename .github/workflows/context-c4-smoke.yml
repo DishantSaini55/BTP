@@ -1,0 +1,33 @@
+name: Context and C4 CPU smoke tests
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - fix/context-c4-smoke-tests
+
+jobs:
+  context-c4-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install CPU test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pytest
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: Run baseline, context, and C4 forward smoke tests
+        run: python context_smoke_test.py
+
+      - name: Run selective C4 sharing regression test
+        run: python -m pytest -q tests/test_c4_encoder_sharing.py
