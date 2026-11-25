@@ -15,11 +15,12 @@
       "iqr_ms": 5.720850007492118,
       "q25_ms": 48.1501250033034,
       "q75_ms": 53.87097501079552,
-      "thop_macs": 3329504,
-      "thop_params": 128964,
       "parameter_count": 133700,
       "checkpoint_seed_20260928_bytes": 1909507,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 3329504,
+      "thop_params_unverified": 128964,
+      "encoder_self_attention_macs": 227520
     },
     {
       "model": "MTN (baseline)",
@@ -32,11 +33,12 @@
       "iqr_ms": 6.048600029316731,
       "q25_ms": 80.89592498436105,
       "q75_ms": 86.94452501367778,
-      "thop_macs": 26636032,
-      "thop_params": 128964,
       "parameter_count": 133700,
       "checkpoint_seed_20260928_bytes": 1909507,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 26636032,
+      "thop_params_unverified": 128964,
+      "encoder_self_attention_macs": 1820160
     },
     {
       "model": "PACE-Net without SATIE (SAGE + MASC)",
@@ -49,11 +51,12 @@
       "iqr_ms": 6.4816250232979655,
       "q25_ms": 50.601424984051846,
       "q75_ms": 57.08305000734981,
-      "thop_macs": 3334592,
-      "thop_params": 133942,
       "parameter_count": 139142,
       "checkpoint_seed_20260928_bytes": 1939667,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 3334592,
+      "thop_params_unverified": 133942,
+      "encoder_self_attention_macs": 227520
     },
     {
       "model": "PACE-Net without SATIE (SAGE + MASC)",
@@ -66,11 +69,12 @@
       "iqr_ms": 7.241475002956577,
       "q25_ms": 84.70229998056311,
       "q75_ms": 91.94377498351969,
-      "thop_macs": 26676736,
-      "thop_params": 133942,
       "parameter_count": 139142,
       "checkpoint_seed_20260928_bytes": 1939667,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 26676736,
+      "thop_params_unverified": 133942,
+      "encoder_self_attention_macs": 1820160
     },
     {
       "model": "PACE-Net (SAGE + MASC + SATIE)",
@@ -83,11 +87,12 @@
       "iqr_ms": 5.432150006527081,
       "q25_ms": 55.29640000895597,
       "q75_ms": 60.72855001548305,
-      "thop_macs": 4809152,
-      "thop_params": 133942,
       "parameter_count": 130694,
       "checkpoint_seed_20260928_bytes": 1902595,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 4809152,
+      "thop_params_unverified": 133942,
+      "encoder_self_attention_macs": 227520
     },
     {
       "model": "PACE-Net (SAGE + MASC + SATIE)",
@@ -100,11 +105,12 @@
       "iqr_ms": 12.71987501240801,
       "q25_ms": 89.83585001260508,
       "q75_ms": 102.55572502501309,
-      "thop_macs": 38473216,
-      "thop_params": 133942,
       "parameter_count": 130694,
       "checkpoint_seed_20260928_bytes": 1902595,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 38473216,
+      "thop_params_unverified": 133942,
+      "encoder_self_attention_macs": 1820160
     },
     {
       "model": "PACE-Net with ROUTE",
@@ -117,11 +123,12 @@
       "iqr_ms": 5.748075011069886,
       "q25_ms": 53.71212497993838,
       "q75_ms": 59.46019999100827,
-      "thop_macs": 3510848,
-      "thop_params": 148807,
       "parameter_count": 154007,
       "checkpoint_seed_20260928_bytes": 2006119,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 3510848,
+      "thop_params_unverified": 148807,
+      "encoder_self_attention_macs": 227520
     },
     {
       "model": "PACE-Net with ROUTE",
@@ -134,11 +141,12 @@
       "iqr_ms": 7.76590000896249,
       "q25_ms": 85.26057498238515,
       "q75_ms": 93.02647499134764,
-      "thop_macs": 28086784,
-      "thop_params": 148807,
       "parameter_count": 154007,
       "checkpoint_seed_20260928_bytes": 2006119,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 28086784,
+      "thop_params_unverified": 148807,
+      "encoder_self_attention_macs": 1820160
     },
     {
       "model": "PACE-Net with ROUTE and SATIE",
@@ -151,11 +159,12 @@
       "iqr_ms": 5.586749990470707,
       "q25_ms": 50.650625009438954,
       "q75_ms": 56.23737499990966,
-      "thop_macs": 4985408,
-      "thop_params": 148807,
       "parameter_count": 145559,
       "checkpoint_seed_20260928_bytes": 1969111,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 4985408,
+      "thop_params_unverified": 148807,
+      "encoder_self_attention_macs": 227520
     },
     {
       "model": "PACE-Net with ROUTE and SATIE",
@@ -168,11 +177,14 @@
       "iqr_ms": 6.396700016921386,
       "q25_ms": 85.08365000307094,
       "q75_ms": 91.48035001999233,
-      "thop_macs": 39883264,
-      "thop_params": 148807,
       "parameter_count": 145559,
       "checkpoint_seed_20260928_bytes": 1969111,
-      "platform": "Windows-11-10.0.26200-SP0"
+      "platform": "Windows-11-10.0.26200-SP0",
+      "thop_macs_unverified": 39883264,
+      "thop_params_unverified": 148807,
+      "encoder_self_attention_macs": 1820160
     }
-  ]
+  ],
+  "whole_model_macs_status": "THOP values preserved as unverified audit fields; excluded due shared-module hook overcount.",
+  "encoder_self_attention_macs_definition": "Analytic MACs for Q/K/V/O projections and QK^T/AV products over 3 layers, sequence length 15, model width 32."
 }

@@ -1,0 +1,152 @@
+{
+  "model": "LSTM (boxes + ego speed)",
+  "seed": 20260931,
+  "initialization": "from scratch; no official checkpoint loaded",
+  "loaded_keys": [],
+  "initial_state": [
+    {
+      "name": "encoder.weight_ih_l0",
+      "shape": [
+        128,
+        5
+      ],
+      "sha256": "0fe335052bb72c39d6cd51a6100ae383a72410b8ba16e2da9c02c47a5231e24b"
+    },
+    {
+      "name": "encoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "fa37f3294076f296cc45e072bef746f29432dfad436fb0b06078caa6180ef09b"
+    },
+    {
+      "name": "encoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "0c8feca6886676e5fe2623d489f4f999900b83bf0697602510164b8cae85b18c"
+    },
+    {
+      "name": "encoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "33b661e9eaa6ecc30a6e0d1c81445ef9173cb4958ee0b50e97e73dca2a99664a"
+    },
+    {
+      "name": "decoder.weight_ih_l0",
+      "shape": [
+        128,
+        4
+      ],
+      "sha256": "fe5cb0af44763bc5685a7c7282b353cbd1058bad3ddfb0546fce05268e6789e1"
+    },
+    {
+      "name": "decoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "d72c0b677230492984f0c7565baa3254cef28f7a68d116ebb444c9588ef90dc9"
+    },
+    {
+      "name": "decoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "98bd428940213a9296c20c7ecf479d04df860170f6d6631af21c32a91dd35c6d"
+    },
+    {
+      "name": "decoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "33a27e11656ae102146426a543dd0259f6bc508982d65727ed9aabe1f638a517"
+    },
+    {
+      "name": "output.weight",
+      "shape": [
+        4,
+        32
+      ],
+      "sha256": "ded36fd305d6f92b456912320d77141fdb92fb496feae5169376e7a0252170f1"
+    },
+    {
+      "name": "output.bias",
+      "shape": [
+        4
+      ],
+      "sha256": "6a1bb6c2ecfea8de801e1ffc43f9e2616a6cbfb64c9f143394e57bda21a28f1d"
+    }
+  ],
+  "parameters": 9988,
+  "architecture": {
+    "encoder": "LSTM(5,32)",
+    "decoder": "autoregressive LSTM(4,32)",
+    "scene_variant": false,
+    "training": "autoregressive normalized-box rollout",
+    "gradient_clip_norm": 1.0
+  },
+  "protocol": {
+    "max_epochs": 50,
+    "patience": 10,
+    "min_delta": 0,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "batch_size": 8,
+    "loss": "MSE",
+    "validation_rollout": "autoregressive; matches test inference"
+  },
+  "provenance": {
+    "git_head": "1bcf0e48f278825ba418960fbebbc764dd002541",
+    "git_dirty": true,
+    "git_status": [
+      " M MTN/run_b1_fixed.py",
+      " M MTN/run_e7.py",
+      " M MTN/weight_sharing_report.md",
+      " M results_paper/runs/E7/timing_flops.csv",
+      " M results_paper/runs/E7/timing_flops.json",
+      " M results_paper/summary/E7_REPORT.md",
+      " M results_paper/summary/E7_summary.csv",
+      " M results_paper/summary/E7_summary.tex",
+      "?? results_paper/B1_ROOT_CAUSE_REPORT.md",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260937.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260937.json",
+      "?? results_paper/config/Untitled-3.txt",
+      "?? results_paper/orchestration_from_scratch_v2.json",
+      "?? results_paper/summary_failed_partial_20261122/",
+      "?? results_paper/summary_regeneration_20261122/",
+      "?? results_paper/summary_stale_partial_20261122/"
+    ],
+    "source_sha256": {
+      "MTN\\individual_TF.py": "f9207ee91145ead243e2bea5b8bca7e1e06d57c6a87964b832b4652beb7d2dad",
+      "MTN\\context_TF.py": "9a75beef517c3191b7b36aca291971815aec8cb7ab675cb3f7a918acce4a5ff5",
+      "MTN\\dynamic_fusion_TF.py": "1ff6be645d05d58e81af6264183be68df4abb16efe21936178236a885649c257",
+      "MTN\\c4_encoder_shared.py": "73e9bfdea8aeac51d804f5add8dff4777b34cbbfa949f51266afe58b844bbb54",
+      "MTN\\run_from_scratch_e1.py": "2536757b9751e4d36b84fdfc183ad341a9bc665f05aa4a47e2b1c44757bc9021"
+    }
+  }
+}

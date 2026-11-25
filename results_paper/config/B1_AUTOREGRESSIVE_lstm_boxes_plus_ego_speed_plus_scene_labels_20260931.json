@@ -1,0 +1,217 @@
+{
+  "model": "LSTM (boxes + ego speed + scene labels)",
+  "seed": 20260931,
+  "initialization": "from scratch; no official checkpoint loaded",
+  "loaded_keys": [],
+  "initial_state": [
+    {
+      "name": "encoder.weight_ih_l0",
+      "shape": [
+        128,
+        5
+      ],
+      "sha256": "55749ff551eee1d056f82d55b42ee8570faf6db7c25acbb6d214cd25f83315a4"
+    },
+    {
+      "name": "encoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "dd76da545936c521037feca8cc00ba95020b8cdba96847130902f1ca36787926"
+    },
+    {
+      "name": "encoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "09dda32fad0110a721ea3dde14c08b5b623a3dfa5e3d4236bf992f5312ff65f2"
+    },
+    {
+      "name": "encoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "ddaf20ec15cf9cb79492467d836ebfaa23e269f9e30904544de4056ea26292ee"
+    },
+    {
+      "name": "decoder.weight_ih_l0",
+      "shape": [
+        128,
+        4
+      ],
+      "sha256": "fb4e9b5610af3194b545e90387fced390a1e01861a02de187b135f93967f63c2"
+    },
+    {
+      "name": "decoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "30520658e365022a3253af560a3b609a696af516aae10a90ffd21c8637637f2a"
+    },
+    {
+      "name": "decoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "4772678f5d787cc16930172778e93c879f93d7bfe324ae412d35bdd52b131fa1"
+    },
+    {
+      "name": "decoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "5ac06ab71f5223de4e3b9dc996a27de587fda6f8ec0dda084f6361bb3e8b0331"
+    },
+    {
+      "name": "output.weight",
+      "shape": [
+        4,
+        32
+      ],
+      "sha256": "d7555c8be8291734cbb1b7035aeec85376c7aab6e0297ffe18df3aaf78b01373"
+    },
+    {
+      "name": "output.bias",
+      "shape": [
+        4
+      ],
+      "sha256": "7c1234e9141c492598241ac2bbae05e93894d0c39df22c885d24123604534047"
+    },
+    {
+      "name": "scene_embeddings.0.weight",
+      "shape": [
+        7,
+        4
+      ],
+      "sha256": "c94edd47d16d77e045d40ce4b649a9412e1f6d669f7d089ecab157d5308ce752"
+    },
+    {
+      "name": "scene_embeddings.1.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "548c632379b22dfc3cdff72df9824a158eb0b929b344c7deeab32cd86070ba19"
+    },
+    {
+      "name": "scene_embeddings.2.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "55b8ae86f86f64e877968cbd2fda5f451c166b55ec74b0f021c261ccdab1a995"
+    },
+    {
+      "name": "scene_embeddings.3.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "37fd7173f26b5c189afbf30dc79e8f2affeb59c500fbe3a1317cdcd377e49314"
+    },
+    {
+      "name": "scene_embeddings.4.weight",
+      "shape": [
+        3,
+        4
+      ],
+      "sha256": "e744ac12c1f782fad38e83e3cb7f5a9d1d00980e7813cdd0b4ad3ce8c3b87131"
+    },
+    {
+      "name": "scene_projection.weight",
+      "shape": [
+        32,
+        20
+      ],
+      "sha256": "087be2388b57984f466f1af183391122f68e9f9050d2cd4fecf1391198f235b5"
+    },
+    {
+      "name": "scene_projection.bias",
+      "shape": [
+        32
+      ],
+      "sha256": "db3f75e400dd365653c5ef7cecc2e2ab2d347c5b4b8e79552094974b20e39fc7"
+    }
+  ],
+  "parameters": 10760,
+  "architecture": {
+    "encoder": "LSTM(5,32)",
+    "decoder": "autoregressive LSTM(4,32)",
+    "scene_variant": true,
+    "training": "autoregressive normalized-box rollout",
+    "gradient_clip_norm": 1.0
+  },
+  "protocol": {
+    "max_epochs": 50,
+    "patience": 10,
+    "min_delta": 0,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "batch_size": 8,
+    "loss": "MSE",
+    "validation_rollout": "autoregressive; matches test inference"
+  },
+  "provenance": {
+    "git_head": "1bcf0e48f278825ba418960fbebbc764dd002541",
+    "git_dirty": true,
+    "git_status": [
+      " M MTN/run_b1_fixed.py",
+      " M MTN/run_e7.py",
+      " M MTN/weight_sharing_report.md",
+      " M results_paper/WORKLOG.md",
+      " M results_paper/runs/E7/timing_flops.csv",
+      " M results_paper/runs/E7/timing_flops.json",
+      " M results_paper/summary/E7_REPORT.md",
+      " M results_paper/summary/E7_summary.csv",
+      " M results_paper/summary/E7_summary.tex",
+      "?? results_paper/B1_ROOT_CAUSE_REPORT.md",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260931.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260932.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260933.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260934.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260935.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260936.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260937.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260929.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260937.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260937.json",
+      "?? results_paper/config/Untitled-3.txt",
+      "?? results_paper/orchestration_from_scratch_v2.json",
+      "?? results_paper/summary_failed_partial_20261122/",
+      "?? results_paper/summary_regeneration_20261122/",
+      "?? results_paper/summary_stale_partial_20261122/"
+    ],
+    "source_sha256": {
+      "MTN\\individual_TF.py": "f9207ee91145ead243e2bea5b8bca7e1e06d57c6a87964b832b4652beb7d2dad",
+      "MTN\\context_TF.py": "9a75beef517c3191b7b36aca291971815aec8cb7ab675cb3f7a918acce4a5ff5",
+      "MTN\\dynamic_fusion_TF.py": "1ff6be645d05d58e81af6264183be68df4abb16efe21936178236a885649c257",
+      "MTN\\c4_encoder_shared.py": "73e9bfdea8aeac51d804f5add8dff4777b34cbbfa949f51266afe58b844bbb54",
+      "MTN\\run_from_scratch_e1.py": "2536757b9751e4d36b84fdfc183ad341a9bc665f05aa4a47e2b1c44757bc9021"
+    }
+  }
+}

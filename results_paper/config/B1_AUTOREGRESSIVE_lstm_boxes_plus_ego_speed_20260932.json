@@ -1,0 +1,153 @@
+{
+  "model": "LSTM (boxes + ego speed)",
+  "seed": 20260932,
+  "initialization": "from scratch; no official checkpoint loaded",
+  "loaded_keys": [],
+  "initial_state": [
+    {
+      "name": "encoder.weight_ih_l0",
+      "shape": [
+        128,
+        5
+      ],
+      "sha256": "097579eadf17130b17f99051c039002b808db64a345c417b967aa6bef24e90e7"
+    },
+    {
+      "name": "encoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "129315735c71a775652b4c0b385ab082ab4fab96e5168219ae027571b2173241"
+    },
+    {
+      "name": "encoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "76a2c1949966e7f8fb00022e6a0118072137bbcbeefaea44d9cd7731ec194775"
+    },
+    {
+      "name": "encoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "ec9bd6f069cf2b800d750e167f98a09279b33dc046781eaf4f247a9146e274dc"
+    },
+    {
+      "name": "decoder.weight_ih_l0",
+      "shape": [
+        128,
+        4
+      ],
+      "sha256": "0aa08a1dfdd2a99f2838f41cbc415d28ea40341124f2e5e7ba3dcc4202a9f699"
+    },
+    {
+      "name": "decoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "626dc110dc72ddd8dea1a43a721d768c74d3f0fa25136efcebb128ab8efbfa91"
+    },
+    {
+      "name": "decoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "4363c3b43a8f7e1a75e8f26f427bfbd6abb893fc8170f8969355f1e77c08f654"
+    },
+    {
+      "name": "decoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "4259ba98fd4d6838ce33c0f41f7f99bb05bb0abfa14a26d82195ba8fb750a1bb"
+    },
+    {
+      "name": "output.weight",
+      "shape": [
+        4,
+        32
+      ],
+      "sha256": "c8d5d46989871d761520daa000522c2d246c2f104844fa8857c685659948f4be"
+    },
+    {
+      "name": "output.bias",
+      "shape": [
+        4
+      ],
+      "sha256": "fef936e43c7eb9e932c1a15218bbcefb3d639699401d5c3e0a70bd72576dbc26"
+    }
+  ],
+  "parameters": 9988,
+  "architecture": {
+    "encoder": "LSTM(5,32)",
+    "decoder": "autoregressive LSTM(4,32)",
+    "scene_variant": false,
+    "training": "autoregressive normalized-box rollout",
+    "gradient_clip_norm": 1.0
+  },
+  "protocol": {
+    "max_epochs": 50,
+    "patience": 10,
+    "min_delta": 0,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "batch_size": 8,
+    "loss": "MSE",
+    "validation_rollout": "autoregressive; matches test inference"
+  },
+  "provenance": {
+    "git_head": "1bcf0e48f278825ba418960fbebbc764dd002541",
+    "git_dirty": true,
+    "git_status": [
+      " M MTN/run_b1_fixed.py",
+      " M MTN/run_e7.py",
+      " M MTN/weight_sharing_report.md",
+      " M results_paper/runs/E7/timing_flops.csv",
+      " M results_paper/runs/E7/timing_flops.json",
+      " M results_paper/summary/E7_REPORT.md",
+      " M results_paper/summary/E7_summary.csv",
+      " M results_paper/summary/E7_summary.tex",
+      "?? results_paper/B1_ROOT_CAUSE_REPORT.md",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260931.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260937.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260937.json",
+      "?? results_paper/config/Untitled-3.txt",
+      "?? results_paper/orchestration_from_scratch_v2.json",
+      "?? results_paper/summary_failed_partial_20261122/",
+      "?? results_paper/summary_regeneration_20261122/",
+      "?? results_paper/summary_stale_partial_20261122/"
+    ],
+    "source_sha256": {
+      "MTN\\individual_TF.py": "f9207ee91145ead243e2bea5b8bca7e1e06d57c6a87964b832b4652beb7d2dad",
+      "MTN\\context_TF.py": "9a75beef517c3191b7b36aca291971815aec8cb7ab675cb3f7a918acce4a5ff5",
+      "MTN\\dynamic_fusion_TF.py": "1ff6be645d05d58e81af6264183be68df4abb16efe21936178236a885649c257",
+      "MTN\\c4_encoder_shared.py": "73e9bfdea8aeac51d804f5add8dff4777b34cbbfa949f51266afe58b844bbb54",
+      "MTN\\run_from_scratch_e1.py": "2536757b9751e4d36b84fdfc183ad341a9bc665f05aa4a47e2b1c44757bc9021"
+    }
+  }
+}

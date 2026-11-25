@@ -1,0 +1,221 @@
+{
+  "model": "LSTM (boxes + ego speed + scene labels)",
+  "seed": 20260935,
+  "initialization": "from scratch; no official checkpoint loaded",
+  "loaded_keys": [],
+  "initial_state": [
+    {
+      "name": "encoder.weight_ih_l0",
+      "shape": [
+        128,
+        5
+      ],
+      "sha256": "7ad062f0ce6489c305f654421af99c947a9facce393d700f7bcc3fc5b3cb28e1"
+    },
+    {
+      "name": "encoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "cd72401df2f13d4c53930d96dbe6e24b61d2fc8de28cf92cc49dc34104557c7a"
+    },
+    {
+      "name": "encoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "3b32926b4966e5c966c2f13d953934c224da15537d06ad2109b6b41e719ddc61"
+    },
+    {
+      "name": "encoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "d610ecce6b7a8ebf0dc94f060aa4812c8567a8b04360dfe02b61f887f7e03fd5"
+    },
+    {
+      "name": "decoder.weight_ih_l0",
+      "shape": [
+        128,
+        4
+      ],
+      "sha256": "2971e36590d5bd3d71fd0668b564883c5c3db63890157e10432db6f24bcbeba1"
+    },
+    {
+      "name": "decoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "ba68af4354cbaa2db88a41f324988d79f00563ae551c9ea3720dd37e624c51b6"
+    },
+    {
+      "name": "decoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "96d8c061923caa931b4a4993970d200f14e00f56f4a635db65dbfa48a85783da"
+    },
+    {
+      "name": "decoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "50e39a09916b52292fc804b5dc188ed51055668624c153b49ccaa731b26a3117"
+    },
+    {
+      "name": "output.weight",
+      "shape": [
+        4,
+        32
+      ],
+      "sha256": "519fa9e6ea68f334dbeb47df56f932ad8c07e371b41d420d198712c490e8b843"
+    },
+    {
+      "name": "output.bias",
+      "shape": [
+        4
+      ],
+      "sha256": "dc73b7d1ae1f4e3d79b8e5ccfd259c87cc565028b291721358548a1b8fff0187"
+    },
+    {
+      "name": "scene_embeddings.0.weight",
+      "shape": [
+        7,
+        4
+      ],
+      "sha256": "9c96d64555272ea0c3daf8c0476e95d6ede23543e1bc733a3cecc713cee292f6"
+    },
+    {
+      "name": "scene_embeddings.1.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "bb69b50359765e232a591db4a7b7ac84ae249d4c5c10dea9e236c83ef6ea549b"
+    },
+    {
+      "name": "scene_embeddings.2.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "346d2d1c0cf3a4216dacd2ff81ee15182fdea3c476d873e6d58c8c523665d0ed"
+    },
+    {
+      "name": "scene_embeddings.3.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "9fcb3190eb2bf1e79e8ce2b2d5e1499ae442cbaef22efa3c2b94e86ca3e5579a"
+    },
+    {
+      "name": "scene_embeddings.4.weight",
+      "shape": [
+        3,
+        4
+      ],
+      "sha256": "9b682f816ea677ecca7737a3a412fe7f80613802e23937533cedf922512cfc5e"
+    },
+    {
+      "name": "scene_projection.weight",
+      "shape": [
+        32,
+        20
+      ],
+      "sha256": "0241e5ac9f43cd0e6ca5e92263cc2f0e081baad117d01a6c58ac5984ea94c649"
+    },
+    {
+      "name": "scene_projection.bias",
+      "shape": [
+        32
+      ],
+      "sha256": "2d43d3fc038b849b5e97c2228e53806a66adb87676020f6f484e22d9d260796c"
+    }
+  ],
+  "parameters": 10760,
+  "architecture": {
+    "encoder": "LSTM(5,32)",
+    "decoder": "autoregressive LSTM(4,32)",
+    "scene_variant": true,
+    "training": "autoregressive normalized-box rollout",
+    "gradient_clip_norm": 1.0
+  },
+  "protocol": {
+    "max_epochs": 50,
+    "patience": 10,
+    "min_delta": 0,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "batch_size": 8,
+    "loss": "MSE",
+    "validation_rollout": "autoregressive; matches test inference"
+  },
+  "provenance": {
+    "git_head": "1bcf0e48f278825ba418960fbebbc764dd002541",
+    "git_dirty": true,
+    "git_status": [
+      " M MTN/run_b1_fixed.py",
+      " M MTN/run_e7.py",
+      " M MTN/weight_sharing_report.md",
+      " M results_paper/WORKLOG.md",
+      " M results_paper/runs/E7/timing_flops.csv",
+      " M results_paper/runs/E7/timing_flops.json",
+      " M results_paper/summary/E7_REPORT.md",
+      " M results_paper/summary/E7_summary.csv",
+      " M results_paper/summary/E7_summary.tex",
+      "?? results_paper/B1_ROOT_CAUSE_REPORT.md",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260931.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260932.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260933.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260934.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260935.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260936.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_20260937.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260929.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260930.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260931.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260932.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260933.json",
+      "?? results_paper/config/B1_AUTOREGRESSIVE_lstm_boxes_plus_ego_speed_plus_scene_labels_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260937.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260937.json",
+      "?? results_paper/config/Untitled-3.txt",
+      "?? results_paper/orchestration_from_scratch_v2.json",
+      "?? results_paper/summary_failed_partial_20261122/",
+      "?? results_paper/summary_regeneration_20261122/",
+      "?? results_paper/summary_stale_partial_20261122/"
+    ],
+    "source_sha256": {
+      "MTN\\individual_TF.py": "f9207ee91145ead243e2bea5b8bca7e1e06d57c6a87964b832b4652beb7d2dad",
+      "MTN\\context_TF.py": "9a75beef517c3191b7b36aca291971815aec8cb7ab675cb3f7a918acce4a5ff5",
+      "MTN\\dynamic_fusion_TF.py": "1ff6be645d05d58e81af6264183be68df4abb16efe21936178236a885649c257",
+      "MTN\\c4_encoder_shared.py": "73e9bfdea8aeac51d804f5add8dff4777b34cbbfa949f51266afe58b844bbb54",
+      "MTN\\run_from_scratch_e1.py": "2536757b9751e4d36b84fdfc183ad341a9bc665f05aa4a47e2b1c44757bc9021"
+    }
+  }
+}

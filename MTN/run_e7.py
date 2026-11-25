@@ -10,15 +10,14 @@ from pathlib import Path
 
 import numpy as np
 import torch
-from thop import profile
 from torch.utils.data import DataLoader
 
 try:
     from .c4_encoder_shared import make_c4_encoder_self_attention_shared
-    from .run_from_scratch_e1 import NAMES, RESULTS, SEEDS, load_data, model_for, set_seed, forward
+    from .run_from_scratch_e1 import KW, NAMES, RESULTS, SEEDS, load_data, model_for, set_seed, forward
 except ImportError:
     from c4_encoder_shared import make_c4_encoder_self_attention_shared
-    from run_from_scratch_e1 import NAMES, RESULTS, SEEDS, load_data, model_for, set_seed, forward
+    from run_from_scratch_e1 import KW, NAMES, RESULTS, SEEDS, load_data, model_for, set_seed, forward
 
 THREAD_COUNT = 4
 WARMUPS = 50
@@ -52,13 +51,13 @@ def make_batch(template: dict, batch_size: int) -> dict:
     return batch
 
 
-class ProfilingWrapper(torch.nn.Module):
-    def __init__(self, model: torch.nn.Module) -> None:
-        super().__init__()
-        self.model = model
-
-    def forward(self, batch: dict) -> torch.Tensor:
-        return forward(self.model, batch)
+def encoder_self_attention_macs(batch_size: int, sequence_length: int) -> int:
+    model_dim = KW["d_model"]
+    per_layer = (
+        4 * batch_size * sequence_length * model_dim * model_dim
+        + 2 * batch_size * sequence_length * sequence_length * model_dim
+    )
+    return KW["N"] * per_layer
 
 
 def main() -> None:
@@ -93,9 +92,6 @@ def main() -> None:
                     started = time.perf_counter()
                     forward(model, batch)
                     durations.append((time.perf_counter() - started) * 1000)
-            profile_model = model_for(name).eval()
-            profile_batch = make_batch(template, batch_size)
-            macs, params = profile(ProfilingWrapper(profile_model), inputs=(profile_batch,), verbose=False)
             durations = np.asarray(durations)
             median = float(np.median(durations))
             q25, q75 = np.quantile(durations, [0.25, 0.75])
@@ -110,8 +106,9 @@ def main() -> None:
                 "iqr_ms": float(q75 - q25),
                 "q25_ms": float(q25),
                 "q75_ms": float(q75),
-                "thop_macs": int(macs),
-                "thop_params": int(params),
+                "encoder_self_attention_macs": encoder_self_attention_macs(
+                    batch_size, template["boxes"].shape[1]
+                ),
                 "parameter_count": parameter_count,
                 "checkpoint_seed_20260928_bytes": checkpoint_bytes,
                 "platform": platform.platform(),

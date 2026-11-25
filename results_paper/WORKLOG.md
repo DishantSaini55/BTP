@@ -108,3 +108,17 @@ Current repository commit observed before this documentation change: `2572a86567
 - Documented cross-video shift, small GP6 training volume, constant-position residual-head context, and constant-velocity superiority.
 - Inventoried local GP6/GP8 pedestrian XML, GP6/GP8 OBD XML, GP6 source videos, and local cache files.
 - Explicitly recorded that no training protocol change was made and that approval is required before any future change.
+
+## 2026-11-24 — E7 MAC audit correction
+
+- Confirmed THOP's shared-module hook duplication: the SATIE encoder self-attention object is called three times, but THOP registers its Q/K/V/O linear hooks three times, yielding nine hook counts for three executions. This accounts exactly for the false 1,474,560-MAC-per-sample increase.
+- With sequence length 15 and model width 32, analytically counted 75,840 MACs per encoder self-attention layer and 227,520 across all three layers (1,820,160 for batch 8), identical with and without SATIE sharing.
+- Replaced the whole-model THOP MAC column in E7 summaries with the verified encoder self-attention component count. Preserved previous raw THOP outputs only under explicitly unverified audit field names. Removed THOP profiling from the E7 runner.
+
+## 2026-11-24 — B1 LSTM rollout root-cause rerun
+
+- Compared teacher-forced and autoregressive predictions from the prior `B1_FIXED_CORRECTED` checkpoints. On seed 20260928 boxes+speed, validation normalized MSE was 0.007217 teacher-forced versus 5.599401 autoregressive; test was 0.025593 versus 20.478539. At test steps 1/15/30/45, autoregressive normalized MSE on the first eight windows rose from 0.0114 to 65.2463, while teacher-forced MSE remained 0.0262 at step 45.
+- Verified train-only z-score input/target normalization, normalized residual addition and inverse scaling are consistent. A one-window autoregressive overfit reached 0.000581 normalized rollout MSE after 500 updates.
+- Corrected training and validation to use autoregressive rollout, retaining Adam 1e-3, batch 8, max 50 epochs, patience 10, gradient clipping norm 1.0, frozen split and seed list. Completed both LSTM variants for all ten seeds in new `runs/B1_AUTOREGRESSIVE/` directories.
+- Mean test MSE was 281,652.402782 (boxes+speed) and 338,899.533790 (with scene labels), versus 446,028.863458 and 430,463.202010 for the prior teacher-forced reruns. This improves 8/10 and 7/10 paired seeds, respectively, but remains far worse than constant velocity (1,496.018040).
+- Wrote `B1_ROOT_CAUSE_REPORT.md` and `summary/B1_AUTOREGRESSIVE_summary.csv`. No other experiment was started.

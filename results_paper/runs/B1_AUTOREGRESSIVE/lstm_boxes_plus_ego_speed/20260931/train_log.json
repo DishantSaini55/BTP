@@ -1,0 +1,187 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 3.792336771791836,
+    "validation_mse": 5.6308237120162605
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.2711924044591076,
+    "validation_mse": 3.578014096548391
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.15917344967711647,
+    "validation_mse": 1.9299153449923494
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.15394389994864194,
+    "validation_mse": 1.9332633572955464
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.12441010590431825,
+    "validation_mse": 1.862749221713044
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.10909583756946167,
+    "validation_mse": 1.8721178991850032
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.10644123021442935,
+    "validation_mse": 1.567438887995343
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.10514716635335167,
+    "validation_mse": 1.4844562536062196
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.11318269111918954,
+    "validation_mse": 1.218193068060764
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.11132648952727048,
+    "validation_mse": 1.3519588265308113
+  },
+  {
+    "epoch": 11,
+    "train_loss": 0.0912016492407277,
+    "validation_mse": 1.1328850402388462
+  },
+  {
+    "epoch": 12,
+    "train_loss": 0.10670283535179102,
+    "validation_mse": 1.0947287096533664
+  },
+  {
+    "epoch": 13,
+    "train_loss": 0.08959814765543309,
+    "validation_mse": 1.2225464443827785
+  },
+  {
+    "epoch": 14,
+    "train_loss": 0.08832979040606967,
+    "validation_mse": 1.0767449916795242
+  },
+  {
+    "epoch": 15,
+    "train_loss": 0.08920205799195002,
+    "validation_mse": 0.9867026417754418
+  },
+  {
+    "epoch": 16,
+    "train_loss": 0.07883129451634749,
+    "validation_mse": 1.2812959551811218
+  },
+  {
+    "epoch": 17,
+    "train_loss": 0.12681063292723782,
+    "validation_mse": 1.0097499143245607
+  },
+  {
+    "epoch": 18,
+    "train_loss": 0.08244509517021899,
+    "validation_mse": 0.9687685883322428
+  },
+  {
+    "epoch": 19,
+    "train_loss": 0.08582769264027758,
+    "validation_mse": 1.0202365448308546
+  },
+  {
+    "epoch": 20,
+    "train_loss": 0.0737072580124972,
+    "validation_mse": 0.9556873080342315
+  },
+  {
+    "epoch": 21,
+    "train_loss": 0.07443679363097784,
+    "validation_mse": 0.9311354257339655
+  },
+  {
+    "epoch": 22,
+    "train_loss": 0.0755809004998432,
+    "validation_mse": 0.9013152399728465
+  },
+  {
+    "epoch": 23,
+    "train_loss": 0.08229723811711905,
+    "validation_mse": 0.9575473319652469
+  },
+  {
+    "epoch": 24,
+    "train_loss": 0.08127602632596807,
+    "validation_mse": 0.9120082584924476
+  },
+  {
+    "epoch": 25,
+    "train_loss": 0.08050628540650853,
+    "validation_mse": 0.9556229447209558
+  },
+  {
+    "epoch": 26,
+    "train_loss": 0.07971641379144956,
+    "validation_mse": 0.8559909462928772
+  },
+  {
+    "epoch": 27,
+    "train_loss": 0.07367881682683837,
+    "validation_mse": 0.8122360817221708
+  },
+  {
+    "epoch": 28,
+    "train_loss": 0.07665030018619771,
+    "validation_mse": 0.9458387660425763
+  },
+  {
+    "epoch": 29,
+    "train_loss": 0.08708308278670851,
+    "validation_mse": 0.993909899578538
+  },
+  {
+    "epoch": 30,
+    "train_loss": 0.07387700958072015,
+    "validation_mse": 0.8367917787197025
+  },
+  {
+    "epoch": 31,
+    "train_loss": 0.070562648042193,
+    "validation_mse": 0.990909943746966
+  },
+  {
+    "epoch": 32,
+    "train_loss": 0.07665106260551596,
+    "validation_mse": 0.8464234000028565
+  },
+  {
+    "epoch": 33,
+    "train_loss": 0.08026649711548157,
+    "validation_mse": 0.8571820120478786
+  },
+  {
+    "epoch": 34,
+    "train_loss": 0.06886232236646256,
+    "validation_mse": 0.9409236159435538
+  },
+  {
+    "epoch": 35,
+    "train_loss": 0.06515253257920157,
+    "validation_mse": 0.9878354599309522
+  },
+  {
+    "epoch": 36,
+    "train_loss": 0.06794503071116952,
+    "validation_mse": 0.8722681888314181
+  },
+  {
+    "epoch": 37,
+    "train_loss": 0.06843470149445084,
+    "validation_mse": 0.9971370447513669
+  }
+]

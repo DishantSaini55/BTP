@@ -1,4 +1,4 @@
-"""B1-diagnostic rerun with teacher forcing and gradient clipping.
+"""B1 diagnostic rerun with autoregressive training and gradient clipping.
 
 Creates an independent run directory; never overwrites existing B1 artifacts.
 """
@@ -86,7 +86,7 @@ def mean_loss(model: nn.Module, loader: DataLoader, loss: nn.Module) -> tuple[fl
     for batch in loader:
         prediction = model(
             batch["boxes"].float(), batch["speed"].float(),
-            batch["scene_context"], batch["pred_target"].float(),
+            batch["scene_context"],
         )
         value = loss(prediction, batch["pred_target"].float())
         batch_count = batch["boxes"].shape[0]
@@ -102,7 +102,7 @@ def train_loss(model: nn.Module, loader: DataLoader, loss: nn.Module) -> float:
         for batch in loader:
             prediction = model(
                 batch["boxes"].float(), batch["speed"].float(),
-                batch["scene_context"], batch["pred_target"].float(),
+                batch["scene_context"],
             )
             value = loss(prediction, batch["pred_target"].float())
             batch_count = batch["boxes"].shape[0]
@@ -143,8 +143,8 @@ def evaluate(model: nn.Module, loader: DataLoader, stats: tuple) -> tuple[dict, 
 
 
 def run_one(name: str, seed: int, datasets: dict, stats: tuple) -> None:
-    run = RESULTS / "runs" / "B1_FIXED_CORRECTED" / slug(name) / str(seed)
-    config = RESULTS / "config" / f"B1_FIXED_CORRECTED_{slug(name)}_{seed}.json"
+    run = RESULTS / "runs" / "B1_AUTOREGRESSIVE" / slug(name) / str(seed)
+    config = RESULTS / "config" / f"B1_AUTOREGRESSIVE_{slug(name)}_{seed}.json"
     if run.exists() or config.exists():
         print(f"RESUME: reuse existing {run}")
         return
@@ -169,7 +169,7 @@ def run_one(name: str, seed: int, datasets: dict, stats: tuple) -> None:
             optimizer.zero_grad()
             prediction = model(
                 batch["boxes"].float(), batch["speed"].float(),
-                batch["scene_context"], batch["pred_target"].float(),
+                batch["scene_context"],
             )
             value = loss(prediction, batch["pred_target"].float())
             value.backward()
@@ -237,7 +237,7 @@ def run_one(name: str, seed: int, datasets: dict, stats: tuple) -> None:
             "encoder": "LSTM(5,32)",
             "decoder": "autoregressive LSTM(4,32)",
             "scene_variant": bool(model.use_scene),
-            "training": "teacher-forced normalized displacement",
+            "training": "autoregressive normalized-box rollout",
             "gradient_clip_norm": 1.0,
         },
         "protocol": {
@@ -248,6 +248,7 @@ def run_one(name: str, seed: int, datasets: dict, stats: tuple) -> None:
             "lr": 1e-3,
             "batch_size": 8,
             "loss": "MSE",
+            "validation_rollout": "autoregressive; matches test inference",
         },
         "provenance": source_provenance(),
     }, indent=2), encoding="utf-8")
