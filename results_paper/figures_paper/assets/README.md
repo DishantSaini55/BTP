@@ -34,6 +34,7 @@ All PNGs are 300 DPI. Photo-based assets are opaque because their pixels are sou
 - Observed boxes are red `#E63946`, ground truth is yellow `#FFD400`, and PACE-Net is purple `#7B2CBF`.
 - Flow uses the standard HSV directional encoding: hue is vector direction and value/brightness is magnitude. Ego and pedestrian maps are each scaled by their own maximum over the three displayed transitions, respectively `11.003376960754395` and `0.14580456912517548`; these values are in `scene_labels.json`. The flow grids are the cached Farneback means on the 320×180 processing image (8×8 full-frame grid and 3×3 pedestrian-crop grid).
 - Token and ROUTE strips encode per-token L2 norm with the `viridis` palette; decoder attention uses `magma`. Colorbar numbers are omitted from PNGs so figure files can add editable labels; numeric ranges are listed above and in `scene_labels.json`.
+- When a saved predicted `xyxy` box has reversed endpoints, crops and outlines use the min/max endpoint envelope so it can be drawn; the underlying saved prediction is unchanged.
 - No text labels are rasterized into the PNGs. Row ordering, selected times, model names, gate values, source paths, and exact numeric data are documented here or in `scene_labels.json`.
 
 ## Regeneration

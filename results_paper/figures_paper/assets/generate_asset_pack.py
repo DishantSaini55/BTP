@@ -90,10 +90,10 @@ def crop_rectangle(
     if values.size == 0 or not np.isfinite(values).all():
         raise ValueError("A real, finite box is required to crop the pedestrian.")
 
-    left = max(0.0, float(values[:, 0].min()))
-    top = max(0.0, float(values[:, 1].min()))
-    right = min(float(width), float(values[:, 2].max()))
-    bottom = min(float(height), float(values[:, 3].max()))
+    left = max(0.0, float(np.minimum(values[:, 0], values[:, 2]).min()))
+    top = max(0.0, float(np.minimum(values[:, 1], values[:, 3]).min()))
+    right = min(float(width), float(np.maximum(values[:, 0], values[:, 2]).max()))
+    bottom = min(float(height), float(np.maximum(values[:, 1], values[:, 3]).max()))
     if right <= left or bottom <= top:
         raise ValueError("The requested boxes do not intersect the source frame.")
 
@@ -121,10 +121,10 @@ def draw_box(image: Image.Image, box: np.ndarray, crop: tuple[int, int, int, int
     x0, y0, _, _ = crop
     x1, y1, x2, y2 = (float(value) for value in box)
     shifted = (
-        int(round(x1 - x0)),
-        int(round(y1 - y0)),
-        int(round(x2 - x0)),
-        int(round(y2 - y0)),
+        int(round(min(x1, x2) - x0)),
+        int(round(min(y1, y2) - y0)),
+        int(round(max(x1, x2) - x0)),
+        int(round(max(y1, y2) - y0)),
     )
     ImageDraw.Draw(image).rectangle(shifted, outline=color, width=line_width)
 
@@ -136,16 +136,18 @@ def photo_tile(
 ) -> Image.Image:
     all_boxes = np.concatenate([np.asarray(boxes).reshape(-1, 4) for boxes, _ in boxes_and_colors])
     crop = crop_rectangle(frame.shape, all_boxes)
-    x0, y0, x1, y1 = crop
+    x0, y0, crop_right, crop_bottom = crop
     image = Image.fromarray(frame).crop(crop).resize(
         size, resample=Image.Resampling.LANCZOS
     )
     draw = ImageDraw.Draw(image)
     for boxes, color in boxes_and_colors:
         for box in np.asarray(boxes).reshape(-1, 4):
-            bx1, by1, bx2, by2 = (float(value) for value in box)
-            sx = size[0] / (x1 - x0)
-            sy = size[1] / (y1 - y0)
+            x1, y1, x2, y2 = (float(value) for value in box)
+            bx1, bx2 = sorted((x1, x2))
+            by1, by2 = sorted((y1, y2))
+            sx = size[0] / (crop_right - x0)
+            sy = size[1] / (crop_bottom - y0)
             coords = (
                 int(round((bx1 - x0) * sx)),
                 int(round((by1 - y0) * sy)),
@@ -437,8 +439,8 @@ def save_frame_assets(sample: dict, targets: np.ndarray, predictions: np.ndarray
         capture.release()
 
 
-def save_scene_labels(sample: dict, saved_gate: float,
-                      route_gate: np.ndarray, speeds: np.ndarray) -> dict:
+def save_scene_labels(sample: dict, saved_gate: float, route_gate: np.ndarray,
+                      speeds: np.ndarray, predictions: np.ndarray) -> dict:
     scene_codes = np.asarray(sample["scene_context"][0], dtype=np.int64)
     scene_fields = qualitative.SCENE_FIELDS
     scene_names = {
@@ -446,6 +448,9 @@ def save_scene_labels(sample: dict, saved_gate: float,
         for name, value in zip(scene_fields, scene_codes)
     }
     occlusion = np.asarray(sample["occlusion"], dtype=np.int64)
+    predicted_boxes = np.asarray(predictions, dtype=np.float64).reshape(-1, 4)
+    inverted_x_steps = np.flatnonzero(predicted_boxes[:, 2] < predicted_boxes[:, 0])
+    inverted_y_steps = np.flatnonzero(predicted_boxes[:, 3] < predicted_boxes[:, 1])
     route_names = ("identity", "additive", "cross_attention")
     route_chosen = route_names[int(np.argmax(route_gate))]
     result = {
@@ -460,6 +465,8 @@ def save_scene_labels(sample: dict, saved_gate: float,
         "occlusion_window_max": int(occlusion.max()),
         "occlusion_observed_15_max": int(occlusion[:15].max()),
         "obd_speed_observed_15_raw": np.asarray(speeds).reshape(-1).tolist(),
+        "pace_prediction_inverted_x_steps": inverted_x_steps.tolist(),
+        "pace_prediction_inverted_y_steps": inverted_y_steps.tolist(),
         "pace_net_saved_gate_g": float(saved_gate),
         "route_saved_gate": {
             name: float(value) for name, value in zip(route_names, route_gate)
@@ -585,7 +592,7 @@ def main() -> None:
     )
     save_params_bar()
 
-    labels = save_scene_labels(sample, saved_gate, route_gate, speeds)
+    labels = save_scene_labels(sample, saved_gate, route_gate, speeds, predictions)
     labels["flow_map_range"] = flow_ranges
     labels["token_norm_color_range"] = [0.0, token_vmax]
     labels["decoder_attention_color_range"] = [0.0, attention_vmax]
