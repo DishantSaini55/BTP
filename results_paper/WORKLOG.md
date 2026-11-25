@@ -149,3 +149,9 @@ Current repository commit observed before this documentation change: `2572a86567
 - Read the HIVE repository and Kim et al., ECCV 2022 / arXiv:2112.03184; wrote `qualitative/HIVE_DESIGN.md` adapting distinction, agreement, and comprehension tasks to the saved trajectory predictions and attention displays.
 - Specified participant-safe stimulus masking, randomization, the six random primary cases and six exploratory cases, response schema, scoring, and a future analysis-script contract. The design records that all selected examples have `g=0`, natural `g=1` examples are unavailable, and the 12-window single-video bank is suitable only for a feasibility pilot.
 - Design only: no participant materials were rendered or deployed, no participant responses were generated or analyzed, and `paper/` was not edited.
+
+## 2026-11-25 — Zoomed frozen qualitative overlays
+
+- Added `MTN/render_qualitative_zoom.py`, reading the unchanged IDs from `qualitative/SELECTION.md`. The six-panel page uses the first two listed random windows, both largest improvements, and both largest degradations; page two contains the two frozen closed-gate windows.
+- For each of the eight windows, computed the crop from the union of the 15 observed boxes, 45 ground-truth boxes, and all 45 boxes from each of the four saved predictors. Added a 30% margin on each side, expanded to the source-frame aspect ratio, and drew all paths/boxes with pixel-coordinate axes and a full-frame inset.
+- Wrote `qualitative/ZOOMED_OVERLAYS_seed20260928.pdf` as a two-page PDF with vector paths/boxes and raster source frames. Verified page count, panel IDs, crop containment/aspect ratio, and visually inspected both pages. No selection changed and no files under `paper/` were edited.
