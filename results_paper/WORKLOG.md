@@ -143,3 +143,9 @@ Current repository commit observed before this documentation change: `2572a86567
 - Captured per-step factors for all 15 observed steps, top-activation training frame/window examples, and descriptive scene/gate associations. The learned gate admitted 49/212 train and 17/43 validation windows.
 - Ran a fixed-reference training-window functional probe: per-step ablation and 1,024-point Sobol indices for final predicted center displacement. Effects are local to the gate-closed reference sample and are explicitly not global importance estimates.
 - No model weights changed, no test dataset was iterated, and no files under `paper/` were edited. Wrote `qualitative/CRAFT_DECISION.md` with limitations; concepts were not clearly human-interpretable.
+
+## 2026-11-25 — HIVE-style study design
+
+- Read the HIVE repository and Kim et al., ECCV 2022 / arXiv:2112.03184; wrote `qualitative/HIVE_DESIGN.md` adapting distinction, agreement, and comprehension tasks to the saved trajectory predictions and attention displays.
+- Specified participant-safe stimulus masking, randomization, the six random primary cases and six exploratory cases, response schema, scoring, and a future analysis-script contract. The design records that all selected examples have `g=0`, natural `g=1` examples are unavailable, and the 12-window single-video bank is suitable only for a feasibility pilot.
+- Design only: no participant materials were rendered or deployed, no participant responses were generated or analyzed, and `paper/` was not edited.
