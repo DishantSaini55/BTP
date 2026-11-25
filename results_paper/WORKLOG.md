@@ -122,3 +122,9 @@ Current repository commit observed before this documentation change: `2572a86567
 - Corrected training and validation to use autoregressive rollout, retaining Adam 1e-3, batch 8, max 50 epochs, patience 10, gradient clipping norm 1.0, frozen split and seed list. Completed both LSTM variants for all ten seeds in new `runs/B1_AUTOREGRESSIVE/` directories.
 - Mean test MSE was 281,652.402782 (boxes+speed) and 338,899.533790 (with scene labels), versus 446,028.863458 and 430,463.202010 for the prior teacher-forced reruns. This improves 8/10 and 7/10 paired seeds, respectively, but remains far worse than constant velocity (1,496.018040).
 - Wrote `B1_ROOT_CAUSE_REPORT.md` and `summary/B1_AUTOREGRESSIVE_summary.csv`. No other experiment was started.
+
+## 2026-11-25 — Qualitative selection and overlay figures
+
+- Before opening any image, froze and pushed `qualitative/SELECTION.md` for seed 20260928, including six RNG-selected distinct pedestrians, two largest PACE-Net improvements, two largest degradations, and available gate examples.
+- Both saved SAGE gates were closed on all 217 test windows, leaving no `g=1` window; no alternate seed or forced gate was substituted. The frozen selection includes 12 unique windows (6 random, 2 improvement, 2 degradation, 2 closed-gate) and records the unavailable open-gate case.
+- Rendered a 12-page vector-overlay PDF using the source GP6 video at each selected window's last observed frame; included observed boxes, ground truth, MTN, both PACE-Net variants, constant velocity, per-window MSE, gates, and scene labels. Wrote the page-to-window metrics CSV.
