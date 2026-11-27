@@ -1,0 +1,134 @@
+[
+  {
+    "epoch": 1,
+    "train_normalized_mse": 0.6735773924386727,
+    "validation_normalized_mse": 1.35640549659729,
+    "epoch_seconds": 31.524865600047633,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 317808640
+  },
+  {
+    "epoch": 2,
+    "train_normalized_mse": 0.38545337628643467,
+    "validation_normalized_mse": 1.3289226653964021,
+    "epoch_seconds": 29.75050049996935,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 321093632
+  },
+  {
+    "epoch": 3,
+    "train_normalized_mse": 0.34906662157121693,
+    "validation_normalized_mse": 1.3772584504859393,
+    "epoch_seconds": 29.490750700002536,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 321662976
+  },
+  {
+    "epoch": 4,
+    "train_normalized_mse": 0.35444467781849626,
+    "validation_normalized_mse": 1.8517437202985896,
+    "epoch_seconds": 24.978566400008276,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 321286144
+  },
+  {
+    "epoch": 5,
+    "train_normalized_mse": 0.3367460364440702,
+    "validation_normalized_mse": 1.6718903031460075,
+    "epoch_seconds": 23.668781000073068,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 321740800
+  },
+  {
+    "epoch": 6,
+    "train_normalized_mse": 0.32141212472375835,
+    "validation_normalized_mse": 1.849501044251198,
+    "epoch_seconds": 26.370609200093895,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 322052096
+  },
+  {
+    "epoch": 7,
+    "train_normalized_mse": 0.3165127488802064,
+    "validation_normalized_mse": 1.5705717746601549,
+    "epoch_seconds": 23.19014680001419,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 321609728
+  },
+  {
+    "epoch": 8,
+    "train_normalized_mse": 0.31779663208520637,
+    "validation_normalized_mse": 1.5952171614003736,
+    "epoch_seconds": 25.287752499920316,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 321449984
+  },
+  {
+    "epoch": 9,
+    "train_normalized_mse": 0.2963317923669545,
+    "validation_normalized_mse": 1.3564704185308412,
+    "epoch_seconds": 24.722367100068368,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 322826240
+  },
+  {
+    "epoch": 10,
+    "train_normalized_mse": 0.2836169734034898,
+    "validation_normalized_mse": 1.5207000804501911,
+    "epoch_seconds": 25.04929270001594,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 323125248
+  },
+  {
+    "epoch": 11,
+    "train_normalized_mse": 0.26518183018801345,
+    "validation_normalized_mse": 1.479297305262366,
+    "epoch_seconds": 22.595147100044414,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 322846720
+  },
+  {
+    "epoch": 12,
+    "train_normalized_mse": 0.2545635407825686,
+    "validation_normalized_mse": 1.846620653950891,
+    "epoch_seconds": 23.41343880002387,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": null,
+    "context_gradient_l2_mean": null,
+    "process_rss_bytes": 323252224
+  }
+]

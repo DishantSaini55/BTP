@@ -1,0 +1,59 @@
+{
+  "performed": true,
+  "windows": 32,
+  "sample_ids": [
+    "gp_set_0007/gp_set_0007_vid_0004/track_0/07850/07909",
+    "gp_set_0007/gp_set_0007_vid_0004/track_0/07880/07939",
+    "gp_set_0007/gp_set_0007_vid_0004/track_0/07910/07969",
+    "gp_set_0007/gp_set_0007_vid_0004/track_0/07940/07999",
+    "gp_set_0007/gp_set_0007_vid_0004/track_0/07970/08029",
+    "gp_set_0007/gp_set_0007_vid_0004/track_0/08000/08059",
+    "gp_set_0007/gp_set_0007_vid_0004/track_0/08030/08089",
+    "gp_set_0007/gp_set_0007_vid_0004/track_0/08060/08119",
+    "gp_set_0007/gp_set_0007_vid_0004/track_0/08090/08149",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/07950/08009",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/07980/08039",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08010/08069",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08040/08099",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08070/08129",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08100/08159",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08130/08189",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08160/08219",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08190/08249",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08220/08279",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08250/08309",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08280/08339",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08310/08369",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08340/08399",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08370/08429",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08400/08459",
+    "gp_set_0007/gp_set_0007_vid_0004/track_1/08430/08489",
+    "gp_set_0007/gp_set_0007_vid_0004/track_2/08372/08431",
+    "gp_set_0007/gp_set_0007_vid_0004/track_2/08402/08461",
+    "gp_set_0007/gp_set_0007_vid_0004/track_2/08432/08491",
+    "gp_set_0007/gp_set_0007_vid_0004/track_2/08462/08521",
+    "gp_set_0007/gp_set_0007_vid_0004/track_25/07180/07239",
+    "gp_set_0007/gp_set_0007_vid_0004/track_26/07180/07239"
+  ],
+  "outputs": {
+    "original": {
+      "relative_l2_deviation_from_original": 0.0,
+      "coordinate_mae_from_original": 0.0
+    },
+    "identity": {
+      "relative_l2_deviation_from_original": 0.0,
+      "coordinate_mae_from_original": 0.0
+    },
+    "reconstructed": {
+      "relative_l2_deviation_from_original": 0.0027753047179430723,
+      "coordinate_mae_from_original": 0.0045858328230679035
+    },
+    "zero": {
+      "relative_l2_deviation_from_original": 0.008522937074303627,
+      "coordinate_mae_from_original": 0.015194871462881565
+    }
+  },
+  "identity_max_abs_error": 0.0,
+  "adequacy_threshold_relative_l2": 0.05,
+  "reconstruction_adequate": true
+}

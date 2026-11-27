@@ -1,0 +1,21 @@
+{
+  "protocol": "synthetic deterministic CPU diagnostic; not an accuracy experiment",
+  "seed": 20260928,
+  "initial_prediction_max_abs_difference_from_cv": 0.0,
+  "initial_prediction_finite": true,
+  "initial_loss": 277.87921142578125,
+  "initial_loss_finite": true,
+  "head_gradient_l2_before_update": 63.06637586362075,
+  "head_gradient_present_parameter_tensors": 2,
+  "head_gradient_missing_parameter_tensors": 0,
+  "upstream_gradient_l2_before_update": 0.0,
+  "upstream_gradient_present_parameter_tensors_before_update": 222,
+  "upstream_gradient_missing_parameter_tensors_before_update": 16,
+  "post_update_prediction_finite": true,
+  "post_update_loss": 240.77059936523438,
+  "post_update_loss_finite": true,
+  "upstream_gradient_l2_after_update": 12.595538750571233,
+  "upstream_gradient_present_parameter_tensors_after_update": 222,
+  "upstream_gradient_missing_parameter_tensors_after_update": 16,
+  "head_gradient_l2_after_update": 54.649503665561475
+}

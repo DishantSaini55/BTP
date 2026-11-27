@@ -1,0 +1,190 @@
+{
+  "model": "LSTM (boxes + ego speed + scene labels)",
+  "seed": 20260933,
+  "initialization": "from scratch; no official checkpoint loaded",
+  "loaded_keys": [],
+  "initial_state": [
+    {
+      "name": "encoder.weight_ih_l0",
+      "shape": [
+        128,
+        5
+      ],
+      "sha256": "fd44886d138e7d80602480b8e4275d7a37c4c269b84a8e8a7310ebd610d0c839"
+    },
+    {
+      "name": "encoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "5f425a4c67c09cb94f25301fc99963fdf8b1ac74ac582b1848eec3f00217e3f5"
+    },
+    {
+      "name": "encoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "314378b3aefe15f07e2475ecae0d5e4080eada6d7dbc144b9d533a026bba40e7"
+    },
+    {
+      "name": "encoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "ca5f365ac88dc9b0bb9ac93f3fd140e3d8f51a555a4dc0b475c4ef29d91afa5f"
+    },
+    {
+      "name": "decoder.weight_ih_l0",
+      "shape": [
+        128,
+        4
+      ],
+      "sha256": "f03e4b4d9d2c816a09370b20fc831e8d6f1a95265ee4b0eab308bf8932988195"
+    },
+    {
+      "name": "decoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "ae4edef46b99cf370b5a4457c190edea9590f3990bebb8ec4cd292ecad7c93c9"
+    },
+    {
+      "name": "decoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "d980561b19d061ee8687f733f00b4573d4cc96e4a91ba128bb1916ce8bf7c058"
+    },
+    {
+      "name": "decoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "f745aea55152ab2a7a07351595505eae77bc84c2eec8b68125a4c077f3914cf4"
+    },
+    {
+      "name": "output.weight",
+      "shape": [
+        4,
+        32
+      ],
+      "sha256": "6cb6e3b666c1fcaf18d5a4a6cf9bf4142598259c9c1d37e4a78731e852c15879"
+    },
+    {
+      "name": "output.bias",
+      "shape": [
+        4
+      ],
+      "sha256": "6ebbafd9b801ec4022e5a294971373f4eaee697837e771ba0b5bb589bd6fec19"
+    },
+    {
+      "name": "scene_embeddings.0.weight",
+      "shape": [
+        7,
+        4
+      ],
+      "sha256": "0ae5cdfef17f2e563006feb345e7096269d6fca0762a476c9fb4c9225e003637"
+    },
+    {
+      "name": "scene_embeddings.1.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "d5f1a7b5de14db8a2ec0e1bdb2bb5945e094d264538950fa10a2fd85812b67fd"
+    },
+    {
+      "name": "scene_embeddings.2.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "1f0da3be4cb1a9fe70b5d521a6357a509896a3f2462d5b705657c5b106a903e0"
+    },
+    {
+      "name": "scene_embeddings.3.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "4857aaf769a8f56d2da1fa1112e52c829900dceec5714030c1c28c0fd5d59fd0"
+    },
+    {
+      "name": "scene_embeddings.4.weight",
+      "shape": [
+        3,
+        4
+      ],
+      "sha256": "f293455a12d149aa045b9cb64722682beeca34ef62b274936c78f72776f28622"
+    },
+    {
+      "name": "scene_projection.weight",
+      "shape": [
+        32,
+        20
+      ],
+      "sha256": "5e634ec45512b51d881e194cdbe41fc45b720d39b58e38c25df8d8ccc7d855bb"
+    },
+    {
+      "name": "scene_projection.bias",
+      "shape": [
+        32
+      ],
+      "sha256": "84cd34f2ee62f99e31509317dde704331f3dbf2867b6c8a8f71bd45600b1dedb"
+    }
+  ],
+  "parameters": 10760,
+  "architecture": {
+    "encoder": "LSTM(5,32)",
+    "decoder": "autoregressive LSTM(4,32)",
+    "scene_variant": true,
+    "training": "teacher-forced normalized displacement",
+    "gradient_clip_norm": 1.0
+  },
+  "protocol": {
+    "max_epochs": 50,
+    "patience": 10,
+    "min_delta": 0,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "batch_size": 8,
+    "loss": "MSE"
+  },
+  "provenance": {
+    "git_head": "c0ba73bd60f00795428cd70123454622edaec915",
+    "git_dirty": true,
+    "git_status": [
+      " M MTN/run_b1_from_scratch.py",
+      " M MTN/weight_sharing_report.md",
+      "?? MTN/run_b1_fixed.py",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260937.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260932.json",
+      "?? results_paper/orchestration_from_scratch_v2.json",
+      "?? results_paper/summary_failed_partial_20261122/",
+      "?? results_paper/summary_regeneration_20261122/",
+      "?? results_paper/summary_stale_partial_20261122/"
+    ],
+    "source_sha256": {
+      "MTN\\individual_TF.py": "f9207ee91145ead243e2bea5b8bca7e1e06d57c6a87964b832b4652beb7d2dad",
+      "MTN\\context_TF.py": "9a75beef517c3191b7b36aca291971815aec8cb7ab675cb3f7a918acce4a5ff5",
+      "MTN\\dynamic_fusion_TF.py": "1ff6be645d05d58e81af6264183be68df4abb16efe21936178236a885649c257",
+      "MTN\\c4_encoder_shared.py": "73e9bfdea8aeac51d804f5add8dff4777b34cbbfa949f51266afe58b844bbb54",
+      "MTN\\run_from_scratch_e1.py": "2536757b9751e4d36b84fdfc183ad341a9bc665f05aa4a47e2b1c44757bc9021"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "stage1_hashes_verified": {
+    "AO3_FFN_activations.npz": "d3e586e3268caaa3cc70ccd34dd95889ca7b98266b53f37bc8f3a3e56527b5e6",
+    "AO3_NMF_pilot.npz": "476647379c7163b48bf5feda1d1e514b12b1333f5251465d8ce5e6d5c17ac9a0",
+    "activation_audit.json": "06aa508fa49d47784e10e5fd2dc33d54edabc109f5c43e05021602fc6d6bfcc2",
+    "pilot_metrics.json": "eee3d845321316d14626af1b5d5d3ee85c1548578c60c0dc79fc13eecf0ce67e",
+    "train.npz": "f089004844578c98c2b43aabe77e962f02ff94aae9b5ba0ed65514ce5d352df7",
+    "validation.npz": "01141782b19d21bcc14ef77529cb6a856ff919ffefd246c013eca4717e7d5c63"
+  },
+  "old_basis_shape": [
+    4,
+    128
+  ],
+  "old_scale_min": 1e-08,
+  "old_scale_floor_feature_count": 13,
+  "old_validation_scaled_norm": 2591539144.3493524,
+  "old_nnls_checks": [
+    {
+      "set": "stage1_fit_rows",
+      "rows_checked": 128,
+      "nnls_relative_error": 0.3216149193650568,
+      "coeff_zero_fraction": 0.41796875,
+      "finite": true
+    },
+    {
+      "set": "stage1_validation",
+      "rows_checked": 128,
+      "nnls_relative_error": 0.999999999775576,
+      "coeff_zero_fraction": 0.75,
+      "finite": true
+    }
+  ],
+  "new_kept_features": 110,
+  "dropped_nearzero_train_features": 18,
+  "rms_scale_floor": 0.001484129858673722,
+  "selected_rank": 4,
+  "stability": 0.9999999999999996,
+  "all_validation_coefficients_finite": true,
+  "validation_coef_zero_fraction": 0.5262538580246914,
+  "scale_validation_max_abs": 890.2950697243045
+}

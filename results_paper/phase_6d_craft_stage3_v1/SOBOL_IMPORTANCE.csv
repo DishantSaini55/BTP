@@ -1,0 +1,17 @@
+output,units,concept,base_samples,total_order_index,output_variance,converged,interpretation
+final_center_x,pixels,C1,128,2.411186339182684e-05,1.1083200232205854,True,relative sensitivity within reconstructed FFN activation branch
+final_center_x,pixels,C2,128,0.9914803336800481,1.1083200232205854,True,relative sensitivity within reconstructed FFN activation branch
+final_center_x,pixels,C3,128,0.0,1.1083200232205854,True,relative sensitivity within reconstructed FFN activation branch
+final_center_x,pixels,C4,128,0.009114016621161073,1.1083200232205854,True,relative sensitivity within reconstructed FFN activation branch
+final_center_y,pixels,C1,128,0.08086434865724886,0.024363716694494997,True,relative sensitivity within reconstructed FFN activation branch
+final_center_y,pixels,C2,128,0.9004943310766576,0.024363716694494997,True,relative sensitivity within reconstructed FFN activation branch
+final_center_y,pixels,C3,128,0.0,0.024363716694494997,True,relative sensitivity within reconstructed FFN activation branch
+final_center_y,pixels,C4,128,0.021792657298877024,0.024363716694494997,True,relative sensitivity within reconstructed FFN activation branch
+final_displacement_norm,pixels,C1,128,0.004056711229543697,0.012172950416810657,True,relative sensitivity within reconstructed FFN activation branch
+final_displacement_norm,pixels,C2,128,0.20600856455361374,0.012172950416810657,True,relative sensitivity within reconstructed FFN activation branch
+final_displacement_norm,pixels,C3,128,0.0,0.012172950416810657,True,relative sensitivity within reconstructed FFN activation branch
+final_displacement_norm,pixels,C4,128,0.7924389557832812,0.012172950416810657,True,relative sensitivity within reconstructed FFN activation branch
+cv_correction_energy,pixels_squared,C1,128,0.004490624982581658,390.0887402705141,True,relative sensitivity within reconstructed FFN activation branch
+cv_correction_energy,pixels_squared,C2,128,0.981159710850194,390.0887402705141,True,relative sensitivity within reconstructed FFN activation branch
+cv_correction_energy,pixels_squared,C3,128,0.0,390.0887402705141,True,relative sensitivity within reconstructed FFN activation branch
+cv_correction_energy,pixels_squared,C4,128,0.018124951768627027,390.0887402705141,True,relative sensitivity within reconstructed FFN activation branch

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "D:\DOWNLOADS\BTP\MTN\run_p2_screen.py", line 780, in run_one
+    validation_loss = _evaluate(
+                      ^^^^^^^^^^
+  File "D:\DOWNLOADS\BTP\MTN\run_p2_screen.py", line 309, in _evaluate
+    with _policy_context(model, policy), torch.no_grad():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\DOWNLOADS\BTP\MTN\run_p2_screen.py", line 267, in __enter__
+    raise ValueError(
+ValueError: Policy soft is invalid for AlwaysOpenContextIndividualTF.

@@ -1,0 +1,12 @@
+[
+  {
+    "epoch": 1,
+    "epoch_seconds": 107.0059242999414,
+    "process_memory_bytes": 296882176,
+    "train_batches": 124,
+    "train_epoch_seconds": 99.83448339998722,
+    "train_normalized_mse": 0.17450781320391395,
+    "validation_normalized_mse": 0.11728779836212871,
+    "validation_seconds": 7.171440899954177
+  }
+]

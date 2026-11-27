@@ -1,0 +1,172 @@
+[
+  {
+    "epoch": 1,
+    "epoch_seconds": 54.269680699915625,
+    "process_memory_bytes": 297549824,
+    "train_batches": 124,
+    "train_epoch_seconds": 50.695401299977675,
+    "train_normalized_mse": 0.2485169784018868,
+    "validation_normalized_mse": 0.1238193709610237,
+    "validation_seconds": 3.57427939993795
+  },
+  {
+    "epoch": 2,
+    "epoch_seconds": 61.13194790005218,
+    "process_memory_bytes": 301301760,
+    "train_batches": 124,
+    "train_epoch_seconds": 57.54961590003222,
+    "train_normalized_mse": 0.12499657930874149,
+    "validation_normalized_mse": 0.10931486728670145,
+    "validation_seconds": 3.58233200001996
+  },
+  {
+    "epoch": 3,
+    "epoch_seconds": 74.00317650008947,
+    "process_memory_bytes": 301694976,
+    "train_batches": 124,
+    "train_epoch_seconds": 57.71817810006905,
+    "train_normalized_mse": 0.1142119734363276,
+    "validation_normalized_mse": 0.1075467494989021,
+    "validation_seconds": 16.284998400020413
+  },
+  {
+    "epoch": 4,
+    "epoch_seconds": 83.57849690015428,
+    "process_memory_bytes": 302637056,
+    "train_batches": 124,
+    "train_epoch_seconds": 65.38254560006317,
+    "train_normalized_mse": 0.11141122515626282,
+    "validation_normalized_mse": 0.10648626311147516,
+    "validation_seconds": 18.19595130009111
+  },
+  {
+    "epoch": 5,
+    "epoch_seconds": 107.28715460002422,
+    "process_memory_bytes": 303079424,
+    "train_batches": 124,
+    "train_epoch_seconds": 99.21098990004975,
+    "train_normalized_mse": 0.10716866869253186,
+    "validation_normalized_mse": 0.12097462407675469,
+    "validation_seconds": 8.07616469997447
+  },
+  {
+    "epoch": 6,
+    "epoch_seconds": 91.04130189993884,
+    "process_memory_bytes": 306130944,
+    "train_batches": 124,
+    "train_epoch_seconds": 79.96496090001892,
+    "train_normalized_mse": 0.10576060127753478,
+    "validation_normalized_mse": 0.11134145655496805,
+    "validation_seconds": 11.076340999919921
+  },
+  {
+    "epoch": 7,
+    "epoch_seconds": 85.43830709997565,
+    "process_memory_bytes": 307781632,
+    "train_batches": 124,
+    "train_epoch_seconds": 79.03342180000618,
+    "train_normalized_mse": 0.10400237224483297,
+    "validation_normalized_mse": 0.10564834833214129,
+    "validation_seconds": 6.4048852999694645
+  },
+  {
+    "epoch": 8,
+    "epoch_seconds": 144.86212210007943,
+    "process_memory_bytes": 307052544,
+    "train_batches": 124,
+    "train_epoch_seconds": 131.56577660003677,
+    "train_normalized_mse": 0.10298307586144581,
+    "validation_normalized_mse": 0.11420889598903833,
+    "validation_seconds": 13.296345500042662
+  },
+  {
+    "epoch": 9,
+    "epoch_seconds": 107.10879580001347,
+    "process_memory_bytes": 308842496,
+    "train_batches": 124,
+    "train_epoch_seconds": 101.34972850000486,
+    "train_normalized_mse": 0.10214306527243452,
+    "validation_normalized_mse": 0.11487212849573956,
+    "validation_seconds": 5.75906730000861
+  },
+  {
+    "epoch": 10,
+    "epoch_seconds": 202.87510439986363,
+    "process_memory_bytes": 309989376,
+    "train_batches": 124,
+    "train_epoch_seconds": 191.3046149999136,
+    "train_normalized_mse": 0.10107088458501859,
+    "validation_normalized_mse": 0.11242657887783868,
+    "validation_seconds": 11.57048939995002
+  },
+  {
+    "epoch": 11,
+    "epoch_seconds": 146.58915929996874,
+    "process_memory_bytes": 310841344,
+    "train_batches": 124,
+    "train_epoch_seconds": 136.92424059996847,
+    "train_normalized_mse": 0.10096307541526522,
+    "validation_normalized_mse": 0.10651683912578004,
+    "validation_seconds": 9.664918700000271
+  },
+  {
+    "epoch": 12,
+    "epoch_seconds": 200.72754630004056,
+    "process_memory_bytes": 311717888,
+    "train_batches": 124,
+    "train_epoch_seconds": 170.89066300005652,
+    "train_normalized_mse": 0.09938354640897469,
+    "validation_normalized_mse": 0.11593245770092364,
+    "validation_seconds": 29.836883299984038
+  },
+  {
+    "epoch": 13,
+    "epoch_seconds": 124.99103080003988,
+    "process_memory_bytes": 312504320,
+    "train_batches": 124,
+    "train_epoch_seconds": 94.01944180007558,
+    "train_normalized_mse": 0.10021499189951642,
+    "validation_normalized_mse": 0.11522998386580083,
+    "validation_seconds": 30.971588999964297
+  },
+  {
+    "epoch": 14,
+    "epoch_seconds": 231.95993979997002,
+    "process_memory_bytes": 313806848,
+    "train_batches": 124,
+    "train_epoch_seconds": 223.33096769999247,
+    "train_normalized_mse": 0.098841745074582,
+    "validation_normalized_mse": 0.11325529144421496,
+    "validation_seconds": 8.628972099977545
+  },
+  {
+    "epoch": 15,
+    "epoch_seconds": 197.76433120004367,
+    "process_memory_bytes": 266907648,
+    "train_batches": 124,
+    "train_epoch_seconds": 185.0008506999584,
+    "train_normalized_mse": 0.09925346908268899,
+    "validation_normalized_mse": 0.12227817769679758,
+    "validation_seconds": 12.76348050008528
+  },
+  {
+    "epoch": 16,
+    "epoch_seconds": 93.1184364000801,
+    "process_memory_bytes": 267964416,
+    "train_batches": 124,
+    "train_epoch_seconds": 80.24004290008452,
+    "train_normalized_mse": 0.09944415863165972,
+    "validation_normalized_mse": 0.13114547708796132,
+    "validation_seconds": 12.878393499995582
+  },
+  {
+    "epoch": 17,
+    "epoch_seconds": 104.36733610008378,
+    "process_memory_bytes": 268394496,
+    "train_batches": 124,
+    "train_epoch_seconds": 95.73326310003176,
+    "train_normalized_mse": 0.09838348480793628,
+    "validation_normalized_mse": 0.12074244079283541,
+    "validation_seconds": 8.634073000052013
+  }
+]

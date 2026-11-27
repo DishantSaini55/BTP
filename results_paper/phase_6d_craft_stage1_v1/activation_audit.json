@@ -1,0 +1,20 @@
+{
+  "checkpoint_sha256": "5f96001dd3b9b9e5f87561f0444c845c6f441c6dd45a2129ef0bcaa9d893114f",
+  "train_cache_manifest_sha256": "e0fdf042eb4f9f30e5ea066a4b23490cb6582d7ad9356df77b8c5bd72b503c01",
+  "train_shape": [
+    988,
+    15,
+    128
+  ],
+  "validation_shape": [
+    432,
+    15,
+    128
+  ],
+  "min": 0.0,
+  "max": 2.1875252723693848,
+  "negative_fraction": 0.0,
+  "zero_fraction": 0.5271692602901484,
+  "identity_max_abs_error": 0.0,
+  "official_test_accessed": false
+}

@@ -1,0 +1,31 @@
+{
+  "batch_size": 8,
+  "cache_sha256": {
+    "split_manifest.json": "e0fdf042eb4f9f30e5ea066a4b23490cb6582d7ad9356df77b8c5bd72b503c01",
+    "train.npz": "f089004844578c98c2b43aabe77e962f02ff94aae9b5ba0ed65514ce5d352df7",
+    "validation.npz": "01141782b19d21bcc14ef77529cb6a856ff919ffefd246c013eca4717e7d5c63"
+  },
+  "cpu_threads": 4,
+  "learning_rate": 0.001,
+  "max_epochs": 30,
+  "model_id": "AO-3",
+  "normalization_mean": [
+    827.5224609375,
+    832.866943359375,
+    890.5432739257812,
+    994.9057006835938
+  ],
+  "normalization_std": [
+    355.5122985839844,
+    68.33911895751953,
+    361.9615173339844,
+    85.73724365234375
+  ],
+  "numpy_version": "2.4.6",
+  "patience": 10,
+  "runner_version": "AO_v1",
+  "seed": 20260932,
+  "torch_version": "2.14.1+cpu",
+  "validation_only": true,
+  "wall_clock_budget_seconds": 7200.0
+}

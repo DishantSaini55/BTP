@@ -1,0 +1,17 @@
+test_bh_adjustment_monotonicity (test_stage3_helpers.Stage3HelperTests.test_bh_adjustment_monotonicity) ... ok
+test_coefficient_basis_reconstruction (test_stage3_helpers.Stage3HelperTests.test_coefficient_basis_reconstruction) ... ok
+test_jansen_known_additive_synthetic_indices (test_stage3_helpers.Stage3HelperTests.test_jansen_known_additive_synthetic_indices) ... FAIL
+test_top_decile_stable_ties_and_size (test_stage3_helpers.Stage3HelperTests.test_top_decile_stable_ties_and_size) ... ok
+
+======================================================================
+FAIL: test_jansen_known_additive_synthetic_indices (test_stage3_helpers.Stage3HelperTests.test_jansen_known_additive_synthetic_indices)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\DOWNLOADS\BTP\results_paper\phase_6d_craft_stage3_v1\test_stage3_helpers.py", line 32, in test_jansen_known_additive_synthetic_indices
+    self.assertLessEqual(float(np.max(np.abs(estimate-known))),.10)
+AssertionError: 0.3010232113991983 not less than or equal to 0.1
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.395s
+
+FAILED (failures=1)

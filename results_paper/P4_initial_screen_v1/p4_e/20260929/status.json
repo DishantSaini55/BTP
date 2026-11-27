@@ -1,0 +1,9 @@
+{
+  "state": "completed",
+  "updated_at": "2026-11-26T11:33:56+00:00",
+  "configuration": "p4_e",
+  "seed": 20260929,
+  "completed_epochs": 12,
+  "selected_epoch": 2,
+  "training_seconds": 540.4848034000024
+}

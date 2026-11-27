@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "configuration": "p3_f",
+  "seed": 20260928,
+  "selected_epoch": 8,
+  "epochs_completed": 10,
+  "initial_state_sha256": "53b91f4095cc44d04a5717a88f434e16530c74be8371a2c0d6ec5a99b5aa9233",
+  "unique_parameters": 130068,
+  "training_seconds": 262.81539809989044,
+  "peak_sampled_rss_bytes": 347725824,
+  "policies": [
+    {
+      "policy": "always_open",
+      "normalized_mse": 1.0356734214827072,
+      "raw_pixel_mse": 3379.4963098570356,
+      "cmse": 2585.674992583519,
+      "cfmse": 11596.665261024653,
+      "mse_h01": 1976.5735163134198,
+      "mse_h05": 1627.5506279523981,
+      "mse_h15": 1400.324933140777,
+      "mse_h30": 2256.2273587958757,
+      "mse_h45": 13710.871552223383,
+      "mean_admission_probability": 1.0,
+      "hard_admission_rate": 1.0,
+      "context_attention_weight": 0.10319025814533234,
+      "sample_count": 43,
+      "normalized_loss_sum": 44.53395712375641
+    }
+  ]
+}

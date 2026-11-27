@@ -1,0 +1,5 @@
+concept,train_row,sample_id,video_id,track_id,mean_coefficient
+C1,839,gp_set_0006/gp_set_0006_vid_0002/track_39/13752/13811,gp_set_0006_vid_0002,39,0.124079087061478
+C2,701,gp_set_0004/gp_set_0004_vid_0001/track_50/00090/00149,gp_set_0004_vid_0001,50,0.3840668369342846
+C3,255,gp_set_0002/gp_set_0002_vid_0001/track_160/11444/11503,gp_set_0002_vid_0001,160,0.4580669813638684
+C4,749,gp_set_0004/gp_set_0004_vid_0001/track_99/03804/03863,gp_set_0004_vid_0001,99,0.5566571506764372

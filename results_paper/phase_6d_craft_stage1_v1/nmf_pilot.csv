@@ -1,0 +1,3 @@
+rank,train_relative_reconstruction_error,iterations,convergence_warning
+4,0.39036142587721184,27,False
+8,0.2947396137403195,120,True

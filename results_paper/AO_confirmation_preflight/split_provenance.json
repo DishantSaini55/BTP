@@ -1,0 +1,24 @@
+{
+  "cache_root": "D:\\DOWNLOADS\\BTP\\results_paper\\splits\\ao_annotation_only_v1",
+  "cache_sha256": {
+    "split_manifest.json": "e0fdf042eb4f9f30e5ea066a4b23490cb6582d7ad9356df77b8c5bd72b503c01",
+    "train.npz": "f089004844578c98c2b43aabe77e962f02ff94aae9b5ba0ed65514ce5d352df7",
+    "validation.npz": "01141782b19d21bcc14ef77529cb6a856ff919ffefd246c013eca4717e7d5c63"
+  },
+  "manifest_schema": "ao_annotation_only_v1",
+  "normalization_fit_role": "train",
+  "normalization_unique_train_frames": 37470,
+  "official_test_sets_read": [],
+  "train_samples": 988,
+  "train_videos": [
+    "gp_set_0001_vid_0001",
+    "gp_set_0002_vid_0001",
+    "gp_set_0004_vid_0001",
+    "gp_set_0006_vid_0002"
+  ],
+  "validation_samples": 432,
+  "validation_videos": [
+    "gp_set_0007_vid_0004",
+    "gp_set_0007_vid_0005"
+  ]
+}

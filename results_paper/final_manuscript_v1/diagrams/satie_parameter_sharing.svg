@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1450" height="640" viewBox="0 0 1450 640">
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#526579"/></marker></defs>
+<rect width="100%" height="100%" fill="#fbfcfe"/>
+<path d="M230,310.0 L330,145.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M580,145.0 L650,305.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M775.0,370 L455.0,430" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M580,495.0 L650,515.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M580,145.0 L1010,305.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M900,305.0 L1010,305.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M580,495.0 L1010,305.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<rect x="40" y="260" width="190" height="100" rx="15" fill="#dbeafe" stroke="#718096" stroke-width="2"/>
+<text x="135.0" y="297.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Input stream</text>
+<text x="135.0" y="322.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">[B,15,32]</text>
+<rect x="330" y="80" width="250" height="130" rx="15" fill="#ede9fe" stroke="#718096" stroke-width="2"/>
+<text x="455.0" y="120.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Encoder layer 1</text>
+<text x="455.0" y="145.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Self-attention module A</text>
+<text x="455.0" y="170.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">FFN + norms (per layer)</text>
+<rect x="650" y="240" width="250" height="130" rx="15" fill="#ede9fe" stroke="#718096" stroke-width="2"/>
+<text x="775.0" y="280.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Encoder layer 2</text>
+<text x="775.0" y="305.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Same module A</text>
+<text x="775.0" y="330.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">FFN + norms (per layer)</text>
+<rect x="330" y="430" width="250" height="130" rx="15" fill="#ede9fe" stroke="#718096" stroke-width="2"/>
+<text x="455.0" y="470.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Encoder layer 3</text>
+<text x="455.0" y="495.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Same module A</text>
+<text x="455.0" y="520.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">FFN + norms (per layer)</text>
+<rect x="1010" y="230" width="370" height="150" rx="15" fill="#fef3c7" stroke="#718096" stroke-width="2"/>
+<text x="1195.0" y="280.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Shared trainable parameters</text>
+<text x="1195.0" y="305.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Attention A executed 3 times</text>
+<text x="1195.0" y="330.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Q/K/V/output projections shared</text>
+<rect x="650" y="465" width="220" height="100" rx="15" fill="#dbeafe" stroke="#718096" stroke-width="2"/>
+<text x="760.0" y="502.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Encoded memory</text>
+<text x="760.0" y="527.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">[B,15,32]</text>
+</svg>

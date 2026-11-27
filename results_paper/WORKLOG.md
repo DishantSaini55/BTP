@@ -1,5 +1,77 @@
 # PACE-Net paper work log
 
+## 2026-11-27 — Phase 6D CRAFT Stage 1 minimal AO-3 pilot
+
+- Captured the genuine AO-3 seed-20260928 final encoder ReLU FFN activations
+  for all 988 training and 432 validation windows from development caches only.
+- Verified the frozen checkpoint hash and development cache manifest; no
+  official-test role was read. Identity activation intervention matched the
+  original model output exactly (maximum absolute difference 0.0).
+- Six focused regression tests passed. The bounded rank-4/rank-8 NMF pilot
+  used a fixed lexicographic 96-window train subset and feature RMS scaling.
+  Rank 4 train relative reconstruction error was 0.39036; rank 8 reached its
+  120-iteration cap with a logged convergence warning and error 0.29474.
+- Held-out NNLS relative reconstruction error was approximately 1.0, so the
+  projection is degenerate and no concept interpretation is supported.
+- Saved independently hashed activations, NMF pilot factors, audit, metrics and
+  a stage report under `phase_6d_craft_stage1_v1/`. No AO-2, recursive
+  decomposition, Sobol, insertion/deletion, training, official-test access,
+  paper edit, commit or push occurred.
+
+## 2026-11-27 — Phase 6D CRAFT robust recovery attempt
+
+- Inspected and preserved all four invalid/incomplete Phase 6D CRAFT partial
+  directories; verified no experiment stage was complete and no Python process
+  was active at recovery start.
+- Reverified AO-2/AO-3 seed-20260928 checkpoint hashes and the development-only
+  cache manifest (988 train, 432 validation; official test sets not read).
+- Diagnosed prior NMF warnings as iteration-cap convergence warnings on an
+  unscaled 14,820-by-128 activation matrix. Drafted `MTN/run_craft_trajectory_v2.py`
+  with deterministic feature scaling, bounded video-balanced fitting rows and
+  an exclusive lock; syntax compilation passed.
+- Recovery stopped before smoke testing or experiment execution because the
+  required regression suite, stage-level resumability and intervention-scale
+  correctness are not yet validated. `phase_6d_craft_execution_v2/RECOVERY_STATUS.md`
+  records the exact remaining work. No new scientific results are claimed.
+- No official-test access, training, model modification, raw-video download,
+  `paper/` edit, commit or push occurred.
+
+## 2026-11-27 — Phase 6C literature, comparison and novelty review
+
+- Completed a documentation-only review in `phase_6c_literature_v1/` using the
+  corrected Phase 6B v2 bundle and v3 derivatives as canonical.
+- Created a verified-reference database, protocol-compatibility/SOTA taxonomy,
+  manuscript claim audit, novelty audit, research-direction recommendation and
+  CRAFT/HIVE feasibility materials.
+- The review identifies AO-0/AO-CP/AO-1/AO-2/AO-3/AO-RIDGE as the only direct
+  numerical comparison set. Published full-input, stochastic, world-coordinate
+  and best-of-K results are reported as unmatched context only.
+- Recommended a comparative empirical paper framing: ridge is the strongest
+  frozen official-test predictor; neural improvements over CV are marginal and
+  not conclusive under the seed-level analysis. SATIE is retained only as a
+  compactness result; SAGE/MASC/ROUTE are not supported headline claims.
+- No training, official-test inference, architecture modification,
+  hyperparameter tuning, raw-video download, `paper/` edit, Phase 6D execution,
+  commit or push occurred.
+
+## 2026-11-27 — Phase 6B official-test preparation
+
+- Froze the Phase 6A model identities: AO-2 as primary neural accuracy
+  candidate, AO-3 as compact candidate, AO-RIDGE as strong classical candidate,
+  AO-0 as CV reference, AO-1 as constant-position residual ablation and AO-CP
+  as constant-position baseline.
+- Froze ridge alpha 100 and preserved the train-fitted coefficient archive.
+- Prepared the official-test membership plan for GP3/GP5/GP8/GP9 using the
+  authoritative dataset documentation, while preserving GP6 as a separate
+  historical local test protocol.
+- Created the evaluation-only implementation and refused official-test access
+  through the preparation state.
+- Added 10,000-repetition Phase 6A finalization outputs, checkpoint/seed
+  provenance, runtime and latency records.
+- Ran 21 AO-focused regression tests successfully.
+- No training, official-test access, raw archive download, paper edit,
+  commit or push was performed.
+
 ## 2026-11-21 — orientation only
 
 - Extracted the author-supplied `overleaf_project (2).zip` to `paper/`; no TeX source was edited.
@@ -169,3 +241,82 @@ Current repository commit observed before this documentation change: `2572a86567
 - Exported the same 14-image/JSON asset set to `figures_paper/assets2/` using real source-video frames, cached flow, and saved E1 seed-20260928 outputs. The observed speeds are recorded unchanged in `scene_labels.json`; cached Farneback grids are enlarged only for display. Saved PACE-Net gate is `g=0`, and ROUTE selects additive.
 - During the first attempt, image drawing exposed saved PACE-Net boxes with reversed horizontal endpoints at 16 of 45 future steps. Updated the shared crop/drawing helper to use the min/max endpoint envelope for visualization only; did not alter saved predictions. Exact affected zero-based steps are recorded in the JSON and the limitation is documented in README.
 - Regenerated successfully; verified the frozen selection is the lexicographically first strict match, all PNGs decode and are 300 DPI, speed/occlusion values satisfy the rule, and gate metadata matches saved outputs. No training was run and no files under `paper/` were edited.
+
+## 2026-11-26 — Phase 3 CV residual-anchor screen
+
+- Added the separate `MTN/cv_residual_v1.py` model wrapper and `MTN/run_p3_screen.py` resumable runner. Historical model implementations and prior experiment outputs were left unchanged.
+- Passed deterministic unit tests and capped smoke checks, then ran P3-B through P3-G sequentially for seed 20260928, 10 epochs maximum, full train/validation splits, batch size 8, and four CPU threads. P3-A was evaluated as a deterministic CV baseline. No test forward pass, prediction, or metric was performed.
+- All seven run statuses are `completed`; the six trainable runs have 10 epoch-history entries. The validation split has 43 windows, all from `gp_set_0006_vid_0001`. Results and per-window comparisons are in `P3_initial_screen_v1/`.
+- Best raw validation MSE among the selected checkpoints was P3-G hard (3,082.83) versus 3,630.32 for exact CV; P3-G hard-opened all 43 validation windows, so this is not evidence for sample-dependent hard admission. These are one-seed exploratory results, not statistically conclusive.
+- Recorded train-loop elapsed time summed to 1,789.535 seconds across six trainable runs; maximum sampled RSS was 349,159,424 bytes. The exact runtime table and commands are in `P3_RUNTIME_REPORT.md`.
+- The initial post-training plot step failed due to missing `matplotlib`; it was replaced with standard-library SVG generation. Finalization and both validation plots then succeeded without rerunning training.
+- Integrity caveat: `load_split(validation_only=True)` only creates train and validation datasets and the runner never accesses test values, but the monolithic flow pickle is deserialized in full, including its test role. This does not satisfy literal no-test-deserialization; it is disclosed in `PHASE_3_RESEARCH_REPORT.md` and `P3_RUNTIME_REPORT.md`. Train-only normalization was retained.
+- Wrote `PHASE_3_RESEARCH_REPORT.md`, `P3_RUNTIME_REPORT.md`, and this work-log entry. Final validation: `python -m unittest discover -s tests -v` passed all 40 tests; Python compilation checks passed. No `paper/` files, additional seeds, Phase 4 work, commit, or push.
+
+## 2026-11-27 — Phase 4 cache isolation and runner validation
+
+- Migrated the trusted monolithic GP6 flow cache once to role-separated files under `splits/gp6_from_scratch_v1/roles_v1/`. The source SHA-256 is `3c888c7c089de88bffd44349c8336b4ca9b76177402d141e990ea79a1c306001`; the migration verified role counts, IDs, video membership, per-sample hashes, and copied metadata without recomputing flow. The one-time migration did deserialize all three source roles and is explicitly documented.
+- Added `dataset_roles_v1.py`, which only accepts and constructs train and validation paths, and `migrate_flow_cache_v1.py`, which refuses overwrite and requires explicit trusted-cache acknowledgement. Phase 4 normalization is computed from train samples only.
+- Added the P4-A–F model configurations with unique trainable counts 133,700; 125,252; 138,516; 130,068; 130,694; and 130,630. Parameter identity and SATIE audit tests passed.
+- Implemented the resumable validation-only runner and corrected its incremental summary-field mapping. Added explicit no-test role checks, full-split metrics, per-epoch checkpoint/budget handling, summary updates after each run, and the `IndividualTF` type check for decoder attention.
+- Ran all six capped smoke configurations against a temporary cache containing only train/validation pickles and manifests; all completed. Then measured one full train/validation epoch for every configuration at four CPU threads. Measured epoch times ranged 24.97–44.90 seconds; these are budget inputs, not accuracy claims. A one-thread P4-F epoch was 18.77 seconds and is only a single paired runtime observation.
+- Wrote `DATASET_ISOLATION_REPORT.md` and `P4_COMPUTATIONAL_BUDGET.md`. Temporary testless cache directories were removed. The independent test cache was not opened during smoke or benchmark screening.
+- Added a validation-only finalizer for seed-paired metrics, paired t intervals, pedestrian-track bootstrap intervals, gate interventions, parameter-efficiency reporting, runtime summaries, and provenance. It refuses to summarize capped, incomplete, non-validation-only, or differently configured runs.
+- Completed the sequential three-seed P4-A–F screen: all 18 runs finished with explicit `completed` states using 325 total epochs. Per-run and per-configuration metrics, timings, sampled RSS, checkpoint sizes, and run metadata are in `P4_initial_screen_v1/`.
+- Finalized validation-only comparisons, 10,000-repetition pedestrian-track bootstrap intervals, gate utility interventions, parameter-efficiency summaries, and provenance. The finalizer verified all 18 runs, 212 train and 43 validation samples, the frozen seeds/configurations/settings, and matching role-cache hashes; metadata records `test_split_loaded: false` and train-only normalization.
+- Total recorded training-loop time was 11,223.612 seconds (3.118 hours), excluding process startup and final report generation; longest run was 1,114.306 seconds and maximum sampled RSS was 336,777,216 bytes. Updated `P4_COMPUTATIONAL_BUDGET.md` with measured totals alongside the original projection.
+- No files under `paper/` were changed; no commit or push was made.
+
+## 2026-11-26 — Phase 5 dataset feasibility stop
+
+- Performed a metadata-only inventory of `D:\IDD-PeD-Evaluation`; no experiment test cache was opened or deserialized, and the local annotation database pickle was not inspected.
+- Found three local GP6 videos, GP6/GP8 pedestrian and OBD annotations, one GP6 archive, and GP8 annotations without their matching raw videos. The GP6 archive is only a likely duplicate of the extracted videos; byte-for-byte identity remains unverified.
+- Confirmed the historical GP6 split uses video 0003 as its test video, so it cannot be presented as a newly acquired untouched multi-video test.
+- Recorded that prior DNS failures prevented verification of remote archive sizes. Did not download, extract, build a split/cache, compute flow, or train.
+- Created `DATASET_INVENTORY.csv`, `DATASET_AVAILABILITY_REPORT.md`, and the explicitly unfrozen `DATASET_EXPANSION_PLAN.md`. The proposed development split uses GP1/2/4 for training and GP7 for validation while leaving official test sets GP3/5/8/9 untouched.
+- Stopped at the feasibility gate pending user approval for data acquisition and the draft protocol. No files under `paper/` were changed; no commit or push was made.
+
+## 2026-11-26 — Phase 5A selective acquisition feasibility
+
+- Re-inventoried D: storage and existing IDD-PeD files by metadata only. D: had 75,205,443,584 bytes free; the dataset directory had 125 files totalling 8,495,455,289 bytes. The local GP6 archive's three member names/sizes match the extracted videos, but byte identity was not checked. Prior GP8 partial files are absent; the retained log ends at byte 201,326,591.
+- Did not open or deserialize `test.pkl` or `test_full.pkl`. Existing annotation and flow material was inventoried without generating flow or modifying caches.
+- HEAD and one-byte Range probes for GP1/2/4/7 failed DNS resolution at `cvit.iiit.ac.in`; sizes, redirects, range support, resume validators, and remote checksums remain unknown. Repeated the metadata-only probe after implementation; all four hosts remained unresolvable.
+- Streamed only official-train annotations for GP1/2/4/7 at Hugging Face revision `9be5757b550bc2e60581c1af2b6ce4b3a78bfd93`. Annotation estimates show 506 legacy-filtered (520 unfiltered) candidate training windows from local GP6 video 0002 plus GP1 videos 0001/0003, and 228 legacy-filtered (432 unfiltered) GP7 validation windows across two videos. The split remains unfrozen because of annotation-version and outcome-related eligibility concerns.
+- Added `MTN/download_iddped_archives.py`, its focused test file, `REMOTE_ARCHIVE_INVENTORY.csv`, `STORAGE_FEASIBILITY_REPORT.md`, `MINIMUM_DATASET_EXPANSION_PLAN.md`, and this acquisition report. The utility requires explicit `--execute`, destination on D:, and an explicit byte cap; no actual video archive download or extraction was started.
+- Focused downloader tests passed (6/6); `py_compile` passed; Pylance diagnostics for both modified Python files returned no issues. The final metadata-only probes reported DNS resolution errors, with no HTTP negotiation.
+- D: has about 70 GiB free, but required peak storage is unknown because GP1/GP7 archive and extracted-video sizes remain unknown. No informed download approval was requested; stop until fresh metadata and a storage plan are available. No training, flow generation, test-cache access, `paper/` edit, commit, or push occurred.
+
+## 2026-11-27 — Phase 5B annotation-only pilot
+
+- Audited the separate development annotations and froze four training videos (988 windows, 261 tracks) and two GP7 validation videos (432 windows, 120 tracks); excluded historical GP6 test video 0003. Used separate role caches and train-only normalization. No official-test annotations/cache, raw video, or optical flow was accessed or created.
+- Added versioned bbox-only AO-0–AO-3 models, independent loaders, resumable runner, and focused regression tests. AO-4 was skipped because scene labels and prediction-time availability are not verified consistently across GP7-0004/0005. Ego speed and occlusion were also excluded from model inputs for their documented availability/consistency limitations.
+- Completed the sequential one-seed screen (20260928): AO-0 evaluated; AO-1, AO-2, and AO-3 each completed ten epochs. All learned runs selected epoch 4 by validation normalized MSE and remained below the 1,800-second per-run cap.
+- Validation raw-pixel MSE was 3,531.505 (AO-0), 7,822.443 (AO-1), 3,432.318 (AO-2), and 3,454.714 (AO-3). AO-2/AO-3 were worse than CV on one validation video and better on the other; the one-seed evidence is exploratory and does not establish significance or broad generalization.
+- Finalized 4-row model summary, 8-row per-video table, and 480-row per-track table. All 70 repository tests passed; Python compilation checks passed. Pylance reported no diagnostics on the annotation loader, models, and runner tests; it noted that the Windows-excluded branch of the runner's platform guard is not analyzed.
+- Recorded 3,079.067 seconds of training-loop time across learned runs (51.32 minutes), 3,124.806 seconds of process time (52.08 minutes), and maximum sampled RSS 310,083,584 bytes. Updated `AO_COMPUTATIONAL_BUDGET.md`; added `AO_RUNTIME_REPORT.md` and `PHASE_5B_RESEARCH_REPORT.md`.
+- No `paper/` edits, official-test evaluation, multi-seed training, Phase 6 work, commit, or push.
+
+## 2026-11-27 — Phase 6A confirmation preflight
+
+- Reviewed the frozen AO split, protocol, model configurations, continuation checkpoints, and CPU budget. Confirmation output was absent; no multi-seed training had started.
+- Corrected ridge metric bookkeeping discovered during preflight: the closed-form coefficient fit had been recorded as zero training time. Preserved the original preflight freeze and outputs; created immutable `AO_CONFIRMATION_MANIFEST_v2.json` for the corrected source, with unchanged split/cache, model, and training configuration hashes.
+- Reran the ridge preflight into a new output directory. With the predefined validation-selected alpha 100, AO-RIDGE achieved validation raw-pixel MSE 3,129.163, C-MSE 2,767.625, CF-MSE 13,508.873, and improved 55.8% of validation windows relative to CV. The selected fit took 0.481 seconds; selection across the five predefined alphas took 3.489 seconds. The model has 11,700 fitted coefficients/parameters.
+- AO-RIDGE selection uses the fixed validation split and is exploratory, not an independent test; the result does not establish generalization. AO-CP validation MSE was 10,233.668. No official-test data, raw video, or optical-flow data were accessed.
+- Added the validation-only finalizer for paired seed-level t intervals, track-cluster bootstrap intervals, per-video/per-track tables, correction magnitudes, runtime/checkpoint summaries, explicit incomplete-run handling, and final-test readiness. It verifies frozen manifest/cache provenance and reads only the separate train/validation caches.
+- Focused confirmation tests passed (3/3 for ridge; 3/3 for finalization helpers); Python compilation and Pylance syntax/diagnostic checks passed. The five-seed AO confirmation matrix is running sequentially under its frozen wall-clock/reserve gates.
+
+## 2026-11-27 — CRAFT Stage 3 bounded development analysis
+
+- Completed the bounded frozen AO-3 Stage 3 experiment in 105.65s under the 30-minute budget and four-thread limit. Reused saved Stage 1 activations and the canonical Stage 2B rank-4 bank; no training, final-layer activation recapture, or official-test access.
+- Saved protocol, regression results, recursive factors, motion associations, Sobol estimates/convergence, intervention/fidelity tables, figures, report, and hashes in `results_paper/phase_6d_craft_stage3_v1/`.
+- See `CRAFT_FINAL_EXPERIMENT_REPORT.md` for actual findings and limitations. No manuscript edits, commit, or push.
+
+
+## 2026-11-27 -- Phase 7 supervisor manuscript package
+
+- Created the versioned manuscript and delivery package in `results_paper/final_manuscript_v1/`; the legacy `paper/` directory was not modified.
+- Integrated canonical Phase 6B corrected v2/v3 evidence, Phase 6C compatibility guidance, Phase 6D CRAFT Stage 3 results, and source-verified AO architecture.
+- Added a compiled 15-page paper PDF, Overleaf source ZIP, editable architecture diagrams, metrics figures, canonical data copies, provenance documentation, and prospective HIVE protocol templates.
+- Direct pdfLaTeX and BibTeX compilation passed; final logs had no unresolved references/citations or layout overfull warnings. `latexmk` is unavailable because Perl is not installed.
+- Official-test trajectory overlays and blinded AO HIVE stimuli remain blocked because canonical official-test records do not store coordinate predictions. No inference rerun was performed. No participants or responses exist.
+- No training, inference, CRAFT computation, raw-video download, hyperparameter selection, manuscript edit under `paper/`, commit, push, or later research phase.

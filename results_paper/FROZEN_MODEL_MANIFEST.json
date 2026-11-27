@@ -1,0 +1,28 @@
+{
+  "schema": "phase6b_frozen_model_manifest_v1",
+  "official_test_authorized": false,
+  "official_test_accessed": false,
+  "primary_neural_accuracy_candidate": "AO-2",
+  "compact_neural_candidate": "AO-3",
+  "strong_classical_candidate": "AO-RIDGE",
+  "deterministic_cv_reference": "AO-0",
+  "constant_position_residual_ablation": "AO-1",
+  "constant_position_baseline": "AO-CP",
+  "primary_metric": "pooled raw-pixel MSE",
+  "ridge_alpha": 100.0,
+  "ridge_coefficients": "AO_confirmation_v1/classical/AO-RIDGE/seed_20260928/ridge_coefficients.npz",
+  "ridge_coefficient_sha256": "21c23a1fb5e2af5b9a6763b51253d6d55a3b1998740e023a5d74314d03ca1733",
+  "normalization": {
+    "fit_role": "train",
+    "train_samples": 988,
+    "mean": [827.5224609375, 832.866943359375, 890.5432739257812, 994.9057006835938],
+    "std": [355.5122985839844, 68.33911895751953, 361.9615173339844, 85.73724365234375]
+  },
+  "no_ensemble": true,
+  "no_post_test_seed_selection": true,
+  "neural_checkpoints": {
+    "AO-1": {"parameter_count": 76804, "anchor": "constant_position", "seeds": [20260928, 20260929, 20260930, 20260931, 20260932]},
+    "AO-2": {"parameter_count": 76804, "anchor": "constant_velocity", "seeds": [20260928, 20260929, 20260930, 20260931, 20260932]},
+    "AO-3": {"parameter_count": 68356, "anchor": "constant_velocity", "sat_ie_shared": true, "seeds": [20260928, 20260929, 20260930, 20260931, 20260932]}
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "AO-CP": {
+    "cache_sha256": {
+      "split_manifest.json": "e0fdf042eb4f9f30e5ea066a4b23490cb6582d7ad9356df77b8c5bd72b503c01",
+      "train.npz": "f089004844578c98c2b43aabe77e962f02ff94aae9b5ba0ed65514ce5d352df7",
+      "validation.npz": "01141782b19d21bcc14ef77529cb6a856ff919ffefd246c013eca4717e7d5c63"
+    },
+    "cfmse": 35470.74719357073,
+    "cmse": 9638.781695821288,
+    "epochs_completed": 0,
+    "fraction_windows_improved_vs_cv": 0.13657407407407407,
+    "horizon_15_mse": 2416.5893447672242,
+    "horizon_1_mse": 10.896427926425792,
+    "horizon_30_mse": 11567.99667654359,
+    "horizon_45_mse": 37472.10629552896,
+    "input_features": "15 observed xyxy boxes only; normalized with train-only coordinate statistics",
+    "macro_track_cfmse": 55723.83306659248,
+    "macro_track_cmse": 13150.329155506895,
+    "macro_track_mse": 13847.624134463813,
+    "macro_track_normalized_mse": 0.20798810184900643,
+    "macro_video_cfmse": 35973.406202151906,
+    "macro_video_cmse": 9663.327363594493,
+    "macro_video_mse": 10251.269120131015,
+    "macro_video_normalized_mse": 0.16277699865986953,
+    "model_id": "AO-CP",
+    "mse": 10233.667591141226,
+    "normalized_mse": 0.16347768845725544,
+    "parameter_count": 0,
+    "sample_count": 432,
+    "seed": 20260928,
+    "selection_split": "none",
+    "status": "completed",
+    "track_count": 120,
+    "training_seconds": 0.0,
+    "training_time_status": "not_applicable_deterministic_baseline",
+    "video_count": 2
+  },
+  "AO-RIDGE": {
+    "cache_sha256": {
+      "split_manifest.json": "e0fdf042eb4f9f30e5ea066a4b23490cb6582d7ad9356df77b8c5bd72b503c01",
+      "train.npz": "f089004844578c98c2b43aabe77e962f02ff94aae9b5ba0ed65514ce5d352df7",
+      "validation.npz": "01141782b19d21bcc14ef77529cb6a856ff919ffefd246c013eca4717e7d5c63"
+    },
+    "cfmse": 13508.87327587163,
+    "cmse": 2767.625420903718,
+    "epochs_completed": 0,
+    "fraction_windows_improved_vs_cv": 0.5578703703703703,
+    "horizon_15_mse": 276.80490253534583,
+    "horizon_1_mse": 1.4326366562573067,
+    "horizon_30_mse": 2883.7095847858322,
+    "horizon_45_mse": 14790.222642715331,
+    "input_features": "15 observed xyxy boxes only; normalized with train-only coordinate statistics",
+    "macro_track_cfmse": 17343.026429392106,
+    "macro_track_cmse": 3191.026818144754,
+    "macro_track_mse": 3503.8909185619555,
+    "macro_track_normalized_mse": 0.07262883667961094,
+    "macro_video_cfmse": 13474.935307616912,
+    "macro_video_cmse": 2735.868970012148,
+    "macro_video_mse": 3086.8938280352622,
+    "macro_video_normalized_mse": 0.0726616905240974,
+    "model_id": "AO-RIDGE",
+    "mse": 3129.1630756413497,
+    "normalized_mse": 0.07434184713862056,
+    "parameter_count": 11700,
+    "sample_count": 432,
+    "seed": 20260928,
+    "selection_split": "validation",
+    "status": "completed",
+    "track_count": 120,
+    "training_seconds": 0.2381838000146672,
+    "training_time_status": "measured_train_only_closed_form_fit",
+    "video_count": 2
+  },
+  "cache_sha256": {
+    "split_manifest.json": "e0fdf042eb4f9f30e5ea066a4b23490cb6582d7ad9356df77b8c5bd72b503c01",
+    "train.npz": "f089004844578c98c2b43aabe77e962f02ff94aae9b5ba0ed65514ce5d352df7",
+    "validation.npz": "01141782b19d21bcc14ef77529cb6a856ff919ffefd246c013eca4717e7d5c63"
+  },
+  "constant_position": null,
+  "input_features": "15 observed xyxy boxes only; normalized with train-only coordinate statistics",
+  "normalization_fit_role": "train",
+  "official_test_sets_read": [],
+  "ridge_alpha_grid": [
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "ridge_alpha_scores": [
+    {
+      "alpha": 0.01,
+      "coefficient_fit_seconds": 0.5081218000268564,
+      "validation_raw_pixel_mse": 3148.459071671521
+    },
+    {
+      "alpha": 0.1,
+      "coefficient_fit_seconds": 0.21186319994740188,
+      "validation_raw_pixel_mse": 3143.7622907890213
+    },
+    {
+      "alpha": 1.0,
+      "coefficient_fit_seconds": 0.17082499992102385,
+      "validation_raw_pixel_mse": 3148.8837487476844
+    },
+    {
+      "alpha": 10.0,
+      "coefficient_fit_seconds": 0.18867659999523312,
+      "validation_raw_pixel_mse": 3151.0443697152314
+    },
+    {
+      "alpha": 100.0,
+      "coefficient_fit_seconds": 0.2381838000146672,
+      "validation_raw_pixel_mse": 3129.1630756413497
+    }
+  ],
+  "ridge_alpha_selected": 100.0,
+  "ridge_input_feature_count": 64,
+  "ridge_intercept_is_unpenalized_centered_target_mean": true,
+  "ridge_model_selection_seconds": 4.4909511000150815,
+  "ridge_output_count": 180,
+  "ridge_parameter_count": 11700,
+  "ridge_selected_fit_seconds": 0.2381838000146672,
+  "ridge_validation_selection_metric": "pooled raw-pixel MSE",
+  "schema": "ao_classical_baselines_v1"
+}

@@ -1,0 +1,8 @@
+configuration,description,unique_parameters,validation_raw_pixel_mse_mean,validation_raw_pixel_mse_sd,delta_raw_mse_vs_cv,is_pareto_efficient,n_seeds
+p4_a,MTN with constant-velocity residual anchor; no context; no SATIE,133700,4566.178552612778,2300.545759458322,935.8632739163186,False,3
+p4_b,MTN with constant-velocity residual anchor and SATIE; no context,125252,3256.1537536502806,174.5003254854075,-374.16152504617867,True,3
+p4_c,Always-open context with MASC and constant-velocity residual anchor; no SATIE,138516,3552.723863468613,481.13066171604896,-77.59141522784603,False,3
+p4_d,"Always-open context with MASC, SATIE, and constant-velocity residual anchor",130068,3819.907004186349,810.1965713453011,189.59172548988954,False,3
+p4_e,"Original hard SAGE with MASC, SATIE, and constant-velocity residual anchor",130694,5095.549390689347,2936.3977032361063,1465.2341119928878,False,3
+p4_f,"Differentiable context-only SAGE V2 with MASC, SATIE, and constant-velocity residual anchor",130630,5774.419321341108,4301.222378988605,2144.104042644649,False,3
+cv_baseline,Deterministic constant-velocity baseline,0,3630.3152786964592,0.0,0.0,True,0

@@ -1,0 +1,29 @@
+{
+  "runner_version": "P2_screen_v1",
+  "configuration": "p2_d",
+  "seed": 20260928,
+  "max_epochs": 10,
+  "patience": 10,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "optimizer": "Adam",
+  "loss": "MSE",
+  "cpu_threads": 4,
+  "wall_clock_budget_seconds": 3600.0,
+  "checkpoint_every_batches": 5,
+  "max_train_batches": null,
+  "training_scope": "full_train_split",
+  "validation_only": true,
+  "test_split_loaded": false,
+  "train_samples": 212,
+  "validation_samples": 43,
+  "split_cache_sha256": "3c888c7c089de88bffd44349c8336b4ca9b76177402d141e990ea79a1c306001",
+  "torch_version": "2.14.1+cpu",
+  "numpy_version": "2.4.6",
+  "source_sha256": {
+    "run_p2_screen.py": "6fc451dbd7ea4d73ec920db1219eabe72a6bfa62892649ffee13e31adf4f56f3",
+    "sage_v2.py": "b077658b138e37cd7875f9523c1f6d6525a271ed752c07bd54f825dbb75d4656",
+    "context_TF.py": "9a75beef517c3191b7b36aca291971815aec8cb7ab675cb3f7a918acce4a5ff5",
+    "run_from_scratch_e1.py": "2536757b9751e4d36b84fdfc183ad341a9bc665f05aa4a47e2b1c44757bc9021"
+  }
+}

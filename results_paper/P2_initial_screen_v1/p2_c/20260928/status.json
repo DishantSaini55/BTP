@@ -1,0 +1,7 @@
+{
+  "state": "completed",
+  "updated_at": "2026-11-26T06:54:10+00:00",
+  "completed_epochs": 10,
+  "selected_epoch": 5,
+  "validation_only": true
+}

@@ -1,0 +1,957 @@
+{
+  "phase": "PACE-Net Phase 1",
+  "generated_at": "2026-11-25T19:41:43+00:00",
+  "hardware": {
+    "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+    "physical_cores": 4,
+    "logical_processors": 8,
+    "ram_bytes": 16985051136,
+    "gpu": "Intel(R) UHD Graphics 620 integrated graphics; no dedicated GPU",
+    "pytorch_cuda_available": false,
+    "os": "Windows 11 Pro 10.0.26200",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch": "2.14.1+cpu",
+    "thread_count_for_smoke": 4
+  },
+  "scope": {
+    "training_runs": 4,
+    "seed": [
+      20260928
+    ],
+    "variants": [
+      "clipped_normalized_x_t",
+      "context_only"
+    ],
+    "models": [
+      "without_satie",
+      "with_satie"
+    ],
+    "max_epochs": 2,
+    "training_batches_per_epoch": 2,
+    "validation_batches_per_epoch": 2,
+    "validation_only": true,
+    "test_metrics_collected": false,
+    "training_epochs_total": 8,
+    "completed_states": 4,
+    "smoke_command_wall_clock_seconds": 457,
+    "wall_clock_note": "Observed shell session elapsed time; includes Python/model initialization and sequential execution."
+  },
+  "smoke_runs": [
+    {
+      "run": "results_paper\\runs\\E8_v2_phase1_smoke\\pace_net_without_satie_sage_plus_masc_clipped_normalized_x_t\\20260928",
+      "model_key": "without_satie",
+      "variant": "clipped_normalized_x_t",
+      "seed": 20260928,
+      "status": {
+        "state": "completed",
+        "updated_at": "2026-11-25T19:35:59+00:00",
+        "epoch": 2,
+        "best_epoch": 2,
+        "validation_only": true,
+        "test_evaluated": false
+      },
+      "metrics": {
+        "status": "completed",
+        "model": "PACE-Net without SATIE (SAGE + MASC)",
+        "model_key": "without_satie",
+        "variant": "clipped_normalized_x_t",
+        "seed": 20260928,
+        "epochs_completed": 2,
+        "best_epoch": 2,
+        "best_validation_mse": 2.0613013207912445,
+        "stopping_reason": "max_epochs",
+        "training_seconds": 65.07422920002136,
+        "parameters": 139142,
+        "validation_only": true,
+        "test_evaluated": false,
+        "history_rows": 2,
+        "max_train_batches": 2,
+        "max_validation_batches": 2
+      },
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 2.1557679176330566,
+          "validation_loss": 3.410110831260681,
+          "epoch_seconds": 3.293951100029517,
+          "train_batches": 2,
+          "validation_batches": 2,
+          "validation_gate_mean": 1.0,
+          "process_rss_bytes": null,
+          "train_admission_rate": 0.4375,
+          "train_gate_mean": 0.4375,
+          "gate_grad_l2_mean": 0.0013734783355735425,
+          "gate_grad_l2_max": 0.002398321577564103,
+          "gate_grad_missing_parameters": 0,
+          "gate_grad_zero_parameters": 0,
+          "context_grad_l2_mean": 0.08103619588651576,
+          "context_grad_l2_max": 0.1345789445296286,
+          "context_grad_missing_parameters": 0,
+          "context_grad_zero_parameters": 0,
+          "process_cpu_seconds": 5.046875
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.9539740979671478,
+          "validation_loss": 2.0613013207912445,
+          "epoch_seconds": 61.78027809999185,
+          "train_batches": 2,
+          "validation_batches": 2,
+          "validation_gate_mean": 1.0,
+          "process_rss_bytes": 331931648,
+          "train_admission_rate": 0.5625,
+          "train_gate_mean": 0.5625,
+          "gate_grad_l2_mean": 0.00038797115574842634,
+          "gate_grad_l2_max": 0.0005377732334115076,
+          "gate_grad_missing_parameters": 0,
+          "gate_grad_zero_parameters": 0,
+          "context_grad_l2_mean": 0.055121449262338265,
+          "context_grad_l2_max": 0.07119423134206845,
+          "context_grad_missing_parameters": 0,
+          "context_grad_zero_parameters": 0,
+          "process_cpu_seconds": 43.515625
+        }
+      ],
+      "progress_heartbeat_count": 62,
+      "peak_sampled_rss_bytes": 331931648,
+      "all_epochs_validation_only": true
+    },
+    {
+      "run": "results_paper\\runs\\E8_v2_phase1_smoke\\pace_net_without_satie_sage_plus_masc_context_only\\20260928",
+      "model_key": "without_satie",
+      "variant": "context_only",
+      "seed": 20260928,
+      "status": {
+        "state": "completed",
+        "updated_at": "2026-11-25T19:36:45+00:00",
+        "epoch": 2,
+        "best_epoch": 2,
+        "validation_only": true,
+        "test_evaluated": false
+      },
+      "metrics": {
+        "status": "completed",
+        "model": "PACE-Net without SATIE (SAGE + MASC)",
+        "model_key": "without_satie",
+        "variant": "context_only",
+        "seed": 20260928,
+        "epochs_completed": 2,
+        "best_epoch": 2,
+        "best_validation_mse": 2.0194585025310516,
+        "stopping_reason": "max_epochs",
+        "training_seconds": 41.39567040000111,
+        "parameters": 139078,
+        "validation_only": true,
+        "test_evaluated": false,
+        "history_rows": 2,
+        "max_train_batches": 2,
+        "max_validation_batches": 2
+      },
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 2.192303717136383,
+          "validation_loss": 3.451703190803528,
+          "epoch_seconds": 1.6969230999820866,
+          "train_batches": 2,
+          "validation_batches": 2,
+          "validation_gate_mean": 0.0,
+          "process_rss_bytes": null,
+          "train_admission_rate": 0.5,
+          "train_gate_mean": 0.5,
+          "gate_grad_l2_mean": 0.0017181501765141335,
+          "gate_grad_l2_max": 0.0017541747412100682,
+          "gate_grad_missing_parameters": 0,
+          "gate_grad_zero_parameters": 0,
+          "context_grad_l2_mean": 0.10651800709784683,
+          "context_grad_l2_max": 0.14308678912563103,
+          "context_grad_missing_parameters": 0,
+          "context_grad_zero_parameters": 0,
+          "process_cpu_seconds": 3.703125
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.8110013902187347,
+          "validation_loss": 2.0194585025310516,
+          "epoch_seconds": 39.69874730001902,
+          "train_batches": 2,
+          "validation_batches": 2,
+          "validation_gate_mean": 0.0,
+          "process_rss_bytes": 341241856,
+          "train_admission_rate": 0.375,
+          "train_gate_mean": 0.375,
+          "gate_grad_l2_mean": 8.953093254321284e-05,
+          "gate_grad_l2_max": 9.293696222505223e-05,
+          "gate_grad_missing_parameters": 0,
+          "gate_grad_zero_parameters": 0,
+          "context_grad_l2_mean": 0.030707763077920704,
+          "context_grad_l2_max": 0.03781385081656168,
+          "context_grad_missing_parameters": 0,
+          "context_grad_zero_parameters": 0,
+          "process_cpu_seconds": 26.0
+        }
+      ],
+      "progress_heartbeat_count": 38,
+      "peak_sampled_rss_bytes": 341241856,
+      "all_epochs_validation_only": true
+    },
+    {
+      "run": "results_paper\\runs\\E8_v2_phase1_smoke\\pace_net_sage_plus_masc_plus_satie_clipped_normalized_x_t\\20260928",
+      "model_key": "with_satie",
+      "variant": "clipped_normalized_x_t",
+      "seed": 20260928,
+      "status": {
+        "state": "completed",
+        "updated_at": "2026-11-25T19:37:46+00:00",
+        "epoch": 2,
+        "best_epoch": 2,
+        "validation_only": true,
+        "test_evaluated": false
+      },
+      "metrics": {
+        "status": "completed",
+        "model": "PACE-Net (SAGE + MASC + SATIE)",
+        "model_key": "with_satie",
+        "variant": "clipped_normalized_x_t",
+        "seed": 20260928,
+        "epochs_completed": 2,
+        "best_epoch": 2,
+        "best_validation_mse": 2.1164283752441406,
+        "stopping_reason": "max_epochs",
+        "training_seconds": 60.62655959994299,
+        "parameters": 130694,
+        "validation_only": true,
+        "test_evaluated": false,
+        "history_rows": 2,
+        "max_train_batches": 2,
+        "max_validation_batches": 2
+      },
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 2.1323447823524475,
+          "validation_loss": 3.4601425528526306,
+          "epoch_seconds": 3.5313352999510244,
+          "train_batches": 2,
+          "validation_batches": 2,
+          "validation_gate_mean": 1.0,
+          "process_rss_bytes": null,
+          "train_admission_rate": 0.4375,
+          "train_gate_mean": 0.4375,
+          "gate_grad_l2_mean": 0.001487459459481224,
+          "gate_grad_l2_max": 0.0027242746388402134,
+          "gate_grad_missing_parameters": 0,
+          "gate_grad_zero_parameters": 0,
+          "context_grad_l2_mean": 0.08589352823791686,
+          "context_grad_l2_max": 0.1367515202935755,
+          "context_grad_missing_parameters": 0,
+          "context_grad_zero_parameters": 0,
+          "process_cpu_seconds": 4.59375
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.8709558546543121,
+          "validation_loss": 2.1164283752441406,
+          "epoch_seconds": 57.09522429999197,
+          "train_batches": 2,
+          "validation_batches": 2,
+          "validation_gate_mean": 1.0,
+          "process_rss_bytes": 346783744,
+          "train_admission_rate": 0.5625,
+          "train_gate_mean": 0.5625,
+          "gate_grad_l2_mean": 0.00030905649322257275,
+          "gate_grad_l2_max": 0.0005401075482434214,
+          "gate_grad_missing_parameters": 0,
+          "gate_grad_zero_parameters": 0,
+          "context_grad_l2_mean": 0.04901381182107974,
+          "context_grad_l2_max": 0.06507684058281203,
+          "context_grad_missing_parameters": 0,
+          "context_grad_zero_parameters": 0,
+          "process_cpu_seconds": 39.5
+        }
+      ],
+      "progress_heartbeat_count": 51,
+      "peak_sampled_rss_bytes": 346783744,
+      "all_epochs_validation_only": true
+    },
+    {
+      "run": "results_paper\\runs\\E8_v2_phase1_smoke\\pace_net_sage_plus_masc_plus_satie_context_only\\20260928",
+      "model_key": "with_satie",
+      "variant": "context_only",
+      "seed": 20260928,
+      "status": {
+        "state": "completed",
+        "updated_at": "2026-11-25T19:40:01+00:00",
+        "epoch": 2,
+        "best_epoch": 2,
+        "validation_only": true,
+        "test_evaluated": false
+      },
+      "metrics": {
+        "status": "completed",
+        "model": "PACE-Net (SAGE + MASC + SATIE)",
+        "model_key": "with_satie",
+        "variant": "context_only",
+        "seed": 20260928,
+        "epochs_completed": 2,
+        "best_epoch": 2,
+        "best_validation_mse": 2.048962652683258,
+        "stopping_reason": "max_epochs",
+        "training_seconds": 129.21206779993372,
+        "parameters": 130630,
+        "validation_only": true,
+        "test_evaluated": false,
+        "history_rows": 2,
+        "max_train_batches": 2,
+        "max_validation_batches": 2
+      },
+      "epochs": [
+        {
+          "epoch": 1,
+          "train_loss": 2.1747140288352966,
+          "validation_loss": 3.5012266635894775,
+          "epoch_seconds": 1.7099720999831334,
+          "train_batches": 2,
+          "validation_batches": 2,
+          "validation_gate_mean": 0.0,
+          "process_rss_bytes": null,
+          "train_admission_rate": 0.5,
+          "train_gate_mean": 0.5,
+          "gate_grad_l2_mean": 0.0019107614528042257,
+          "gate_grad_l2_max": 0.001974329296539556,
+          "gate_grad_missing_parameters": 0,
+          "gate_grad_zero_parameters": 0,
+          "context_grad_l2_mean": 0.11259567436070907,
+          "context_grad_l2_max": 0.1443946187365694,
+          "context_grad_missing_parameters": 0,
+          "context_grad_zero_parameters": 0,
+          "process_cpu_seconds": 3.53125
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.7917020320892334,
+          "validation_loss": 2.048962652683258,
+          "epoch_seconds": 127.50209569995059,
+          "train_batches": 2,
+          "validation_batches": 2,
+          "validation_gate_mean": 0.0,
+          "process_rss_bytes": 353394688,
+          "train_admission_rate": 0.375,
+          "train_gate_mean": 0.375,
+          "gate_grad_l2_mean": 0.0001471022758231548,
+          "gate_grad_l2_max": 0.0002077412059965973,
+          "gate_grad_missing_parameters": 0,
+          "gate_grad_zero_parameters": 0,
+          "context_grad_l2_mean": 0.025570412423450692,
+          "context_grad_l2_max": 0.035068578974287,
+          "context_grad_missing_parameters": 0,
+          "context_grad_zero_parameters": 0,
+          "process_cpu_seconds": 54.328125
+        }
+      ],
+      "progress_heartbeat_count": 120,
+      "peak_sampled_rss_bytes": 353394688,
+      "all_epochs_validation_only": true
+    }
+  ],
+  "historical_e7_inference": [
+    {
+      "model": "MTN (baseline)",
+      "batch_size": "1",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "50.6850499950815",
+      "iqr_ms": "5.720850007492118",
+      "encoder_self_attention_macs": "227520",
+      "parameter_count": "133700",
+      "checkpoint_seed_20260928_bytes": "1909507"
+    },
+    {
+      "model": "MTN (baseline)",
+      "batch_size": "8",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "83.90950001194142",
+      "iqr_ms": "6.048600029316731",
+      "encoder_self_attention_macs": "1820160",
+      "parameter_count": "133700",
+      "checkpoint_seed_20260928_bytes": "1909507"
+    },
+    {
+      "model": "PACE-Net without SATIE (SAGE + MASC)",
+      "batch_size": "1",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "53.84910001885146",
+      "iqr_ms": "6.4816250232979655",
+      "encoder_self_attention_macs": "227520",
+      "parameter_count": "139142",
+      "checkpoint_seed_20260928_bytes": "1939667"
+    },
+    {
+      "model": "PACE-Net without SATIE (SAGE + MASC)",
+      "batch_size": "8",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "88.00514996983111",
+      "iqr_ms": "7.241475002956577",
+      "encoder_self_attention_macs": "1820160",
+      "parameter_count": "139142",
+      "checkpoint_seed_20260928_bytes": "1939667"
+    },
+    {
+      "model": "PACE-Net (SAGE + MASC + SATIE)",
+      "batch_size": "1",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "57.561549969250336",
+      "iqr_ms": "5.432150006527081",
+      "encoder_self_attention_macs": "227520",
+      "parameter_count": "130694",
+      "checkpoint_seed_20260928_bytes": "1902595"
+    },
+    {
+      "model": "PACE-Net (SAGE + MASC + SATIE)",
+      "batch_size": "8",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "95.03895000671037",
+      "iqr_ms": "12.71987501240801",
+      "encoder_self_attention_macs": "1820160",
+      "parameter_count": "130694",
+      "checkpoint_seed_20260928_bytes": "1902595"
+    },
+    {
+      "model": "PACE-Net with ROUTE",
+      "batch_size": "1",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "56.743999972241",
+      "iqr_ms": "5.748075011069886",
+      "encoder_self_attention_macs": "227520",
+      "parameter_count": "154007",
+      "checkpoint_seed_20260928_bytes": "2006119"
+    },
+    {
+      "model": "PACE-Net with ROUTE",
+      "batch_size": "8",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "88.49899997585453",
+      "iqr_ms": "7.76590000896249",
+      "encoder_self_attention_macs": "1820160",
+      "parameter_count": "154007",
+      "checkpoint_seed_20260928_bytes": "2006119"
+    },
+    {
+      "model": "PACE-Net with ROUTE and SATIE",
+      "batch_size": "1",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "53.15349999000318",
+      "iqr_ms": "5.586749990470707",
+      "encoder_self_attention_macs": "227520",
+      "parameter_count": "145559",
+      "checkpoint_seed_20260928_bytes": "1969111"
+    },
+    {
+      "model": "PACE-Net with ROUTE and SATIE",
+      "batch_size": "8",
+      "cpu": "Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz",
+      "thread_count": "4",
+      "warmups": "50",
+      "timed_iterations": "500",
+      "median_ms": "88.12874997965991",
+      "iqr_ms": "6.396700016921386",
+      "encoder_self_attention_macs": "1820160",
+      "parameter_count": "145559",
+      "checkpoint_seed_20260928_bytes": "1969111"
+    }
+  ],
+  "gradient_measurements": {
+    "seed": 20260928,
+    "torch_version": "2.14.1+cpu",
+    "cpu_threads": 1,
+    "cases": {
+      "all_open": {
+        "mode": "all_open",
+        "seed": 20260928,
+        "loss": 0.3470497131347656,
+        "prediction_shape": [
+          3,
+          2,
+          4
+        ],
+        "predictions_finite": true,
+        "gradients_finite": true,
+        "gate_values": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "gate_mean": 1.0,
+        "gate_gradient": {
+          "l2_norm": 0.009474114463377205,
+          "parameter_count": 4,
+          "grad_present_count": 4,
+          "grad_absent_count": 0,
+          "grad_zero_count": 0,
+          "grad_nonzero_count": 4,
+          "all_finite": true
+        },
+        "context_encoder_gradient": {
+          "l2_norm": 0.8636352629777417,
+          "parameter_count": 12,
+          "grad_present_count": 12,
+          "grad_absent_count": 0,
+          "grad_zero_count": 0,
+          "grad_nonzero_count": 12,
+          "all_finite": true
+        },
+        "closed_sample_gradient": null
+      },
+      "all_closed": {
+        "mode": "all_closed",
+        "seed": 20260928,
+        "loss": 0.32780835032463074,
+        "prediction_shape": [
+          3,
+          2,
+          4
+        ],
+        "predictions_finite": true,
+        "gradients_finite": true,
+        "gate_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "gate_mean": 0.0,
+        "gate_gradient": {
+          "l2_norm": null,
+          "parameter_count": 4,
+          "grad_present_count": 0,
+          "grad_absent_count": 4,
+          "grad_zero_count": 0,
+          "grad_nonzero_count": 0,
+          "all_finite": true
+        },
+        "context_encoder_gradient": {
+          "l2_norm": null,
+          "parameter_count": 12,
+          "grad_present_count": 0,
+          "grad_absent_count": 12,
+          "grad_zero_count": 0,
+          "grad_nonzero_count": 0,
+          "all_finite": true
+        },
+        "closed_sample_gradient": null
+      },
+      "mixed": {
+        "mode": "mixed",
+        "seed": 20260928,
+        "loss": 0.3203379809856415,
+        "prediction_shape": [
+          3,
+          2,
+          4
+        ],
+        "predictions_finite": true,
+        "gradients_finite": true,
+        "gate_values": [
+          1.0,
+          0.0,
+          1.0
+        ],
+        "gate_mean": 0.6666666865348816,
+        "gate_gradient": {
+          "l2_norm": 0.0060631964566217784,
+          "parameter_count": 4,
+          "grad_present_count": 4,
+          "grad_absent_count": 0,
+          "grad_zero_count": 0,
+          "grad_nonzero_count": 4,
+          "all_finite": true
+        },
+        "context_encoder_gradient": {
+          "l2_norm": 0.6736701989313404,
+          "parameter_count": 12,
+          "grad_present_count": 12,
+          "grad_absent_count": 0,
+          "grad_zero_count": 0,
+          "grad_nonzero_count": 12,
+          "all_finite": true
+        },
+        "closed_sample_gradient": {
+          "parameter_count": 16,
+          "grad_absent_count": 0,
+          "grad_zero_count": 16,
+          "grad_nonzero_count": 0
+        }
+      },
+      "soft": {
+        "mode": "soft",
+        "seed": 20260928,
+        "loss": 0.3388412892818451,
+        "prediction_shape": [
+          3,
+          2,
+          4
+        ],
+        "predictions_finite": true,
+        "gradients_finite": true,
+        "gate_values": [
+          0.4689914584159851,
+          0.4281606674194336,
+          0.4573765695095062
+        ],
+        "gate_mean": 0.451509565114975,
+        "gate_gradient": {
+          "l2_norm": 0.002151225565077293,
+          "parameter_count": 4,
+          "grad_present_count": 4,
+          "grad_absent_count": 0,
+          "grad_zero_count": 0,
+          "grad_nonzero_count": 4,
+          "all_finite": true
+        },
+        "context_encoder_gradient": {
+          "l2_norm": 0.35313481709736766,
+          "parameter_count": 12,
+          "grad_present_count": 12,
+          "grad_absent_count": 0,
+          "grad_zero_count": 0,
+          "grad_nonzero_count": 12,
+          "all_finite": true
+        },
+        "closed_sample_gradient": null
+      }
+    },
+    "all_closed_fallback_bitwise_equal": true,
+    "all_closed_expected_grad_absent": true,
+    "satie_sharing": {
+      "max_abs_prediction_difference": 0.0,
+      "bitwise_equal": true,
+      "sharing_evidence": {
+        "encoder_layers": 3,
+        "projections": {
+          "Q": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "K": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "V": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          },
+          "O": {
+            "same_module_object": true,
+            "same_weight_parameter_object": true,
+            "same_weight_data_ptr": true,
+            "same_bias_parameter_object": true,
+            "same_bias_data_ptr": true
+          }
+        },
+        "optimizer_registration": {
+          "named_parameter_entries": 240,
+          "unique_parameter_objects": 240,
+          "has_duplicate_parameter_objects": false
+        },
+        "verified": true
+      }
+    }
+  },
+  "input_range_audit": {
+    "split_version": "gp6_from_scratch_v1",
+    "normalization_fit_role": "train",
+    "normalization_box_mean": [
+      883.1700439453125,
+      921.3536987304688,
+      904.1236572265625,
+      977.4361572265625
+    ],
+    "normalization_box_std": [
+      213.529541015625,
+      20.202640533447266,
+      205.5812225341797,
+      28.961599349975586
+    ],
+    "sample_counts": {
+      "train": 212,
+      "validation": 43,
+      "test": 217
+    },
+    "gate_observed_frame_index_zero_based": 14,
+    "gate_observed_frame_number_within_window_one_based": 15,
+    "observed_gate_input_normalized_ranges": {
+      "train": {
+        "coordinate_min": [
+          -2.077979803085327,
+          -2.4068000316619873,
+          -1.968096375465393,
+          -1.8019087314605713
+        ],
+        "coordinate_max": [
+          2.5612845420837402,
+          1.6723712682724,
+          2.7233827114105225,
+          3.370805025100708
+        ],
+        "global_min": -2.4068000316619873,
+        "global_max": 3.370805025100708,
+        "abs_max": 3.370805025100708,
+        "components_outside_abs_5_fraction": 0.0
+      },
+      "validation": {
+        "coordinate_min": [
+          -3.666706085205078,
+          -8.360971450805664,
+          -3.5623080730438232,
+          -3.095000743865967
+        ],
+        "coordinate_max": [
+          2.858292818069458,
+          -3.567044734954834,
+          3.1456005573272705,
+          2.526581048965454
+        ],
+        "global_min": -8.360971450805664,
+        "global_max": 3.1456005573272705,
+        "abs_max": 8.360971450805664,
+        "components_outside_abs_5_fraction": 0.18604651162790697
+      },
+      "test": {
+        "coordinate_min": [
+          -2.7214035987854004,
+          -30.811996459960938,
+          -2.0543882846832275,
+          -13.526399612426758
+        ],
+        "coordinate_max": [
+          4.592526435852051,
+          -18.844253540039062,
+          4.941483974456787,
+          -4.456112861633301
+        ],
+        "global_min": -30.811996459960938,
+        "global_max": 4.941483974456787,
+        "abs_max": 30.811996459960938,
+        "components_outside_abs_5_fraction": 0.4976958525345622
+      }
+    },
+    "observed_gate_input_clip_fractions_at_abs_5": {
+      "train": {
+        "components_below_minus_5": 0.0,
+        "components_above_plus_5": 0.0,
+        "components_clipped_total": 0.0
+      },
+      "validation": {
+        "components_below_minus_5": 0.18604651162790697,
+        "components_above_plus_5": 0.0,
+        "components_clipped_total": 0.18604651162790697
+      },
+      "test": {
+        "components_below_minus_5": 0.4976958525345622,
+        "components_above_plus_5": 0.0,
+        "components_clipped_total": 0.4976958525345622
+      }
+    },
+    "historical_e3_endpoint_ranges_diagnostic_only": {
+      "train": {
+        "coordinate_min": [
+          -4.1360554695129395,
+          -8.497092247009277,
+          -4.351290702819824,
+          -1.71662437915802
+        ],
+        "coordinate_max": [
+          4.642354965209961,
+          1.3140027523040771,
+          4.941483974456787,
+          8.950606346130371
+        ],
+        "global_min": -8.497092247009277,
+        "global_max": 8.950606346130371,
+        "abs_max": 8.950606346130371,
+        "components_outside_abs_5_fraction": 0.01650943396226415
+      },
+      "validation": {
+        "coordinate_min": [
+          -4.1360554695129395,
+          -23.226850509643555,
+          -4.242331504821777,
+          -2.970353364944458
+        ],
+        "coordinate_max": [
+          4.4828925132751465,
+          -3.7798874378204346,
+          4.941483974456787,
+          12.111340522766113
+        ],
+        "global_min": -23.226850509643555,
+        "global_max": 12.111340522766113,
+        "abs_max": 23.226850509643555,
+        "components_outside_abs_5_fraction": 0.2558139534883721
+      },
+      "test": {
+        "coordinate_min": [
+          -4.1360554695129395,
+          -38.396156311035156,
+          -4.082200050354004,
+          -13.483238220214844
+        ],
+        "coordinate_max": [
+          4.459242343902588,
+          -18.74129867553711,
+          4.739763259887695,
+          -2.0001018047332764
+        ],
+        "global_min": -38.396156311035156,
+        "global_max": 4.739763259887695,
+        "abs_max": 38.396156311035156,
+        "components_outside_abs_5_fraction": 0.48963133640552997
+      }
+    },
+    "historical_e3_expression": "sample['bbox'][-1] (frame 60), not sample['bbox'][14] (last observed frame)",
+    "historical_endpoint_is_future_target": true,
+    "relative_observed_box_delta_ranges_normalized_by_train_box_std": {
+      "train": {
+        "coordinate_min": [
+          -0.34632188081741333,
+          -0.6548639535903931,
+          -0.37503471970558167,
+          -0.8514735102653503
+        ],
+        "coordinate_max": [
+          0.4292144477367401,
+          0.7187188863754272,
+          0.41239190101623535,
+          0.5766239166259766
+        ],
+        "global_min": -0.8514735102653503,
+        "global_max": 0.7187188863754272,
+        "abs_max": 0.8514735102653503,
+        "components_outside_abs_5_fraction": 0.0
+      },
+      "validation": {
+        "coordinate_min": [
+          -0.2997243404388428,
+          -1.1948940753936768,
+          -0.37493735551834106,
+          -1.591764211654663
+        ],
+        "coordinate_max": [
+          0.6569115519523621,
+          1.0424379110336304,
+          0.6526373624801636,
+          0.3221513032913208
+        ],
+        "global_min": -1.591764211654663,
+        "global_max": 1.0424379110336304,
+        "abs_max": 1.591764211654663,
+        "components_outside_abs_5_fraction": 0.0
+      },
+      "test": {
+        "coordinate_min": [
+          -0.2662859857082367,
+          -0.890477180480957,
+          -0.2799869477748871,
+          -0.7810340523719788
+        ],
+        "coordinate_max": [
+          0.7180740237236023,
+          2.7828047275543213,
+          0.6316723823547363,
+          1.904935598373413
+        ],
+        "global_min": -0.890477180480957,
+        "global_max": 2.7828047275543213,
+        "abs_max": 2.7828047275543213,
+        "components_outside_abs_5_fraction": 0.0
+      }
+    },
+    "relative_motion_tanh_scale_train_abs_q99": [
+      0.2962929308414459,
+      0.5041016340255737,
+      0.28556013107299805,
+      0.49491679668426514
+    ],
+    "bounded_relative_motion_ranges": {
+      "train": {
+        "coordinate_min": [
+          -0.8239030241966248,
+          -0.8614839315414429,
+          -0.8651156425476074,
+          -0.9379156827926636
+        ],
+        "coordinate_max": [
+          0.8954187631607056,
+          0.8907907009124756,
+          0.8945302367210388,
+          0.8226926326751709
+        ],
+        "global_min": -0.9379156827926636,
+        "global_max": 0.8954187631607056,
+        "abs_max": 0.9379156827926636,
+        "components_outside_abs_5_fraction": 0.0
+      },
+      "validation": {
+        "coordinate_min": [
+          -0.7664152383804321,
+          -0.9826858639717102,
+          -0.8650298118591309,
+          -0.9967882037162781
+        ],
+        "coordinate_max": [
+          0.9765491485595703,
+          0.9685242772102356,
+          0.9795152544975281,
+          0.5722891092300415
+        ],
+        "global_min": -0.9967882037162781,
+        "global_max": 0.9795152544975281,
+        "abs_max": 0.9967882037162781,
+        "components_outside_abs_5_fraction": 0.0
+      },
+      "test_not_used_for_scale_selection": true
+    },
+    "note": "The clip fractions describe the fixed \u00b15 E8 transform; they do not select a threshold. The test split is inspected only to verify the historical gate-input range, not to choose a representation, scale, or training hyperparameter."
+  },
+  "source_sha256": {
+    "MTN\\run_e8_v2.py": "9ff1969a69d894e6b872dc5064d3ba9534ebfb51a7e15ea29851f9f7a11fcb05",
+    "MTN\\sage_gradient_diagnostics.py": "f19f06a8717380a93224e641f15dffd7b4badb637afd7eb11a289208d4ecc496",
+    "MTN\\audit_e8_input_ranges.py": "d3d7e3ae36a5b9f8a202d7ad0d25050c9e09f5d76107db43f908802231700016",
+    "tests\\test_sage_gradients.py": "3c9170793808fdd52122c31da9699cc6e5f08921d18843745f48c584ea4a660e",
+    "tests\\test_e8_runner_v2.py": "6617c0dc1a41d6be013ce859c8b9ebe0e27c2832fd4d41441598b3ea17ffa647"
+  }
+}

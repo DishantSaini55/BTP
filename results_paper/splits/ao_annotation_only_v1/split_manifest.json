@@ -1,0 +1,127 @@
+{
+  "coordinate_convention": "absolute pixel xyxy (xtl,ytl,xbr,ybr)",
+  "ego_speed_used": false,
+  "eligibility": "60 consecutive annotated frames; outside boxes, malformed boxes, non-positive boxes, and out-of-frame boxes break a track segment; stride 30 within each contiguous valid segment.",
+  "flow_used": false,
+  "fps_basis": "IDD-PeD paper reports GoPro Hero 8 at 30 FPS; all selected sets are GoPro annotations.",
+  "frames_per_second": 30,
+  "future_fields_are_supervision_only": [
+    "future_boxes[15:60]"
+  ],
+  "historical_gp6_test_video_used": false,
+  "model_input_fields": [
+    "observed_boxes[0:15]"
+  ],
+  "normalization_fit_role": "train only, unique training observations/targets",
+  "observation_frames": 15,
+  "official_test_sets_read": [],
+  "prediction_frames": 45,
+  "roles": {
+    "train": {
+      "distinct_track_count": 261,
+      "sample_count": 988,
+      "sample_ids_sha256": "9b3c69920c67f33836fd4811da045b8905fbcdb793950ffb69aea1a877fc82cf",
+      "video_count": 4
+    },
+    "validation": {
+      "distinct_track_count": 120,
+      "sample_count": 432,
+      "sample_ids_sha256": "eb78190af81de2588ae222bd81472bcf36fd25979f19dae0eb105e56d4d783ee",
+      "video_count": 2
+    }
+  },
+  "scene_context_used": false,
+  "schema": "ao_annotation_only_v1",
+  "sources": {
+    "gp_set_0001_vid_0001": {
+      "eligible_tracks": 25,
+      "eligible_windows": 68,
+      "frame_height": 1440,
+      "frame_width": 1920,
+      "obd_xml_sha256": "be4c2dbb8bc873639ac2d73999581fac164526a28641de66c6ae784e91b975fa",
+      "pedestrian_xml_sha256": "c721cf3ded623a2c0291dd7a66489a5efa75ca11167a5727fba21c4a136fe16f",
+      "set_id": "gp_set_0001",
+      "task_frame_count": 15930
+    },
+    "gp_set_0002_vid_0001": {
+      "eligible_tracks": 157,
+      "eligible_windows": 555,
+      "frame_height": 1440,
+      "frame_width": 1920,
+      "obd_xml_sha256": "d23f5412105ca3d393d13d53722cbd7c32ab80548d4c7b25ed446c3c964597aa",
+      "pedestrian_xml_sha256": "5023b0f84e5497a9d01596bf099abcec295613eea536dc5351464ad4c5c01099",
+      "set_id": "gp_set_0002",
+      "task_frame_count": 21210
+    },
+    "gp_set_0004_vid_0001": {
+      "eligible_tracks": 34,
+      "eligible_windows": 149,
+      "frame_height": 1440,
+      "frame_width": 1920,
+      "obd_xml_sha256": "df937774de342065e59c711a1c88910679c9f72c0aaf073bf397935d382e2a6c",
+      "pedestrian_xml_sha256": "7abf15508337298c787d6ee46e7dc4e3d359018fd5ad058d1ba217cf81b0027a",
+      "set_id": "gp_set_0004",
+      "task_frame_count": 13592
+    },
+    "gp_set_0006_vid_0002": {
+      "eligible_tracks": 45,
+      "eligible_windows": 216,
+      "frame_height": 1440,
+      "frame_width": 1920,
+      "obd_xml_sha256": "a22f191faeb5af55dad06003b69ba3400622c9ed28171800050342340589a024",
+      "pedestrian_xml_sha256": "d97f291d79eee5eba00815f36290453265569f4db853bdcba93cd8a05e3934eb",
+      "set_id": "gp_set_0006",
+      "task_frame_count": 21210
+    },
+    "gp_set_0007_vid_0004": {
+      "eligible_tracks": 31,
+      "eligible_windows": 228,
+      "frame_height": 1440,
+      "frame_width": 1920,
+      "obd_xml_sha256": "02fdeb80e4ae329579b64f7f8fa9943f3a5fdc7ddfe50f4442c0802071414731",
+      "pedestrian_xml_sha256": "bf0e674cfec6b23fa967f5f467a46f9e96cf694149c1e8c29d01568b3dac4e8a",
+      "set_id": "gp_set_0007",
+      "task_frame_count": 15930
+    },
+    "gp_set_0007_vid_0005": {
+      "eligible_tracks": 89,
+      "eligible_windows": 204,
+      "frame_height": 1440,
+      "frame_width": 1920,
+      "obd_xml_sha256": "7405f1d557d70f6fbaaec1787c97973e3bb0adc68832d5ff6c908e2e53bb25ab",
+      "pedestrian_xml_sha256": "e2c75b3f0f168c0cf22759f22056a1bedba7bf9f682c1460d85f9203bdee3bf7",
+      "set_id": "gp_set_0007",
+      "task_frame_count": 11904
+    }
+  },
+  "stride_frames": 30,
+  "training_videos": [
+    [
+      "gp_set_0001",
+      "gp_set_0001_vid_0001"
+    ],
+    [
+      "gp_set_0002",
+      "gp_set_0002_vid_0001"
+    ],
+    [
+      "gp_set_0004",
+      "gp_set_0004_vid_0001"
+    ],
+    [
+      "gp_set_0006",
+      "gp_set_0006_vid_0002"
+    ]
+  ],
+  "validation_videos": [
+    [
+      "gp_set_0007",
+      "gp_set_0007_vid_0004"
+    ],
+    [
+      "gp_set_0007",
+      "gp_set_0007_vid_0005"
+    ]
+  ],
+  "window_frames": 60
+}

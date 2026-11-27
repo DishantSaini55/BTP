@@ -1,0 +1,60 @@
+{
+  "runner_version": "P4_screen_v1",
+  "status_counts": {
+    "completed": 6,
+    "incomplete": 0,
+    "interrupted": 0,
+    "failed": 0,
+    "not_started": 0
+  },
+  "runs": [
+    {
+      "configuration": "p4_a",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 1,
+      "selected_epoch": 1,
+      "training_seconds": 25.000891000032425
+    },
+    {
+      "configuration": "p4_b",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 1,
+      "selected_epoch": 1,
+      "training_seconds": 25.769740099960472
+    },
+    {
+      "configuration": "p4_c",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 1,
+      "selected_epoch": 1,
+      "training_seconds": 28.304266399994958
+    },
+    {
+      "configuration": "p4_d",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 1,
+      "selected_epoch": 1,
+      "training_seconds": 28.377609200018924
+    },
+    {
+      "configuration": "p4_e",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 1,
+      "selected_epoch": 1,
+      "training_seconds": 32.23800359998131
+    },
+    {
+      "configuration": "p4_f",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 1,
+      "selected_epoch": 1,
+      "training_seconds": 44.938546999997925
+    }
+  ]
+}

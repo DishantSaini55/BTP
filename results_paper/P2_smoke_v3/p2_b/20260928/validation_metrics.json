@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "configuration": "p2_b",
+  "seed": 20260928,
+  "selected_epoch": 1,
+  "epochs_completed": 1,
+  "selected_train_normalized_mse": 1.1738537370033983,
+  "selected_policy": "always_open",
+  "initial_state_sha256": "3bd1b8e0dc4bd282a3c76522db93fac3e99c5806fb2c914d345e12e5412304b9",
+  "unique_trainable_parameters": 130068,
+  "training_seconds": 14.386265400040429,
+  "peak_sampled_rss_bytes": 331468800,
+  "checkpoint_bytes": 5069845,
+  "training_scope": "capped_at_2_batches_per_epoch",
+  "forced_context_benefit": {
+    "definition": "forced-closed per-window raw MSE minus forced-open per-window raw MSE",
+    "mean": null,
+    "pearson_r_with_learned_admission_probability": null,
+    "mean_when_learned_gate_admits": null,
+    "mean_when_learned_gate_rejects": null,
+    "sample_count": 0,
+    "note": "Descriptive 43-window validation analysis; not used for model selection beyond validation early stopping."
+  },
+  "validation_policies": [
+    {
+      "policy": "always_open",
+      "validation_normalized_mse": 5.386238719141761,
+      "validation_raw_pixel_mse": 33776.82381563408,
+      "validation_cmse": 22153.683139534885,
+      "validation_cfmse": 70754.71289914154,
+      "mean_admission_probability": 1.0,
+      "admission_probability_sd": 0.0,
+      "admission_probability_q05": 1.0,
+      "admission_probability_q50": 1.0,
+      "admission_probability_q95": 1.0,
+      "hard_admission_rate": 1.0,
+      "gate_entropy": 0.0,
+      "gate_logit_mean": null,
+      "gate_logit_sd": null,
+      "context_attention_weight": 0.0831163227558136,
+      "context_attention_weight_sd": 0.01767296902835369
+    }
+  ]
+}

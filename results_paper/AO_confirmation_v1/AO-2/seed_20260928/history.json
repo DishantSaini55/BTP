@@ -1,0 +1,142 @@
+[
+  {
+    "epoch": 1,
+    "epoch_seconds": 56.09532179997768,
+    "process_memory_bytes": 237658112,
+    "train_batches": 124,
+    "train_epoch_seconds": 52.3808299000375,
+    "train_normalized_mse": 0.17450781320391395,
+    "validation_normalized_mse": 0.11728779836212871,
+    "validation_seconds": 3.7144918999401852
+  },
+  {
+    "epoch": 2,
+    "epoch_seconds": 48.788692499976605,
+    "process_memory_bytes": 239747072,
+    "train_batches": 124,
+    "train_epoch_seconds": 44.47537729993928,
+    "train_normalized_mse": 0.1192334095536456,
+    "validation_normalized_mse": 0.14097508139632367,
+    "validation_seconds": 4.313315200037323
+  },
+  {
+    "epoch": 3,
+    "epoch_seconds": 48.68385459994897,
+    "process_memory_bytes": 242577408,
+    "train_batches": 124,
+    "train_epoch_seconds": 44.278881300007924,
+    "train_normalized_mse": 0.11299658456613661,
+    "validation_normalized_mse": 0.11391704620931435,
+    "validation_seconds": 4.404973299941048
+  },
+  {
+    "epoch": 4,
+    "epoch_seconds": 49.99021650000941,
+    "process_memory_bytes": 241717248,
+    "train_batches": 124,
+    "train_epoch_seconds": 45.405771899968386,
+    "train_normalized_mse": 0.10935504159132238,
+    "validation_normalized_mse": 0.1060606509779097,
+    "validation_seconds": 4.584444600041024
+  },
+  {
+    "epoch": 5,
+    "epoch_seconds": 51.79807600006461,
+    "process_memory_bytes": 241696768,
+    "train_batches": 124,
+    "train_epoch_seconds": 46.68396000005305,
+    "train_normalized_mse": 0.10762391047107304,
+    "validation_normalized_mse": 0.11110458815366858,
+    "validation_seconds": 5.114116000011563
+  },
+  {
+    "epoch": 6,
+    "epoch_seconds": 55.31107369984966,
+    "process_memory_bytes": 244604928,
+    "train_batches": 124,
+    "train_epoch_seconds": 51.11885979992803,
+    "train_normalized_mse": 0.1052122813638164,
+    "validation_normalized_mse": 0.12418144108313653,
+    "validation_seconds": 4.192213899921626
+  },
+  {
+    "epoch": 7,
+    "epoch_seconds": 100.64947559987195,
+    "process_memory_bytes": 241106944,
+    "train_batches": 124,
+    "train_epoch_seconds": 95.1183276999509,
+    "train_normalized_mse": 0.10380646456711688,
+    "validation_normalized_mse": 0.11303425856210568,
+    "validation_seconds": 5.531147899921052
+  },
+  {
+    "epoch": 8,
+    "epoch_seconds": 197.030871200026,
+    "process_memory_bytes": 241152000,
+    "train_batches": 124,
+    "train_epoch_seconds": 170.09679149999283,
+    "train_normalized_mse": 0.10343800677431499,
+    "validation_normalized_mse": 0.11137976195163059,
+    "validation_seconds": 26.93407970003318
+  },
+  {
+    "epoch": 9,
+    "epoch_seconds": 127.8892125999555,
+    "process_memory_bytes": 242012160,
+    "train_batches": 124,
+    "train_epoch_seconds": 123.62490209995303,
+    "train_normalized_mse": 0.10190548136950987,
+    "validation_normalized_mse": 0.12192934572144791,
+    "validation_seconds": 4.264310500002466
+  },
+  {
+    "epoch": 10,
+    "epoch_seconds": 74.97258679999504,
+    "process_memory_bytes": 241778688,
+    "train_batches": 124,
+    "train_epoch_seconds": 68.42222209996544,
+    "train_normalized_mse": 0.10120213288165297,
+    "validation_normalized_mse": 0.12202175915310229,
+    "validation_seconds": 6.550364700029604
+  },
+  {
+    "epoch": 11,
+    "epoch_seconds": 265.0415840999922,
+    "process_memory_bytes": 300568576,
+    "train_batches": 124,
+    "train_epoch_seconds": 203.89899549994152,
+    "train_normalized_mse": 0.0996622486334098,
+    "validation_normalized_mse": 0.11390709105223694,
+    "validation_seconds": 61.14258860005066
+  },
+  {
+    "epoch": 12,
+    "epoch_seconds": 124.49309619993437,
+    "process_memory_bytes": 301826048,
+    "train_batches": 124,
+    "train_epoch_seconds": 118.92859529994894,
+    "train_normalized_mse": 0.1003643833025385,
+    "validation_normalized_mse": 0.10834648632616908,
+    "validation_seconds": 5.564500899985433
+  },
+  {
+    "epoch": 13,
+    "epoch_seconds": 99.49204090004787,
+    "process_memory_bytes": 302944256,
+    "train_batches": 124,
+    "train_epoch_seconds": 89.51110810006503,
+    "train_normalized_mse": 0.09932411207180274,
+    "validation_normalized_mse": 0.12457293541067177,
+    "validation_seconds": 9.980932799982838
+  },
+  {
+    "epoch": 14,
+    "epoch_seconds": 142.149407699937,
+    "process_memory_bytes": 304189440,
+    "train_batches": 124,
+    "train_epoch_seconds": 130.9274776999373,
+    "train_normalized_mse": 0.09989025772583147,
+    "validation_normalized_mse": 0.1248872073246511,
+    "validation_seconds": 11.221929999999702
+  }
+]

@@ -1,0 +1,7 @@
+stage,rank,seed,fit_relative_error,holdout_relative_error,fit_zero_coef_fraction,holdout_zero_coef_fraction,iterations,convergence_warning,warning_text
+grouped_training_holdout,4,20260928,0.18189879570869588,0.19882895355490257,0.24030656303972367,0.32939814814814816,150,True,Maximum number of iterations 150 reached. Increase it to improve convergence.
+grouped_training_holdout,4,20260929,0.18189879570869588,0.19882895355490263,0.24030656303972367,0.32939814814814816,150,True,Maximum number of iterations 150 reached. Increase it to improve convergence.
+grouped_training_holdout,8,20260928,0.10545408747551119,0.16312980374622893,0.4392487046632124,0.6030864197530864,150,True,Maximum number of iterations 150 reached. Increase it to improve convergence.
+grouped_training_holdout,8,20260929,0.10545408782113612,0.16312980484521197,0.4392487046632124,0.6030864197530864,150,True,Maximum number of iterations 150 reached. Increase it to improve convergence.
+grouped_training_holdout,16,20260928,0.06905699903334643,0.12633728081206808,0.5000809585492227,0.594849537037037,150,True,Maximum number of iterations 150 reached. Increase it to improve convergence.
+grouped_training_holdout,16,20260929,0.0690942329237951,0.12618008553318755,0.4988449913644214,0.5943287037037037,150,True,Maximum number of iterations 150 reached. Increase it to improve convergence.

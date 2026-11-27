@@ -1,0 +1,72 @@
+{
+  "batch_size": 8,
+  "cache_sha256": {
+    "split_manifest.json": "e0fdf042eb4f9f30e5ea066a4b23490cb6582d7ad9356df77b8c5bd72b503c01",
+    "train.npz": "f089004844578c98c2b43aabe77e962f02ff94aae9b5ba0ed65514ce5d352df7",
+    "validation.npz": "01141782b19d21bcc14ef77529cb6a856ff919ffefd246c013eca4717e7d5c63"
+  },
+  "completed_at_epoch_seconds": 1795730623.0309987,
+  "completed_runs": [
+    "AO-1/seed_20260928",
+    "AO-2/seed_20260928",
+    "AO-3/seed_20260928",
+    "AO-1/seed_20260929",
+    "AO-2/seed_20260929",
+    "AO-3/seed_20260929",
+    "AO-1/seed_20260930",
+    "AO-2/seed_20260930",
+    "AO-3/seed_20260930",
+    "AO-1/seed_20260931",
+    "AO-2/seed_20260931",
+    "AO-3/seed_20260931",
+    "AO-1/seed_20260932",
+    "AO-2/seed_20260932",
+    "AO-3/seed_20260932"
+  ],
+  "cpu_threads": 4,
+  "cumulative_wall_seconds": 20388.857000000193,
+  "final_two_seed_reserve_seconds": 21600,
+  "global_budget_seconds": 50400,
+  "incomplete_runs": [],
+  "last_command": [
+    "C:\\Users\\PC\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "D:\\DOWNLOADS\\BTP\\MTN\\run_ao_v1.py",
+    "--finalize-only",
+    "--output-root",
+    "D:\\DOWNLOADS\\BTP\\results_paper\\AO_confirmation_v1",
+    "--max-epochs",
+    "30",
+    "--patience",
+    "10",
+    "--batch-size",
+    "8",
+    "--learning-rate",
+    "0.001",
+    "--cpu-threads",
+    "4",
+    "--wall-clock-budget-seconds",
+    "7200"
+  ],
+  "last_command_seconds": 16.094000000040978,
+  "last_return_code": 0,
+  "learning_rate": 0.001,
+  "manifest_sha256": "82940418c7d253daa1716b1fb38c6cec19ffb43e66e9fda9abde22f6ccbf844f",
+  "max_epochs": 30,
+  "models": [
+    "AO-1",
+    "AO-2",
+    "AO-3"
+  ],
+  "patience": 10,
+  "per_run_budget_seconds": 7200,
+  "schema": "ao_confirmation_orchestration_v1",
+  "seeds": [
+    20260928,
+    20260929,
+    20260930,
+    20260931,
+    20260932
+  ],
+  "status": "completed",
+  "updated_at_epoch_seconds": 1795730623.0234485
+}

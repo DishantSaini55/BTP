@@ -1,0 +1,3 @@
+rank,seed,train_relative_error,validation_relative_error,train_zero_coef_fraction,validation_zero_coef_fraction,iterations,convergence_warning,warning_text
+4,20260928,0.17575027661273226,0.3712394988408649,0.24252699055330634,0.38016975308641976,62,False,
+4,20260929,0.17575027661273226,0.3712394988408647,0.24252699055330634,0.38016975308641976,62,False,

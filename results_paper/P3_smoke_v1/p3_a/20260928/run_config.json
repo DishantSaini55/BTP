@@ -1,0 +1,8 @@
+{
+  "configuration": "p3_a",
+  "seed": 20260928,
+  "training": false,
+  "baseline_formula": "(x_t - x_(t-2))/2 per [x1,y1,x2,y2], steps 1..45",
+  "validation_only": true,
+  "test_split_loaded_as_dataset": false
+}

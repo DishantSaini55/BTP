@@ -1,0 +1,27 @@
+asset_kind,set_id,video_id,status,relative_path,bytes,notes
+video_archive,gp_set_0006,,present,archives\gp_set_0006.tar,4136593920,Previously listed members match the three extracted GP6 video names and sizes; byte-for-byte identity is unverified.
+raw_video,gp_set_0006,gp_set_0006_vid_0001,present,videos\gopro\gp_set_0006\gp_set_0006_vid_0001.MP4,1945038178,Container metadata previously reported 1920x1440 at 30 fps and 21210 frames; full decode not verified.
+raw_video,gp_set_0006,gp_set_0006_vid_0002,present,videos\gopro\gp_set_0006\gp_set_0006_vid_0002.MP4,2013735682,Container metadata previously reported 1920x1440 at 30 fps and 21210 frames; full decode not verified.
+raw_video,gp_set_0006,gp_set_0006_vid_0003,present,videos\gopro\gp_set_0006\gp_set_0006_vid_0003.MP4,177816513,Container metadata previously reported 1920x1080 at 30 fps and 5312 frames; full decode not verified.
+pedestrian_annotation,gp_set_0006,gp_set_0006_vid_0001,present,annotations\IDDPedestrian\annotations\gopro\gp_set_0006\gp_set_0006_vid_0001.xml,17257110,Local annotation XML; not reparsed for this inventory.
+pedestrian_annotation,gp_set_0006,gp_set_0006_vid_0002,present,annotations\IDDPedestrian\annotations\gopro\gp_set_0006\gp_set_0006_vid_0002.xml,5928676,Local annotation XML; not reparsed for this inventory.
+pedestrian_annotation,gp_set_0006,gp_set_0006_vid_0003,present,annotations\IDDPedestrian\annotations\gopro\gp_set_0006\gp_set_0006_vid_0003.xml,9147485,Historical GP6 test-video annotations; not a new untouched test asset.
+pedestrian_annotation,gp_set_0008,gp_set_0008_vid_0001,present,annotations\IDDPedestrian\annotations\gopro\gp_set_0008\gp_set_0008_vid_0001.xml,7828731,Annotation exists but corresponding raw video is absent locally.
+pedestrian_annotation,gp_set_0008,gp_set_0008_vid_0004,present,annotations\IDDPedestrian\annotations\gopro\gp_set_0008\gp_set_0008_vid_0004.xml,3735493,Annotation exists but corresponding raw video is absent locally.
+pedestrian_annotation,gp_set_0008,gp_set_0008_vid_0005,present,annotations\IDDPedestrian\annotations\gopro\gp_set_0008\gp_set_0008_vid_0005.xml,9746196,Annotation exists but corresponding raw video is absent locally.
+vehicle_annotation,gp_set_0006,gp_set_0006_vid_0001,present,annotations\IDDPedestrian\annotations_vehicle\gopro\gp_set_0006\gp_set_0006_vid_0001_obd.xml,1910067,Local OBD XML.
+vehicle_annotation,gp_set_0006,gp_set_0006_vid_0002,present,annotations\IDDPedestrian\annotations_vehicle\gopro\gp_set_0006\gp_set_0006_vid_0002_obd.xml,1926132,Local OBD XML.
+vehicle_annotation,gp_set_0006,gp_set_0006_vid_0003,present,annotations\IDDPedestrian\annotations_vehicle\gopro\gp_set_0006\gp_set_0006_vid_0003_obd.xml,699293,Local OBD XML.
+vehicle_annotation,gp_set_0008,gp_set_0008_vid_0001,present,annotations\IDDPedestrian\annotations_vehicle\gopro\gp_set_0008\gp_set_0008_vid_0001_obd.xml,2203830,OBD annotation exists but corresponding raw video is absent locally.
+vehicle_annotation,gp_set_0008,gp_set_0008_vid_0004,present,annotations\IDDPedestrian\annotations_vehicle\gopro\gp_set_0008\gp_set_0008_vid_0004_obd.xml,1963991,OBD annotation exists but corresponding raw video is absent locally.
+vehicle_annotation,gp_set_0008,gp_set_0008_vid_0005,present,annotations\IDDPedestrian\annotations_vehicle\gopro\gp_set_0008\gp_set_0008_vid_0005_obd.xml,2309316,OBD annotation exists but corresponding raw video is absent locally.
+annotation_index,gp_set_0006,,present,annotations\IDDPedestrian\annotations\gopro\gp_set_0006\gp_set_0006_annotated_frames.csv,77738,Metadata inventory only.
+annotation_index,gp_set_0008,,present,annotations\IDDPedestrian\annotations\gopro\gp_set_0008\gp_set_0008_annotated_frames.csv,39791,Metadata inventory only.
+annotation_cache,,,present,annotations\IDDPedestrian\data_cache\iddp_database.pkl,81649521,Not deserialized or inspected in this Phase 5 inventory.
+raw_video,gp_set_0008,gp_set_0008_vid_0001,missing,,,"Pedestrian and OBD annotations are present; raw video is not."
+raw_video,gp_set_0008,gp_set_0008_vid_0004,missing,,,"Pedestrian and OBD annotations are present; raw video is not."
+raw_video,gp_set_0008,gp_set_0008_vid_0005,missing,,,"Pedestrian and OBD annotations are present; raw video is not."
+video_archive,gp_set_0001,,missing,archives\gp_set_0001.tar,,Required only if approved for the draft development split.
+video_archive,gp_set_0002,,missing,archives\gp_set_0002.tar,,Required only if approved for the draft development split.
+video_archive,gp_set_0004,,missing,archives\gp_set_0004.tar,,Required only if approved for the draft development split.
+video_archive,gp_set_0007,,missing,archives\gp_set_0007.tar,,Required only if approved for the draft development split.

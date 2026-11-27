@@ -1,0 +1,29 @@
+{
+  "status": "completed",
+  "runtime_seconds": 42.1452864999992,
+  "max_cpu_threads": 4,
+  "official_test_accessed": false,
+  "training_performed": false,
+  "activation_extraction_repeated": false,
+  "candidate_ranks": [
+    4,
+    8,
+    16
+  ],
+  "seeds": [
+    20260928,
+    20260929
+  ],
+  "max_iter": 150,
+  "selected_rank": 4,
+  "screen_passed": true,
+  "intervention_performed": true,
+  "sobol_attempted": false,
+  "input_hashes": {
+    "D:\\DOWNLOADS\\BTP\\results_paper\\phase_6d_craft_stage1_v1\\AO3_FFN_activations.npz": "d3e586e3268caaa3cc70ccd34dd95889ca7b98266b53f37bc8f3a3e56527b5e6",
+    "D:\\DOWNLOADS\\BTP\\results_paper\\phase_6d_craft_stage1_v1\\activation_audit.json": "06aa508fa49d47784e10e5fd2dc33d54edabc109f5c43e05021602fc6d6bfcc2",
+    "D:\\DOWNLOADS\\BTP\\results_paper\\splits\\ao_annotation_only_v1\\train.npz": "f089004844578c98c2b43aabe77e962f02ff94aae9b5ba0ed65514ce5d352df7",
+    "D:\\DOWNLOADS\\BTP\\results_paper\\splits\\ao_annotation_only_v1\\validation.npz": "01141782b19d21bcc14ef77529cb6a856ff919ffefd246c013eca4717e7d5c63",
+    "D:\\DOWNLOADS\\BTP\\results_paper\\splits\\ao_annotation_only_v1\\split_manifest.json": "e0fdf042eb4f9f30e5ea066a4b23490cb6582d7ad9356df77b8c5bd72b503c01"
+  }
+}

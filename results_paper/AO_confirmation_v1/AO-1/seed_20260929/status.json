@@ -1,0 +1,10 @@
+{
+  "best_epoch": 22,
+  "epoch": 30,
+  "model_id": "AO-1",
+  "run_wall_clock_seconds": 3881.7793579999125,
+  "seed": 20260929,
+  "state": "completed",
+  "training_seconds": 3857.067652600468,
+  "updated_at": "2026-11-26T18:09:23+00:00"
+}

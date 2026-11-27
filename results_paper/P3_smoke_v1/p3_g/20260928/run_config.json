@@ -1,0 +1,27 @@
+{
+  "runner_version": "P3_screen_v1",
+  "configuration": "p3_g",
+  "seed": 20260928,
+  "max_epochs": 1,
+  "patience": 1,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "optimizer": "Adam",
+  "loss": "MSE",
+  "cpu_threads": 4,
+  "wall_clock_budget_seconds": 600.0,
+  "max_train_batches": 2,
+  "max_validation_batches": 2,
+  "validation_only": true,
+  "test_split_loaded_as_dataset": false,
+  "normalization": "train-only per-coordinate affine bbox statistics",
+  "zero_correction_head": false,
+  "split_cache_sha256": "3c888c7c089de88bffd44349c8336b4ca9b76177402d141e990ea79a1c306001",
+  "torch_version": "2.14.1+cpu",
+  "numpy_version": "2.4.6",
+  "source_sha256": {
+    "run_p3_screen.py": "7c8fb31fde6bbdd6e239b469eeeb7da14bb2a2ad253256ff99910f75672b3bee",
+    "cv_residual_v1.py": "df95133bb435f3ed4c32e95ab0c8514959dfad429c19dc3dbfb17a425cc08fde",
+    "run_from_scratch_e1.py": "2536757b9751e4d36b84fdfc183ad341a9bc665f05aa4a47e2b1c44757bc9021"
+  }
+}

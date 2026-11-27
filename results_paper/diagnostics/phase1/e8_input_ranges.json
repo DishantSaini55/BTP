@@ -1,0 +1,256 @@
+{
+  "split_version": "gp6_from_scratch_v1",
+  "normalization_fit_role": "train",
+  "normalization_box_mean": [
+    883.1700439453125,
+    921.3536987304688,
+    904.1236572265625,
+    977.4361572265625
+  ],
+  "normalization_box_std": [
+    213.529541015625,
+    20.202640533447266,
+    205.5812225341797,
+    28.961599349975586
+  ],
+  "sample_counts": {
+    "train": 212,
+    "validation": 43,
+    "test": 217
+  },
+  "gate_observed_frame_index_zero_based": 14,
+  "gate_observed_frame_number_within_window_one_based": 15,
+  "observed_gate_input_normalized_ranges": {
+    "train": {
+      "coordinate_min": [
+        -2.077979803085327,
+        -2.4068000316619873,
+        -1.968096375465393,
+        -1.8019087314605713
+      ],
+      "coordinate_max": [
+        2.5612845420837402,
+        1.6723712682724,
+        2.7233827114105225,
+        3.370805025100708
+      ],
+      "global_min": -2.4068000316619873,
+      "global_max": 3.370805025100708,
+      "abs_max": 3.370805025100708,
+      "components_outside_abs_5_fraction": 0.0
+    },
+    "validation": {
+      "coordinate_min": [
+        -3.666706085205078,
+        -8.360971450805664,
+        -3.5623080730438232,
+        -3.095000743865967
+      ],
+      "coordinate_max": [
+        2.858292818069458,
+        -3.567044734954834,
+        3.1456005573272705,
+        2.526581048965454
+      ],
+      "global_min": -8.360971450805664,
+      "global_max": 3.1456005573272705,
+      "abs_max": 8.360971450805664,
+      "components_outside_abs_5_fraction": 0.18604651162790697
+    },
+    "test": {
+      "coordinate_min": [
+        -2.7214035987854004,
+        -30.811996459960938,
+        -2.0543882846832275,
+        -13.526399612426758
+      ],
+      "coordinate_max": [
+        4.592526435852051,
+        -18.844253540039062,
+        4.941483974456787,
+        -4.456112861633301
+      ],
+      "global_min": -30.811996459960938,
+      "global_max": 4.941483974456787,
+      "abs_max": 30.811996459960938,
+      "components_outside_abs_5_fraction": 0.4976958525345622
+    }
+  },
+  "observed_gate_input_clip_fractions_at_abs_5": {
+    "train": {
+      "components_below_minus_5": 0.0,
+      "components_above_plus_5": 0.0,
+      "components_clipped_total": 0.0
+    },
+    "validation": {
+      "components_below_minus_5": 0.18604651162790697,
+      "components_above_plus_5": 0.0,
+      "components_clipped_total": 0.18604651162790697
+    },
+    "test": {
+      "components_below_minus_5": 0.4976958525345622,
+      "components_above_plus_5": 0.0,
+      "components_clipped_total": 0.4976958525345622
+    }
+  },
+  "historical_e3_endpoint_ranges_diagnostic_only": {
+    "train": {
+      "coordinate_min": [
+        -4.1360554695129395,
+        -8.497092247009277,
+        -4.351290702819824,
+        -1.71662437915802
+      ],
+      "coordinate_max": [
+        4.642354965209961,
+        1.3140027523040771,
+        4.941483974456787,
+        8.950606346130371
+      ],
+      "global_min": -8.497092247009277,
+      "global_max": 8.950606346130371,
+      "abs_max": 8.950606346130371,
+      "components_outside_abs_5_fraction": 0.01650943396226415
+    },
+    "validation": {
+      "coordinate_min": [
+        -4.1360554695129395,
+        -23.226850509643555,
+        -4.242331504821777,
+        -2.970353364944458
+      ],
+      "coordinate_max": [
+        4.4828925132751465,
+        -3.7798874378204346,
+        4.941483974456787,
+        12.111340522766113
+      ],
+      "global_min": -23.226850509643555,
+      "global_max": 12.111340522766113,
+      "abs_max": 23.226850509643555,
+      "components_outside_abs_5_fraction": 0.2558139534883721
+    },
+    "test": {
+      "coordinate_min": [
+        -4.1360554695129395,
+        -38.396156311035156,
+        -4.082200050354004,
+        -13.483238220214844
+      ],
+      "coordinate_max": [
+        4.459242343902588,
+        -18.74129867553711,
+        4.739763259887695,
+        -2.0001018047332764
+      ],
+      "global_min": -38.396156311035156,
+      "global_max": 4.739763259887695,
+      "abs_max": 38.396156311035156,
+      "components_outside_abs_5_fraction": 0.48963133640552997
+    }
+  },
+  "historical_e3_expression": "sample['bbox'][-1] (frame 60), not sample['bbox'][14] (last observed frame)",
+  "historical_endpoint_is_future_target": true,
+  "relative_observed_box_delta_ranges_normalized_by_train_box_std": {
+    "train": {
+      "coordinate_min": [
+        -0.34632188081741333,
+        -0.6548639535903931,
+        -0.37503471970558167,
+        -0.8514735102653503
+      ],
+      "coordinate_max": [
+        0.4292144477367401,
+        0.7187188863754272,
+        0.41239190101623535,
+        0.5766239166259766
+      ],
+      "global_min": -0.8514735102653503,
+      "global_max": 0.7187188863754272,
+      "abs_max": 0.8514735102653503,
+      "components_outside_abs_5_fraction": 0.0
+    },
+    "validation": {
+      "coordinate_min": [
+        -0.2997243404388428,
+        -1.1948940753936768,
+        -0.37493735551834106,
+        -1.591764211654663
+      ],
+      "coordinate_max": [
+        0.6569115519523621,
+        1.0424379110336304,
+        0.6526373624801636,
+        0.3221513032913208
+      ],
+      "global_min": -1.591764211654663,
+      "global_max": 1.0424379110336304,
+      "abs_max": 1.591764211654663,
+      "components_outside_abs_5_fraction": 0.0
+    },
+    "test": {
+      "coordinate_min": [
+        -0.2662859857082367,
+        -0.890477180480957,
+        -0.2799869477748871,
+        -0.7810340523719788
+      ],
+      "coordinate_max": [
+        0.7180740237236023,
+        2.7828047275543213,
+        0.6316723823547363,
+        1.904935598373413
+      ],
+      "global_min": -0.890477180480957,
+      "global_max": 2.7828047275543213,
+      "abs_max": 2.7828047275543213,
+      "components_outside_abs_5_fraction": 0.0
+    }
+  },
+  "relative_motion_tanh_scale_train_abs_q99": [
+    0.2962929308414459,
+    0.5041016340255737,
+    0.28556013107299805,
+    0.49491679668426514
+  ],
+  "bounded_relative_motion_ranges": {
+    "train": {
+      "coordinate_min": [
+        -0.8239030241966248,
+        -0.8614839315414429,
+        -0.8651156425476074,
+        -0.9379156827926636
+      ],
+      "coordinate_max": [
+        0.8954187631607056,
+        0.8907907009124756,
+        0.8945302367210388,
+        0.8226926326751709
+      ],
+      "global_min": -0.9379156827926636,
+      "global_max": 0.8954187631607056,
+      "abs_max": 0.9379156827926636,
+      "components_outside_abs_5_fraction": 0.0
+    },
+    "validation": {
+      "coordinate_min": [
+        -0.7664152383804321,
+        -0.9826858639717102,
+        -0.8650298118591309,
+        -0.9967882037162781
+      ],
+      "coordinate_max": [
+        0.9765491485595703,
+        0.9685242772102356,
+        0.9795152544975281,
+        0.5722891092300415
+      ],
+      "global_min": -0.9967882037162781,
+      "global_max": 0.9795152544975281,
+      "abs_max": 0.9967882037162781,
+      "components_outside_abs_5_fraction": 0.0
+    },
+    "test_not_used_for_scale_selection": true
+  },
+  "note": "The clip fractions describe the fixed \u00b15 E8 transform; they do not select a threshold. The test split is inspected only to verify the historical gate-input range, not to choose a representation, scale, or training hyperparameter."
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "epoch": 1,
+    "train_normalized_mse": 0.6848027987300225,
+    "validation_normalized_mse": 1.2036303143168605,
+    "epoch_seconds": 32.20447890000651,
+    "training_batches": 27,
+    "validation_samples": 43,
+    "gate_gradient_l2_mean": 0.0003506417480879397,
+    "context_gradient_l2_mean": 0.02975151699777298,
+    "process_rss_bytes": 321798144
+  }
+]

@@ -1,0 +1,9 @@
+method,category,task_match,input_match,representation_metric_match,determinism_match,protocol_match,fair_cpu_feasibility,conclusion
+AO-0/AO-1/AO-2/AO-3/AO-RIDGE,A,yes,yes,yes,yes,yes,already evaluated,Only direct numerical comparison set
+IDD-PeD published MTN,B,partial,no full-input versus annotation-only,partial box metrics but split/preprocessing unknown,no,not established,no rerun in Phase6C,Report descriptively only
+IDD-PeD published BiTraP,B,partial,no,partial,no best-of-K versus single forecast,not established,not authorized/CPU cost,Report descriptively only
+IDD-PeD published SGNet,B,partial,no,partial,goal-conditioned/possibly stochastic,not established,not authorized/CPU cost,Report descriptively only
+Original MTN on PIE/JAAD,C,no,no,no,no,no,not relevant,Methodological antecedent only
+PIETraj on PIE,C,no,no,no,likely deterministic,no,not relevant,Egocentric methodological context only
+Social LSTM/Social GAN/Trajectron++/AgentFormer/C,no,no,no,no,no,not relevant,Fixed-camera multi-agent context only
+PECNet/Y-Net/EigenTrajectory,C,no,no,no,no best-of-K/no map differences,no,not relevant,Stochastic/map-conditioned context only

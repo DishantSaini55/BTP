@@ -1,0 +1,2 @@
+epoch,train_normalized_mse,validation_normalized_mse,epoch_seconds,training_batches,validation_samples,gate_gradient_l2_mean,context_gradient_l2_mean,process_rss_bytes
+1,1.1907142400741577,2.2454628348350525,1.4116688999929465,2,16,0.0005485625842611662,0.06745887944972687,327643136

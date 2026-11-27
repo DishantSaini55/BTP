@@ -1,0 +1,157 @@
+{
+  "bootstrap_repetitions": 10000,
+  "bootstrap_seed": 20260928,
+  "cache_sha256": {
+    "split_manifest.json": "e0fdf042eb4f9f30e5ea066a4b23490cb6582d7ad9356df77b8c5bd72b503c01",
+    "train.npz": "f089004844578c98c2b43aabe77e962f02ff94aae9b5ba0ed65514ce5d352df7",
+    "validation.npz": "01141782b19d21bcc14ef77529cb6a856ff919ffefd246c013eca4717e7d5c63"
+  },
+  "completed_run_count": 20,
+  "expected_run_count": 20,
+  "finalizer_sha256": "22749c8e9fbdd586cd02d4fdf00eccd50bd49fc5c839442babe6ff2d9f0e0ae8",
+  "incomplete_runs": [],
+  "manifest_sha256": "82940418c7d253daa1716b1fb38c6cec19ffb43e66e9fda9abde22f6ccbf844f",
+  "model_artifact_hashes": {
+    "AO-0/seed_20260928": {
+      "best_checkpoint_sha256": "",
+      "latest_checkpoint_sha256": "",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-0/seed_20260929": {
+      "best_checkpoint_sha256": "",
+      "latest_checkpoint_sha256": "",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-0/seed_20260930": {
+      "best_checkpoint_sha256": "",
+      "latest_checkpoint_sha256": "",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-0/seed_20260931": {
+      "best_checkpoint_sha256": "",
+      "latest_checkpoint_sha256": "",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-0/seed_20260932": {
+      "best_checkpoint_sha256": "",
+      "latest_checkpoint_sha256": "",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-1/seed_20260928": {
+      "best_checkpoint_sha256": "ac903173d4f3c8e71c11976fc28a846bdd46aad7e6b6efad50310978c6c85a3d",
+      "latest_checkpoint_sha256": "b0ba4baece3270b3ac26760dc42bb0fc62ee71e4947eac506e1c1b61457273ee",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-1/seed_20260929": {
+      "best_checkpoint_sha256": "797a1180539b0b56e3f41191897fafa952fc051ff6d24b86090a38dcc2e07d5a",
+      "latest_checkpoint_sha256": "8b23f16d6aa35e19f1840d4c07cd827d4507407d9be72a6a04f7e3d772334c70",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-1/seed_20260930": {
+      "best_checkpoint_sha256": "91f9ed2232fc1f94c7a7b0af632dd423441cdae1db1cb4f76f3b17d92a4fbd1b",
+      "latest_checkpoint_sha256": "59b682cab1766f5820cdf3d92fa4a13574f5821f7d368c9a443c1fae6241038e",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-1/seed_20260931": {
+      "best_checkpoint_sha256": "cfeb09d9c3408c147b12f654c9fcccf78a88375607493ed3db4f70347182dd56",
+      "latest_checkpoint_sha256": "2762fb185dbd79e693dcb4b7e02c8f7443ecae5fc963d7d17470af59e37debab",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-1/seed_20260932": {
+      "best_checkpoint_sha256": "e1dca1c8c82f1c5a31453e2509e1ce4c0d9da02ce05e00d92d4145dbf6aa91ca",
+      "latest_checkpoint_sha256": "f6cbcfe9f4259e383dd2a49919a0ee14667d2cfafab20749504b87ded82f5792",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-2/seed_20260928": {
+      "best_checkpoint_sha256": "1d933f60c0201c30e75bbfd765ad450e4347c33516067d8864d48398cd304cdf",
+      "latest_checkpoint_sha256": "06e98bbe875755f1f75058b0e151b54b1098e66bb90f0523bd1f99498ace40d2",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-2/seed_20260929": {
+      "best_checkpoint_sha256": "e293bec1a1d1773334cecd43673ad574ecbe87c920e2a37e6fee1f029e9efaf8",
+      "latest_checkpoint_sha256": "40558f1d019cc6ad01144d3b6dcc52282d989a672285031b961b52276c40f798",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-2/seed_20260930": {
+      "best_checkpoint_sha256": "75c1ec81405a0f810e7b38bc27ca5a1de79b1d605715e2940aad31482c0e4dca",
+      "latest_checkpoint_sha256": "02fee3530919117217ab0b6668d91f4e5b5c1ff9a0026c54002afa644a4634ec",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-2/seed_20260931": {
+      "best_checkpoint_sha256": "cb352662a6f5f91893a7ab7bd7b16bd90907cdc5a155c8b7807f1d78fa2c7c58",
+      "latest_checkpoint_sha256": "46564259162daa14d100b55088f69b7599a966302219b8876660f20d0dacc686",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-2/seed_20260932": {
+      "best_checkpoint_sha256": "393da214d3f15dc79b8a656514f09f51a905ed8174958ee390c73159443cc09b",
+      "latest_checkpoint_sha256": "2bdff721f53d86d9575b319f468d71c8bca21650d0392271f1c0673c146cf447",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-3/seed_20260928": {
+      "best_checkpoint_sha256": "5f96001dd3b9b9e5f87561f0444c845c6f441c6dd45a2129ef0bcaa9d893114f",
+      "latest_checkpoint_sha256": "daccc159e2e01c19625102aec01b54b461e34982c73919b4b9c13a825fa5e8ed",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-3/seed_20260929": {
+      "best_checkpoint_sha256": "1d070a7a4ac4f950b9f9a288318481dc36b2a5b059f87441e03547538912e6f3",
+      "latest_checkpoint_sha256": "1c0638977a84d699541142c6fe0093d01751184af6dc52a5640372041c7e6a38",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-3/seed_20260930": {
+      "best_checkpoint_sha256": "1d4c2331f2d605f3e709a68e2fc2980b4e78cf091816912a9f8aca726eb324b9",
+      "latest_checkpoint_sha256": "4d561507fa12b6bc96aac71b41491a75a4ce03a41f605c7599d001401fd59636",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-3/seed_20260931": {
+      "best_checkpoint_sha256": "16e2e1ff20bea984dcef5478989e2912363b505432c5b02ac22b378f9aeb8099",
+      "latest_checkpoint_sha256": "ea3ef0dd1eb5fb6962bcce04af1b58803fa376de2656db02b10256e89ca8f053",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-3/seed_20260932": {
+      "best_checkpoint_sha256": "6e0e2a1d51bc39cb068df1ba2e8f005febccce23671c6fa0f08aa3a1b79ac33e",
+      "latest_checkpoint_sha256": "c28221877c71ee48ff328d6a55297de54bba7ab0f956d7d2c5ec1a1289ac167a",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-CP/seed_20260928": {
+      "best_checkpoint_sha256": "",
+      "latest_checkpoint_sha256": "",
+      "ridge_coefficients_sha256": ""
+    },
+    "AO-RIDGE/seed_20260928": {
+      "best_checkpoint_sha256": "",
+      "latest_checkpoint_sha256": "",
+      "ridge_coefficients_sha256": "21c23a1fb5e2af5b9a6763b51253d6d55a3b1998740e023a5d74314d03ca1733"
+    }
+  },
+  "models": [
+    "AO-0",
+    "AO-1",
+    "AO-2",
+    "AO-3",
+    "AO-CP",
+    "AO-RIDGE"
+  ],
+  "official_test_sets_read": [],
+  "run_matrix_complete": true,
+  "schema": "ao_confirmation_final_v1",
+  "seeds": [
+    20260928,
+    20260929,
+    20260930,
+    20260931,
+    20260932
+  ],
+  "train_samples": 988,
+  "train_videos": [
+    "gp_set_0001_vid_0001",
+    "gp_set_0002_vid_0001",
+    "gp_set_0004_vid_0001",
+    "gp_set_0006_vid_0002"
+  ],
+  "validation_samples": 432,
+  "validation_videos": [
+    "gp_set_0007_vid_0004",
+    "gp_set_0007_vid_0005"
+  ],
+  "video_generalization_caveat": "Two fixed GP7 validation videos; overlapping windows."
+}

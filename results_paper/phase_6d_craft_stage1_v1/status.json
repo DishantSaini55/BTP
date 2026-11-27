@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "stages": {
+    "activation_capture": "completed",
+    "identity_intervention": "completed",
+    "nmf_nnls_pilot": "completed"
+  },
+  "runtime_seconds": 19.62916790000054,
+  "official_test_accessed": false
+}

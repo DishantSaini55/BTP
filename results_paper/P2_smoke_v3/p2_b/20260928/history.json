@@ -1,0 +1,18 @@
+[
+  {
+    "epoch": 1,
+    "train_normalized_mse": 1.5344199538230896,
+    "validation_normalized_mse": 5.386238719141761,
+    "epoch_seconds": 14.371476400003303,
+    "training_batches": 2,
+    "gate_gradient_l2_mean": null,
+    "gate_gradient_present_parameters": 0,
+    "gate_gradient_zero_parameters": 0,
+    "context_gradient_l2_mean": 0.09024208592897967,
+    "context_gradient_present_parameters": 24,
+    "context_gradient_zero_parameters": 0,
+    "mean_admission_probability": null,
+    "hard_admission_rate": null,
+    "process_rss_bytes": 330973184
+  }
+]

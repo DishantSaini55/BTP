@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="820" viewBox="0 0 1500 820">
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#526579"/></marker></defs>
+<rect width="100%" height="100%" fill="#fbfcfe"/>
+<path d="M250,370.0 L320,370.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M555,370.0 L650,115.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M555,370.0 L650,265.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M555,370.0 L650,420.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M555,370.0 L650,570.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M555,370.0 L650,720.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M855,115.0 L1030,375.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M855,265.0 L1030,375.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M855,420.0 L1030,375.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M855,570.0 L1030,375.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M855,720.0 L1030,375.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<path d="M855,720.0 L1280,375.0" stroke="#526579" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+<rect x="40" y="300" width="210" height="140" rx="15" fill="#dbeafe" stroke="#718096" stroke-width="2"/>
+<text x="145.0" y="345.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">IDD-PeD annotations</text>
+<text x="145.0" y="370.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">15 observed boxes</text>
+<text x="145.0" y="395.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">45 target boxes</text>
+<rect x="320" y="300" width="235" height="140" rx="15" fill="#e0e7ff" stroke="#718096" stroke-width="2"/>
+<text x="437.5" y="345.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Frozen splits + train-only</text>
+<text x="437.5" y="370.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">normalization</text>
+<text x="437.5" y="395.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">GP3/5/8/9 held-out</text>
+<rect x="650" y="65" width="205" height="100" rx="15" fill="#dbeafe" stroke="#718096" stroke-width="2"/>
+<text x="752.5" y="102.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">AO-0</text>
+<text x="752.5" y="127.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">constant velocity</text>
+<rect x="650" y="210" width="205" height="110" rx="15" fill="#dcfce7" stroke="#718096" stroke-width="2"/>
+<text x="752.5" y="252.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">AO-RIDGE</text>
+<text x="752.5" y="277.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">linear residual regression</text>
+<rect x="650" y="370" width="205" height="100" rx="15" fill="#fee2e2" stroke="#718096" stroke-width="2"/>
+<text x="752.5" y="407.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">AO-1</text>
+<text x="752.5" y="432.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">constant-position anchor</text>
+<rect x="650" y="520" width="205" height="100" rx="15" fill="#fef3c7" stroke="#718096" stroke-width="2"/>
+<text x="752.5" y="557.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">AO-2</text>
+<text x="752.5" y="582.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">CV-anchored transformer</text>
+<rect x="650" y="670" width="205" height="100" rx="15" fill="#ede9fe" stroke="#718096" stroke-width="2"/>
+<text x="752.5" y="707.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">AO-3</text>
+<text x="752.5" y="732.5" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">shared encoder attention</text>
+<rect x="1030" y="300" width="235" height="150" rx="15" fill="#f1f5f9" stroke="#718096" stroke-width="2"/>
+<text x="1147.5" y="350.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Frozen official test</text>
+<text x="1147.5" y="375.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">MSE + C-MSE + CF-MSE</text>
+<text x="1147.5" y="400.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">13 videos / 861 tracks</text>
+<rect x="1280" y="300" width="205" height="150" rx="15" fill="#fce7f3" stroke="#718096" stroke-width="2"/>
+<text x="1382.5" y="350.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">Development-only</text>
+<text x="1382.5" y="375.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">AO-3 temporal analysis</text>
+<text x="1382.5" y="400.0" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" fill="#17324d">no test explanations</text>
+</svg>

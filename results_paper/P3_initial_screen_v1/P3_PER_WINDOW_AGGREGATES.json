@@ -1,0 +1,273 @@
+{
+  "validation_only": true,
+  "one_seed_exploratory": true,
+  "stationary_definition": "observed center displacement <= 1e-6 pixel per source-frame interval",
+  "groups": [
+    {
+      "configuration": "p3_a",
+      "policy": "exact_b1_formula",
+      "sample_count": 43,
+      "improved_count": 0,
+      "worsened_count": 0,
+      "unchanged_count": 43,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3630.3152786964592,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.0,
+      "fraction_worsened_vs_cv": 0.0,
+      "mean_correction_rms_pixels": 0.0,
+      "mean_admission_probability": 1.0
+    },
+    {
+      "configuration": "p3_b",
+      "policy": "base",
+      "sample_count": 43,
+      "improved_count": 5,
+      "worsened_count": 38,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 7106.317440299101,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.11627906976744186,
+      "fraction_worsened_vs_cv": 0.8837209302325582,
+      "mean_correction_rms_pixels": 65.7298731471217,
+      "mean_admission_probability": 1.0
+    },
+    {
+      "configuration": "p3_c",
+      "policy": "base",
+      "sample_count": 43,
+      "improved_count": 21,
+      "worsened_count": 22,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3341.440792172454,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.4883720930232558,
+      "fraction_worsened_vs_cv": 0.5116279069767442,
+      "mean_correction_rms_pixels": 34.8972532139268,
+      "mean_admission_probability": 1.0
+    },
+    {
+      "configuration": "p3_d",
+      "policy": "hard",
+      "sample_count": 43,
+      "improved_count": 4,
+      "worsened_count": 39,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 8010.100251308707,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.09302325581395349,
+      "fraction_worsened_vs_cv": 0.9069767441860465,
+      "mean_correction_rms_pixels": 78.21859994045523,
+      "mean_admission_probability": 0.9164055461107299
+    },
+    {
+      "configuration": "p3_d",
+      "policy": "forced_open",
+      "sample_count": 43,
+      "improved_count": 4,
+      "worsened_count": 39,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 8010.100251308707,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.09302325581395349,
+      "fraction_worsened_vs_cv": 0.9069767441860465,
+      "mean_correction_rms_pixels": 78.21859994045523,
+      "mean_admission_probability": 1.0
+    },
+    {
+      "configuration": "p3_d",
+      "policy": "forced_closed",
+      "sample_count": 43,
+      "improved_count": 4,
+      "worsened_count": 39,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 9329.645468068677,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.09302325581395349,
+      "fraction_worsened_vs_cv": 0.9069767441860465,
+      "mean_correction_rms_pixels": 88.22134208679199,
+      "mean_admission_probability": 0.0
+    },
+    {
+      "configuration": "p3_e",
+      "policy": "hard",
+      "sample_count": 43,
+      "improved_count": 27,
+      "worsened_count": 16,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3275.395368176837,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.627906976744186,
+      "fraction_worsened_vs_cv": 0.37209302325581395,
+      "mean_correction_rms_pixels": 33.502849889356035,
+      "mean_admission_probability": 0.5525380684885868
+    },
+    {
+      "configuration": "p3_e",
+      "policy": "forced_open",
+      "sample_count": 43,
+      "improved_count": 28,
+      "worsened_count": 15,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3250.7797136528548,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.6511627906976745,
+      "fraction_worsened_vs_cv": 0.3488372093023256,
+      "mean_correction_rms_pixels": 33.70671372080958,
+      "mean_admission_probability": 1.0
+    },
+    {
+      "configuration": "p3_e",
+      "policy": "forced_closed",
+      "sample_count": 43,
+      "improved_count": 25,
+      "worsened_count": 18,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3370.3967281607693,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.5813953488372093,
+      "fraction_worsened_vs_cv": 0.4186046511627907,
+      "mean_correction_rms_pixels": 36.731161095375235,
+      "mean_admission_probability": 0.0
+    },
+    {
+      "configuration": "p3_f",
+      "policy": "always_open",
+      "sample_count": 43,
+      "improved_count": 25,
+      "worsened_count": 18,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3379.4963098570356,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.5813953488372093,
+      "fraction_worsened_vs_cv": 0.4186046511627907,
+      "mean_correction_rms_pixels": 37.81749907205271,
+      "mean_admission_probability": 1.0
+    },
+    {
+      "configuration": "p3_g",
+      "policy": "soft",
+      "sample_count": 43,
+      "improved_count": 26,
+      "worsened_count": 17,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3106.4166933991187,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.6046511627906976,
+      "fraction_worsened_vs_cv": 0.3953488372093023,
+      "mean_correction_rms_pixels": 31.65939100398574,
+      "mean_admission_probability": 0.552354285883349
+    },
+    {
+      "configuration": "p3_g",
+      "policy": "hard",
+      "sample_count": 43,
+      "improved_count": 26,
+      "worsened_count": 17,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3082.8260345458984,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.6046511627906976,
+      "fraction_worsened_vs_cv": 0.3953488372093023,
+      "mean_correction_rms_pixels": 31.04020981455958,
+      "mean_admission_probability": 0.552354285883349
+    },
+    {
+      "configuration": "p3_g",
+      "policy": "forced_open",
+      "sample_count": 43,
+      "improved_count": 26,
+      "worsened_count": 17,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3082.8260345458984,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.6046511627906976,
+      "fraction_worsened_vs_cv": 0.3953488372093023,
+      "mean_correction_rms_pixels": 31.04020981455958,
+      "mean_admission_probability": 1.0
+    },
+    {
+      "configuration": "p3_g",
+      "policy": "forced_closed",
+      "sample_count": 43,
+      "improved_count": 26,
+      "worsened_count": 17,
+      "unchanged_count": 0,
+      "motion": {
+        "moving": {
+          "sample_count": 43,
+          "mean_raw_pixel_mse": 3176.9971157340115,
+          "mean_cv_pixel_mse": 3630.3152786964592
+        }
+      },
+      "fraction_improved_over_cv": 0.6046511627906976,
+      "fraction_worsened_vs_cv": 0.3953488372093023,
+      "mean_correction_rms_pixels": 32.92416279814964,
+      "mean_admission_probability": 0.0
+    }
+  ]
+}

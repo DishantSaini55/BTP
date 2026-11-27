@@ -1,0 +1,45 @@
+{
+  "synthetic_sobol_max_abs_index_error": 0.01375553115212165,
+  "synthetic_expected_indices": [
+    0.03333333333333333,
+    0.13333333333333333,
+    0.3,
+    0.5333333333333333
+  ],
+  "sobol_converged_by_output": {
+    "final_center_x": true,
+    "final_center_y": true,
+    "final_displacement_norm": true,
+    "cv_correction_energy": true
+  },
+  "fidelity_ordering_screen": {
+    "final_center_x_insertion": true,
+    "final_center_x_deletion": true,
+    "final_center_y_insertion": true,
+    "final_center_y_deletion": true,
+    "final_displacement_norm_insertion": true,
+    "final_displacement_norm_deletion": false,
+    "cv_correction_energy_insertion": true,
+    "cv_correction_energy_deletion": true
+  },
+  "full_reconstruction_absolute_scalar_discrepancy": {
+    "final_center_x": 0.484375,
+    "final_center_y": 0.0880126953125,
+    "final_displacement_norm": 0.3717498779296875,
+    "cv_correction_energy": 0.949127197265625
+  },
+  "identity_max_abs_error": 0.0,
+  "recursive_supported_by_parent": [
+    false,
+    true,
+    true,
+    true
+  ],
+  "training_window_count": 988,
+  "gp7_sample_window_count": 32,
+  "runtime_seconds": 102.64961419999963,
+  "cpu_threads_max": 4,
+  "official_test_accessed": false,
+  "model_training": false,
+  "activation_extraction_repeated": false
+}

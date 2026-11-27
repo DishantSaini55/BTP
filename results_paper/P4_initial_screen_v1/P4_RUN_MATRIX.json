@@ -1,0 +1,156 @@
+{
+  "runner_version": "P4_screen_v1",
+  "status_counts": {
+    "completed": 18,
+    "incomplete": 0,
+    "interrupted": 0,
+    "failed": 0,
+    "not_started": 0
+  },
+  "runs": [
+    {
+      "configuration": "p4_a",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 18,
+      "selected_epoch": 8,
+      "training_seconds": 873.2018671004334
+    },
+    {
+      "configuration": "p4_a",
+      "seed": 20260929,
+      "state": "completed",
+      "completed_epochs": 12,
+      "selected_epoch": 2,
+      "training_seconds": 316.1575409002835
+    },
+    {
+      "configuration": "p4_a",
+      "seed": 20260930,
+      "state": "completed",
+      "completed_epochs": 19,
+      "selected_epoch": 9,
+      "training_seconds": 583.7307233997853
+    },
+    {
+      "configuration": "p4_b",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 18,
+      "selected_epoch": 8,
+      "training_seconds": 451.53839869995136
+    },
+    {
+      "configuration": "p4_b",
+      "seed": 20260929,
+      "state": "completed",
+      "completed_epochs": 24,
+      "selected_epoch": 14,
+      "training_seconds": 674.7943735001609
+    },
+    {
+      "configuration": "p4_b",
+      "seed": 20260930,
+      "state": "completed",
+      "completed_epochs": 20,
+      "selected_epoch": 10,
+      "training_seconds": 536.6646689998452
+    },
+    {
+      "configuration": "p4_c",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 18,
+      "selected_epoch": 8,
+      "training_seconds": 714.1864919000072
+    },
+    {
+      "configuration": "p4_c",
+      "seed": 20260929,
+      "state": "completed",
+      "completed_epochs": 17,
+      "selected_epoch": 7,
+      "training_seconds": 458.7736572001595
+    },
+    {
+      "configuration": "p4_c",
+      "seed": 20260930,
+      "state": "completed",
+      "completed_epochs": 20,
+      "selected_epoch": 10,
+      "training_seconds": 567.6121374001959
+    },
+    {
+      "configuration": "p4_d",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 18,
+      "selected_epoch": 8,
+      "training_seconds": 472.6441455001477
+    },
+    {
+      "configuration": "p4_d",
+      "seed": 20260929,
+      "state": "completed",
+      "completed_epochs": 20,
+      "selected_epoch": 10,
+      "training_seconds": 475.8904503999511
+    },
+    {
+      "configuration": "p4_d",
+      "seed": 20260930,
+      "state": "completed",
+      "completed_epochs": 20,
+      "selected_epoch": 10,
+      "training_seconds": 637.7607819999103
+    },
+    {
+      "configuration": "p4_e",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 18,
+      "selected_epoch": 8,
+      "training_seconds": 1114.306364200078
+    },
+    {
+      "configuration": "p4_e",
+      "seed": 20260929,
+      "state": "completed",
+      "completed_epochs": 12,
+      "selected_epoch": 2,
+      "training_seconds": 540.4848034000024
+    },
+    {
+      "configuration": "p4_e",
+      "seed": 20260930,
+      "state": "completed",
+      "completed_epochs": 22,
+      "selected_epoch": 12,
+      "training_seconds": 971.0823262000922
+    },
+    {
+      "configuration": "p4_f",
+      "seed": 20260928,
+      "state": "completed",
+      "completed_epochs": 18,
+      "selected_epoch": 8,
+      "training_seconds": 747.4175473002251
+    },
+    {
+      "configuration": "p4_f",
+      "seed": 20260929,
+      "state": "completed",
+      "completed_epochs": 11,
+      "selected_epoch": 1,
+      "training_seconds": 448.5897801000392
+    },
+    {
+      "configuration": "p4_f",
+      "seed": 20260930,
+      "state": "completed",
+      "completed_epochs": 20,
+      "selected_epoch": 10,
+      "training_seconds": 638.7758199000964
+    }
+  ]
+}

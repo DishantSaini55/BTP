@@ -1,0 +1,127 @@
+{
+  "status": "completed",
+  "configuration": "p4_b",
+  "seed": 20260928,
+  "selected_epoch": 1,
+  "epochs_completed": 1,
+  "selection_policy": "base",
+  "unique_parameters": 125252,
+  "training_seconds": 1.1412316999631003,
+  "peak_sampled_rss_bytes": 317816832,
+  "checkpoint_bytes": 4976169,
+  "train": {
+    "policy": "base",
+    "sample_count": 16,
+    "normalized_mse": 0.6309322416782379,
+    "raw_pixel_mse": 11232.495708465576,
+    "cmse": 7171.919008255005,
+    "cfmse": 13054.396202087402,
+    "mse_h01": 9464.08494758606,
+    "mse_h05": 9901.562362670898,
+    "mse_h15": 11304.209589004517,
+    "mse_h30": 10584.80052947998,
+    "mse_h45": 17543.58620452881,
+    "correction_rms_pixels": 90.93071210384369,
+    "context_attention_weight": 0.0,
+    "gate_applicable": false,
+    "mean_admission_probability": null,
+    "admission_probability_sd": null,
+    "admission_probability_q05": null,
+    "admission_probability_q25": null,
+    "admission_probability_median": null,
+    "admission_probability_q75": null,
+    "admission_probability_q95": null,
+    "hard_admission_rate": null,
+    "effective_admission_rate": null,
+    "gate_entropy_nats": null
+  },
+  "policies": [
+    {
+      "policy": "base",
+      "sample_count": 16,
+      "normalized_mse": 2.2182225584983826,
+      "raw_pixel_mse": 11183.056037902832,
+      "cmse": 5573.082702636719,
+      "cfmse": 22749.479250907898,
+      "mse_h01": 4978.678375244141,
+      "mse_h05": 3696.4831008911133,
+      "mse_h15": 7008.3142166137695,
+      "mse_h30": 7729.343338012695,
+      "mse_h45": 31330.650785446167,
+      "correction_rms_pixels": 76.99348759651184,
+      "context_attention_weight": 0.0,
+      "gate_applicable": false,
+      "mean_admission_probability": null,
+      "admission_probability_sd": null,
+      "admission_probability_q05": null,
+      "admission_probability_q25": null,
+      "admission_probability_median": null,
+      "admission_probability_q75": null,
+      "admission_probability_q95": null,
+      "hard_admission_rate": null,
+      "effective_admission_rate": null,
+      "gate_entropy_nats": null
+    }
+  ],
+  "gate_gradient_l2_mean_present_batches": null,
+  "gate_gradient_batches_all_missing": 0,
+  "context_gradient_l2_mean_present_batches": null,
+  "context_gradient_batches_all_missing": 0,
+  "initial_state_sha256": "5e0a4f8c148c4435b4050497db30f4ee421e3690c4f4671637a0e8a8c71f3487",
+  "parameter_sharing_audit": {
+    "satie_enabled": true,
+    "encoder_self_attention": {
+      "encoder_layers": 3,
+      "projections": {
+        "Q": {
+          "same_module_object": true,
+          "same_weight_parameter_object": true,
+          "same_weight_data_ptr": true,
+          "same_bias_parameter_object": true,
+          "same_bias_data_ptr": true
+        },
+        "K": {
+          "same_module_object": true,
+          "same_weight_parameter_object": true,
+          "same_weight_data_ptr": true,
+          "same_bias_parameter_object": true,
+          "same_bias_data_ptr": true
+        },
+        "V": {
+          "same_module_object": true,
+          "same_weight_parameter_object": true,
+          "same_weight_data_ptr": true,
+          "same_bias_parameter_object": true,
+          "same_bias_data_ptr": true
+        },
+        "O": {
+          "same_module_object": true,
+          "same_weight_parameter_object": true,
+          "same_weight_data_ptr": true,
+          "same_bias_parameter_object": true,
+          "same_bias_data_ptr": true
+        }
+      },
+      "optimizer_registration": {
+        "named_parameter_entries": 224,
+        "unique_parameter_objects": 224,
+        "has_duplicate_parameter_objects": false
+      },
+      "verified": true
+    },
+    "encoder_other_attention_is_independent": true,
+    "decoder_attention_is_independent": {
+      "src_attn": true,
+      "spd_attn": true,
+      "ped_attn": true
+    },
+    "encoder_decoder_attention_is_independent": true,
+    "unique_trainable_parameters": 125252,
+    "other_attention_sharing_checked": true,
+    "verified": true
+  },
+  "cache_roles_loaded": [
+    "train",
+    "validation"
+  ]
+}

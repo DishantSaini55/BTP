@@ -1,0 +1,13 @@
+parent_concept,seed,selected_tokens,earlier_layer,rank,relative_fit_error,zero_coefficient_fraction,iterations,convergence_warning,warning_text
+C1,20260928,1482,encoder_layers.1.feedforward.1_relu,2,0.07848067625251932,0.02327935222672065,200,True,Maximum number of iterations 200 reached. Increase it to improve convergence.
+C1,20260929,1482,encoder_layers.1.feedforward.1_relu,2,0.07848067495147862,0.02327935222672065,200,True,Maximum number of iterations 200 reached. Increase it to improve convergence.
+C1,stability,1482,encoder_layers.1.feedforward.1_relu,2,,,,False,matched_mean_cosine=1.000000000;minimum=1.000000000;supported=False
+C2,20260928,1482,encoder_layers.1.feedforward.1_relu,2,0.1653910099637041,0.07658569500674764,146,False,
+C2,20260929,1482,encoder_layers.1.feedforward.1_relu,2,0.1653910099683148,0.07658569500674764,146,False,
+C2,stability,1482,encoder_layers.1.feedforward.1_relu,2,,,,False,matched_mean_cosine=1.000000000;minimum=1.000000000;supported=True
+C3,20260928,1482,encoder_layers.1.feedforward.1_relu,2,0.36162775811828857,0.12955465587044535,29,False,
+C3,20260929,1482,encoder_layers.1.feedforward.1_relu,2,0.3616277581229959,0.12955465587044535,29,False,
+C3,stability,1482,encoder_layers.1.feedforward.1_relu,2,,,,False,matched_mean_cosine=1.000000000;minimum=1.000000000;supported=True
+C4,20260928,1482,encoder_layers.1.feedforward.1_relu,2,0.20234831593277414,0.0597165991902834,92,False,
+C4,20260929,1482,encoder_layers.1.feedforward.1_relu,2,0.20234831593187722,0.0597165991902834,92,False,
+C4,stability,1482,encoder_layers.1.feedforward.1_relu,2,,,,False,matched_mean_cosine=1.000000000;minimum=1.000000000;supported=True

@@ -1,0 +1,127 @@
+{
+  "status": "completed",
+  "configuration": "p4_d",
+  "seed": 20260929,
+  "selected_epoch": 10,
+  "epochs_completed": 20,
+  "selection_policy": "always_open",
+  "unique_parameters": 130068,
+  "training_seconds": 475.8904503999511,
+  "peak_sampled_rss_bytes": 284602368,
+  "checkpoint_bytes": 5080789,
+  "train": {
+    "policy": "always_open",
+    "sample_count": 212,
+    "normalized_mse": 0.23304494386011698,
+    "raw_pixel_mse": 1150.1648155608268,
+    "cmse": 1016.2549853774736,
+    "cfmse": 5495.462921034615,
+    "mse_h01": 264.8281971722279,
+    "mse_h05": 270.3857186363553,
+    "mse_h15": 227.61573283402424,
+    "mse_h30": 814.5163077318443,
+    "mse_h45": 5870.657306383241,
+    "correction_rms_pixels": 15.69784534427355,
+    "context_attention_weight": 0.14240789413452148,
+    "gate_applicable": false,
+    "mean_admission_probability": null,
+    "admission_probability_sd": null,
+    "admission_probability_q05": null,
+    "admission_probability_q25": null,
+    "admission_probability_median": null,
+    "admission_probability_q75": null,
+    "admission_probability_q95": null,
+    "hard_admission_rate": null,
+    "effective_admission_rate": 1.0,
+    "gate_entropy_nats": null
+  },
+  "policies": [
+    {
+      "policy": "always_open",
+      "sample_count": 43,
+      "normalized_mse": 1.120367219281751,
+      "raw_pixel_mse": 4754.918128789857,
+      "cmse": 3822.5872235852617,
+      "cfmse": 12056.840146086937,
+      "mse_h01": 2360.08290951751,
+      "mse_h05": 2260.1190917436465,
+      "mse_h15": 2922.331350637037,
+      "mse_h30": 4284.091823134311,
+      "mse_h45": 14576.11936276458,
+      "correction_rms_pixels": 56.933374338371806,
+      "context_attention_weight": 0.1508312076330185,
+      "gate_applicable": false,
+      "mean_admission_probability": null,
+      "admission_probability_sd": null,
+      "admission_probability_q05": null,
+      "admission_probability_q25": null,
+      "admission_probability_median": null,
+      "admission_probability_q75": null,
+      "admission_probability_q95": null,
+      "hard_admission_rate": null,
+      "effective_admission_rate": 1.0,
+      "gate_entropy_nats": null
+    }
+  ],
+  "gate_gradient_l2_mean_present_batches": null,
+  "gate_gradient_batches_all_missing": 0,
+  "context_gradient_l2_mean_present_batches": 0.03337626555473649,
+  "context_gradient_batches_all_missing": 0,
+  "initial_state_sha256": "77c8cd78bfd36d93bdf4adb336c64659263f4a3d9f851425775eb615a4cd0530",
+  "parameter_sharing_audit": {
+    "satie_enabled": true,
+    "encoder_self_attention": {
+      "encoder_layers": 3,
+      "projections": {
+        "Q": {
+          "same_module_object": true,
+          "same_weight_parameter_object": true,
+          "same_weight_data_ptr": true,
+          "same_bias_parameter_object": true,
+          "same_bias_data_ptr": true
+        },
+        "K": {
+          "same_module_object": true,
+          "same_weight_parameter_object": true,
+          "same_weight_data_ptr": true,
+          "same_bias_parameter_object": true,
+          "same_bias_data_ptr": true
+        },
+        "V": {
+          "same_module_object": true,
+          "same_weight_parameter_object": true,
+          "same_weight_data_ptr": true,
+          "same_bias_parameter_object": true,
+          "same_bias_data_ptr": true
+        },
+        "O": {
+          "same_module_object": true,
+          "same_weight_parameter_object": true,
+          "same_weight_data_ptr": true,
+          "same_bias_parameter_object": true,
+          "same_bias_data_ptr": true
+        }
+      },
+      "optimizer_registration": {
+        "named_parameter_entries": 224,
+        "unique_parameter_objects": 224,
+        "has_duplicate_parameter_objects": false
+      },
+      "verified": true
+    },
+    "encoder_other_attention_is_independent": true,
+    "decoder_attention_is_independent": {
+      "src_attn": true,
+      "spd_attn": true,
+      "ped_attn": true
+    },
+    "encoder_decoder_attention_is_independent": true,
+    "unique_trainable_parameters": 130068,
+    "other_attention_sharing_checked": true,
+    "verified": true
+  },
+  "cache_roles_loaded": [
+    "train",
+    "validation"
+  ]
+}

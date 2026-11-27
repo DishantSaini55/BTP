@@ -1,0 +1,20 @@
+{
+  "selected_rank": "4 (small pilot rank; no semantic/rank claim)",
+  "validation_nnls_relative_error_scaled": 0.999999999751525,
+  "validation_rows": 6480,
+  "warning_records": [
+    {
+      "rank": 4,
+      "train_relative_reconstruction_error": 0.39036142587721184,
+      "iterations": 27,
+      "convergence_warning": false
+    },
+    {
+      "rank": 8,
+      "train_relative_reconstruction_error": 0.2947396137403195,
+      "iterations": 120,
+      "convergence_warning": true
+    }
+  ],
+  "runtime_seconds": 19.623972100000174
+}

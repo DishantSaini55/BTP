@@ -1,0 +1,194 @@
+{
+  "model": "LSTM (boxes + ego speed + scene labels)",
+  "seed": 20260937,
+  "initialization": "from scratch; no official checkpoint loaded",
+  "loaded_keys": [],
+  "initial_state": [
+    {
+      "name": "encoder.weight_ih_l0",
+      "shape": [
+        128,
+        5
+      ],
+      "sha256": "a4ade4b174a484ac2a7b6d64431e41749dbb02476fad4046c9bc3a5564c4543a"
+    },
+    {
+      "name": "encoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "02e3f66dd2f1e36f1b0cf2fd3e78cebfc1ca5440564b81907a4f3a699d8965ea"
+    },
+    {
+      "name": "encoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "7e97216c66680a8a3bd00a129dca96e2c89df2c94d382240a2234d558bd67465"
+    },
+    {
+      "name": "encoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "4ffb372e00378e3e6a5c65c4ad478f2e795693975c49702b111147df701145de"
+    },
+    {
+      "name": "decoder.weight_ih_l0",
+      "shape": [
+        128,
+        4
+      ],
+      "sha256": "5989d9e4fbe8fe5b5f8d1c1cfc815342d32333b5b9ab71fac64359308bfd5ced"
+    },
+    {
+      "name": "decoder.weight_hh_l0",
+      "shape": [
+        128,
+        32
+      ],
+      "sha256": "8458a114e4ff56bfd8dfdf2ee7a04b7a896457efe8ef16e4920217111e550588"
+    },
+    {
+      "name": "decoder.bias_ih_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "74ae50d92efef4c1f6669958b49ffad2329cd74df4475ef70f67dc8ae9fb19f2"
+    },
+    {
+      "name": "decoder.bias_hh_l0",
+      "shape": [
+        128
+      ],
+      "sha256": "874dda2a9a61a38dfba621a0736bacacf949e65c6c2e5f2f888aec7db6804f82"
+    },
+    {
+      "name": "output.weight",
+      "shape": [
+        4,
+        32
+      ],
+      "sha256": "2b931021a725288c65e8cb7cb7540cb191190281adfab109c24fca34004ab373"
+    },
+    {
+      "name": "output.bias",
+      "shape": [
+        4
+      ],
+      "sha256": "5b5cd11c22b0f593b42c0f4e241abc78fa99c834fcc818e881402164a52083f0"
+    },
+    {
+      "name": "scene_embeddings.0.weight",
+      "shape": [
+        7,
+        4
+      ],
+      "sha256": "2e61f2d22a5178bb143212295c1ac430fd9e4ed2f4b4e7d1636cddd24b721827"
+    },
+    {
+      "name": "scene_embeddings.1.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "88bb6d51df2c2760ab2775d2ec5f5f7d8ad20888226f123d99f5170998d25fbb"
+    },
+    {
+      "name": "scene_embeddings.2.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "6af8524940560c74cae244d55d40e94dc7e81dbbe026e086261fc562f5ef8380"
+    },
+    {
+      "name": "scene_embeddings.3.weight",
+      "shape": [
+        5,
+        4
+      ],
+      "sha256": "8bff0b8711392de4386a2cd7884df3b2e2c495e5ef14d3639a777ac1992c5c70"
+    },
+    {
+      "name": "scene_embeddings.4.weight",
+      "shape": [
+        3,
+        4
+      ],
+      "sha256": "1ad753c7cba997b1c7bdb2803564126bdb620a2c6cdccb04d7a0ec2d4841e4b4"
+    },
+    {
+      "name": "scene_projection.weight",
+      "shape": [
+        32,
+        20
+      ],
+      "sha256": "6636b4585628cb716ae29d4b686e0392a5ba9f0c7f9e102ad39fef5124f62c6c"
+    },
+    {
+      "name": "scene_projection.bias",
+      "shape": [
+        32
+      ],
+      "sha256": "476a875c51e154bca5be4ebcd0c03d2130f2b30aa401746a27b45a325d2cc455"
+    }
+  ],
+  "parameters": 10760,
+  "architecture": {
+    "encoder": "LSTM(5,32)",
+    "decoder": "autoregressive LSTM(4,32)",
+    "scene_variant": true,
+    "training": "teacher-forced normalized displacement",
+    "gradient_clip_norm": 1.0
+  },
+  "protocol": {
+    "max_epochs": 50,
+    "patience": 10,
+    "min_delta": 0,
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "batch_size": 8,
+    "loss": "MSE"
+  },
+  "provenance": {
+    "git_head": "c0ba73bd60f00795428cd70123454622edaec915",
+    "git_dirty": true,
+    "git_status": [
+      " M MTN/run_b1_from_scratch.py",
+      " M MTN/weight_sharing_report.md",
+      "?? MTN/run_b1_fixed.py",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260936.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_20260937.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260928.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260929.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260930.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260931.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260932.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260933.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260934.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260935.json",
+      "?? results_paper/config/B1_FIXED_lstm_boxes_plus_ego_speed_plus_scene_labels_20260936.json",
+      "?? results_paper/orchestration_from_scratch_v2.json",
+      "?? results_paper/summary_failed_partial_20261122/",
+      "?? results_paper/summary_regeneration_20261122/",
+      "?? results_paper/summary_stale_partial_20261122/"
+    ],
+    "source_sha256": {
+      "MTN\\individual_TF.py": "f9207ee91145ead243e2bea5b8bca7e1e06d57c6a87964b832b4652beb7d2dad",
+      "MTN\\context_TF.py": "9a75beef517c3191b7b36aca291971815aec8cb7ab675cb3f7a918acce4a5ff5",
+      "MTN\\dynamic_fusion_TF.py": "1ff6be645d05d58e81af6264183be68df4abb16efe21936178236a885649c257",
+      "MTN\\c4_encoder_shared.py": "73e9bfdea8aeac51d804f5add8dff4777b34cbbfa949f51266afe58b844bbb54",
+      "MTN\\run_from_scratch_e1.py": "2536757b9751e4d36b84fdfc183ad341a9bc665f05aa4a47e2b1c44757bc9021"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "epoch": 1,
+    "train_normalized_mse": 1.497431218624115,
+    "validation_normalized_mse": 4.034307599067688,
+    "epoch_seconds": 2.1638839000370353,
+    "training_batches": 2,
+    "validation_samples": 16,
+    "process_rss_bytes": 323063808
+  }
+]

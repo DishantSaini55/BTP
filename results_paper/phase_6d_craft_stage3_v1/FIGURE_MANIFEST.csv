@@ -1,0 +1,25 @@
+figure,format,description
+PARENT_CONCEPT_PROFILES.png,png,"Coefficient profiles, not input attribution maps"
+PARENT_CONCEPT_PROFILES.svg,svg,"Coefficient profiles, not input attribution maps"
+PARENT_CONCEPT_PROFILES.pdf,pdf,"Coefficient profiles, not input attribution maps"
+REPRESENTATIVE_OBSERVED_TRAJECTORIES.png,png,Observed paths from highest mean parent-coefficient training windows
+REPRESENTATIVE_OBSERVED_TRAJECTORIES.svg,svg,Observed paths from highest mean parent-coefficient training windows
+REPRESENTATIVE_OBSERVED_TRAJECTORIES.pdf,pdf,Observed paths from highest mean parent-coefficient training windows
+RECURSIVE_CONCEPT_HIERARCHY.png,png,Numerically screened parent-child factors; numeric labels
+RECURSIVE_CONCEPT_HIERARCHY.svg,svg,Numerically screened parent-child factors; numeric labels
+RECURSIVE_CONCEPT_HIERARCHY.pdf,pdf,Numerically screened parent-child factors; numeric labels
+MOTION_ASSOCIATION_HEATMAP.png,png,Spearman heatmap for numeric concepts and predefined descriptors
+MOTION_ASSOCIATION_HEATMAP.svg,svg,Spearman heatmap for numeric concepts and predefined descriptors
+MOTION_ASSOCIATION_HEATMAP.pdf,pdf,Spearman heatmap for numeric concepts and predefined descriptors
+SOBOL_IMPORTANCE.png,png,N=128 Jansen total-order indices for four scalar outputs
+SOBOL_IMPORTANCE.svg,svg,N=128 Jansen total-order indices for four scalar outputs
+SOBOL_IMPORTANCE.pdf,pdf,N=128 Jansen total-order indices for four scalar outputs
+ABSOLUTE_INTERVENTION_EFFECTS.png,png,Absolute scalar effects from original model
+ABSOLUTE_INTERVENTION_EFFECTS.svg,svg,Absolute scalar effects from original model
+ABSOLUTE_INTERVENTION_EFFECTS.pdf,pdf,Absolute scalar effects from original model
+INSERTION_DELETION_FIDELITY.png,png,Sobol and reverse curves plus random-order mean trajectories
+INSERTION_DELETION_FIDELITY.svg,svg,Sobol and reverse curves plus random-order mean trajectories
+INSERTION_DELETION_FIDELITY.pdf,pdf,Sobol and reverse curves plus random-order mean trajectories
+CONCEPT_INTERVENTION_TRAJECTORY_OVERLAY.png,png,Observed and predicted centers for one deterministic GP7 window
+CONCEPT_INTERVENTION_TRAJECTORY_OVERLAY.svg,svg,Observed and predicted centers for one deterministic GP7 window
+CONCEPT_INTERVENTION_TRAJECTORY_OVERLAY.pdf,pdf,Observed and predicted centers for one deterministic GP7 window

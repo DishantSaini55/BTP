@@ -10,7 +10,7 @@ This is a CPU proof-of-concept, not a published-benchmark reproduction.
 
 | Item | Actual configuration / count |
 |---|---:|
-| Total parameters | 139,142 |
+| Total parameters | 139,142 | 
 | Trainable parameters | 139,142 |
 | Encoder total | 64,096 |
 | Decoder total | 63,904 |
@@ -71,23 +71,24 @@ For C, 94 compatible official MTN tensors were loaded. Tied layers are initializ
 | C-MSE | 1094.57 | 1326.93 | +232.36 (+21.2%) |
 | CF-MSE | 3646.51 | 4530.43 | +883.92 (+24.2%) |
 | Best validation MSE | 11.35 | 9.78 | Different validation result; held-out test is decisive here |
-| C lower-MSE test samples | — | 5/10 | — |
+| C lower-MSE test samples | — | 5/10 | — | 
 
-### Warmed repeated CPU latency benchmark
+### Warmed repeated CPU latency benchmark 
 
 Both saved models were run on the identical 10 test inputs after five warm-up passes, with 200 timed forwards per model.
 
-| Latency metric | B | C | C vs B |
+| Latency metric | B | C | C vs B | 
 |---|---:|---:|---:|
 | Mean per-forward latency | 47.20 ms | 50.13 ms | +2.93 ms (+6.2%) |
-| Standard deviation | 4.98 ms | 8.04 ms | — |
+| Standard deviation | 4.98 ms | 8.04 ms | — | 
 
 Version C did not show a latency reduction. This is consistent with the unchanged layer-execution and attention-operation counts. The small observed slowdown should not be interpreted as a general property of sharing; it is a measurement from this CPU POC.
 
 ## 6. Recommendation
 
-Layer tying is technically safe for the interface and gives a **61.3% parameter reduction**, but in this small matched POC it increases held-out MSE by **20.3%**, C-MSE by **21.2%**, CF-MSE by **24.2%**, and does not reduce measured CPU latency.
-
-**Do not replace Version B with this fully layer-tied Version C for the next accuracy-focused stage.** Keep Version B as the accuracy reference. If parameter footprint is the priority, investigate less aggressive encoder-only or decoder-only tying next; they each reduce parameters by about 30.6% while preserving the context branch. To reduce computational complexity, separately test fewer executed layers or smaller attention/FFN dimensions, and retrain/evaluate them under the same matched protocol.
-
-**Bottom line:** weight sharing reduces parameter count by **61.3%**, while inference computation remains approximately unchanged because the same 18 attention operations and six layer executions are retained. In this POC, measured inference latency changed by **+6.2%** and prediction accuracy regressed.
+Layer tying is technically safe for the interface and gives a **61.3% parameter reduction**, but in this small matched POC it increases held-out MSE by **20.3%**, C-MSE by **21.2%**, CF-MSE by **24.2%**, and does not reduce measured CPU latency. 
+ 
+**Do not replace Version B with this fully layer-tied Version C for the next accuracy-focused stage.** Keep Version B as the accuracy reference. If parameter footprint is the priority, investigate less aggressive encoder-only or decoder-only tying next; they each reduce parameters by about 30.6% while preserving the context branch. To reduce computational complexity, separately test fewer executed layers or smaller attention/FFN dimensions, and retrain/evaluate them under the same matched protocol. 
+ 
+**Bottom line:** weight sharing reduces parameter count by **61.3%**, while inference computation remains approximately unchanged because the same 18 attention operations and six layer executions are retained. In this POC, measured inference latency changed by **+6.2%** and prediction accuracy regressed. 
+ 

@@ -1,0 +1,89 @@
+{
+  "diagnostic_version": "SAGE_V2_gradient_measurements_v2",
+  "seed": 20260928,
+  "device": "CPU",
+  "cpu_threads": 1,
+  "gradient_convention": "Absent gradients are counted separately from present exact-zero gradients.",
+  "cases": [
+    {
+      "case": "low_probability",
+      "gate_parameterization": "learned_gate_mlp",
+      "admission_probabilities": [
+        0.002450112486258149
+      ],
+      "normalized_mse": 1.8682581186294556,
+      "predictions_finite": true,
+      "gate_gradient": {
+        "finite": true,
+        "l2_norm": 7.552929961518092e-06,
+        "parameter_count": 4,
+        "absent_gradient_parameters": 0,
+        "zero_gradient_parameters": 0,
+        "nonzero_gradient_parameters": 4
+      },
+      "context_encoder_gradient": {
+        "finite": true,
+        "l2_norm": 0.0010705751921784568,
+        "parameter_count": 12,
+        "absent_gradient_parameters": 0,
+        "zero_gradient_parameters": 0,
+        "nonzero_gradient_parameters": 12
+      },
+      "context_attention_mean": 0.0002138491254299879
+    },
+    {
+      "case": "mixed_low_high",
+      "gate_parameterization": "fixed_logits_probe",
+      "admission_probabilities": [
+        0.01798621006309986,
+        0.9820137619972229
+      ],
+      "normalized_mse": 2.174983501434326,
+      "predictions_finite": true,
+      "gate_gradient": {
+        "finite": true,
+        "l2_norm": 0.0007356354162786411,
+        "parameter_count": 1,
+        "absent_gradient_parameters": 0,
+        "zero_gradient_parameters": 0,
+        "nonzero_gradient_parameters": 1
+      },
+      "context_encoder_gradient": {
+        "finite": true,
+        "l2_norm": 0.12091553382748871,
+        "parameter_count": 12,
+        "absent_gradient_parameters": 0,
+        "zero_gradient_parameters": 0,
+        "nonzero_gradient_parameters": 12
+      },
+      "context_attention_mean": 0.037266459316015244
+    },
+    {
+      "case": "near_probability_boundaries",
+      "gate_parameterization": "fixed_logits_probe",
+      "admission_probabilities": [
+        3.783505853677006e-44,
+        1.0
+      ],
+      "normalized_mse": 2.764042615890503,
+      "predictions_finite": true,
+      "gate_gradient": {
+        "finite": true,
+        "l2_norm": 0.0,
+        "parameter_count": 1,
+        "absent_gradient_parameters": 0,
+        "zero_gradient_parameters": 1,
+        "nonzero_gradient_parameters": 0
+      },
+      "context_encoder_gradient": {
+        "finite": true,
+        "l2_norm": 0.1299632303597844,
+        "parameter_count": 12,
+        "absent_gradient_parameters": 0,
+        "zero_gradient_parameters": 0,
+        "nonzero_gradient_parameters": 12
+      },
+      "context_attention_mean": 0.02948201447725296
+    }
+  ]
+}

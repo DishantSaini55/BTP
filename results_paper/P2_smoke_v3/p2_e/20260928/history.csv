@@ -1,0 +1,2 @@
+epoch,train_normalized_mse,validation_normalized_mse,epoch_seconds,training_batches,gate_gradient_l2_mean,gate_gradient_present_parameters,gate_gradient_zero_parameters,context_gradient_l2_mean,context_gradient_present_parameters,context_gradient_zero_parameters,mean_admission_probability,hard_admission_rate,process_rss_bytes
+1,1.4258025884628296,4.97064182370208,22.057716900017112,2,0.002396892879327448,8,0,0.06141800909053449,24,0,0.5407614931464195,1.0,332111872

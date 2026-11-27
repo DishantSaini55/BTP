@@ -1,0 +1,2 @@
+epoch,train_normalized_mse,validation_normalized_mse,epoch_seconds,training_batches,validation_samples,process_rss_bytes
+1,1.2540863454341888,2.4480276107788086,2.10154419997707,2,16,334659584

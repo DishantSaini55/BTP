@@ -1,0 +1,47 @@
+{
+  "runner_version": "P4_screen_v1",
+  "configuration": "p4_c",
+  "seed": 20260929,
+  "max_epochs": 30,
+  "patience": 10,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "optimizer": "Adam",
+  "loss": "MSE",
+  "cpu_threads": 4,
+  "wall_clock_budget_seconds": 3600.0,
+  "checkpoint_every_batches": 5,
+  "max_train_batches": null,
+  "max_validation_batches": null,
+  "validation_only": true,
+  "cache_schema": "gp6_independent_roles_v1",
+  "loaded_roles": [
+    "train",
+    "validation"
+  ],
+  "normalization_fit_role": "train",
+  "role_cache_hashes": {
+    "train": {
+      "sample_count": 212,
+      "sample_ids_sha256": "08123044b774f971e94dc557cbe2114e163f6aed2678e4decd7a3763cd83005c",
+      "pickle_sha256": "48755c1c62d6d15d47cbeee4bb0b1eb93b03ea9de987d0d97b7d7816e6cdc5fb"
+    },
+    "validation": {
+      "sample_count": 43,
+      "sample_ids_sha256": "2b71f2f246fc2f7376c0d487208c843fabea3bb7a17266d1b3e6180625a2d81c",
+      "pickle_sha256": "1add14f3a4b8bb0826a70cf45460f9b9f805216f8ba1b3da829a4484d011b0bd"
+    }
+  },
+  "torch_version": "2.14.1+cpu",
+  "numpy_version": "2.4.6",
+  "source_sha256": {
+    "run_p4_screen.py": "aaf66616ea8f9989fb33874cc000ecc435829f3edfee668c08f7fec084ae500d",
+    "p4_models_v1.py": "5bf3502e2e607954b358be93b683a0ab92db541a271632bb51ce11cf0e8d49d1",
+    "cv_residual_v1.py": "df95133bb435f3ed4c32e95ab0c8514959dfad429c19dc3dbfb17a425cc08fde",
+    "dataset_roles_v1.py": "d52fc3824432d708460fbf139a9286374d5bbdbde6423c80ac7938eb9edd3ab7",
+    "sage_v2.py": "b077658b138e37cd7875f9523c1f6d6525a271ed752c07bd54f825dbb75d4656",
+    "context_TF.py": "9a75beef517c3191b7b36aca291971815aec8cb7ab675cb3f7a918acce4a5ff5",
+    "individual_TF.py": "f9207ee91145ead243e2bea5b8bca7e1e06d57c6a87964b832b4652beb7d2dad",
+    "c4_encoder_shared.py": "73e9bfdea8aeac51d804f5add8dff4777b34cbbfa949f51266afe58b844bbb54"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "gp6_independent_roles_v1",
+  "source_dataset_version": "gp6_from_scratch_v1",
+  "normalization_role": "train",
+  "roles": {
+    "train": {
+      "sample_count": 212,
+      "sample_ids_sha256": "08123044b774f971e94dc557cbe2114e163f6aed2678e4decd7a3763cd83005c",
+      "pickle_sha256": "48755c1c62d6d15d47cbeee4bb0b1eb93b03ea9de987d0d97b7d7816e6cdc5fb"
+    },
+    "validation": {
+      "sample_count": 43,
+      "sample_ids_sha256": "2b71f2f246fc2f7376c0d487208c843fabea3bb7a17266d1b3e6180625a2d81c",
+      "pickle_sha256": "1add14f3a4b8bb0826a70cf45460f9b9f805216f8ba1b3da829a4484d011b0bd"
+    }
+  }
+}
